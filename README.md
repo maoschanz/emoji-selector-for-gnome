@@ -1,5 +1,5 @@
 # Emoji Selector (for Gnome)
-This extension provides a popup menu with some emojis in it ; Clicking on an emoji copies it to your clipboard.
+This basic extension provides a simple popup menu with some emojis in it ; Clicking on an emoji copies it to your clipboard.
 
 ![Screenshot](https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/master/Capture%20d'%C3%A9cran%20de%202017-01-13%2003%3A23%3A14.png)
 
@@ -7,7 +7,6 @@ This extension provides a popup menu with some emojis in it ; Clicking on an emo
 > How to manually install the extension ?
 
 Copy the "emoji-selector@maestroschan.fr" folder to ~/.local/share/gnome-shell/extensions/ and then restart the gnome shell environnment like a dick with Alt+F2 (you just have to type r in the prompt).
-
 
 > It's ugly !
 
@@ -18,11 +17,9 @@ It will be less ugly if you have the « Twitter Color Emoji » font, or the « E
 
 Maybe later, yes.
 
-
 > Can you translate the extension ?
 
 You can be sure i will, since i'm not myself a competent english-speaker.
-
 
 > There is no racialized smileys / LGBT peoples / gender-specific activities in your extension, you fascist !
 
