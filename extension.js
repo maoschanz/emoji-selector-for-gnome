@@ -18,9 +18,6 @@ See more info about these objects in REFERENCE.md
 const PanelMenu = imports.ui.panelMenu;
 const PopupMenu = imports.ui.popupMenu;
 
-/*
-Import Lang because we will write code in a Object Oriented Manner
-*/
 const Lang = imports.lang;
 
 //------------------------------------------------
