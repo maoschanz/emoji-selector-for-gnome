@@ -12,7 +12,7 @@ Next, you may need to restart the gnome shell environnment (the usual way is "lo
 
 > It's ugly !
 
-It will be less ugly if you have the « Twitter Color Emoji » font, or the « EmojiOne Color » font installed on your system. These fonts are on github, use the f\*cking search bar.
+It will be less ugly if you have the « Twitter Color Emoji » font, or the « EmojiOne Color » font installed on your system. These fonts are on github, use the search bar.
 
 # Your eventual observations :
 > Can you add a "last used" category ?
