@@ -6,13 +6,14 @@ This basic extension provides a simple popup menu with some emojis in it ; Click
 # Installation
 > How to manually install the extension ?
 
-Copy the "emoji-selector@maestroschan.fr" folder to ~/.local/share/gnome-shell/extensions/ and then restart the gnome shell environnment like a dick with Alt+F2 (you just have to type r in the prompt).
+Download the zip archive, and then copy the "emoji-selector@maestroschan.fr" folder to ~/.local/share/gnome-shell/extensions/
+You may need to restart the gnome shell environnment like a dick with Alt+F2 (you just have to type r in the prompt).
 
 > It's ugly !
 
-It will be less ugly if you have the « Twitter Color Emoji » font, or the « EmojiOne Color » font installed on your system.
+It will be less ugly if you have the « Twitter Color Emoji » font, or the « EmojiOne Color » font installed on your system. These fonts are on github, use the f\*cking search bar.
 
-# Your eventual observations
+# Your eventual observations :
 > Can you add a "last used" category ?
 
 Maybe later, yes.
