@@ -8,7 +8,7 @@ This basic extension provides a simple popup menu with some emojis in it ; Click
 
 Download the zip archive, extract it, and then copy the "emoji-selector@maestroschan.fr" folder to ~/.local/share/gnome-shell/extensions/
 
-Next, you may need to restart the gnome shell environnment (the usual way is "logout and login again", but you if you like adventure, i suggest you restart it like a dick with Alt+F2 and then typing r in the prompt).
+Next, you optionally may need to restart the gnome shell environnment (the usual way is "logout and login again", but you if you like adventure, i suggest you restart it like a dick with Alt+F2 and then typing r in the prompt).
 
 > It's ugly !
 
