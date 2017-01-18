@@ -8,7 +8,7 @@ This basic extension provides a simple popup menu with some emojis in it ; Click
 
 Download the zip archive, extract it, and then copy the "emoji-selector@maestroschan.fr" folder to ~/.local/share/gnome-shell/extensions/
 
-Next, you optionally may need to restart the gnome shell environnment (the usual way is "logout and login again", but you if you like adventure, i suggest you restart it like a dick with Alt+F2 and then typing r in the prompt).
+Next, you may need to restart the gnome shell environnment ("logout and login again").
 
 > It's ugly !
 
@@ -25,5 +25,5 @@ You can be sure i will, since i'm not myself a competent english-speaker.
 
 > There is no racialized smileys / LGBT peoples / gender-specific activities in your extension, you fascist !
 
-I'm sorry about that, but most fonts have a bad technical support for these "compound" caracters, so i prefered doing without these emojis.
+I'm sorry about that, but most fonts have a bad technical support for these caracters, so i prefered doing without these emojis.
 However the source code is actually very simple, so you can easily edit it (even if you don't know javascript), and add yourself whatever you need.
