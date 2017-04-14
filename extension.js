@@ -20,6 +20,10 @@ const PopupMenu = imports.ui.popupMenu;
 
 const Lang = imports.lang;
 
+const Gettext = imports.gettext.domain('emoji-selector');
+const _ = Gettext.gettext;
+const Convenience = imports.misc.extensionUtils.getCurrentExtension().imports.convenience;
+
 //------------------------------------------------
 
 const Clipboard = St.Clipboard.get_default();
@@ -48,14 +52,14 @@ const EmojisMenu = new Lang.Class({
 		
 		//-------------------------------------------------
 		
-        let SmileysPeople = new PopupMenu.PopupSubMenuMenuItem('Smileys & People');
-		let Nature = new PopupMenu.PopupSubMenuMenuItem('Nature');
-		let FoodDrink = new PopupMenu.PopupSubMenuMenuItem('Food & Drink');
-		let ActivitySports = new PopupMenu.PopupSubMenuMenuItem('Activities & Sports');
-		let TravelPlaces = new PopupMenu.PopupSubMenuMenuItem('Travel & Places');
-		let Objects = new PopupMenu.PopupSubMenuMenuItem('Objects');
-		let Symbols = new PopupMenu.PopupSubMenuMenuItem('Symbols');
-		let Flags = new PopupMenu.PopupSubMenuMenuItem('Flags');
+        let SmileysPeople = new PopupMenu.PopupSubMenuMenuItem(_("Smileys & People"));
+	let Nature = new PopupMenu.PopupSubMenuMenuItem(_("Nature"));
+	let FoodDrink = new PopupMenu.PopupSubMenuMenuItem(_("Food & Drink"));
+	let ActivitySports = new PopupMenu.PopupSubMenuMenuItem(_("Activities & Sports"));
+	let TravelPlaces = new PopupMenu.PopupSubMenuMenuItem(_("Travel & Places"));
+	let Objects = new PopupMenu.PopupSubMenuMenuItem(_("Objects"));
+	let Symbols = new PopupMenu.PopupSubMenuMenuItem(_("Symbols"));
+	let Flags = new PopupMenu.PopupSubMenuMenuItem(_("Flags"));
 		
 		//-------------------------------------------------
 		
@@ -288,7 +292,9 @@ const EmojisMenu = new Lang.Class({
 /* Global variables for use as button to click */
 let button;
 
-function init() {}
+function init() {
+    Convenience.initTranslations("emoji-selector");
+}
 
 function enable() {
     button = new EmojisMenu;

@@ -1,0 +1,50 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-13 12:23+0200\n"
+"PO-Revision-Date: 2017-04-13 12:24+0200\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: Jonatan Hatakeyama Zeidler <jonatan_zeidler@gmx.de>\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: extension.js:54
+msgid "Smileys & People"
+msgstr "Smileys & Menschen"
+
+#: extension.js:55
+msgid "Nature"
+msgstr "Natur"
+
+#: extension.js:56
+msgid "Food & Drink"
+msgstr "Essen & Trinken"
+
+#: extension.js:57
+msgid "Activities & Sports"
+msgstr "Aktivitäten & Sport"
+
+#: extension.js:58
+msgid "Travel & Places"
+msgstr "Reisen & Orte"
+
+#: extension.js:59
+msgid "Objects"
+msgstr "Objekte"
+
+#: extension.js:60
+msgid "Symbols"
+msgstr "Symbole"
+
+#: extension.js:61
+msgid "Flags"
+msgstr "Flaggen"
