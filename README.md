@@ -1,12 +1,12 @@
 # Emoji Selector (for Gnome)
-This basic extension provides a simple popup menu with some emojis in it ; Clicking on an emoji copies it to your clipboard.
+This basic Gnome shell extension provides a simple popup menu with some emojis in it ; Clicking on an emoji copies it to your clipboard.
 
-# New features of the version 2
+## New features of the version 2
 The version 2 includes a new way to display emojis, on a grid (which is far better), and translations.
 
 ![Screenshot](https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/master/Capture%20d'%C3%A9cran%20de%202017-04-15%2003-05-26.png)
 
-# Installation
+## Installation
 The better option is to install it from extensions.gnome.org
 
 > How to manually install the extension ?
@@ -19,7 +19,7 @@ You may need to restart the gnome shell environnment ("logout and login again").
 
 It will be less ugly if you have the « Twitter Color Emoji » font, or the « EmojiOne Color » font installed on your system. These fonts are on github, use the search bar.
 
-# Your eventual observations :
+## Your eventual observations :
 > Can you add a "last used" category ?
 
 Maybe in a future, yes.
