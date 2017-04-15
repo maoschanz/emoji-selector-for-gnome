@@ -28,7 +28,7 @@ Maybe in a future, yes.
 
 The extension is available in english, french and german.
 
-I don't know other language than french and english, so if you need a specific langauage, please contribute : you just have to be inspired by the existing .po files !
+I only know french and english, so if you need a specific language, please contribute : you just have to be inspired by the existing .po files !
 
 > There is no racialized smileys / LGBT peoples / gender-specific activities / "numbers in square" symbols :'(
 
