@@ -15,9 +15,9 @@ Download files and put them in an "emoji-selector@maestroschan.fr" folder to ~/.
 
 You may need to restart the gnome shell environnment ("logout and login again").
 
-> It's ugly !
+> The screenshot looks great but it's ugly on my computer !
 
-It will be less ugly if you have the « Twitter Color Emoji » font, or the « EmojiOne Color » font installed on your system. These fonts are on github, use the search bar.
+It will be less ugly if you have the « Twitter Color Emoji » font, or the « EmojiOne Color » font installed on your system. These fonts are on github.
 
 ## Your eventual observations :
 > Can you add a "last used" category ?
