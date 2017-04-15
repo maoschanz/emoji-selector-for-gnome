@@ -1,5 +1,14 @@
 
 .EmojisItemStyle {
     font-size: 20px;
-    font-family: Twitter Color Emoji, EmojiOne Color ;
+    font-family: EmojiOne Color, Twitter Color Emoji, Noto Color Emoji;
+    padding: 0px 2px;
+}
+
+.EmojisItemStyle:active {
+	font-weight: bold;
+}
+
+.EmojisItemStyle:hover {
+	font-weight: bold;
 }
