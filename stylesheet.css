@@ -5,10 +5,18 @@
     padding: 0px 2px;
 }
 
-.EmojisItemStyle:active {
-	font-weight: bold;
-}
-
 .EmojisItemStyle:hover {
 	font-weight: bold;
 }
+
+.RecentItemStyle {
+    font-size: 28px;
+    font-family: EmojiOne Color, Twitter Color Emoji, Noto Color Emoji;
+    padding: 0px 2px;
+}
+
+.RecentItemStyle:hover {
+	font-weight: bold;
+    padding: 0px 1px;
+}
+

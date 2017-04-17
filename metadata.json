@@ -1,17 +1,16 @@
 {
-	"shell-version": [	
-		"3.10"
-  		"3.12",
-   	 	"3.14", 
-   		"3.16",
-    		"3.18", 
-    		"3.20", 
-    		"3.22",
-    		"3.24"
-	],
-	"uuid": "emoji-selector@maestroschan.fr", 
-	"name": "Emoji Selector",
-	"description": "This extension provide a popup menu with some emojis ; clicking on an emoji copies it to the clipboard. It will be less ugly if you have « Twitter Color Emoji » or « EmojiOne Color » font installed on your system.",
-	"url": "https://github.com/Maestroschan/emoji-selector-for-gnome",
-	"version": 2.0
+  "description": "This extension provide a popup menu with some emojis ; clicking on an emoji copies it to the clipboard. It will be less ugly if you have \u00ab Twitter Color Emoji \u00bb or \u00ab EmojiOne Color \u00bb font installed on your system.", 
+  "name": "Emoji Selector", 
+  "shell-version": [
+    "3.14", 
+    "3.16", 
+    "3.14.4", 
+    "3.18", 
+    "3.20",
+    "3.22",
+    "3.24"
+  ], 
+  "url": "https://github.com/Maestroschan/emoji-selector-for-gnome", 
+  "uuid": "emoji-selector@maestroschan.fr", 
+  "version": 2
 }
