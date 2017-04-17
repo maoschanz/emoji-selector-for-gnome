@@ -13,7 +13,7 @@ Version 3 :
 - minor bug fix
 - less ugly code
 
-![Screenshot](https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/nnnnn/screenshot_v3.png)
+![Screenshot](https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/master/screenshot_v3.png)
 
 ## Installation
 The better option is to install it from extensions.gnome.org (where there is only version 1 at the moment i write this)
