@@ -4,6 +4,7 @@ This basic Gnome shell extension provides a simple popup menu with some emojis i
 ## New features
 Version 2 :
 - new way to display emojis, on a grid (which is far better)
+- new and better icon
 - translations (french and german)
 - new stylesheet
 
@@ -27,10 +28,14 @@ You may need to restart the gnome shell environnment ("logout and login again", 
 
 It will be less ugly if you have the « Twitter Color Emoji » font, or the « EmojiOne Color » font installed on your system. These fonts are on github.
 
+## About Dash to Panel
+The very popular extension "Dash to Panel" seems to cause some problems with my extension.
+Please install the "dash to panel" branch of this repository to solve the issue.
+
 ## Your eventual observations :
 > The "recently used" category is reset every time i login, is this normal ?
 
-Yes, i'm glad this feature works, so i haven't already think about how to make it remember things.
+Yes, sorry, i'm glad this feature works, so i haven't already think about how to make it remember what you used.
 
 > Can you translate the extension in [some language] ?
 
