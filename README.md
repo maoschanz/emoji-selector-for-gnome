@@ -1,4 +1,4 @@
-# Emoji Selector (for Gnome)
+# Emoji Selector (for Gnome) ["Dash to panel" branch]
 This basic Gnome shell extension provides a simple popup menu with some emojis in it ; Clicking on an emoji copies it to your clipboard.
 
 ## New features
@@ -9,11 +9,11 @@ Version 2 :
 - new stylesheet
 
 Version 3 :
-- recently used emojis are displayed above categories
+- recently used emojis are displayed under categories
 - minor bug fix
 - less ugly code
 
-![Screenshot](https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/nnnnn/screenshot_v3.png)
+![Screenshot](https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/for-dash-to-panel/screenshot_v3_dash_to_panel.png)
 
 ## Installation
 The better option is to install it from extensions.gnome.org (where there is only version 1 at the moment i write this)
@@ -27,10 +27,6 @@ You may need to restart the gnome shell environnment ("logout and login again", 
 > The screenshot looks great but it's ugly on my computer !
 
 It will be less ugly if you have the « Twitter Color Emoji » font, or the « EmojiOne Color » font installed on your system. These fonts are on github.
-
-## About Dash to Panel
-The very popular extension "Dash to Panel" seems to cause some problems with my extension.
-Please install the "dash to panel" branch of this repository to solve the issue.
 
 ## Your eventual observations :
 > The "recently used" category is reset every time i login, is this normal ?
