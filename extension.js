@@ -59,7 +59,7 @@ const EmojiCategory = new Lang.Class({
 		for (var i = 0; i < emojiList.length; i++) {
 			
 			// management of lines of emojis
-			if (i % 15 === 0) {
+			if (i % 25 === 0) {
 				ln = new PopupMenu.PopupBaseMenuItem('');
 				ln.actor.track_hover = false;
 				container = new St.BoxLayout();
@@ -139,8 +139,6 @@ const EmojisMenu = new Lang.Class({
 		/* we initialize the "recently used" buttons */
 		
 		this._recentlyUsedInit();
-		
-		this.menu.addMenuItem(RecentlyUsed);
 
 		//--------------------------------------------------
 		
@@ -154,7 +152,9 @@ const EmojisMenu = new Lang.Class({
 		this.menu.addMenuItem(Objects);
 		this.menu.addMenuItem(Symbols);
 		this.menu.addMenuItem(Flags);
-		
+	    
+		this.menu.addMenuItem(RecentlyUsed);
+	    
 		//--------------------------------------------------
 
 		/* default behavior of submenu : false means it stays close when the extension's menu is opened */
