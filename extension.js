@@ -196,16 +196,16 @@ const EmojisMenu = new Lang.Class({
 			Clipboard.set_text(CLIPBOARD_TYPE, recent3.label );
 		}));
 		recent4.connect('clicked', Lang.bind(this, function(){
-			Clipboard.set_text(CLIPBOARD_TYPE, recent3.label );
+			Clipboard.set_text(CLIPBOARD_TYPE, recent4.label );
 		}));
 		recent5.connect('clicked', Lang.bind(this, function(){
-			Clipboard.set_text(CLIPBOARD_TYPE, recent3.label );
+			Clipboard.set_text(CLIPBOARD_TYPE, recent5.label );
 		}));
 		recent6.connect('clicked', Lang.bind(this, function(){
-			Clipboard.set_text(CLIPBOARD_TYPE, recent3.label );
+			Clipboard.set_text(CLIPBOARD_TYPE, recent6.label );
 		}));
 		recent7.connect('clicked', Lang.bind(this, function(){
-			Clipboard.set_text(CLIPBOARD_TYPE, recent3.label );
+			Clipboard.set_text(CLIPBOARD_TYPE, recent7.label );
 		}));
 		
 		conteneur.add_child(recent1, {hover: true});
