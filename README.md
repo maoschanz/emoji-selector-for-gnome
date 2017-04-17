@@ -39,9 +39,7 @@ Yes, sorry, i'm glad this feature works, so i haven't already think about how to
 
 > Can you translate the extension in [some language] ?
 
-The extension is available in english, french and german.
-
-I only know french and english, so if you need a specific language, please contribute : you just have to be inspired by the existing .po files !
+The extension is currently available in english, french and german. I only know french and english, so if you need a specific language, please contribute : you just have to be inspired by the existing .po files !
 
 > There is no racialized smileys / LGBT peoples / gender-specific activities / "numbers in square" symbols :'(
 
