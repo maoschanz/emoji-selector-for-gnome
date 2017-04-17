@@ -16,7 +16,7 @@ Version 3 :
 ![Screenshot](https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/nnnnn/screenshot_v3.png)
 
 ## Installation
-The better option is to install it from extensions.gnome.org (there is only version 1 at the moment i write this)
+The better option is to install it from extensions.gnome.org (where there is only version 1 at the moment i write this)
 
 > How to manually install the extension ?
 

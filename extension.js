@@ -55,7 +55,7 @@ const EmojiCategory = new Lang.Class({
 		this.parent(categoryName);
 
 		let ln, container;
-		
+
 		for (var i = 0; i < emojiList.length; i++) {
 			
 			// management of lines of emojis
@@ -90,8 +90,8 @@ const EmojiCategory = new Lang.Class({
 			}));
 			container.add_child(button, {hover: true});
 		}
-	},    
-    
+	},
+
 	destroy: function() {
         this.parent();
     }
@@ -102,7 +102,7 @@ const EmojiCategory = new Lang.Class({
 const EmojisMenu = new Lang.Class({
     Name:		'EmojisMenu',		// Class Name
     Extends:	PanelMenu.Button,	// Parent Class
-    
+
     // Constructor
     _init: function() {
 
@@ -110,8 +110,9 @@ const EmojisMenu = new Lang.Class({
 
         let box = new St.BoxLayout();
         
-		let icon =  new St.Icon({ icon_name: 'face-cool-symbolic', style_class: 'system-status-icon emotes-icon'});
-		let toplabel = new St.Label({
+        let icon =  new St.Icon({ icon_name: 'face-cool-symbolic', style_class: 'system-status-icon emotes-icon'});
+
+        let toplabel = new St.Label({
 			y_align: Clutter.ActorAlign.CENTER
 		});
 
