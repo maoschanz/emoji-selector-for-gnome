@@ -13,7 +13,13 @@ Version 3 :
 - minor bug fix
 - less ugly code
 
-![Screenshot](https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/master/screenshot_v3.png)
+Version 4 :
+- preferences dialog
+- parametrable width for the grid
+- parametrable position for the recently used emojis (top or bottom)
+- major bug fixes
+
+![Screenshot](https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/master/screenshot_v4.png)
 
 ## Installation
 The better option is to install it from extensions.gnome.org (where there is only version 1 at the moment i write this)
@@ -29,8 +35,8 @@ You may need to restart the gnome shell environnment ("logout and login again", 
 It will be less ugly if you have the « Twitter Color Emoji » font, or the « EmojiOne Color » font installed on your system. These fonts are on github.
 
 ## About Dash to Panel
-The very popular extension "Dash to Panel" seems to cause some problems with my extension.
-Please install the "dash to panel" branch of this repository to solve the issue.
+The very popular extension "Dash to Panel" seems to cause some problems with my extension. 
+You need to set a number of emojis per line around 25 to solve the issue.
 
 ## Your eventual observations :
 > The "recently used" category is reset every time i login, is this normal ?
