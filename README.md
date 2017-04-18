@@ -2,22 +2,15 @@
 This basic Gnome shell extension provides a simple popup menu with some emojis in it ; Clicking on an emoji copies it to your clipboard.
 
 ## New features
-Version 2 :
 - new way to display emojis, on a grid (which is far better)
+- parametrable width for the grid
 - new and better icon
 - translations (french and german)
 - new stylesheet
-
-Version 3 :
-- recently used emojis are displayed above categories
-- minor bug fix
+- recently used emojis are displayed above (or under) categories
+- bug fixes
 - less ugly code
-
-Version 4 :
-- preferences dialog
-- parametrable width for the grid
-- parametrable position for the recently used emojis (top or bottom)
-- major bug fixes
+- a nice interface for settings
 
 ![Screenshot](https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/master/screenshot_v4.png)
 
