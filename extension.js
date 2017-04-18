@@ -47,6 +47,11 @@ const Em = Me.imports.emojisCharacters;
 
 //-----------------------------------------------
 
+let nbRecents = 12;
+let nbCols = 15;
+
+//-----------------------------------------------
+
 const EmojiCategory = new Lang.Class({
 	Name:		'EmojiCategory',
 	Extends:	PopupMenu.PopupSubMenuMenuItem,
@@ -59,7 +64,7 @@ const EmojiCategory = new Lang.Class({
 		for (var i = 0; i < emojiList.length; i++) {
 			
 			// management of lines of emojis
-			if (i % 15 === 0) {
+			if (i % nbCols === 0) {
 				ln = new PopupMenu.PopupBaseMenuItem('');
 				ln.actor.track_hover = false;
 				container = new St.BoxLayout();
@@ -80,13 +85,11 @@ const EmojiCategory = new Lang.Class({
 				Clipboard.set_text(CLIPBOARD_TYPE, CurrentEmoji);
 				
 				/* shifting recent emojis */
-				recent7.label = recent6.label;
-				recent6.label = recent5.label;
-				recent5.label = recent4.label;
-				recent4.label = recent3.label;
-				recent3.label = recent2.label;
-				recent2.label = recent1.label;
-				recent1.label = CurrentEmoji;
+				for(var j = nbRecents-1;j > 0;j--){
+					recents[j].label = recents[j-1].label;
+				}
+				recents[0].label = CurrentEmoji;
+				
 			}));
 			container.add_child(button, {hover: true});
 		}
@@ -104,8 +107,8 @@ const EmojisMenu = new Lang.Class({
     Extends:	PanelMenu.Button,	// Parent Class
 
     // Constructor
-    _init: function() {
-
+    _init: function(position) {
+		
         this.parent(0.0, 'EmojisMenu');//, false);
 
         let box = new St.BoxLayout();
@@ -125,24 +128,26 @@ const EmojisMenu = new Lang.Class({
 		
 		/* creating new categories with emojis loaded in Em */
 		
-		let SmileysPeople = new EmojiCategory(	_('Smileys & People'),		Em.SMILEYSANDPEOPLE		);
-		let Nature = new EmojiCategory(			_('Nature'),				Em.NATURE				);	
-		let FoodDrink = new EmojiCategory(		_('Food & Drink'), 			Em.FOODANDDRINK			);
+		let SmileysPeople = new EmojiCategory(	_('Smileys & People'),		Em.SMILEYSANDPEOPLE	);
+		let Nature = new EmojiCategory(		_('Nature'),			Em.NATURE		);	
+		let FoodDrink = new EmojiCategory(	_('Food & Drink'), 		Em.FOODANDDRINK		);
 		let ActivitySports = new EmojiCategory(	_('Activities & Sports'), 	Em.ACTIVITIESANDSPORTS	);
-		let TravelPlaces = new EmojiCategory(	_('Travel & Places'), 		Em.TRAVELANDPLACES		);
-		let Objects = new EmojiCategory( 		_('Objects'),				Em.OBJECTS				);
-		let Symbols = new EmojiCategory(		_('Symbols'),				Em.SYMBOLS				);
-		let Flags = new EmojiCategory(			_('Flags'),					Em.FLAGS				);		
+		let TravelPlaces = new EmojiCategory(	_('Travel & Places'), 		Em.TRAVELANDPLACES	);
+		let Objects = new EmojiCategory( 	_('Objects'),			Em.OBJECTS		);
+		let Symbols = new EmojiCategory(	_('Symbols'),			Em.SYMBOLS		);
+		let Flags = new EmojiCategory(		_('Flags'),			Em.FLAGS		);		
 		
 		//--------------------------------------------------
 		
 		/* we initialize the "recently used" buttons */
 		
-		this._recentlyUsedInit();
+		let RecentlyUsed = this._recentlyUsedInit();
 		
-		this.menu.addMenuItem(RecentlyUsed);
-
 		//--------------------------------------------------
+		
+		if (position === 'top') {
+			this.menu.addMenuItem(RecentlyUsed);
+		}
 		
 		/*we add categories' submenus*/
 		
@@ -154,6 +159,10 @@ const EmojisMenu = new Lang.Class({
 		this.menu.addMenuItem(Objects);
 		this.menu.addMenuItem(Symbols);
 		this.menu.addMenuItem(Flags);
+		
+		if (position === 'bottom') {
+			this.menu.addMenuItem(RecentlyUsed);
+		}
 		
 		//--------------------------------------------------
 
@@ -174,48 +183,34 @@ const EmojisMenu = new Lang.Class({
 	
 	_recentlyUsedInit: function () {
 		//here are set the 7 default "recently used emojis", in a pretty unprofessionnal way
+		
+		let RecentlyUsed = new PopupMenu.PopupBaseMenuItem('');
+		recents = [];
+		
+		for(var i = 0;i<nbRecents;i++){
+			recents[i] = new St.Button({ style_class: 'RecentItemStyle' });
+		}
+		
 		let conteneur = new St.BoxLayout();
 	
 		RecentlyUsed.actor.track_hover = false;
 		RecentlyUsed.actor.add(conteneur, { expand: true });
 		
-		recent1.label = '😍';
-		recent2.label = '👌';
-		recent3.label = '🤔';
-		recent4.label = '😭';
-		recent5.label = '😱';
-		recent6.label = '😩';
-		recent7.label = '😂';
+		for(var i = 0;i<nbRecents;i++){
+			recents[i].label = '🤔';
+		}
 		
-		recent1.connect('clicked', Lang.bind(this, function(){
-			Clipboard.set_text(CLIPBOARD_TYPE, recent1.label );
-		}));
-		recent2.connect('clicked', Lang.bind(this, function(){
-			Clipboard.set_text(CLIPBOARD_TYPE, recent2.label );
-		}));
-		recent3.connect('clicked', Lang.bind(this, function(){
-			Clipboard.set_text(CLIPBOARD_TYPE, recent3.label );
-		}));
-		recent4.connect('clicked', Lang.bind(this, function(){
-			Clipboard.set_text(CLIPBOARD_TYPE, recent4.label );
-		}));
-		recent5.connect('clicked', Lang.bind(this, function(){
-			Clipboard.set_text(CLIPBOARD_TYPE, recent5.label );
-		}));
-		recent6.connect('clicked', Lang.bind(this, function(){
-			Clipboard.set_text(CLIPBOARD_TYPE, recent6.label );
-		}));
-		recent7.connect('clicked', Lang.bind(this, function(){
-			Clipboard.set_text(CLIPBOARD_TYPE, recent7.label );
-		}));
+		for(var i = 0;i<nbRecents;i++){
+			recents[i].connect('clicked', Lang.bind(this, function(){
+				Clipboard.set_text(CLIPBOARD_TYPE, recents[arguments[2]].label);
+			}, i));
+		}
 		
-		conteneur.add_child(recent1, {hover: true});
-		conteneur.add_child(recent2, {hover: true});
-		conteneur.add_child(recent3, {hover: true});
-		conteneur.add_child(recent4, {hover: true});
-		conteneur.add_child(recent5, {hover: true});
-		conteneur.add_child(recent6, {hover: true});
-		conteneur.add_child(recent7, {hover: true});
+		for(var i = 0;i<nbRecents;i++){
+			conteneur.add_child(recents[i], {hover: true});
+		}
+		
+		return RecentlyUsed;
 	},
 	
     destroy: function() {
@@ -228,15 +223,7 @@ const EmojisMenu = new Lang.Class({
 /* Global variables for use as button to click */
 let button;
 
-/* Recently used emoji will be displayed by those buttons, who work better if they are global variables */
-let RecentlyUsed = new PopupMenu.PopupBaseMenuItem('');
-let recent1 = new St.Button({ style_class: 'RecentItemStyle' });
-let recent2 = new St.Button({ style_class: 'RecentItemStyle' });
-let recent3 = new St.Button({ style_class: 'RecentItemStyle' });
-let recent4 = new St.Button({ style_class: 'RecentItemStyle' });
-let recent5 = new St.Button({ style_class: 'RecentItemStyle' });
-let recent6 = new St.Button({ style_class: 'RecentItemStyle' });
-let recent7 = new St.Button({ style_class: 'RecentItemStyle' });
+let recents = [];
 
 //------------------------------------------------------------
 
@@ -246,13 +233,19 @@ function init() {
 
 //------------------------------------------------------------
 
-function enable() {
+function enable() {	
+	let settings = Convenience.getSettings();
+	settings = Convenience.getSettings('org.gnome.shell.extensions.emoji-selector');
 	
-	button = new EmojisMenu;
+	nbRecents = settings.get_int('nbrecents');
+	nbCols = settings.get_int('nbcols');
+	let pos = settings.get_string('position');
+    
+	button = new EmojisMenu(pos);
     /* in addToStatusArea :
     - 0 is the position
     - `right` is the box where we want our button to be displayed (left/center/right)
-     */
+     */   
 	Main.panel.addToStatusArea('EmojisMenu', button, 0, 'right');
 }
 
@@ -260,15 +253,6 @@ function enable() {
 
 function disable() {
 	button.destroy();
-	
-	RecentlyUsed.destroy();
-	recent1.destroy();
-	recent2.destroy();
-	recent3.destroy();
-	recent4.destroy();
-	recent5.destroy();
-	recent6.destroy();
-	recent7.destroy();
 }
 
 
