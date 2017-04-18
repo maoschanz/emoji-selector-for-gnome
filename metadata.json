@@ -12,5 +12,7 @@
   ], 
   "url": "https://github.com/Maestroschan/emoji-selector-for-gnome", 
   "uuid": "emoji-selector@maestroschan.fr", 
+  "gettext-domain": "emoji-selector",
+  "settings-schema": "org.gnome.shell.extensions.emoji-selector",
   "version": 3
 }
