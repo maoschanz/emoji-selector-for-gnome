@@ -48,3 +48,33 @@ msgstr ""
 #: extension.js:61
 msgid "Flags"
 msgstr ""
+
+#: prefs.js:32
+msgid "Modifications will be effective after restarting the extension."
+msgstr ""
+
+#: prefs.js:37
+msgid "Display of recent emojis :"
+msgstr ""
+
+#: prefs.js:47
+msgid "Top"
+msgstr ""
+
+#: prefs.js:48
+msgid "Bottom"
+msgstr ""
+
+#: prefs.js:49
+msgid "Do not display"
+msgstr ""
+
+#: prefs.js:85
+msgid "Number of recently used emojis :"
+msgstr ""
+
+#: prefs.js:102
+msgid "Number of emojis on one line :"
+msgstr ""
+
+
