@@ -5,7 +5,7 @@ This basic Gnome shell extension provides a simple popup menu with some emojis i
 - new way to display emojis, on a grid (which is far better)
 - parametrable width for the grid
 - new and better icon
-- translations (french and german)
+- translations (english, french and german)
 - new stylesheet
 - recently used emojis are displayed above (or under) categories
 - bug fixes
