@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="emoji-selector">
+	<schema id="org.gnome.shell.extensions.emoji-selector" path="/org/gnome/shell/extensions/emoji-selector/">
+    <key type="s" name="position">
+      <default>'bottom'</default>
+      <summary>position of the recently used emojis</summary>
+      <description>Possible positions for the recently used emojis can be 'top', 'bottom' or 'none'</description>
+    </key>
+    <key type="i" name="nbrecents">
+      <default>12</default>
+      <summary>Number of recently used emojis</summary>
+      <description>Sets the number of recently used emojis to display.</description>
+    </key>
+    <key type="i" name="nbcols">
+      <default>15</default>
+      <summary>Number of emojis per line</summary>
+      <description>Sets the number of column of emojis to display in subcategories.</description>
+    </key>
+	</schema>
+</schemalist>
