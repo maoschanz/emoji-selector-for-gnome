@@ -36,3 +36,24 @@ msgstr "Symboles"
 
 msgid "Flags"
 msgstr "Drapeaux"
+
+msgid "Modifications will be effective after restarting the extension."
+msgstr "Ces modifications nécessitent de redémarrer l'extension."
+
+msgid "Display of recent emojis :"
+msgstr "Affichage des émojis récents :"
+
+msgid "Top"
+msgstr "En haut"
+
+msgid "Bottom"
+msgstr "En bas"
+
+msgid "Do not display"
+msgstr "Ne pas afficher"
+
+msgid "Number of recently used emojis :"
+msgstr "Nombre d'émojis récents :"
+
+msgid "Number of emojis on one line :"
+msgstr "Nombre d'émojis par ligne :"
