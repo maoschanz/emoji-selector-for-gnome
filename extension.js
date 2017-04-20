@@ -10,28 +10,19 @@ and we have to add to the Main instance our UI elements
 */
 const Main = imports.ui.main;
 
-/*
-Import PanelMenu and PopupMenu 
-See more info about these objects in REFERENCE.md
-*/
+/* Import PanelMenu and PopupMenu */
 const PanelMenu = imports.ui.panelMenu;
 const PopupMenu = imports.ui.popupMenu;
 
-/*
-Import Lang because we will write code in a Object Oriented Manner
-*/
+/* Import Lang because we will write code in a Object Oriented Manner */
 const Lang = imports.lang;
 
 //------------------------------------------------
-/*
-get the current extension, mainly because we need to access other files
-*/
+/* Import the current extension, mainly because we need to access other files */
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 
-/*
-setting stuffs for translations etc.
-*/
+/* Stuffs for settings, translations etc. */
 const Gettext = imports.gettext.domain('emoji-selector');
 const _ = Gettext.gettext;
 const Convenience = Me.imports.convenience;
@@ -47,11 +38,16 @@ const Em = Me.imports.emojisCharacters;
 
 //-----------------------------------------------
 
-let nbRecents = 12;
-let nbCols = 15;
+/* These global variables used to store some settings */
+let nbRecents;
+let nbCols;
+let position;
 
 //-----------------------------------------------
 
+//class EmojiCategory
+//methods :	_init(categoryName, emojiList)
+//			destroy()
 const EmojiCategory = new Lang.Class({
 	Name:		'EmojiCategory',
 	Extends:	PopupMenu.PopupSubMenuMenuItem,
@@ -102,14 +98,18 @@ const EmojiCategory = new Lang.Class({
 
 //------------------------------------------------
 
+//class EmojiMenu
+//methods :	_init()
+//			_recentlyUsedInit (returns a PopupMenu.PopupBaseMenuItem)
+//			destroy
 const EmojisMenu = new Lang.Class({
     Name:		'EmojisMenu',		// Class Name
     Extends:	PanelMenu.Button,	// Parent Class
 
     // Constructor
-    _init: function(position) {
+    _init: function() {
 		
-        this.parent(0.0, 'EmojisMenu');//, false);
+        this.parent(0.0, 'EmojisMenu');
 
         let box = new St.BoxLayout();
         
@@ -127,20 +127,16 @@ const EmojisMenu = new Lang.Class({
 		//-------------------------------------------------
 		
 		/* creating new categories with emojis loaded in Em */
-		
 		let SmileysPeople = new EmojiCategory(	_('Smileys & People'),		Em.SMILEYSANDPEOPLE	);
-		let Nature = new EmojiCategory(		_('Nature'),			Em.NATURE		);	
-		let FoodDrink = new EmojiCategory(	_('Food & Drink'), 		Em.FOODANDDRINK		);
+		let Nature = new EmojiCategory(			_('Nature'),				Em.NATURE			);	
+		let FoodDrink = new EmojiCategory(		_('Food & Drink'), 			Em.FOODANDDRINK		);
 		let ActivitySports = new EmojiCategory(	_('Activities & Sports'), 	Em.ACTIVITIESANDSPORTS	);
 		let TravelPlaces = new EmojiCategory(	_('Travel & Places'), 		Em.TRAVELANDPLACES	);
-		let Objects = new EmojiCategory( 	_('Objects'),			Em.OBJECTS		);
-		let Symbols = new EmojiCategory(	_('Symbols'),			Em.SYMBOLS		);
-		let Flags = new EmojiCategory(		_('Flags'),			Em.FLAGS		);		
+		let Objects = new EmojiCategory( 		_('Objects'),				Em.OBJECTS			);
+		let Symbols = new EmojiCategory(		_('Symbols'),				Em.SYMBOLS			);
+		let Flags = new EmojiCategory(			_('Flags'),					Em.FLAGS			);
 		
-		//--------------------------------------------------
-		
-		/* we initialize the "recently used" buttons */
-		
+		//initializing the "recently used" buttons	
 		let RecentlyUsed = this._recentlyUsedInit();
 		
 		//--------------------------------------------------
@@ -149,8 +145,7 @@ const EmojisMenu = new Lang.Class({
 			this.menu.addMenuItem(RecentlyUsed);
 		}
 		
-		/*we add categories' submenus*/
-		
+		// add categories' submenus
 		this.menu.addMenuItem(SmileysPeople);
 		this.menu.addMenuItem(Nature);
 		this.menu.addMenuItem(FoodDrink);
@@ -166,8 +161,7 @@ const EmojisMenu = new Lang.Class({
 		
 		//--------------------------------------------------
 
-		/* default behavior of submenu : false means it stays close when the extension's menu is opened */
-		
+		// this sets the default behavior of each submenu : false means it is close when the extension's menu opens
     	this.menu.connect('open-state-changed', Lang.bind(this, function(){
 			SmileysPeople.setSubmenuShown(false);
 			Nature.setSubmenuShown(false);
@@ -182,7 +176,6 @@ const EmojisMenu = new Lang.Class({
     },
 	
 	_recentlyUsedInit: function () {
-		//here are set the 7 default "recently used emojis", in a pretty unprofessionnal way
 		
 		let RecentlyUsed = new PopupMenu.PopupBaseMenuItem('');
 		recents = [];
@@ -191,13 +184,28 @@ const EmojisMenu = new Lang.Class({
 			recents[i] = new St.Button({ style_class: 'RecentItemStyle' });
 		}
 		
-		let conteneur = new St.BoxLayout();
+		let container = new St.BoxLayout();
 	
 		RecentlyUsed.actor.track_hover = false;
-		RecentlyUsed.actor.add(conteneur, { expand: true });
+		RecentlyUsed.actor.add(container, { expand: true });
+		
+		//I didn't know where to store "recently used emojis" from previous
+		//session, so I put it in a setting key where it is store as a string.
+		//The format of the string is 'X,X,X,X,X,' where Xs are emojis.
+		//So, temp is an array of strings like ['X','X','X','X','X',''] where
+		//the last item is empty.
+		var temp = Convenience.getSettings().get_string('recents').split(',');
 		
 		for(var i = 0;i<nbRecents;i++){
-			recents[i].label = '🤔';
+			if (i < temp.length - 1) {
+				//length - 1 because of the empty last item
+				recents[i].label = temp[i];
+			} else {
+				//If the extension was previously set with less "recently used emojis",
+				//we still need to load something in the labels.
+				//It will be a penguin for obvious reasons.
+				recents[i].label = '🐧';
+			}
 		}
 		
 		for(var i = 0;i<nbRecents;i++){
@@ -207,10 +215,11 @@ const EmojisMenu = new Lang.Class({
 		}
 		
 		for(var i = 0;i<nbRecents;i++){
-			conteneur.add_child(recents[i], {hover: true});
+			container.add_child(recents[i], {hover: true});
 		}
 		
 		return RecentlyUsed;
+		//end of _recentlyUsedInit
 	},
 	
     destroy: function() {
@@ -220,9 +229,10 @@ const EmojisMenu = new Lang.Class({
 
 //------------------------------------------------------------
 
-/* Global variables for use as button to click */
+/* Global variable : button to click in the topbar */
 let button;
 
+/* this array will stock some St.Button-s */
 let recents = [];
 
 //------------------------------------------------------------
@@ -234,25 +244,29 @@ function init() {
 //------------------------------------------------------------
 
 function enable() {	
-	let settings = Convenience.getSettings();
-	settings = Convenience.getSettings('org.gnome.shell.extensions.emoji-selector');
+	let _settings = Convenience.getSettings();
+	_settings = Convenience.getSettings('org.gnome.shell.extensions.emoji-selector');
 	
-	nbRecents = settings.get_int('nbrecents');
-	nbCols = settings.get_int('nbcols');
-	let pos = settings.get_string('position');
+	nbRecents = _settings.get_int('nbrecents');
+	nbCols = _settings.get_int('nbcols');
+	position = _settings.get_string('position');
     
-	button = new EmojisMenu(pos);
-    /* in addToStatusArea :
-    - 0 is the position
-    - `right` is the box where we want our button to be displayed (left/center/right)
-     */   
+	button = new EmojisMenu();
+//	about addToStatusArea :
+//	- 0 is the position
+//	- `right` is the box where we want our button to be displayed (left/center/right)
 	Main.panel.addToStatusArea('EmojisMenu', button, 0, 'right');
 }
 
 //------------------------------------------------------------
 
 function disable() {
+	//we need to save labels currently in recents[] for the next session
+	var backUp = '';
+	for(var i = 0;i<nbRecents;i++){
+		backUp = backUp + recents[i].label + ',';
+	}
+	Convenience.getSettings().set_string('recents', backUp);
+	
 	button.destroy();
 }
-
-
