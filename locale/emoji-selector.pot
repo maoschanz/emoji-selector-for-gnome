@@ -50,7 +50,7 @@ msgid "Flags"
 msgstr ""
 
 #: prefs.js:32
-msgid "Modifications will be effective after restarting the extension."
+msgid "Modifications will be effective after reloading the extension."
 msgstr ""
 
 #: prefs.js:37
@@ -76,5 +76,3 @@ msgstr ""
 #: prefs.js:102
 msgid "Number of emojis on one line :"
 msgstr ""
-
-
