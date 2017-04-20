@@ -1,5 +1,5 @@
 # Emoji Selector (for Gnome)
-This basic Gnome shell extension provides a simple popup menu with some emojis in it ; Clicking on an emoji copies it to your clipboard.
+This Gnome shell extension provides a simple popup menu with some emojis in it ; Clicking on an emoji copies it to your clipboard.
 
 ## New features
 - new way to display emojis, on a grid (which is far better)
@@ -12,10 +12,10 @@ This basic Gnome shell extension provides a simple popup menu with some emojis i
 - less ugly code
 - a nice interface for settings
 
-![Screenshot](https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/master/screenshot_v4.png)
+![Screenshot](https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/master/screenshot_v5.png)
 
 ## Installation
-The better option is to install it from extensions.gnome.org (where there is only version 1 at the moment i write this)
+The better option is to install it from extensions.gnome.org
 
 > How to manually install the extension ?
 
@@ -25,7 +25,7 @@ You may need to restart the gnome shell environnment ("logout and login again", 
 
 > The screenshot looks great but it's ugly on my computer !
 
-It will be less ugly if you have the « Twitter Color Emoji » font, or the « EmojiOne Color » font installed on your system. These fonts are on github.
+It will be less ugly if you have the « Twitter Color Emoji » font, or the « EmojiOne Color » font installed on your system. These fonts are on github, be careful with EmojiOne Color, the recommended way to install it may fuck your system.
 
 ## About Dash to Panel
 The very popular extension "Dash to Panel" seems to cause some problems with my extension. 
@@ -34,7 +34,7 @@ You need to set a number of emojis per line around 25 to solve the issue.
 ## Your eventual observations :
 > The "recently used" category is reset every time i login, is this normal ?
 
-Yes, sorry, i'm glad this feature works, so i haven't already think about how to make it remember what you used.
+This behavior happens with the version on extensions.gnome.org but not with the version on github.
 
 > Can you translate the extension in [some language] ?
 
