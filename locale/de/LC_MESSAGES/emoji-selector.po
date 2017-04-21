@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-13 12:23+0200\n"
-"PO-Revision-Date: 2017-04-13 12:24+0200\n"
+"POT-Creation-Date: 2017-04-22 01:27+0200\n"
+"PO-Revision-Date: 2017-04-22 01:34+0200\n"
+"Last-Translator: Jonatan Hatakeyama Zeidler <jonatan_zeidler@gmx.de>\n"
+"Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: Jonatan Hatakeyama Zeidler <jonatan_zeidler@gmx.de>\n"
-"Language-Team: \n"
 "X-Generator: Poedit 1.8.7.1\n"
 
 #: extension.js:54
@@ -48,3 +48,31 @@ msgstr "Symbole"
 #: extension.js:61
 msgid "Flags"
 msgstr "Flaggen"
+
+#: prefs.js:32
+msgid "Modifications will be effective after reloading the extension."
+msgstr "Änderungen werden nach einem Neustart der Erweiterung übernommen."
+
+#: prefs.js:37
+msgid "Display of recent emojis :"
+msgstr "Anzeige kürzlich verwendeter Emojis:"
+
+#: prefs.js:47
+msgid "Top"
+msgstr "Oben"
+
+#: prefs.js:48
+msgid "Bottom"
+msgstr "Unten"
+
+#: prefs.js:49
+msgid "Do not display"
+msgstr "Nicht anzeigen"
+
+#: prefs.js:85
+msgid "Number of recently used emojis :"
+msgstr "Anzahl der kürzlich verwendeten Emojis:"
+
+#: prefs.js:102
+msgid "Number of emojis on one line :"
+msgstr "Anzahl der Emojis pro Zeile:"
