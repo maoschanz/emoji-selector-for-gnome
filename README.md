@@ -15,7 +15,7 @@ This Gnome shell extension provides a simple popup menu with some emojis in it ;
 ![Screenshot](https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/master/screenshot_v5.png)
 
 ## Installation
-The better option is to install it from extensions.gnome.org
+The better option is to install it from https://extensions.gnome.org/extension/1162/emoji-selector/
 
 > How to manually install the extension ?
 
