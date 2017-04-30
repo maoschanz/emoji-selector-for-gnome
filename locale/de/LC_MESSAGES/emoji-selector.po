@@ -76,3 +76,7 @@ msgstr "Anzahl der kürzlich verwendeten Emojis:"
 #: prefs.js:102
 msgid "Number of emojis on one line :"
 msgstr "Anzahl der Emojis pro Zeile:"
+
+#:prefs.js:110
+msgid "Size of emojis :"
+msgstr "Größe (px) :"
