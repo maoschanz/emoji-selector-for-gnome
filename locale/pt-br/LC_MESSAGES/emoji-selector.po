@@ -1,0 +1,68 @@
+# Translation into Brazilian Portuguese
+# Copyright (C) 2017
+# This file is distributed under the same license as the PACKAGE package: GPLv3.
+# Nicolas MAIA <nicolasrpmaia@tutanota.com>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-03 18:48+0100\n"
+"PO-Revision-Date: 2017-02-05 16:47+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Last-Translator: \n"
+"Language: fr\n"
+
+msgid "Smileys & People"
+msgstr "Smileys e pessoas"
+
+msgid "Nature"
+msgstr "Natureza"
+
+msgid "Food & Drink"
+msgstr "Comidas e bebidas"
+
+msgid "Activities & Sports"
+msgstr "Atividades e esportes"
+
+msgid "Travel & Places"
+msgstr "Viagem e lugares"
+
+msgid "Objects"
+msgstr "Objetos"
+
+msgid "Symbols"
+msgstr "Símbolos"
+
+msgid "Flags"
+msgstr "Bandeiras"
+
+msgid "Modifications will be effective after reloading the extension."
+msgstr "Estas modificações necessitam reiniciar a extensão."
+
+msgid "Display of recent emojis :"
+msgstr "Exibição de emojis recentes:"
+
+msgid "Top"
+msgstr "Acima"
+
+msgid "Bottom"
+msgstr "Embaixo"
+
+msgid "Do not display"
+msgstr "Não exibir"
+
+msgid "Number of recently used emojis :"
+msgstr "Número de emojis recentes:"
+
+msgid "Number of emojis on one line :"
+msgstr "Número de emojis por linha:"
+
+msgid "Size of emojis :"
+msgstr "Tamanho dos emojis (em píxeis):"
+
