@@ -69,8 +69,9 @@ const EmojiCategory = new Lang.Class({
 			}
 			
 			// creation of the clickable button
+			let fontSize = 'font-size: ' + Convenience.getSettings().get_int('emojisize') + 'px';
 			let button = new St.Button(
-				{ style_class: 'EmojisItemStyle' }
+				{ style_class: 'EmojisItemStyle', style: fontSize }
 			);
 			let CurrentEmoji = emojiList[i];
 			button.label = CurrentEmoji;
@@ -194,7 +195,7 @@ const EmojisMenu = new Lang.Class({
 		//The format of the string is 'X,X,X,X,X,' where Xs are emojis.
 		//So, temp is an array of strings like ['X','X','X','X','X',''] where
 		//the last item is empty.
-		var temp = Convenience.getSettings().get_string('recents').split(',');
+		let temp = Convenience.getSettings().get_string('recents').split(',');
 		
 		for(var i = 0;i<nbRecents;i++){
 			if (i < temp.length - 1) {
@@ -262,7 +263,7 @@ function enable() {
 
 function disable() {
 	//we need to save labels currently in recents[] for the next session
-	var backUp = '';
+	let backUp = '';
 	for(var i = 0;i<nbRecents;i++){
 		backUp = backUp + recents[i].label + ',';
 	}

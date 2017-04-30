@@ -128,6 +128,27 @@ const EmojiSettingsWidget = new GObject.Class({
 		colsBox.pack_start(new Gtk.Label({ label: labelNbEmojis, use_markup: true, halign: Gtk.Align.START }), false, false, 0);
 		colsBox.pack_end(nbCols, false, false, 0);
 		this.add(colsBox);
+		
+		//-------------------------------------------------------
+		
+		let labelSizeEmojis = _("Size of emojis :");
+		
+		let emojiSize = new Gtk.SpinButton();
+        emojiSize.set_sensitive(true);
+        emojiSize.set_range(12, 50);
+		emojiSize.set_value(20);
+		emojiSize.set_value(this._settings.get_int('emojisize'));
+        emojiSize.set_increments(1, 2);
+        
+		emojiSize.connect('value-changed', Lang.bind(this, function(w){
+			var value = w.get_value_as_int();
+			this._settings.set_int('emojisize', value);
+		}));
+		
+		let sizeBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 15 });
+		sizeBox.pack_start(new Gtk.Label({ label: labelSizeEmojis, use_markup: true, halign: Gtk.Align.START }), false, false, 0);
+		sizeBox.pack_end(emojiSize, false, false, 0);
+		this.add(sizeBox);
 	}
 });
 

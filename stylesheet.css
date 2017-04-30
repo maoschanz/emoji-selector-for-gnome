@@ -1,6 +1,6 @@
 
 .EmojisItemStyle {
-    font-size: 20px;
+    /*font-size: 20px; useless since it is now a setting*/
     font-family: EmojiOne Color, Twitter Color Emoji, Noto Color Emoji;
     padding: 0px 2px;
 }
