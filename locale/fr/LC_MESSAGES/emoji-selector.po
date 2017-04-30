@@ -57,3 +57,6 @@ msgstr "Nombre d'émojis récents :"
 
 msgid "Number of emojis on one line :"
 msgstr "Nombre d'émojis par ligne :"
+
+msgid "Size of emojis :"
+msgstr "Taille des émojis (en pixels) :"
