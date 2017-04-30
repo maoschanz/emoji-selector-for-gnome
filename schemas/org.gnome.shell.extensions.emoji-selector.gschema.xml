@@ -16,6 +16,11 @@
       <summary>Number of emojis per line</summary>
       <description>Sets the number of column of emojis to display in subcategories.</description>
     </key>
+    <key type="i" name="emojisize">
+      <default>20</default>
+      <summary>Default size of emojis</summary>
+      <description>Default size of emojis (px) ; doesn't concern recently used items</description>
+    </key>
     <key type="s" name="recents">
       <default>'😂,❤️,😍,😭,😊,😒,😘,😩,🤔,☺️,👌,😔,😏,😁,😉,👍,😱,😳,😎,👀,💩,'</default>
       <summary>default memorized emojis</summary>
