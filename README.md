@@ -5,12 +5,13 @@ This Gnome shell extension provides a simple popup menu with some emojis in it ;
 - new way to display emojis, on a grid (which is far better)
 - parametrable width for the grid
 - new and better icon
-- translations (english, french and german)
+- translations (english, french, portuguese, esperanto and german)
 - new stylesheet
 - recently used emojis are displayed above (or under) categories
 - bug fixes
 - less ugly code
 - a nice interface for settings
+- parametrable size for emojis
 
 ![Screenshot](https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/master/screenshot_v5.png)
 
@@ -25,20 +26,17 @@ You may need to restart the gnome shell environnment ("logout and login again", 
 
 > The screenshot looks great but it's ugly on my computer !
 
-It will be less ugly if you have the « Twitter Color Emoji » font, or the « EmojiOne Color » font installed on your system. These fonts are on github, be careful with EmojiOne Color, the recommended way to install it may fuck your system.
+It will be less ugly if you have the « Twitter Color Emoji » font, or the « EmojiOne Color » font installed on your system. These fonts are on github, but be careful with EmojiOne Color, the recommended way to install it may cause problems to your system.
 
 ## About Dash to Panel
 The very popular extension "Dash to Panel" seems to cause some problems with my extension. 
 You need to set a number of emojis per line around 25 to solve the issue.
 
 ## Your eventual observations :
-> The "recently used" category is reset every time i login, is this normal ?
-
-This behavior happens with the version on extensions.gnome.org but not with the version on github.
 
 > Can you translate the extension in [some language] ?
 
-The extension is currently available in english, french and german. I only know french and english, so if you need a specific language, please contribute : you just have to be inspired by the existing .po files !
+The extension is currently available in english, french, portuguese, esperanto and german. I only know french and english, so if you need a specific language, please contribute : you just have to be inspired by the existing .po files !
 
 > There is no racialized smileys / LGBT peoples / gender-specific activities / "numbers in square" symbols :'(
 
