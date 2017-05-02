@@ -2,11 +2,10 @@
 This Gnome shell extension provides a simple popup menu with some emojis in it ; Clicking on an emoji copies it to your clipboard.
 
 ## New features
+- new stylesheet
 - new way to display emojis, on a grid (which is far better)
 - parametrable width for the grid
-- new and better icon
-- translations (english, french, portuguese, esperanto and german)
-- new stylesheet
+- translations (english, french, portuguese, italian, esperanto and german)
 - recently used emojis are displayed above (or under) categories
 - bug fixes
 - less ugly code
@@ -34,10 +33,20 @@ You need to set a number of emojis per line around 25 to solve the issue.
 
 ## Your eventual observations :
 
+> A search entry ?
+
+Maybe in the future.
+
 > Can you translate the extension in [some language] ?
 
-The extension is currently available in english, french, portuguese, esperanto and german. I only know french and english, so if you need a specific language, please contribute : you just have to be inspired by the existing .po files !
+The extension is currently available in english, french, portuguese, italian, esperanto and german. I only know french and english, so if you need a specific language, please contribute : you just have to be inspired by the existing .po files !
 
 > There is no racialized smileys / LGBT peoples / gender-specific activities / "numbers in square" symbols :'(
 
 I'm sorry about that, but most fonts have a bad technical support for these caracters, which didn't display well (at least on my computer), so i prefered doing without these emojis.
+
+## Contributors :
+
+amivaleo (italian translation)
+jonnius (german translation)
+picsi (brazilian portuguese and esperanto translations)
