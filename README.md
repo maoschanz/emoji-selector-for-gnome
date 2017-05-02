@@ -3,14 +3,11 @@ This Gnome shell extension provides a simple popup menu with some emojis in it ;
 
 ## New features
 - new stylesheet
-- new way to display emojis, on a grid (which is far better)
-- parametrable width for the grid
 - translations (english, french, portuguese, italian, esperanto and german)
-- recently used emojis are displayed above (or under) categories
-- bug fixes
-- less ugly code
+- recently used emojis can be displayed above (or under) categories
 - a nice interface for settings
 - parametrable size for emojis
+- parametrable width for the grid
 
 ![Screenshot](https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/master/screenshot_v5.png)
 
@@ -48,5 +45,7 @@ I'm sorry about that, but most fonts have a bad technical support for these cara
 ## Contributors :
 
 amivaleo (italian translation)
+
 jonnius (german translation)
+
 picsi (brazilian portuguese and esperanto translations)
