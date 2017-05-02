@@ -1,0 +1,62 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-03 18:48+0100\n"
+"PO-Revision-Date: 2017-05-02 08:36+0200\n"
+"Language-Team: Jimmy Scionti <jimmy.scionti@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Last-Translator: Jimmy Scionti <jimmy.scionti@gmail.com>\n"
+"Language: it\n"
+
+msgid "Smileys & People"
+msgstr "Emoticon & Volti"
+
+msgid "Nature"
+msgstr "Natura"
+
+msgid "Food & Drink"
+msgstr "Cibo & Bevande"
+
+msgid "Activities & Sports"
+msgstr "Attività & Sport"
+
+msgid "Travel & Places"
+msgstr "Viaggi & Luoghi"
+
+msgid "Objects"
+msgstr "Oggetti"
+
+msgid "Symbols"
+msgstr "Simboli"
+
+msgid "Flags"
+msgstr "Bandiere"
+
+msgid "Modifications will be effective after reloading the extension."
+msgstr "Le modifiche avranno effetto dopo aver ricaricato l'estensione."
+
+msgid "Display of recent emojis :"
+msgstr "Mostra gli emoji recenti:"
+
+msgid "Top"
+msgstr "In alto"
+
+msgid "Bottom"
+msgstr "In basso"
+
+msgid "Do not display"
+msgstr "Non mostrare"
+
+msgid "Number of recently used emojis :"
+msgstr "Numero di emoji recenti:"
+
+msgid "Number of emojis on one line :"
+msgstr "Numero di emoji per riga:"
+
+msgid "Size of emojis :"
+msgstr "Dimensione degli emoji:"
