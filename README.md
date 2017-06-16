@@ -22,7 +22,7 @@ You may need to restart the gnome shell environnment ("logout and login again", 
 
 > The screenshot looks great but it's ugly on my computer !
 
-It will be less ugly if you have the « Twitter Color Emoji » font, or the « EmojiOne Color » font installed on your system. These fonts are on github, but be careful with EmojiOne Color, the recommended way to install it may cause problems to your system.
+It will be less ugly if you have the « [Twitter Color Emoji](https://github.com/twitter/twemoji/releases/) » font, or the « EmojiOne Color » font installed on your system. These fonts are on github, but be careful with EmojiOne Color, the recommended way to install it may cause problems to your system.
 
 ## About Dash to Panel
 The very popular extension "Dash to Panel" seems to cause some problems with my extension. 
