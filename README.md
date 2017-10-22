@@ -9,7 +9,8 @@ This Gnome shell extension provides a simple popup menu with some emojis in it ;
 - parametrable size for emojis
 - parametrable width for the grid
 
-![Screenshot](https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/master/screenshot_v5.png)
+![Screenshot](https://i.imgur.com/UwmIcrN.png)
+(former version: https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/master/screenshot_v5.png )
 
 ## Installation
 The better option is to install it from https://extensions.gnome.org/extension/1162/emoji-selector/
@@ -24,15 +25,11 @@ You may need to restart the gnome shell environnment ("logout and login again", 
 
 It will be less ugly if you have the « [Twitter Color Emoji](https://github.com/eosrei/twemoji-color-font/releases) » font, or the « EmojiOne Color » font installed on your system. These fonts are on github, but be careful with EmojiOne Color, the recommended way to install it may cause problems to your system.
 
-## About Dash to Panel
-The very popular extension "Dash to Panel" seems to cause some problems with my extension. 
-You need to set a number of emojis per line around 25 to solve the issue.
-
 ## Your eventual observations :
 
 > A search entry ?
 
-Maybe in the future.
+In beta. Install manually if you want it.
 
 > Can you translate the extension in [some language] ?
 
@@ -44,7 +41,7 @@ I'm sorry about that, but most fonts have a bad technical support for these cara
 
 ## Contributors :
 
-amivaleo (italian translation)
+amivaleo (italian translation + lot of ideas)
 
 jonnius (german translation)
 
