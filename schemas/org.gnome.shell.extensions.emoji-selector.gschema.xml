@@ -3,21 +3,21 @@
 	<schema id="org.gnome.shell.extensions.emoji-selector" path="/org/gnome/shell/extensions/emoji-selector/">
     <key type="s" name="position">
       <default>'top'</default>
-      <summary>position of the recently used emojis</summary>
-      <description>Possible positions for the recently used emojis can be 'top', 'bottom' or 'none'</description>
+      <summary>orientation of the interface</summary>
+      <description>Possible values can be 'top' or 'bottom'.</description>
     </key>
     <key type="i" name="nbrecents">
-      <default>12</default>
+      <default>13</default>
       <summary>Number of recently used emojis</summary>
       <description>Sets the number of recently used emojis to display.</description>
     </key>
     <key type="i" name="nbcols">
-      <default>15</default>
+      <default>14</default>
       <summary>Number of emojis per line</summary>
       <description>Sets the number of column of emojis to display in subcategories.</description>
     </key>
     <key type="i" name="emojisize">
-      <default>20</default>
+      <default>28</default>
       <summary>Default size of emojis</summary>
       <description>Default size of emojis (px) ; doesn't concern recently used items</description>
     </key>
@@ -25,6 +25,16 @@
       <default>'😂,❤️,😍,😭,😊,😒,😘,😩,🤔,☺️,👌,😔,😏,😁,😉,👍,😱,😳,😎,👀,💩,'</default>
       <summary>default memorized emojis</summary>
       <description></description>
+    </key>
+    <key type="b" name="classic-interface">
+      <default>false</default>
+      <summary>if submenus or buttons should be used</summary>
+      <description>If false, buttons will be used. If true, the classic interface with submenus will be used.</description>
+    </key>
+    <key type="b" name="search-enabled">
+      <default>true</default>
+      <summary>if search is enabled</summary>
+      <description>If false, the search entry will not be displayed.</description>
     </key>
 	</schema>
 </schemalist>
