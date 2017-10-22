@@ -13,50 +13,75 @@ msgstr ""
 "Last-Translator: \n"
 "Language: fr\n"
 
+#: extension.js:54
 msgid "Smileys & People"
 msgstr "Émoticônes & personnes"
 
-msgid "Nature"
-msgstr "Nature"
+#: extension.js:55
+msgid "Animals & Nature"
+msgstr "Animaux & nature"
 
+#: extension.js:56
 msgid "Food & Drink"
 msgstr "Nourriture & boisson"
 
+#: extension.js:57
 msgid "Activities & Sports"
-msgstr "Activités et sports"
+msgstr "Activités & sports"
 
+#: extension.js:58
 msgid "Travel & Places"
-msgstr "Voyages et lieux"
+msgstr "Voyage & lieux"
 
+#: extension.js:59
 msgid "Objects"
 msgstr "Objets"
 
+#: extension.js:60
 msgid "Symbols"
 msgstr "Symboles"
 
+#: extension.js:61
 msgid "Flags"
 msgstr "Drapeaux"
 
+#: extension.js
+msgid "Type here to search..."
+msgstr "Taper ici pour rechercher..."
+
+#: prefs.js:32
 msgid "Modifications will be effective after reloading the extension."
 msgstr "Ces modifications nécessitent de redémarrer l'extension."
 
-msgid "Display of recent emojis :"
+#: prefs.js:37
+msgid "Display of recent emojis:"
 msgstr "Affichage des émojis récents :"
 
+#: prefs.js:47
 msgid "Top"
 msgstr "En haut"
 
+#: prefs.js:48
 msgid "Bottom"
 msgstr "En bas"
 
-msgid "Do not display"
-msgstr "Ne pas afficher"
-
-msgid "Number of recently used emojis :"
+#: prefs.js:85
+msgid "Number of recently used emojis:"
 msgstr "Nombre d'émojis récents :"
 
-msgid "Number of emojis on one line :"
+#: prefs.js:102
+msgid "Number of emojis per line:"
 msgstr "Nombre d'émojis par ligne :"
 
-msgid "Size of emojis :"
+#: prefs.js:124
+msgid "Size of emojis (px):"
 msgstr "Taille des émojis (en pixels) :"
+
+#: prefs.js:145
+msgid "Enable research:"
+msgstr "Activer la recherche :"
+
+#: prefs.js:166
+msgid "Use old interface:"
+msgstr "Utiliser l'ancienne interface :"
+
