@@ -22,7 +22,7 @@ msgid "Smileys & People"
 msgstr ""
 
 #: extension.js:55
-msgid "Nature"
+msgid "Animals & Nature"
 msgstr ""
 
 #: extension.js:56
@@ -49,12 +49,16 @@ msgstr ""
 msgid "Flags"
 msgstr ""
 
+#: extension.js
+msgid "Type here to search..."
+msgstr ""
+
 #: prefs.js:32
 msgid "Modifications will be effective after reloading the extension."
 msgstr ""
 
 #: prefs.js:37
-msgid "Display of recent emojis :"
+msgid "Display of recent emojis:"
 msgstr ""
 
 #: prefs.js:47
@@ -65,14 +69,23 @@ msgstr ""
 msgid "Bottom"
 msgstr ""
 
-#: prefs.js:49
-msgid "Do not display"
-msgstr ""
-
 #: prefs.js:85
-msgid "Number of recently used emojis :"
+msgid "Number of recently used emojis:"
 msgstr ""
 
 #: prefs.js:102
-msgid "Number of emojis on one line :"
+msgid "Number of emojis per line:"
 msgstr ""
+
+#: prefs.js:124
+msgid "Size of emojis (px):"
+msgstr ""
+
+#: prefs.js:145
+msgid "Enable research:"
+msgstr ""
+
+#: prefs.js:166
+msgid "Use old interface:"
+msgstr ""
+
