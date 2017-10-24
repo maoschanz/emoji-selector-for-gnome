@@ -9,7 +9,7 @@ This Gnome shell extension provides a simple popup menu with some emojis in it ;
 - parametrable size for emojis
 - parametrable width for the grid
 
-![Screenshot](https://i.imgur.com/UwmIcrN.png)
+![Screenshot](http://i65.tinypic.com/juthdv.png)
 (former version: https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/master/screenshot_v5.png )
 
 ## Installation
@@ -26,8 +26,6 @@ You may need to restart the gnome shell environnment ("logout and login again", 
 > The screenshot looks great but it's ugly on my computer !
 
 It will be less ugly if you have the « [Twitter Color Emoji](https://github.com/eosrei/twemoji-color-font/releases) » font, or the « [EmojiOne Color](https://github.com/emojione/emojione) » font installed on your system. These fonts are on github, but be careful with EmojiOne Color, the recommended way to install it may cause problems to your system. **Arch Linux** users can install [emojione-fonts](https://aur.archlinux.org/packages/emojione-fonts/) from **AUR**.
-
-![emojione](http://i63.tinypic.com/9uvghc.jpg)
 
 ## Your eventual observations :
 
