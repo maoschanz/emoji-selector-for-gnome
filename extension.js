@@ -1,10 +1,15 @@
 const St = imports.gi.St;
 const Clutter = imports.gi.Clutter;
 const Main = imports.ui.main;
+const Shell = imports.gi.Shell;
+const Lang = imports.lang;
 
 //cause it is needed to grab the damn focus
 const Mainloop = imports.mainloop;
-const Lang = imports.lang;
+
+//for the keybinding ?
+const Meta = imports.gi.Meta;
+const Gio = imports.gi.Gio;
 
 /* Import PanelMenu and PopupMenu */
 const PanelMenu = imports.ui.panelMenu;
@@ -78,6 +83,16 @@ function buildRecents() {
 	}
 }
 
+function shiftFor(CurrentEmoji) {
+	if (CurrentEmoji == '') {return;}
+	
+	for(var j = nbRecents-1;j > 0;j--){
+		recents[j].label = recents[j-1].label;
+	}
+	recents[0].label = CurrentEmoji;
+	saveRecents(); 
+}
+
 //-------------------------------------------------
 
 //class EmojiCategory
@@ -100,7 +115,7 @@ const EmojiCategory = new Lang.Class({
 			// management of lines of emojis
 			if (i % nbCols === 0) {
 				ln = new PopupMenu.PopupBaseMenuItem({
-				    reactive: false
+					reactive: false
 				});
 				ln.actor.track_hover = false;
 				container = new St.BoxLayout();
@@ -120,14 +135,7 @@ const EmojiCategory = new Lang.Class({
 			button.connect('clicked', Lang.bind(this, function(){
 				/* setting the emoji in the clipboard */
 				Clipboard.set_text(CLIPBOARD_TYPE, CurrentEmoji);
-				
-				/* shifting recent emojis */
-				for(var j = nbRecents-1;j > 0;j--){
-					recents[j].label = recents[j-1].label;
-				}
-				recents[0].label = CurrentEmoji;
-				
-				saveRecents();
+				shiftFor(CurrentEmoji);
 				this.menu.close();
 				globalButton.menu.close();
 			}));
@@ -136,29 +144,29 @@ const EmojiCategory = new Lang.Class({
 	},
 
 	destroy: function() {
-        this.parent();
-    }
+		this.parent();
+	}
 });
 
 //------------------------------------------------
 
 const EmojisMenu = new Lang.Class({
-    Name:		'EmojisMenu',		// Class Name
-    Extends:	PanelMenu.Button,	// Parent Class
+	Name:		'EmojisMenu',		// Class Name
+	Extends:	PanelMenu.Button,	// Parent Class
 
 	_init: function() {
-        this.parent(0.0, 'EmojisMenu');
-        let box = new St.BoxLayout();
-        let icon =  new St.Icon({ icon_name: 'face-cool-symbolic', style_class: 'system-status-icon emotes-icon'});
+		this.parent(0.0, 'EmojisMenu');
+		let box = new St.BoxLayout();
+		let icon = new St.Icon({ icon_name: 'face-cool-symbolic', style_class: 'system-status-icon emotes-icon'});
 
-        let toplabel = new St.Label({
+		let toplabel = new St.Label({
 			y_align: Clutter.ActorAlign.CENTER
 		});
 
 		box.add(icon);
-        box.add(toplabel);
+		box.add(toplabel);
 		box.add(PopupMenu.arrowIcon(St.Side.BOTTOM));
-        this.actor.add_child(box);
+		this.actor.add_child(box);
 		this._permanentItems = 0;
 		this._activeCat = -1;
 		
@@ -210,7 +218,7 @@ const EmojisMenu = new Lang.Class({
 		//-----------------------------------------------
 		
 		// this sets the default behavior of each submenu : false means it is close when the extension's menu opens
-    	this.menu.connect('open-state-changed', Lang.bind(this, function(self, open){
+		this.menu.connect('open-state-changed', Lang.bind(this, function(self, open){
 			
 			if(!classicInterface) {
 				this.clearCategories();
@@ -225,34 +233,65 @@ const EmojisMenu = new Lang.Class({
 			}));
 		}));
 		
+		this._bindShortcut();
 		// end of _init
-    },
-    
-    _initSearch: function() {
-    	this.searchEntry = new St.Entry({
-            name: 'searchEntry',
-            can_focus: true,
-            hint_text: _('Type here to search...'),
-            track_hover: true
-        });
+	},
+	
+	toggle: function() {
+		this.menu.toggle();
+	},
+	
+	_initSearch: function() {
+		this.searchEntry = new St.Entry({
+			name: 'searchEntry',
+			style_class: 'search-entry',
+			can_focus: true,
+			hint_text: _('Type here to search...'),
+			track_hover: true
+		});
 		
 		this.searchEntry.get_clutter_text().connect(
 			'text-changed', 
 			Lang.bind(this, this._on_search_text_changed)
 		);
 		
+		this.searchEntry.clutter_text.connect(
+			'key-press-event', 
+			Lang.bind(this, function(o, e) {
+				let symbol = e.get_key_symbol();
+				if (symbol == Clutter.Return || symbol == Clutter.KP_Enter) {
+					let CurrentEmoji = recents[0].label;
+					Clipboard.set_text(CLIPBOARD_TYPE, CurrentEmoji);
+					this.searchEntry.set_text('');
+					buildRecents();
+					
+					let isIn = false;
+					for(var i = 0;i<nbRecents;i++){
+						if (recents[i].label == CurrentEmoji) {
+							isIn = true;
+						}
+					}
+				
+					if(!isIn) {
+						shiftFor(CurrentEmoji);
+					}
+					globalButton.menu.close();
+				}
+			})
+		);
+		
 		let searchItem = new PopupMenu.PopupBaseMenuItem({
-            reactive: false
-        });
+			reactive: false
+		});
 		searchItem.actor.add(this.searchEntry, { expand: true });
 		return searchItem;
-    },
-    
-    _addAllCategories: function() {
-    	
-    	this.emojiCategories = [];
-    	
-    	/* creating new categories with emojis loaded in Em */
+	},
+	
+	_addAllCategories: function() {
+		
+		this.emojiCategories = [];
+		
+		/* creating new categories with emojis loaded in Em */
 		this.emojiCategories[0] = new EmojiCategory(	_('Smileys & People'),		Em.ALL[0]	);
 		this.emojiCategories[1] = new EmojiCategory(	_('Animals & Nature'),		Em.ALL[1]	);	
 		this.emojiCategories[2] = new EmojiCategory(	_('Food & Drink'), 			Em.ALL[2]	);
@@ -339,14 +378,14 @@ const EmojisMenu = new Lang.Class({
 			this._on_search_text_changed();
 		}));
 		
-    },
-    
-    _renderPanelMenuHeaderBox: function() {
-    
+	},
+	
+	_renderPanelMenuHeaderBox: function() {
+	
 		let systemMenu = Main.panel.statusArea.aggregateMenu._system;
 		this._buttonMenu = new PopupMenu.PopupBaseMenuItem({
-            reactive: false
-        });
+			reactive: false
+		});
 		
 		this.backBtn = systemMenu._createActionButton('go-previous-symbolic', _("Back"));
 		this._buttonMenu.actor.add_actor(this.backBtn);
@@ -355,7 +394,7 @@ const EmojisMenu = new Lang.Class({
 		
 		this.createButton('face-smile-symbolic',		"Smileys & People",		0);
 		this.createButton('face-monkey-symbolic',		"Animals & Nature",		1);
-		this.createButton('raindrop-symbolic',			"Food & Drink",			2);
+		this.createButton('my-caffeine-on-symbolic',	"Food & Drink",			2);
 		this.createButton('airplane-mode-symbolic',		"Activities & Sports",	3);
 		this.createButton('applications-games-symbolic',"Travel & Places",		4);
 		this.createButton('alarm-symbolic',				"Objects",				5);
@@ -370,8 +409,8 @@ const EmojisMenu = new Lang.Class({
 		this.categoryButton[i] = systemMenu._createActionButton(icon, _(accessibleName));
 		this._buttonMenu.actor.add_actor(this.categoryButton[i]);
 	},
-    
-    clearCategories: function(){
+	
+	clearCategories: function(){
 		
 		let items = this.menu._getMenuItems();
 		
@@ -390,13 +429,13 @@ const EmojisMenu = new Lang.Class({
 		}
 		
 		this._activeCat = -1;
-    	
+		
 		this._on_search_text_changed(); //non optimal
 	},
-    
-    _on_search_text_changed: function() {
+	
+	_on_search_text_changed: function() {
 		
-        let searchedText = this.searchEntry.get_text();
+		let searchedText = this.searchEntry.get_text();
 
 		if(searchedText === '') {
 			buildRecents();
@@ -404,9 +443,8 @@ const EmojisMenu = new Lang.Class({
 			for (let j = 0; j < nbRecents; j++) {
 				recents[j].label = ' ';
 			}
-						
-			let empty = 0;
 			
+			let empty = 0;
 			
 			if (this._activeCat == -1) {
 				for (let cat = 0; cat < Em.ALL.length; cat++) {
@@ -443,13 +481,13 @@ const EmojisMenu = new Lang.Class({
 				}
 			}
 		}
-    },
-    
+	},
+	
 	_recentlyUsedInit: function () {
 		
 		let RecentlyUsed = new PopupMenu.PopupBaseMenuItem({
-            reactive: false
-        });
+			reactive: false
+		});
 		recents = [];
 		
 		for(var i = 0;i<nbRecents;i++){
@@ -483,22 +521,15 @@ const EmojisMenu = new Lang.Class({
 				let isIn = false;
 				let temp = Convenience.getSettings().get_string('recents').split(',');
 				for(var i = 0;i<nbRecents;i++){
-					if (temp[i] === retour) {
+					if (temp[i] == retour) {
 						isIn = true;
 					}
 				}
-				/*
-				The "recents" list from before the research is rebuild
-				*/
+				/* The "recents" list from before the research is rebuild */
 				buildRecents();
-				/*
-				Then it's modified because the searched emoji need to be added
-				*/
+				/* Then it's modified because the searched emoji need to be added */
 				if (!isIn) {
-					for(var j = nbRecents-1;j > 0;j--){
-						recents[j].label = recents[j-1].label;
-					}
-					recents[0].label = retour;
+					shiftFor(retour);
 				}
 				saveRecents();
 				this.menu.close();
@@ -513,10 +544,37 @@ const EmojisMenu = new Lang.Class({
 		//end of _recentlyUsedInit
 	},
 	
-    destroy: function() {
-        this.parent();
-    }
+	_bindShortcut: function() {
+		var ModeType = Shell.hasOwnProperty('ActionMode') ?
+			Shell.ActionMode : Shell.KeyBindingMode;
+
+		Main.wm.addKeybinding(
+			'emoji-keybinding',
+			SettingsSchema,
+			Meta.KeyBindingFlags.NONE,
+			ModeType.ALL,
+			Lang.bind(this, this.toggle)
+		);
+	},
+	
+	destroy: function() {
+		this.parent();
+	}
 });
+
+//-----------------
+
+const SCHEMA_NAME = 'org.gnome.shell.extensions.emoji-selector';
+
+const getSchema = function () {
+	let schemaDir = Me.dir.get_child('schemas').get_path();
+	let schemaSource = Gio.SettingsSchemaSource.new_from_directory(schemaDir, Gio.SettingsSchemaSource.get_default(), false);
+	let schema = schemaSource.lookup(SCHEMA_NAME, false);
+
+	return new Gio.Settings({ settings_schema: schema });
+}
+
+const SettingsSchema = getSchema();
 
 //------------------------------------------------------------
 
@@ -533,9 +591,9 @@ function enable() {
 	nbRecents = _settings.get_int('nbrecents');
 	nbCols = _settings.get_int('nbcols');
 	position = _settings.get_string('position');
-    classicInterface = _settings.get_boolean('classic-interface');
-    searchEnabled = _settings.get_boolean('search-enabled');
-    
+	classicInterface = _settings.get_boolean('classic-interface');
+	searchEnabled = _settings.get_boolean('search-enabled');
+	
 	globalButton = new EmojisMenu();
 //	about addToStatusArea :
 //	- 0 is the position
@@ -548,7 +606,7 @@ function enable() {
 function disable() {
 	//we need to save labels currently in recents[] for the next session
 	saveRecents();
-	
+	Main.wm.removeKeybinding('emoji-keybinding');
 	globalButton.destroy();
 	Main.panel.statusArea['EmojisMenu'];
 }
