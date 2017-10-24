@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="emoji-selector">
-	<schema id="org.gnome.shell.extensions.emoji-selector" path="/org/gnome/shell/extensions/emoji-selector/">
+	<schema id="org.gnome.shell.extensions.emoji-selector"
+	path="/org/gnome/shell/extensions/emoji-selector/">
     <key type="s" name="position">
       <default>'top'</default>
       <summary>orientation of the interface</summary>
       <description>Possible values can be 'top' or 'bottom'.</description>
+    </key>
+    <key type="s" name="action">
+      <default>'copy'</default>
+      <summary>action of a clic on an emoji</summary>
+      <description>Possible values can be 'copy' or 'insert'.</description>
     </key>
     <key type="i" name="nbrecents">
       <default>13</default>
@@ -35,6 +41,26 @@
       <default>true</default>
       <summary>if search is enabled</summary>
       <description>If false, the search entry will not be displayed.</description>
+    </key>
+    <key type="b" name="use-keybinding">
+      <default>true</default>
+      <summary>if keybinding is enabled</summary>
+      <description>if true, Super+E will toggle the menu.</description>
+    </key>
+    <key type="b" name="color-emojis">
+      <default>true</default>
+      <summary>if color emojis are used</summary>
+      <description>[Experimental]</description>
+    </key>
+    <key type="b" name="light-theme">
+      <default>false</default>
+      <summary>if a darker font is used</summary>
+      <description>if true, emojis characters will be black (adapted for GS themes which are light).</description>
+    </key>
+    <key name="emoji-keybinding" type="as">
+      <default><![CDATA[['<Super>e']]]></default>
+      <summary>Keyboard shortcut.</summary>
+      <description>Keyboard shortcut which opens the extension's menu.</description>
     </key>
 	</schema>
 </schemalist>
