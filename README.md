@@ -9,21 +9,23 @@ This Gnome shell extension provides a simple popup menu with some emojis in it ;
 - parametrable size for emojis
 - parametrable width for the grid
 
-![Screenshot](https://i.imgur.com/UwmIcrN.png)
+![Screenshot](http://i65.tinypic.com/juthdv.png)
 (former version: https://raw.githubusercontent.com/Maestroschan/emoji-selector-for-gnome/master/screenshot_v5.png )
 
 ## Installation
 The better option is to install it from https://extensions.gnome.org/extension/1162/emoji-selector/
 
+**Arch Linux** users can install [gnome-shell-extension-emoji-selector-git](https://aur.archlinux.org/packages/gnome-shell-extension-emoji-selector-git/) from **AUR**.
+
 > How to manually install the extension ?
 
-Download files and put them in an "emoji-selector@maestroschan.fr" folder to ~/.local/share/gnome-shell/extensions/
+Download files and put them in an "emoji-selector@maestroschan.fr" folder to `~/.local/share/gnome-shell/extensions/`
 
-You may need to restart the gnome shell environnment ("logout and login again", or alt+f2 + r + enter).
+You may need to restart the gnome shell environnment ("logout and login again", or `alt` + `f2` + `r` + enter).
 
 > The screenshot looks great but it's ugly on my computer !
 
-It will be less ugly if you have the « [Twitter Color Emoji](https://github.com/eosrei/twemoji-color-font/releases) » font, or the « EmojiOne Color » font installed on your system. These fonts are on github, but be careful with EmojiOne Color, the recommended way to install it may cause problems to your system.
+It will be less ugly if you have the « [Twitter Color Emoji](https://github.com/eosrei/twemoji-color-font/releases) » font, or the « [EmojiOne Color](https://github.com/emojione/emojione) » font installed on your system. These fonts are on github, but be careful with EmojiOne Color, the recommended way to install it may cause problems to your system. **Arch Linux** users can install [emojione-fonts](https://aur.archlinux.org/packages/emojione-fonts/) from **AUR**.
 
 ## Your eventual observations :
 
