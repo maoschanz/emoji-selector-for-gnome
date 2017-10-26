@@ -17,7 +17,7 @@ let ALL_KEYWORDS = [
 		//-------------
 		['face savouring delicious food', 'delicious', 'face', 'savouring', 'smile', 'um', 'yum'],
 		['smiling face with sunglasses', 'bright', 'cool', 'eye', 'eyewear', 'face', 'glasses', 'smile', 'sun', 'sunglasses'],
-		['smiling face with heart-eyes', 'eye', 'face', 'love', 'smile'],
+		['smiling face with heart-eyes', 'eye', 'face', 'love', 'heart', 'smile'],
 		['face blowing a kiss', 'face', 'kiss'],
 		['kissing face', 'face', 'kiss'],
 		['kissing face with smiling eyes', 'eye', 'face', 'kiss', 'smile'],
@@ -26,9 +26,9 @@ let ALL_KEYWORDS = [
 		['slightly smiling face', 'face', 'smile'],
 		['hugging face', 'face', 'hug', 'hugging'],
 		//-------------
-		//['star-struck', 'eyes', 'face', 'grinning', 'star', 'starry-eyed'],
+		['star-struck', 'eyes', 'face', 'grinning', 'star', 'starry-eyed'],
 		['thinking face', 'face', 'thinking'],
-		//['face with raised eyebrow', 'distrust', 'skeptic', 'disapproval', 'disbelief', 'mild surprise', 'scepticism'],
+		['face with raised eyebrow', 'distrust', 'skeptic', 'disapproval', 'disbelief', 'mild surprise', 'scepticism'],
 		['neutral face', 'deadpan', 'face', 'neutral'],
 		['expressionless face', 'expressionless', 'face', 'inexpressive', 'unexpressive'],
 		['face without mouth', 'face', 'mouth', 'quiet', 'silent'],
@@ -70,31 +70,31 @@ let ALL_KEYWORDS = [
 		['fearful face', 'face', 'fear', 'fearful', 'scared'],
 		['weary face', 'face', 'tired', 'weary'],
 		//-------------
-		//['exploding head', 'shocked'],
+		['exploding head', 'shocked'],
 		['grimacing face', 'face', 'grimace'],
 		['face with open mouth & cold sweat', 'blue', 'cold', 'face', 'mouth', 'open', 'rushed', 'sweat'],
 		['face screaming in fear', 'face', 'fear', 'fearful', 'munch', 'scared', 'scream'],
 		['flushed face', 'dazed', 'face', 'flushed'],
-		//['crazy face', 'eye', 'large', 'small'],
+		['crazy face', 'eye', 'large', 'small'],
 		['dizzy face', 'dizzy', 'face'],
 		['pouting face', 'angry', 'face', 'mad', 'pouting', 'rage', 'red'],
 		['angry face', 'angry', 'face', 'mad'],
-		//['face with symbols over mouth', 'cursing'],
+		['face with symbols over mouth', 'cursing'],
 		//-------------
 		['face with medical mask', 'cold', 'doctor', 'face', 'mask', 'medicine', 'sick'],
 		['face with thermometer', 'face', 'ill', 'sick', 'thermometer'],
 		['face with head-bandage', 'bandage', 'face', 'hurt', 'injury'],
 		['nauseated face', 'face', 'nauseated', 'vomit'],
-		//['face vomiting', 'sick', 'vomit'],
+		['face vomiting', 'sick', 'vomit'],
 		['sneezing face', '	face', 'sneeze'],
 		['smiling face with halo', 'angel', 'face', 'fairy tale', 'fantasy', 'halo', 'innocent', 'smile'],
 		['cowboy hat face', 'cowboy', 'cowgirl', 'face', 'hat'],
 		['clown face', 'clown', 'face'],
 		['lying face', 'face', 'lie', 'pinocchio'],
 		//-------------		
-		//['shushing face', 'shush', 'face'],
-		//['face with hand over mouth', 'whoops', 'shock', 'sudden realization', 'surprise'],
-		//['face with monocle', 'stuffy', 'wealthy'],
+		['shushing face', 'shush', 'face'],
+		['face with hand over mouth', 'whoops', 'shock', 'sudden realization', 'surprise'],
+		['face with monocle', 'stuffy', 'wealthy'],
 		['nerd face', 'face', 'geek', 'nerd'],
 		['smiling face with horns', 'face', 'fairy tale', 'fantasy', 'horns', 'smile'],
 		['angry face with horns', 'demon', 'devil', 'face', 'fairy tale', 'fantasy', 'imp'],
@@ -139,7 +139,7 @@ let ALL_KEYWORDS = [
 		['princess', 'fairy tale', 'fantasy'],
 		['person wearing turban', 'turban'],
 		['man with Chinese cap', 'gua pi mao', 'hat', 'man', 'chinese'],
-		//['woman with headscarf', 'headscarf', 'hijab', 'mantilla', 'tichel', 'bandana', 'head kerchief'],
+		['woman with headscarf', 'headscarf', 'hijab', 'mantilla', 'tichel', 'bandana', 'head kerchief'],
 		['blond-haired person', 'blond'],
 		['man in tuxedo', 'groom', 'man', 'tuxedo'],
 		['bride with veil', 'bride', 'veil', 'wedding'],
@@ -279,7 +279,7 @@ let ALL_KEYWORDS = [
 		//-------------
 		['horse', 'equestrian', 'racehorse', 'racing'],
 		['unicorn face', 'face', 'unicorn', 'fantasy'],
-		//['zebra'],
+		['zebra'],
 		['deer'],
 		['cow face', 'cow', 'face'],
 		['ox', 'Taurus', 'bull', 'zodiac'],
@@ -295,7 +295,7 @@ let ALL_KEYWORDS = [
 		['goat', 'Capricorn', 'zodiac', 'GEGL'],
 		['camel', 'dromedary', 'hump'],
 		['two-hump camel', 'bactrian', 'camel', 'hump'],
-		//['giraffe'],
+		['giraffe'],
 		['elephant'],
 		['rhinoceros'],
 		//-------------
@@ -306,7 +306,7 @@ let ALL_KEYWORDS = [
 		['rabbit face', 'bunny', 'face', 'pet', 'rabbit'],
 		['rabbit', 'bunny', 'pet'],
 		['chipmunk'],
-		//['hedgehog'],
+		['hedgehog'],
 		['bat', 'bat', 'vampire'],
 		['bear face', 'bear', 'face'],
 		
@@ -340,8 +340,8 @@ let ALL_KEYWORDS = [
 		
 		['dragon face', 'dragon', 'face', 'fairy tale'],
 		['dragon', 'fairy tale'],
-//		['sauropod', 'brachiosaurus', 'brontosaurus', 'diplodocus'],
-//		['T-Rex', 't-rex', 'tyrannosaurus rex', 'Tyrannosaurus Rex'],
+		['sauropod', 'brachiosaurus', 'brontosaurus', 'diplodocus', 'dinosaur'],
+		['T-Rex', 't-rex', 'tyrannosaurus rex', 'Tyrannosaurus Rex', 'dinosaur'],
 		['spouting whale', 'face', 'spouting', 'whale'],
 		['whale'],
 		['dolphin', 'flipper'],
@@ -366,7 +366,7 @@ let ALL_KEYWORDS = [
 		
 		['honeybee', 'bee', 'insect'],
 		['lady beetle', 'beetle', 'insect', 'ladybird', 'ladybug'],
-		//['cricket', 'insect'],
+		['cricket', 'insect'],
 		['spider', 'arachnid'],
 		['spider web', 'spider', 'web'],
 		['scorpion', 'Scorpius', 'scorpio', 'zodiac'],
@@ -480,7 +480,7 @@ let ALL_KEYWORDS = [
 		['strawberry', 'berry', 'fruit'],
 		['kiwi fruit', 'food', 'fruit', 'kiwi'],
 		['tomato', 'fruit', 'vegetable'],
-		//['coconut'],
+		['coconut'],
 		['avocado', 'avocado', 'food', 'fruit'],
 		['eggplant', 'aubergine', 'vegetable'],
 		['potato', 'food', 'potato', 'vegetable'],
@@ -491,14 +491,14 @@ let ALL_KEYWORDS = [
 		//-------------
 		
 		['cucumber', 'cucumber', 'food', 'pickle', 'vegetable'],
-		//['broccoli'],
+		['broccoli', 'vegetable'],
 		['mushroom', 'toadstool'],
 		['peanuts', 'food', 'nut', 'peanut', 'vegetable'],
 		['chestnut', 'plant'],
 		['bread', 'loaf'],
 		['croissant', 'bread', 'crescent roll', 'croissant', 'food', 'french'],
 		['baguette bread', 'baguette', 'bread', 'food', 'french'],
-		//['pretzel', 'twisted', 'convoluted'],
+		['pretzel', 'twisted', 'convoluted'],
 		['pancakes', 'crêpe', 'food', 'hotcake', 'pancake'],
 		
 		//-------------
@@ -506,13 +506,13 @@ let ALL_KEYWORDS = [
 		['cheese wedge', 'cheese'],
 		['meat on bone', 'bone', 'meat'],
 		['poultry leg', 'bone', 'chicken', 'leg', 'poultry'],
-		//['cut of meat', 'chop', 'lambchop', 'porkchop', 'steak'],
+		['cut of meat', 'chop', 'lambchop', 'porkchop', 'steak'],
 		['bacon', 'bacon', 'food', 'meat'],
 		['hamburger', 'burger'],
 		['french fries', 'french', 'fries'],
 		['pizza', 'cheese', 'slice'],
 		['hot dog', 'frankfurter', 'hotdog', 'sausage'],
-		//['sandwich'],
+		['sandwich'],
 		
 		//-------------
 		
@@ -523,13 +523,13 @@ let ALL_KEYWORDS = [
 		['cooking', 'egg', 'frying', 'pan'],
 		['shallow pan of food', 'casserole', 'food', 'paella', 'pan', 'shallow'],
 		['pot of food', 'pot', 'stew'],
-		//['bowl with spoon', 'breakfast', 'cereal', 'congee', 'oatmeal', 'porridge'],
+		['bowl with spoon', 'breakfast', 'cereal', 'congee', 'oatmeal', 'porridge'],
 		['green salad', 'food', 'green', 'salad'],
 		['popcorn'],
 		
 		//-------------
 		
-		//['canned food', 'can'],
+		['canned food', 'can'],
 		['bento box', 'bento', 'box'],
 		['rice cracker', 'cracker', 'rice'],
 		['rice ball', 'Japanese', 'ball', 'rice'],
@@ -546,9 +546,9 @@ let ALL_KEYWORDS = [
 		['fried shrimp', 'fried', 'prawn', 'shrimp', 'tempura'],
 		['fish cake with swirl', 'cake', 'fish', 'pastry', 'swirl', 'debian'],
 		['dango', 'Japanese', 'dessert', 'skewer', 'stick', 'sweet'],
-		//['dumpling', 'empanada', 'gyōza', 'jiaozi', 'pierogi', 'potsticker'],
-		//['fortune cookie'],
-		//['takeout box', 'oyster pail'],
+		['dumpling', 'empanada', 'gyōza', 'jiaozi', 'pierogi', 'potsticker'],
+		['fortune cookie'],
+		['takeout box', 'oyster pail'],
 		['soft ice cream', 'cream', 'dessert', 'ice', 'icecream', 'soft', 'sweet'],
 		['shaved ice', 'dessert', 'ice', 'shaved', 'sweet'],
 		['ice cream', 'cream', 'dessert', 'ice', 'sweet'],
@@ -559,7 +559,7 @@ let ALL_KEYWORDS = [
 		['cookie', 'dessert', 'sweet'],
 		['birthday cake', 'birthday', 'cake', 'celebration', 'dessert', 'pastry', 'sweet'],
 		['shortcake', 'cake', 'dessert', 'pastry', 'slice', 'sweet'],
-		//['pie', 'fruit', 'meat'],
+		['pie', 'fruit', 'meat'],
 		['chocolate bar', 'bar', 'chocolate', 'dessert', 'sweet'],
 		['candy', 'sweet'],
 		['lollipop', 'sweet'],
@@ -584,32 +584,35 @@ let ALL_KEYWORDS = [
 		['clinking beer mugs', 'party', 'beer mug', 'beer', 'alcohol'],
 		['clinking glasses', 'party', 'glass'],
 		['tumbler glass', 'glass'],
-		//['cup with straw', 'cup', 'straw'],
-		//['chopsticks'],
+		['cup with straw', 'cup', 'straw'],
+		['chopsticks'],
 		['fork and knife with plate', 'flatware', 'fork', 'knife', 'plate'],
 		['fork and knife', 'fork', 'knife', 'cutlery'],
 		['spoon', 'cutlery'],
 		['kitchen knife', 'knife', 'cutlery'],
 		['amphora']
-	], [//Travels and places	
+	], [//Travels and places
+	//--------maps
 		['globe showing Europe-Africa', 'globe', 'Europe', 'Africa'],
 		['globe showing Americas', 'globe', 'America'],
 		['globe showing Asia-Australia', 'globe', 'Asia', 'Australia'],
 		['globe with meridians', 'globe', 'meridians'],
 		['world map', 'map', 'world'],
 		['map of Japan', 'Japan', 'map'],
+	//----geographic
 		['snow-capped mountain', 'mountain', 'snow'],
 		['mountain', 'snow'],
 		['volcano', 'mountain', 'lava'],
 		['mount Fuji', 'volcano', 'Fujisan', 'mountain', 'snow'],
 		
 		//-------------
-	//place-building
+	
 		['camping', 'tent', 'pavilion'],
 		['beach with umbrella', 'beach', 'umbrella', 'sand'],
 		['desert', 'sand', 'cactus'],
 		['desert island', 'sand', 'island', 'desert'],
 		['national park', 'nature', 'park'],
+	//-----place-building
 		['stadium', 'building', 'place'],
 		['classical building', 'Antiquity', 'building', 'place'],
 		['building construction', 'crane', 'construction', 'building'],
@@ -636,6 +639,7 @@ let ALL_KEYWORDS = [
 		['department store', 'store'],
 		['factory', 'work', 'manufactory'],
 		['Japanese castle', 'Japan', 'castle'],
+	//------
 		['castle', 'medieval', 'tale'],
 		['wedding', 'love'],
 		['Tokyo tower', 'Tokyo', 'tower'],
@@ -755,7 +759,7 @@ let ALL_KEYWORDS = [
 		['aerial tramway', 'mountain'],
 		['satellite', 'space'],
 		['rocket', 'spaceship'],
-		//['flying saucer', 'E.T.', 'area 51', 'alien'],
+		['flying saucer', 'E.T.', 'area 51', 'alien'],
 	//hotel
 		['bellhop bell', 'bell'],
 		['door'],
@@ -831,8 +835,8 @@ let ALL_KEYWORDS = [
 		['fishing pole', 'fishing'],
 		['running shirt', 'shirt'],
 		['skis', 'skiing'],
-		//['sled', 'snow'],
-		//['curling stone', 'curling'],
+		['sled', 'snow'],
+		['curling stone', 'curling'],
 	//game
 		['video game', 'game', 'gaming'],
 		['joystick', 'video game', 'game', 'gaming'],
@@ -953,8 +957,6 @@ let ALL_KEYWORDS = [
 		['stopwatch', 'watch', 'clock', 'time'],
 		['timer clock', 'clock', 'time'],
 		['mantelpiece clock', 'clock', 'time'],
-		['hour', '12h00', '0h00'],
-		['hour', '12h30', '0h30'],
 		
 	//
 		
@@ -1416,11 +1418,12 @@ let ALL_KEYWORDS = [
 		['black circle'],
 		['red circle'],
 		['blue circle'],
-		
-		
+
 	//time
-		
-		
+			
+		['hour', '12h00', '0h00'],
+		['hour', '12h30', '0h30'],
+		//-------------
 		['hour', '13h00', '1h00'],
 		['hour', '13h30', '1h30'],
 		['hour', '14h00', '2h00'],
@@ -1430,10 +1433,8 @@ let ALL_KEYWORDS = [
 		['hour', '16h00', '4h00'],
 		['hour', '16h30', '4h30'],
 		['hour', '17h00', '5h00'],
-		['hour', '17h30', '5h30'],
-		
-		//-------------
-		
+		['hour', '17h30', '5h30'],	
+		//-------------	
 		['hour', '18h00', '6h00'],
 		['hour', '18h30', '6h30'],
 		['hour', '19h00', '7h00'],
@@ -1451,12 +1452,12 @@ let ALL_KEYWORDS = [
 		
 	//Flags
 		
-		['chequered flag'],
+		['chequered flag', 'flag'],
 		['triangular flag'],
 		['crossed flags'],
 		['black flag'],
-		['white flag'],
-		//['rainbow flag'],
+		['white flag', 'flag'],
+		//['rainbow flag', 'lgbt', 'LGBT'],
 		
 		//-------------
 		

@@ -299,7 +299,7 @@ const EmojisMenu = new Lang.Class({
 		box.add(PopupMenu.arrowIcon(St.Side.BOTTOM));
 		this.actor.add_child(box);
 		this._permanentItems = 0;
-		this._activeCat = -1;e;
+		this._activeCat = -1;
 		
 		//--------------------------------------------------
 		
