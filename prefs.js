@@ -15,6 +15,8 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 const Convenience = Me.imports.convenience;
 
+//const ExtensionSystem = imports.ui.extensionSystem;
+
 //-----------------------------------------------
 
 function init() {
@@ -22,6 +24,7 @@ function init() {
 }
 
 //TODO UN RECHARGEMENT AUTO DE L'EXTENSION ? 
+
 //-----------------------------------------------
 
 var PrefsPage = new Lang.Class({
@@ -80,8 +83,7 @@ let SETTINGS = Convenience.getSettings();
 function buildPrefsWidget() {
     let widget = new EmojiPrefsWidget();
     
-    let appearancePage = widget.add_page("appearance", _("Appearance"));
-    	
+    let appearancePage = widget.add_page("appearance", _("Appearance"));	
     	//-----------------------------
     	
     	let labelNbRecents = _("Number of recently used emojis:");
@@ -226,7 +228,7 @@ function buildPrefsWidget() {
     	//----------------------------------------------------
     	
     appearancePage.add_widget(sizeBox);
-    //appearancePage.add_widget(lightThemeBox);
+    appearancePage.add_widget(lightThemeBox);
     //appearancePage.add_widget(colorEmojisBox);
     appearancePage.add_widget(colsBox);
     appearancePage.add_widget(recentBox);

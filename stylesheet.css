@@ -2,7 +2,6 @@
 .EmojisItemStyle {
     font-family: EmojiOne Color, Twitter Color Emoji, Noto Emoji;
     padding: 1px 3px;
-    color: #FFFFFF;
 }
 
 .EmojisItemStyle:hover {
@@ -11,10 +10,8 @@
 }
 
 .RecentItemStyle {
-    font-size: 32px;
     font-family: EmojiOne Color, Twitter Color Emoji, Noto Emoji;
     padding: 1px 3px;
-    color: #FFFFFF;
 }
 
 .RecentItemStyle:hover {
