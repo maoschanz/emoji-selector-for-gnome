@@ -299,18 +299,7 @@ const EmojisMenu = new Lang.Class({
 		box.add(PopupMenu.arrowIcon(St.Side.BOTTOM));
 		this.actor.add_child(box);
 		this._permanentItems = 0;
-		this._activeCat = -1;
-		
-		//-------------------------------------------------
-		
-//		let restartItem = new PopupMenu.PopupMenuItem("Configuration changed, please click here to restart.");
-//		this.menu.addMenuItem(restartItem);
-//		this._permanentItems++;
-//		restartItem.connect('activate', Lang.bind(this, function() {
-//			disable();
-//			enable();
-//		}));
-//		restartItem.actor.visible = false;
+		this._activeCat = -1;e;
 		
 		//--------------------------------------------------
 		
@@ -566,6 +555,8 @@ const SettingsSchema = getSchema();
 
 function init() {
 	Convenience.initTranslations("emoji-selector");
+    let theme = imports.gi.Gtk.IconTheme.get_default();
+    theme.append_search_path(Me.path + "/icons");
 }
 
 //------------------------------------------------------------
