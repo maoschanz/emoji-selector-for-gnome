@@ -588,5 +588,4 @@ function disable() {
 		Main.wm.removeKeybinding('emoji-keybinding');
 	}
 	globalButton.destroy();
-	Main.panel.statusArea['EmojisMenu'];
 }
