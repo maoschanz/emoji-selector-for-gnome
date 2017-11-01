@@ -1,62 +1,131 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-03 18:48+0100\n"
-"PO-Revision-Date: 2017-05-02 08:36+0200\n"
+"POT-Creation-Date: 2017-04-13 12:23+0200\n"
+"PO-Revision-Date: 2017-11-01 11:50+0100\n"
 "Language-Team: Jimmy Scionti <jimmy.scionti@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.0.4\n"
 "Last-Translator: Jimmy Scionti <jimmy.scionti@gmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: it\n"
 
+#: extension.js:54
 msgid "Smileys & People"
-msgstr "Emoticon & Volti"
+msgstr "Smiley & Persone"
 
-msgid "Nature"
-msgstr "Natura"
+#: extension.js:55
+msgid "Animals & Nature"
+msgstr "Animali & Natura"
 
+#: extension.js:56
 msgid "Food & Drink"
 msgstr "Cibo & Bevande"
 
+#: extension.js:57
 msgid "Activities & Sports"
 msgstr "Attività & Sport"
 
+#: extension.js:58
 msgid "Travel & Places"
-msgstr "Viaggi & Luoghi"
+msgstr "Viaggio & Posti"
 
+#: extension.js:59
 msgid "Objects"
 msgstr "Oggetti"
 
+#: extension.js:60
 msgid "Symbols"
 msgstr "Simboli"
 
+#: extension.js:61
 msgid "Flags"
 msgstr "Bandiere"
 
-msgid "Modifications will be effective after reloading the extension."
-msgstr "Le modifiche avranno effetto dopo aver ricaricato l'estensione."
+#: extension.js
+msgid "Type here to search..."
+msgstr "Digita qui per effettuare una ricerca..."
 
-msgid "Display of recent emojis :"
+#: prefs.js:83
+msgid "Appearance"
+msgstr "Aspetto"
+
+#: prefs.js:87
+msgid "Number of recently used emojis:"
+msgstr "Numero di emoji usate recentemente:"
+
+#: prefs.js:107
+msgid "Size of emojis (px):"
+msgstr "Dimensione degli emoji (px)"
+
+#: prefs.js:127
+msgid "Use darker font:"
+msgstr "Usa un font più scuro:"
+
+#: prefs.js:146
+msgid "Use color emojis:"
+msgstr "Usa emoji colorate"
+
+#: prefs.js:165
+msgid "Display of recent emojis:"
 msgstr "Mostra gli emoji recenti:"
 
+#: prefs.js:174
 msgid "Top"
 msgstr "In alto"
 
+#: prefs.js:175
 msgid "Bottom"
 msgstr "In basso"
 
-msgid "Do not display"
-msgstr "Non mostrare"
-
-msgid "Number of recently used emojis :"
-msgstr "Numero di emoji recenti:"
-
-msgid "Number of emojis on one line :"
+#: prefs.js:189
+msgid "Number of emojis per line:"
 msgstr "Numero di emoji per riga:"
 
-msgid "Size of emojis :"
-msgstr "Dimensione degli emoji:"
+#: prefs.js:209
+msgid "Use old interface:"
+msgstr "Usa l'interfaccia classica:"
+
+#: prefs.js:237
+msgid "Features"
+msgstr "Funzionalità"
+
+#: prefs.js:239
+msgid "Enable research:"
+msgstr "Abilità la ricerca:"
+
+#: prefs.js:262
+msgid "Default value is"
+msgstr "Il valore di default è"
+
+#: prefs.js:274
+msgid "Apply"
+msgstr "Applica"
+
+#: prefs.js:285
+msgid "Use a keyboard shortcut to toggle the menu:"
+msgstr "Usa una scorciatoia da tastiera per abilitare il menu:"
+
+#: prefs.js:315
+msgid "Action of a click on an emoji:"
+msgstr "Comportamento al click su una emoji:"
+
+#: prefs.js:324
+msgid "Copy to clipboard"
+msgstr "Copia negli appunti"
+
+#: prefs.js:325
+msgid "Insert"
+msgstr "Inserisci"
+
+#: prefs.js:344
+msgid "About"
+msgstr "Info"
