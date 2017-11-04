@@ -146,7 +146,7 @@ const EmojiCategory = new Lang.Class({
 				this.menu.close();
 				globalButton.menu.close();
 			}));
-			container.add_child(button, {hover: true});
+			container.add_child(button);
 		}
 	},
 
@@ -512,7 +512,7 @@ const EmojisMenu = new Lang.Class({
 		}
 		
 		for(var i = 0;i<NB_RECENTS;i++){
-			container.add_child(recents[i], {hover: true});
+			container.add_child(recents[i]);
 		}
 		
 		return RecentlyUsed;
