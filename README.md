@@ -35,7 +35,7 @@ Yes sorry it's not automatic. Disable the extension, re-enable it.
 
 > Can you translate the extension in (some language) ?
 
-The extension is currently available in english, french, portuguese, italian, esperanto and german. I only know french and english, so if you need a specific language, please contribute : you just have to be inspired by the existing .po files !
+The extension is currently available in english, french, brazilian portuguese, italian, esperanto and german. I only know french and english, so if you need a specific language, please contribute : you just have to be inspired by the existing .po files !
 
 > There is no racialized smileys / LGBT peoples / gender-specific activities / "numbers in square" symbols :'(
 
@@ -47,4 +47,4 @@ amivaleo (italian translation + lot of ideas)
 
 jonnius (german translation)
 
-picsi (brazilian portuguese and esperanto translations)
+picsi / frnogueira (brazilian portuguese and esperanto translations)
