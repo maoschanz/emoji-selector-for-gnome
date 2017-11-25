@@ -1,5 +1,5 @@
 {
-  "description": "This extension provides a parametrable popup menu with some emojis ; clicking on an emoji copies it to the clipboard. You should have \u00ab Twitter Color Emoji \u00bb or \u00ab EmojiOne Color \u00bb font installed on your system.", 
+  "description": "This extension provides a parametrable popup menu with some emojis, clicking on an emoji copies it to the clipboard. An appropriate font like 'Twitter Color Emoji' or 'EmojiOne Color' should be installed on your system for a better visual result. Color emojis are available only for GNOME Shell 3.27 and more.", 
   "name": "Emoji Selector", 
   "shell-version": [
     "3.14", 
@@ -8,11 +8,12 @@
     "3.20",
     "3.22",
     "3.24",
-    "3.26"
+    "3.26",
+    "3.28"
   ], 
   "url": "https://github.com/Maestroschan/emoji-selector-for-gnome", 
   "uuid": "emoji-selector@maestroschan.fr", 
   "gettext-domain": "emoji-selector",
   "settings-schema": "org.gnome.shell.extensions.emoji-selector",
-  "version": 8
+  "version": 9
 }
