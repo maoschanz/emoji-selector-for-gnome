@@ -57,10 +57,6 @@ msgstr ""
 msgid "Appearance"
 msgstr ""
 
-#: prefs.js:87
-msgid "Number of recently used emojis:"
-msgstr ""
-
 #: prefs.js:107
 msgid "Size of emojis (px):"
 msgstr ""
@@ -111,18 +107,6 @@ msgstr ""
 
 #: prefs.js:285
 msgid "Use a keyboard shortcut to toggle the menu:"
-msgstr ""
-
-#: prefs.js:315
-msgid "Action of a click on an emoji:"
-msgstr ""
-
-#: prefs.js:324
-msgid "Copy to clipboard"
-msgstr ""
-
-#: prefs.js:325
-msgid "Insert"
 msgstr ""
 
 #: prefs.js:344
