@@ -31,12 +31,10 @@ var PrefsPage = new Lang.Class({
     Name: "PrefsPage",
     Extends: Gtk.ScrolledWindow,
     
-    _init: function (params={}) {
+    _init: function () {
         this.parent({
-            //height_request: 400,
             vexpand: true,
-            can_focus: true,
-            hscrollbar_policy: Gtk.PolicyType.NEVER
+            can_focus: true
         });
         
         this.box = new Gtk.Box({
@@ -84,26 +82,7 @@ function buildPrefsWidget() {
     let widget = new EmojiPrefsWidget();
     
     let appearancePage = widget.add_page("appearance", _("Appearance"));	
-    	//-----------------------------
-    	
-    	let labelNbRecents = _("Number of recently used emojis:");
-		
-		let nbRecents = new Gtk.SpinButton();
-        nbRecents.set_sensitive(true);
-        nbRecents.set_range(0, 40);
-		nbRecents.set_value(13);
-        nbRecents.set_value(SETTINGS.get_int('nbrecents'));
-        nbRecents.set_increments(1, 2);
-        
-		nbRecents.connect('value-changed', Lang.bind(this, function(w){
-			var value = w.get_value_as_int();
-			SETTINGS.set_int('nbrecents', value);
-		}));
-		
-		let recentBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 10 });
-		recentBox.pack_start(new Gtk.Label({ label: labelNbRecents, halign: Gtk.Align.START }), false, false, 0);
-		recentBox.pack_end(nbRecents, false, false, 0);
-		
+
 		//-------------------------------------------------
 		
 		let labelSizeEmojis = _("Size of emojis (px):");
@@ -111,7 +90,7 @@ function buildPrefsWidget() {
 		let emojiSize = new Gtk.SpinButton();
         emojiSize.set_sensitive(true);
         emojiSize.set_range(10, 100);
-		emojiSize.set_value(24);
+		emojiSize.set_value(32);
 		emojiSize.set_value(SETTINGS.get_int('emojisize'));
         emojiSize.set_increments(1, 2);
         
@@ -193,7 +172,7 @@ function buildPrefsWidget() {
 		let nbCols = new Gtk.SpinButton();
         nbCols.set_sensitive(true);
         nbCols.set_range(1, 60);
-		nbCols.set_value(14);
+		nbCols.set_value(11);
 		nbCols.set_value(SETTINGS.get_int('nbcols'));
         nbCols.set_increments(1, 2);
         
@@ -231,7 +210,7 @@ function buildPrefsWidget() {
     appearancePage.add_widget(lightThemeBox);
     //appearancePage.add_widget(colorEmojisBox);
     appearancePage.add_widget(colsBox);
-    appearancePage.add_widget(recentBox);
+//    appearancePage.add_widget(recentBox);
     appearancePage.add_widget(positionBox);
     appearancePage.add_widget(classicBox);
     
@@ -316,34 +295,11 @@ function buildPrefsWidget() {
 		
 		//---------------------------------------------------------------
 		
-		let labelAction = _("Action of a click on an emoji:");
-	
-		let actionCombobox = new Gtk.ComboBoxText({
-		    visible: true,
-		    can_focus: true,
-		    halign: Gtk.Align.END,
-		    valign: Gtk.Align.CENTER
-		});
-	
-		actionCombobox.append('copy', _("Copy to clipboard"));
-		actionCombobox.append('insert', _("Insert"));
-	
-		actionCombobox.active_id = SETTINGS.get_string('action');
 		
-		actionCombobox.connect("changed", (widget) => {
-		    SETTINGS.set_string('action', widget.get_active_id());
-		});
-	
-		let actionBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 10});
-		actionBox.pack_start(new Gtk.Label({ label: labelAction, halign: Gtk.Align.START }), false, false, 0);
-		actionBox.pack_end(actionCombobox, false, false, 0);
-	
 		//-------------------------------------------------------
 	
 	featuresPage.add_widget(searchBox);
-	featuresPage.add_widget(keybindingBox);
-	//featuresPage.add_widget(actionBox);
-		
+	featuresPage.add_widget(keybindingBox);		
 
 	let aboutPage = widget.add_page("about", _("About"));
 		

@@ -3,7 +3,16 @@ const Clutter = imports.gi.Clutter;
 const Main = imports.ui.main;
 const Shell = imports.gi.Shell;
 const Lang = imports.lang;
+/*
+TODO
+- insensible à la casse -> ok
+- des vrais boutons -> ok
+- séquence d'émojis
+- paramètres dynamiques -> mouais, on peut envoyer des notifs au pire
+- remarques de jimmy sur le style -> ok
+- paramètres de keybinding fonctionnels -> ...
 
+*/
 //cause it is needed to grab the damn focus
 const Mainloop = imports.mainloop;
 
@@ -44,7 +53,6 @@ let recents = [];
 //-----------------------------------------------
 
 /* These global variables are used to store some settings */
-let NB_RECENTS;
 let NB_COLS;
 let POSITION;
 let CLASSIC_INTERFACE;
@@ -52,9 +60,20 @@ let SEARCH_ENABLED;
 
 //-----------------------------------------------
 
+function updateStyle() {
+	recents.forEach(function(b){
+		b.style = globalButton.getStyle();
+	});
+	globalButton.emojiCategories.forEach(function(c){
+		c.emojiButtons.forEach(function(b){
+			b.style = c.getStyle();
+		});
+	});
+}
+
 function saveRecents() {
 	let backUp = '';
-	for(var i = 0;i<NB_RECENTS;i++){
+	for(var i = 0;i<NB_COLS;i++){
 		backUp = backUp + recents[i].label + ',';
 	}
 	Convenience.getSettings().set_string('recents', backUp);	
@@ -70,7 +89,7 @@ function buildRecents() {
 	*/
 	let temp = Convenience.getSettings().get_string('recents').split(',');
 	
-	for(var i = 0;i<NB_RECENTS;i++){
+	for(var i = 0;i<NB_COLS;i++){
 		if (i < temp.length - 1) {
 			//length - 1 because of the empty last item
 			recents[i].label = temp[i];
@@ -88,7 +107,7 @@ function buildRecents() {
 function shiftFor(CurrentEmoji) {
 	if (CurrentEmoji == '') {return;}
 	
-	for(var j = NB_RECENTS-1;j > 0;j--){
+	for(var j = NB_COLS-1;j > 0;j--){
 		recents[j].label = recents[j-1].label;
 	}
 	recents[0].label = CurrentEmoji;
@@ -98,7 +117,8 @@ function shiftFor(CurrentEmoji) {
 //-------------------------------------------------
 
 //class EmojiCategory
-//methods :	_init(categoryName, emojiList)
+//methods :	_init()
+//			...
 //			destroy()
 const EmojiCategory = new Lang.Class({
 	Name:		'EmojiCategory',
@@ -113,15 +133,34 @@ const EmojiCategory = new Lang.Class({
 		}
 		
 		this.id = id;
+		
+		this.emojiButtons = [];
 
-		this.categoryButton = Main.panel.statusArea.aggregateMenu._system._createActionButton(iconName, categoryName);
+		this.categoryButton = new St.Button({
+			reactive: true,
+			can_focus: true,
+			track_hover: true,
+			accessible_name: categoryName,
+			style_class: 'system-menu-action'
+		});
+		this.categoryButton.child = new St.Icon({ icon_name: iconName });
 		this.categoryButton.connect('clicked', Lang.bind(this, this._openCategory));
 		
-		for (var i = 0; i < EMOJIS_CHARACTERS[id].length; i++) {
+		this.build();
+	},
+	
+	clear: function() {
+		this.menu.removeAll();
+		this.emojiButtons = [];
+	},
+	
+	build: function() {
+		for (var i = 0; i < EMOJIS_CHARACTERS[this.id].length; i++) {
 			
 			// management of lines of emojis
 			if (i % NB_COLS === 0) {
 				ln = new PopupMenu.PopupBaseMenuItem({
+					style_class: 'EmojisList',
 					reactive: false
 				});
 				ln.actor.track_hover = false;
@@ -135,7 +174,7 @@ const EmojiCategory = new Lang.Class({
 			let button = new St.Button(
 				{ style_class: 'EmojisItemStyle', style: fontStyle }
 			);
-			let CurrentEmoji = EMOJIS_CHARACTERS[id][i];
+			let CurrentEmoji = EMOJIS_CHARACTERS[this.id][i];
 			button.label = CurrentEmoji;
 			
 			//connection of the button
@@ -146,6 +185,7 @@ const EmojiCategory = new Lang.Class({
 				this.menu.close();
 				globalButton.menu.close();
 			}));
+			this.emojiButtons.push(button);
 			container.add_child(button);
 		}
 	},
@@ -185,7 +225,10 @@ const EmojiResearchItem = new Lang.Class({
 	
 	_init: function() {
 		
-		this.parent({	reactive: false	});
+		this.parent({
+			reactive: false,
+			can_focus: false
+		});
 			
 		this.searchEntry = new St.Entry({
 			name: 'searchEntry',
@@ -209,7 +252,7 @@ const EmojiResearchItem = new Lang.Class({
 				buildRecents();
 				
 				let isIn = false;
-				for(var i = 0;i<NB_RECENTS;i++){
+				for(var i = 0;i<NB_COLS;i++){
 					if (recents[i].label == CurrentEmoji) {
 						isIn = true;
 					}
@@ -233,8 +276,12 @@ const EmojiResearchItem = new Lang.Class({
 
 		if(searchedText === '') {
 			buildRecents();
-		} else {			
-			for (let j = 0; j < NB_RECENTS; j++) {
+		} else {
+			//TODO minimiser le texte cherché, la liste des mots devant elle-même être en minuscules
+			
+			searchedText = searchedText.toLowerCase();
+			
+			for (let j = 0; j < NB_COLS; j++) {
 				recents[j].label = ' ';
 			}
 			
@@ -244,7 +291,7 @@ const EmojiResearchItem = new Lang.Class({
 				for (let cat = 0; cat < EMOJIS_CHARACTERS.length; cat++) {
 					for (let i = 0; i < EMOJIS_CHARACTERS[cat].length; i++) {
 						let isMatching = false;
-						if (empty < NB_RECENTS) {
+						if (empty < NB_COLS) {
 							for (let k = 0; k < EMOJIS_KEYWORDS[cat][i].length; k++) {
 								if ( searchedText.substr(0, searchedText.length) == _( EMOJIS_KEYWORDS[cat][i][k]).substr(0, searchedText.length) ){
 									isMatching = true;
@@ -261,7 +308,7 @@ const EmojiResearchItem = new Lang.Class({
 				let cat = globalButton._activeCat;
 				for (let i = 0; i < EMOJIS_CHARACTERS[cat].length; i++) {
 					let isMatching = false;
-					if (empty < NB_RECENTS) {
+					if (empty < NB_COLS) {
 						for (let k = 0; k < EMOJIS_KEYWORDS[cat][i].length; k++) {
 							if ( searchedText.substr(0, searchedText.length) == _( EMOJIS_KEYWORDS[cat][i][k]).substr(0, searchedText.length) ){
 								isMatching = true;
@@ -370,11 +417,8 @@ const EmojisMenu = new Lang.Class({
 			}));
 		}));
 		
-		if(Convenience.getSettings().get_boolean('use-keybinding')) {
-			this.USE_KEYBINDING = true;
+		if(_settings.get_boolean('use-keybinding')) {
 			this._bindShortcut();
-		} else {
-			this.USE_KEYBINDING = false;
 		}
 		// end of _init //----------------------------------		
 	},
@@ -450,7 +494,7 @@ const EmojisMenu = new Lang.Class({
 	},
 	
 	getStyle: function() {
-		let fontStyle = 'font-size: ' + ( Convenience.getSettings().get_int('emojisize') + 4 ) + 'px;';
+		let fontStyle = 'font-size: ' + ( Convenience.getSettings().get_int('emojisize') ) + 'px;';
 		if(Convenience.getSettings().get_boolean('light-theme')){
 			fontStyle += ' color: #000000;';
 		} else {
@@ -468,8 +512,8 @@ const EmojisMenu = new Lang.Class({
 		
 		let fontStyle = this.getStyle();
 		
-		for(var i = 0;i<NB_RECENTS;i++){
-			recents[i] = new St.Button({ style_class: 'RecentItemStyle', style: fontStyle });
+		for(var i = 0;i<NB_COLS;i++){
+			recents[i] = new St.Button({ style_class: 'EmojisItemStyle', style: fontStyle });
 		}
 		
 		let container = new St.BoxLayout();
@@ -479,7 +523,7 @@ const EmojisMenu = new Lang.Class({
 		
 		buildRecents();
 		
-		for(var i = 0;i<NB_RECENTS;i++){
+		for(var i = 0;i<NB_COLS;i++){
 			/*
 			These buttons will not be destroy during research.
 			The signal needs to be able to handle different situations :
@@ -495,7 +539,7 @@ const EmojisMenu = new Lang.Class({
 			//	The "isIn" boolean is true if the clicked emoji is already saved as recently used in the setting key.
 				let isIn = false;
 				let temp = Convenience.getSettings().get_string('recents').split(',');
-				for(var i = 0;i<NB_RECENTS;i++){
+				for(var i = 0;i<NB_COLS;i++){
 					if (temp[i] == retour) {
 						isIn = true;
 					}
@@ -511,7 +555,7 @@ const EmojisMenu = new Lang.Class({
 			}, i));
 		}
 		
-		for(var i = 0;i<NB_RECENTS;i++){
+		for(var i = 0;i<NB_COLS;i++){
 			container.add_child(recents[i]);
 		}
 		
@@ -566,7 +610,19 @@ function enable() {
 	_settings = Convenience.getSettings();
 	//_settings = Convenience.getSettings('org.gnome.shell.extensions.emoji-selector');
 	
-	NB_RECENTS = _settings.get_int('nbrecents');
+	/*
+	classic-interface (booléen)
+	emoji-keybinding (tableau de chaînes)
+ok	emojisize (int)
+ok	light-theme (booléen)
+	nbcols (int)
+ok	nbrecents (int)
+	position (chaîne)
+ok	recents (osef)
+	search-enabled (booléen)
+ok	use-keybinding (booléen)	
+	*/
+	
 	NB_COLS = _settings.get_int('nbcols');
 	POSITION = _settings.get_string('position');
 	CLASSIC_INTERFACE = _settings.get_boolean('classic-interface');
@@ -577,6 +633,24 @@ function enable() {
 //	- 0 is the position
 //	- `right` is the box where we want our globalButton to be displayed (left/center/right)
 	Main.panel.addToStatusArea('EmojisMenu', globalButton, 0, 'right');
+	
+	_settings.connect('changed::emojisize', Lang.bind(this, function(){
+		log('581 ++');
+		updateStyle();
+	}));
+	_settings.connect('changed::light-theme', Lang.bind(this, function(){
+		log('581 ++');
+		updateStyle();
+	}));
+	_settings.connect('changed::use-keybinding', Lang.bind(this, function(z){
+		if(z.get_boolean('use-keybinding')) {
+			Main.wm.removeKeybinding('emoji-keybinding');
+			globalButton._bindShortcut();
+		} else {
+			Main.wm.removeKeybinding('emoji-keybinding');
+		}
+	}));
+	
 }
 
 //------------------------------------------------------------
@@ -584,7 +658,8 @@ function enable() {
 function disable() {
 	//we need to save labels currently in recents[] for the next session
 	saveRecents();
-	if(globalButton.USE_KEYBINDING) {
+//	if(globalButton.USE_KEYBINDING) {
+	if(_settings.get_boolean('use-keybinding')) {
 		Main.wm.removeKeybinding('emoji-keybinding');
 	}
 	globalButton.destroy();
