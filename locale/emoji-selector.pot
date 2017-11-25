@@ -109,6 +109,10 @@ msgstr ""
 msgid "Use a keyboard shortcut to toggle the menu:"
 msgstr ""
 
+#: prefs.js:305
+msgid "This extension provides a parametrable popup menu with some emojis, clicking on an emoji copies it to the clipboard. An appropriate font like 'Twitter Color Emoji' or 'EmojiOne Color' should be installed on your system for a better visual result. Color emojis are available only for GNOME Shell 3.27 and more."
+msgstr ""
+
 #: prefs.js:344
 msgid "About"
 msgstr ""
