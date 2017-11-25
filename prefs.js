@@ -244,8 +244,7 @@ function buildPrefsWidget() {
 		});
 		
 		let keybindingEntry = new Gtk.Entry({
-			sensitive: false,
-			//sensitive: SETTINGS.get_boolean('use-keybinding'),
+			sensitive: SETTINGS.get_boolean('use-keybinding'),
 			hexpand: true
 		});
 		
@@ -253,13 +252,10 @@ function buildPrefsWidget() {
 			keybindingEntry.text = SETTINGS.get_strv('emoji-keybinding')[0];
 		}
 		
-		let keybindingButton = new Gtk.Button({ sensitive: false, label: _("Apply") });
-		//let keybindingButton = new Gtk.Button({ sensitive: SETTINGS.get_boolean('use-keybinding'), label: _("Apply") });
+		let keybindingButton = new Gtk.Button({ sensitive: SETTINGS.get_boolean('use-keybinding'), label: _("Apply") });
 		
-		keybindingButton.connect('activate', Lang.bind(this, function(widget) {
+		keybindingButton.connect('clicked', Lang.bind(this, function(widget) {
 			SETTINGS.set_strv('emoji-keybinding', [keybindingEntry.text]);
-			
-			
 		}));
 		let keybindingBox1 = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 10 });
 		
