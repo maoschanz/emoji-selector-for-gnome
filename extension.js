@@ -39,8 +39,8 @@ const CLIPBOARD_TYPE = St.ClipboardType.CLIPBOARD;
 //----------------------------------------------
 
 const EMOJIS_CHARACTERS = Me.imports.emojisCharacters.ALL;
-//const EMOJIS_KEYWORDS = Me.imports.emojisKeywords.ALL_KEYWORDS;
-let EMOJIS_KEYWORDS; //Keywords lists will be loaded only if research is enabled
+const EMOJIS_KEYWORDS = Me.imports.emojisKeywords.ALL_KEYWORDS;
+//let EMOJIS_KEYWORDS; //Keywords lists will be loaded only if research is enabled//no too slow
 
 //------------------------------------------------------------
 
@@ -358,7 +358,7 @@ const EmojisMenu = new Lang.Class({
 		
 		if(SEARCH_ENABLED) {
 			//creating the search entry
-			EMOJIS_KEYWORDS = Me.imports.emojisKeywords.ALL_KEYWORDS;
+			//EMOJIS_KEYWORDS = Me.imports.emojisKeywords.ALL_KEYWORDS;
 			this.researchItem = new EmojiResearchItem();
 		}
 		

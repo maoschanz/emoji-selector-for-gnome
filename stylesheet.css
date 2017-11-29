@@ -1,9 +1,9 @@
 
 .EmojisItemStyle {
     font-family: EmojiOne Color, Twitter Color Emoji, Noto Emoji;
-    padding: 1px 3px;
-    height: 1.2em;
-    width: 1.2em;
+    /*padding: 1px 3px;*/
+    height: 1.5em;
+    width: 1.5em;
 }
 
 .EmojisItemStyle:hover {
