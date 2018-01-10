@@ -50,8 +50,8 @@ msgid "Type here to search..."
 msgstr "Taper ici pour rechercher..."
 
 #: prefs.js:83
-msgid "Appearance"
-msgstr "Apparence"
+msgid "Settings"
+msgstr "Paramètres"
 
 #: prefs.js:107
 msgid "Size of emojis (px):"
@@ -60,10 +60,6 @@ msgstr "Taille des émojis (en pixels) :"
 #: prefs.js:127
 msgid "Use darker font:"
 msgstr "Utiliser une police sombre :"
-
-#: prefs.js:146
-msgid "Use color emojis:"
-msgstr "Utiliser des émojis colorés :"
 
 #: prefs.js:165
 msgid "Display of recent emojis:"
@@ -81,18 +77,6 @@ msgstr "En bas"
 msgid "Number of emojis per line:"
 msgstr "Nombre d'émojis par ligne :"
 
-#: prefs.js:209
-msgid "Use old interface:"
-msgstr "Utiliser l'ancienne interface :"
-
-#: prefs.js:237
-msgid "Features"
-msgstr "Fonctionnalités"
-
-#: prefs.js:239
-msgid "Enable research:"
-msgstr "Activer la recherche :"
-
 #: prefs.js:262
 msgid "Default value is"
 msgstr "La valeur par défaut est"
@@ -104,10 +88,6 @@ msgstr "Appliquer"
 #: prefs.js:285
 msgid "Use a keyboard shortcut to toggle the menu:"
 msgstr "Utiliser un raccourci clavier pour le menu :"
-
-#: prefs.js:305
-msgid "This extension provides a parametrable popup menu with some emojis, clicking on an emoji copies it to the clipboard. An appropriate font like 'Twitter Color Emoji' or 'EmojiOne Color' should be installed on your system for a better visual result. Color emojis are available only for GNOME Shell 3.27 and more."
-msgstr "Cette extension propose un menu paramétrable avec des émojis, cliquer sur un émoji le copiera dans le presse-papier. Une police appropriée comme 'Twitter Color Emoji' ou 'EmojiOne Color' doit être installée pour un meilleur rendu. Les émojis colorés ne sont disponibles que pour GNOME Shell 3.27 et plus."
 
 #: prefs.js:344
 msgid "About"
