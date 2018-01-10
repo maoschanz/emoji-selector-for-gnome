@@ -81,7 +81,7 @@ let SETTINGS = Convenience.getSettings();
 function buildPrefsWidget() {
     let widget = new EmojiPrefsWidget();
     
-    let appearancePage = widget.add_page("appearance", _("Appearance"));	
+    let settingsPage = widget.add_page("settings", _("Settings"));	
 
 		//-------------------------------------------------
 		
@@ -168,32 +168,11 @@ function buildPrefsWidget() {
 		
 		//-------------------------------------------------------
     	
-    appearancePage.add_widget(sizeBox);
-    appearancePage.add_widget(lightThemeBox);
-    appearancePage.add_widget(colsBox);
-//    appearancePage.add_widget(recentBox);
-    appearancePage.add_widget(positionBox);
+    settingsPage.add_widget(sizeBox);
+    settingsPage.add_widget(lightThemeBox);
+    settingsPage.add_widget(colsBox);
+    settingsPage.add_widget(positionBox);
     
-    let featuresPage = widget.add_page("features", _("Features"));
-    	
-		let labelSearch = _("Enable research:");
-		
-		let searchSwitch = new Gtk.Switch();
-		searchSwitch.set_state(true);
-		searchSwitch.set_state(SETTINGS.get_boolean('search-enabled'));
-		
-		searchSwitch.connect('notify::active', Lang.bind(this, function(widget) {
-			if (widget.active) {
-				SETTINGS.set_boolean('search-enabled', true);
-			} else {
-				SETTINGS.set_boolean('search-enabled', false);
-			}
-		}));
-		
-		let searchBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 10 });
-		searchBox.pack_start(new Gtk.Label({ label: labelSearch, halign: Gtk.Align.START }), false, false, 0);
-		searchBox.pack_end(searchSwitch, false, false, 0);
-		
 		//---------------------------------------------------
 		
 		let keybindingBox = new Gtk.Box({
@@ -250,8 +229,7 @@ function buildPrefsWidget() {
 		
 		//-------------------------------------------------------
 	
-//	featuresPage.add_widget(searchBox);
-	featuresPage.add_widget(keybindingBox);		
+	settingsPage.add_widget(keybindingBox);		
 
 	let aboutPage = widget.add_page("about", _("About"));
 		

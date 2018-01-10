@@ -5,12 +5,10 @@ const Shell = imports.gi.Shell;
 const Lang = imports.lang;
 /*
 TODO
-- des vrais boutons -> ok
 - qui restent enfoncés -> pas encore
 - séquence d'émojis -> à faire
 - paramètres dynamiques -> mouais
-- remarques sur le style -> ok
-- paramètres de keybinding fonctionnels -> ...
+- paramètres de keybinding fonctionnels -> ... en partie
 
 */
 //cause it is needed to grab the damn focus
@@ -141,7 +139,6 @@ const EmojiCategory = new Lang.Class({
 		this.categoryButton.child = new St.Icon({ icon_name: iconName });
 		this.categoryButton.connect('clicked', Lang.bind(this, this._openCategory));
 		
-		//this.build();//non ça lague à mort au chargement initial
 		this._built = false;
 	},
 	
@@ -175,12 +172,12 @@ const EmojiCategory = new Lang.Class({
 			
 			//connection of the button
 			button.connect('clicked', Lang.bind(this, function(){
-				if(CurrentEmoji != ' ') { // empty buttons have a label and it's a space
+				if(CurrentEmoji != ' ') {
 					/* setting the emoji in the clipboard */
 					Clipboard.set_text(CLIPBOARD_TYPE, CurrentEmoji);
 					shiftFor(CurrentEmoji);
 					this.menu.close();
-					globalButton.menu.close();
+					globalButton.menu.close(); /*?? FIXME inutile ? */
 				}
 			}));
 			this.emojiButtons.push(button);
@@ -203,7 +200,7 @@ const EmojiCategory = new Lang.Class({
 		globalButton.clearCategories();
 		
 		if(!this._built) {
-			this.build(); // FIXME ?
+			this.build();
 		}
 		
 		this.actor.visible = true;		
@@ -285,8 +282,8 @@ const EmojiResearchItem = new Lang.Class({
 			}
 			
 			let empty = 0;
-		
 			
+			/* if no category is selected */
 			if (globalButton._activeCat == -1) {
 				for (let cat = 0; cat < EMOJIS_CHARACTERS.length; cat++) {
 					for (let i = 0; i < EMOJIS_CHARACTERS[cat].length; i++) {
@@ -304,9 +301,10 @@ const EmojiResearchItem = new Lang.Class({
 						}
 					}
 				}
+			}
 			
-			
-			} else {
+			/* if a category is selected */
+			else {
 				let cat = globalButton._activeCat;
 				for (let i = 0; i < EMOJIS_CHARACTERS[cat].length; i++) {
 					let isMatching = false;
@@ -601,15 +599,10 @@ function enable() {
 	_settings = Convenience.getSettings();
 	//_settings = Convenience.getSettings('org.gnome.shell.extensions.emoji-selector');
 	
-	/*
+	/* TODO paramètres restants à dynamiser
 	emoji-keybinding (tableau de chaînes)
-ok	emojisize (int)
-ok	light-theme (booléen)
 	nbcols (int)
-ok	nbrecents (int)
 	position (chaîne)
-ok	recents (osef)
-ok	use-keybinding (booléen)	
 	*/
 	
 	NB_COLS = _settings.get_int('nbcols');
@@ -643,7 +636,7 @@ ok	use-keybinding (booléen)
 function disable() {
 	//we need to save labels currently in recents[] for the next session
 	saveRecents();
-//	if(globalButton.USE_KEYBINDING) {
+
 	if(_settings.get_boolean('use-keybinding')) {
 		Main.wm.removeKeybinding('emoji-keybinding');
 	}
