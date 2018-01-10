@@ -1322,7 +1322,7 @@ let ALL_KEYWORDS = [
 		['registered'],
 		['trade mark'],
 	//keycap
-	/*	['#', 'keycap'],
+		['#', 'keycap'],
 		['*', 'keycap'],
 		['0', 'keycap'],
 		
@@ -1338,7 +1338,7 @@ let ALL_KEYWORDS = [
 		['8', 'keycap'],
 		['9', 'keycap'],
 		['10', 'keycap'],
-	*/	
+		
 		//-------------
 		
 		['hundred points'],
@@ -1457,7 +1457,7 @@ let ALL_KEYWORDS = [
 		['crossed flags'],
 		['black flag'],
 		['white flag', 'flag'],
-		//['rainbow flag', 'lgbt'],
+		['rainbow flag', 'lgbt'],
 		
 		//-------------
 		
@@ -1701,7 +1701,7 @@ let ALL_KEYWORDS = [
 		['ukraine'],
 		['uganda'],
 		['u.s. outlying islands'],
-		//['united nations', 'un'],
+		['united nations', 'un'],
 		['united states', 'usa'],
 		['uruguay'],
 		['uzbekistan'],

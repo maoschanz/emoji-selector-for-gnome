@@ -124,25 +124,6 @@ function buildPrefsWidget() {
 		
     	//------------------------------------------------
     	
-    	let labelColorEmojis = _("Use color emojis:");
-		let colorEmojisSwitch = new Gtk.Switch();
-		colorEmojisSwitch.set_state(true);
-		colorEmojisSwitch.set_state(SETTINGS.get_boolean('color-emojis'));
-		
-		colorEmojisSwitch.connect('notify::active', Lang.bind(this, function(widget) {
-			if (widget.active) {
-				SETTINGS.set_boolean('color-emojis', true);
-			} else {
-				SETTINGS.set_boolean('color-emojis', false);
-			}
-		}));
-		
-		let colorEmojisBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 10 });
-		colorEmojisBox.pack_start(new Gtk.Label({ label: labelColorEmojis, halign: Gtk.Align.START }), false, false, 0);
-		colorEmojisBox.pack_end(colorEmojisSwitch, false, false, 0);
-		
-    	//------------------------------------------------
-    	
 		let labelPosRecent = _("Display of recent emojis:");
 		
 		let positionCombobox = new Gtk.ComboBoxText({
@@ -187,33 +168,11 @@ function buildPrefsWidget() {
 		
 		//-------------------------------------------------------
     	
-		let labelClassicInterface = _("Use old interface:");
-		let interfaceSwitch = new Gtk.Switch();
-		interfaceSwitch.set_state(true);
-		interfaceSwitch.set_state(SETTINGS.get_boolean('classic-interface'));
-		
-		interfaceSwitch.connect('notify::active', Lang.bind(this, function(widget) {
-			if (widget.active) {
-				SETTINGS.set_boolean('classic-interface', true);
-			} else {
-				SETTINGS.set_boolean('classic-interface', false);
-			}
-		}));
-		
-		let classicBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 10 });
-		classicBox.pack_start(new Gtk.Label({ label: labelClassicInterface, halign: Gtk.Align.START }), false, false, 0);
-		classicBox.pack_end(interfaceSwitch, false, false, 0);
-    	
-    	//----------------------------------------------------
-    	
     appearancePage.add_widget(sizeBox);
     appearancePage.add_widget(lightThemeBox);
-    //appearancePage.add_widget(colorEmojisBox);
     appearancePage.add_widget(colsBox);
 //    appearancePage.add_widget(recentBox);
     appearancePage.add_widget(positionBox);
-    appearancePage.add_widget(classicBox);
-    
     
     let featuresPage = widget.add_page("features", _("Features"));
     	
@@ -270,13 +229,13 @@ function buildPrefsWidget() {
 		keybindingSwitch.connect('notify::active', Lang.bind(this, function(widget) {
 			if (widget.active) {
 				SETTINGS.set_boolean('use-keybinding', true);
-	//			keybindingEntry.sensitive = true;
-	//			keybindingButton.sensitive = true;
+				keybindingEntry.sensitive = true;
+				keybindingButton.sensitive = true;
 				
 			} else {
 				SETTINGS.set_boolean('use-keybinding', false);
-	//			keybindingEntry.sensitive = false;
-	//			keybindingButton.sensitive = false;
+				keybindingEntry.sensitive = false;
+				keybindingButton.sensitive = false;
 			}
 		}));
 		
@@ -289,12 +248,9 @@ function buildPrefsWidget() {
 		keybindingBox1.pack_end(keybindingButton, false, false, 0);
 		keybindingBox.pack_end(keybindingBox1, false, false, 0);
 		
-		//---------------------------------------------------------------
-		
-		
 		//-------------------------------------------------------
 	
-	featuresPage.add_widget(searchBox);
+//	featuresPage.add_widget(searchBox);
 	featuresPage.add_widget(keybindingBox);		
 
 	let aboutPage = widget.add_page("about", _("About"));
@@ -302,7 +258,7 @@ function buildPrefsWidget() {
 		let a_name = '<b>' + Me.metadata.name.toString() + '</b>';
 		let a_uuid = Me.metadata.uuid.toString();
 		let a_version = 'version ' + Me.metadata.version.toString();
-		let a_description = Me.metadata.description.toString() + '\n\n';
+		let a_description = _( Me.metadata.description.toString() );
 		
 		let label_name = new Gtk.Label({ label: a_name, use_markup: true, halign: Gtk.Align.CENTER });
         

@@ -5,11 +5,11 @@ const Shell = imports.gi.Shell;
 const Lang = imports.lang;
 /*
 TODO
-- insensible à la casse -> ok
 - des vrais boutons -> ok
-- séquence d'émojis
-- paramètres dynamiques -> mouais, on peut envoyer des notifs au pire
-- remarques de jimmy sur le style -> ok
+- qui restent enfoncés -> pas encore
+- séquence d'émojis -> à faire
+- paramètres dynamiques -> mouais
+- remarques sur le style -> ok
 - paramètres de keybinding fonctionnels -> ...
 
 */
@@ -40,7 +40,6 @@ const CLIPBOARD_TYPE = St.ClipboardType.CLIPBOARD;
 
 const EMOJIS_CHARACTERS = Me.imports.emojisCharacters.ALL;
 const EMOJIS_KEYWORDS = Me.imports.emojisKeywords.ALL_KEYWORDS;
-//let EMOJIS_KEYWORDS; //Keywords lists will be loaded only if research is enabled//no too slow
 
 //------------------------------------------------------------
 
@@ -55,8 +54,6 @@ let recents = [];
 /* These global variables are used to store some settings */
 let NB_COLS;
 let POSITION;
-let CLASSIC_INTERFACE;
-let SEARCH_ENABLED;
 
 //-----------------------------------------------
 
@@ -128,9 +125,7 @@ const EmojiCategory = new Lang.Class({
 		this.parent(categoryName);
 		let ln, container;
 		
-		if(!CLASSIC_INTERFACE) {
-			this.actor.visible = false;
-		}
+		this.actor.visible = false;
 		
 		this.id = id;
 		
@@ -146,7 +141,8 @@ const EmojiCategory = new Lang.Class({
 		this.categoryButton.child = new St.Icon({ icon_name: iconName });
 		this.categoryButton.connect('clicked', Lang.bind(this, this._openCategory));
 		
-		this.build();
+		//this.build();//non ça lague à mort au chargement initial
+		this._built = false;
 	},
 	
 	clear: function() {
@@ -179,15 +175,18 @@ const EmojiCategory = new Lang.Class({
 			
 			//connection of the button
 			button.connect('clicked', Lang.bind(this, function(){
-				/* setting the emoji in the clipboard */
-				Clipboard.set_text(CLIPBOARD_TYPE, CurrentEmoji);
-				shiftFor(CurrentEmoji);
-				this.menu.close();
-				globalButton.menu.close();
+				if(CurrentEmoji != '') {
+					/* setting the emoji in the clipboard */
+					Clipboard.set_text(CLIPBOARD_TYPE, CurrentEmoji);
+					shiftFor(CurrentEmoji);
+					this.menu.close();
+					globalButton.menu.close();
+				}
 			}));
 			this.emojiButtons.push(button);
 			container.add_child(button);
 		}
+		this._built = true;
 	},
 
 	getStyle: function() {
@@ -202,7 +201,12 @@ const EmojiCategory = new Lang.Class({
 	
 	_openCategory: function() {
 		globalButton.clearCategories();
-		this.actor.visible = true;
+		
+		if(!this._built) {
+			this.build(); // FIXME ?
+		}
+		
+		this.actor.visible = true;		
 		this.setSubmenuShown(true);
 		globalButton._activeCat = this.id;
 		globalButton._onSearchTextChanged();
@@ -269,16 +273,11 @@ const EmojiResearchItem = new Lang.Class({
 	},
 	
 	_onSearchTextChanged: function() {
-		if(!SEARCH_ENABLED)
-			return;
-		
 		let searchedText = this.searchEntry.get_text();
 
 		if(searchedText === '') {
 			buildRecents();
 		} else {
-			//TODO minimiser le texte cherché, la liste des mots devant elle-même être en minuscules
-			
 			searchedText = searchedText.toLowerCase();
 			
 			for (let j = 0; j < NB_COLS; j++) {
@@ -356,11 +355,8 @@ const EmojisMenu = new Lang.Class({
 		//initializing this._buttonMenu
 		this._renderPanelMenuHeaderBox();
 		
-		if(SEARCH_ENABLED) {
-			//creating the search entry
-			//EMOJIS_KEYWORDS = Me.imports.emojisKeywords.ALL_KEYWORDS;
-			this.researchItem = new EmojiResearchItem();
-		}
+		//creating the search entry
+		this.researchItem = new EmojiResearchItem();
 		
 		//initializing the "recently used" buttons	
 		let RecentlyUsed = this._recentlyUsedInit();
@@ -368,14 +364,11 @@ const EmojisMenu = new Lang.Class({
 		//-------------------------------------------------
 		
 		if (POSITION === 'top') {
-			if(!CLASSIC_INTERFACE) {
-				this.menu.addMenuItem(this._buttonMenu);
-				this._permanentItems++;
-			}
-			if(SEARCH_ENABLED) {
-				this.menu.addMenuItem(this.researchItem);
-				this._permanentItems++;
-			}
+			this.menu.addMenuItem(this._buttonMenu);
+			this._permanentItems++;
+			this.menu.addMenuItem(this.researchItem);
+			this._permanentItems++;
+			
 			this.menu.addMenuItem(RecentlyUsed);
 			this._permanentItems++;
 		}
@@ -389,14 +382,12 @@ const EmojisMenu = new Lang.Class({
 		if (POSITION === 'bottom') {
 			this.menu.addMenuItem(RecentlyUsed);
 			this._permanentItems++;
-			if(SEARCH_ENABLED) {
-				this.menu.addMenuItem(this.researchItem);
-				this._permanentItems++;
-			}
-			if(!CLASSIC_INTERFACE) {
-				this.menu.addMenuItem(this._buttonMenu);
-				this._permanentItems++;
-			}
+			
+			this.menu.addMenuItem(this.researchItem);
+			this._permanentItems++;
+			
+			this.menu.addMenuItem(this._buttonMenu);
+			this._permanentItems++;
 		}
 		
 		//-----------------------------------------------
@@ -404,12 +395,11 @@ const EmojisMenu = new Lang.Class({
 		// this sets the default behavior of each submenu : false means it is close when the extension's menu opens
 		this.menu.connect('open-state-changed', Lang.bind(this, function(self, open){
 			
-			if(!CLASSIC_INTERFACE) {
-				this.clearCategories();
-			}
-			
+
+			this.clearCategories();
+
 			let a = Mainloop.timeout_add(20, Lang.bind(this, function() {
-				if (open && SEARCH_ENABLED) {
+				if (open) {
 					this.researchItem.searchEntry.set_text('');
 					global.stage.set_key_focus(this.researchItem.searchEntry);
 				}
@@ -487,9 +477,7 @@ const EmojisMenu = new Lang.Class({
 	},
 	
 	_onSearchTextChanged: function() {
-		if(SEARCH_ENABLED){
-			this.researchItem._onSearchTextChanged();
-		}
+		this.researchItem._onSearchTextChanged();
 		return;
 	},
 	
@@ -611,7 +599,6 @@ function enable() {
 	//_settings = Convenience.getSettings('org.gnome.shell.extensions.emoji-selector');
 	
 	/*
-	classic-interface (booléen)
 	emoji-keybinding (tableau de chaînes)
 ok	emojisize (int)
 ok	light-theme (booléen)
@@ -619,14 +606,11 @@ ok	light-theme (booléen)
 ok	nbrecents (int)
 	position (chaîne)
 ok	recents (osef)
-	search-enabled (booléen)
 ok	use-keybinding (booléen)	
 	*/
 	
 	NB_COLS = _settings.get_int('nbcols');
 	POSITION = _settings.get_string('position');
-	CLASSIC_INTERFACE = _settings.get_boolean('classic-interface');
-	SEARCH_ENABLED = _settings.get_boolean('search-enabled');
 	
 	globalButton = new EmojisMenu();
 //	about addToStatusArea :
@@ -635,11 +619,9 @@ ok	use-keybinding (booléen)
 	Main.panel.addToStatusArea('EmojisMenu', globalButton, 0, 'right');
 	
 	_settings.connect('changed::emojisize', Lang.bind(this, function(){
-		log('581 ++');
 		updateStyle();
 	}));
 	_settings.connect('changed::light-theme', Lang.bind(this, function(){
-		log('581 ++');
 		updateStyle();
 	}));
 	_settings.connect('changed::use-keybinding', Lang.bind(this, function(z){
