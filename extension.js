@@ -175,7 +175,7 @@ const EmojiCategory = new Lang.Class({
 			
 			//connection of the button
 			button.connect('clicked', Lang.bind(this, function(){
-				if(CurrentEmoji != '') {
+				if(CurrentEmoji != ' ') { // empty buttons have a label and it's a space
 					/* setting the emoji in the clipboard */
 					Clipboard.set_text(CLIPBOARD_TYPE, CurrentEmoji);
 					shiftFor(CurrentEmoji);
@@ -285,6 +285,7 @@ const EmojiResearchItem = new Lang.Class({
 			}
 			
 			let empty = 0;
+		
 			
 			if (globalButton._activeCat == -1) {
 				for (let cat = 0; cat < EMOJIS_CHARACTERS.length; cat++) {
@@ -303,6 +304,8 @@ const EmojiResearchItem = new Lang.Class({
 						}
 					}
 				}
+			
+			
 			} else {
 				let cat = globalButton._activeCat;
 				for (let i = 0; i < EMOJIS_CHARACTERS[cat].length; i++) {
