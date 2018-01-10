@@ -22,25 +22,10 @@
       <summary>default memorized emojis</summary>
       <description></description>
     </key>
-    <key type="b" name="classic-interface">
-      <default>false</default>
-      <summary>if submenus or buttons should be used</summary>
-      <description>If false, buttons will be used. If true, the classic interface with submenus will be used.</description>
-    </key>
-    <key type="b" name="search-enabled">
-      <default>true</default>
-      <summary>if search is enabled</summary>
-      <description>If false, the search entry will not be displayed.</description>
-    </key>
     <key type="b" name="use-keybinding">
       <default>true</default>
       <summary>if keybinding is enabled</summary>
       <description>if true, Super+E will toggle the menu.</description>
-    </key>
-    <key type="b" name="color-emojis">
-      <default>true</default>
-      <summary>if color emojis are used</summary>
-      <description>[Experimental]</description>
     </key>
     <key type="b" name="light-theme">
       <default>false</default>
