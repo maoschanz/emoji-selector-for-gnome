@@ -20,7 +20,7 @@ const Convenience = Me.imports.convenience;
 //-----------------------------------------------
 
 function init() {
-    Convenience.initTranslations();
+	Convenience.initTranslations();
 }
 
 //TODO UN RECHARGEMENT AUTO DE L'EXTENSION ? 
@@ -28,72 +28,72 @@ function init() {
 //-----------------------------------------------
 
 var PrefsPage = new Lang.Class({
-    Name: "PrefsPage",
-    Extends: Gtk.ScrolledWindow,
-    
-    _init: function () {
-        this.parent({
-            vexpand: true,
-            can_focus: true
-        });
-        
-        this.box = new Gtk.Box({
-            visible: true,
-            can_focus: false,
-            margin_left: 80,
-            margin_right: 80,
-            margin_top: 20,
-            margin_bottom: 20,
-            orientation: Gtk.Orientation.VERTICAL,
-            spacing: 20
-        });
-        this.add(this.box);
-    },
-    
-    add_widget: function(filledbox) {
-    	this.box.add(filledbox);
-    } 
+	Name: "PrefsPage",
+	Extends: Gtk.ScrolledWindow,
+	
+	_init: function () {
+		this.parent({
+			vexpand: true,
+			can_focus: true
+		});
+		
+		this.box = new Gtk.Box({
+			visible: true,
+			can_focus: false,
+			margin_left: 80,
+			margin_right: 80,
+			margin_top: 20,
+			margin_bottom: 20,
+			orientation: Gtk.Orientation.VERTICAL,
+			spacing: 25
+		});
+		this.add(this.box);
+	},
+	
+	add_widget: function(filledbox) {
+		this.box.add(filledbox);
+	} 
 });
 
 const EmojiPrefsWidget = new Lang.Class({
-    Name: "EmojiPrefsWidget",
-    Extends: Gtk.Stack,
-    
-    _init: function () {
-        this.parent({transition_type: Gtk.StackTransitionType.SLIDE_LEFT_RIGHT});
-        
-        this.switcher = new Gtk.StackSwitcher({
-            halign: Gtk.Align.CENTER,
-            stack: this
-        });
-        this.switcher.show_all();
-    },
-    
-    add_page: function (id, title) {
-        let page = new PrefsPage();
-        this.add_titled(page, id, title);
-        return page;
-    }
+	Name: "EmojiPrefsWidget",
+	Extends: Gtk.Stack,
+	
+	_init: function () {
+		this.parent({transition_type: Gtk.StackTransitionType.SLIDE_LEFT_RIGHT});
+		
+		this.switcher = new Gtk.StackSwitcher({
+			halign: Gtk.Align.CENTER,
+			stack: this
+		});
+		this.switcher.show_all();
+	},
+	
+	add_page: function (id, title) {
+		let page = new PrefsPage();
+		this.add_titled(page, id, title);
+		return page;
+	}
 });
 
 let SETTINGS = Convenience.getSettings();
 
 function buildPrefsWidget() {
-    let widget = new EmojiPrefsWidget();
-    
-    let settingsPage = widget.add_page("settings", _("Settings"));	
+	let widget = new EmojiPrefsWidget();
+	
+	let settingsPage = widget.add_page("settings", _("Settings"));	
 
 		//-------------------------------------------------
 		
 		let labelSizeEmojis = _("Size of emojis (px):");
 		
 		let emojiSize = new Gtk.SpinButton();
-        emojiSize.set_sensitive(true);
-        emojiSize.set_range(10, 100);
+		emojiSize.set_sensitive(true);
+		emojiSize.set_range(10, 100);
 		emojiSize.set_value(32);
 		emojiSize.set_value(SETTINGS.get_int('emojisize'));
-        emojiSize.set_increments(1, 2);
-        
+		emojiSize.set_increments(1, 2);
+		
 		emojiSize.connect('value-changed', Lang.bind(this, function(w){
 			var value = w.get_value_as_int();
 			SETTINGS.set_int('emojisize', value);
@@ -102,10 +102,10 @@ function buildPrefsWidget() {
 		let sizeBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 10 });
 		sizeBox.pack_start(new Gtk.Label({ label: labelSizeEmojis, halign: Gtk.Align.START }), false, false, 0);
 		sizeBox.pack_end(emojiSize, false, false, 0);
-    	
-    	//------------------------------------------------
-    	
-    	let labelLightTheme = _("Use darker font:");
+		
+		//------------------------------------------------
+		
+		let labelLightTheme = _("Use darker font:");
 		let lightThemeSwitch = new Gtk.Switch();
 		lightThemeSwitch.set_state(false);
 		lightThemeSwitch.set_state(SETTINGS.get_boolean('light-theme'));
@@ -122,41 +122,41 @@ function buildPrefsWidget() {
 		lightThemeBox.pack_start(new Gtk.Label({ label: labelLightTheme, halign: Gtk.Align.START }), false, false, 0);
 		lightThemeBox.pack_end(lightThemeSwitch, false, false, 0);
 		
-    	//------------------------------------------------
-    	
+		//------------------------------------------------
+		
 		let labelPosRecent = _("Display of recent emojis:");
 		
 		let positionCombobox = new Gtk.ComboBoxText({
-            visible: true,
-            can_focus: true,
-            halign: Gtk.Align.END,
-            valign: Gtk.Align.CENTER
-        });
+			visible: true,
+			can_focus: true,
+			halign: Gtk.Align.END,
+			valign: Gtk.Align.CENTER
+		});
 		
 		positionCombobox.append('top', _("Top"));
 		positionCombobox.append('bottom', _("Bottom"));
 		
 		positionCombobox.active_id = SETTINGS.get_string('position');
-        
-        positionCombobox.connect("changed", (widget) => {
-            SETTINGS.set_string('position', widget.get_active_id());
-        });
+		
+		positionCombobox.connect("changed", (widget) => {
+			SETTINGS.set_string('position', widget.get_active_id());
+		});
 		
 		let positionBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 10});
 		positionBox.pack_start(new Gtk.Label({ label: labelPosRecent, halign: Gtk.Align.START }), false, false, 0);
 		positionBox.pack_end(positionCombobox, false, false, 0);
 
-    	//-------------------------------------
+		//-------------------------------------
 		
 		let labelNbEmojis = _("Number of emojis per line:");
 		
 		let nbCols = new Gtk.SpinButton();
-        nbCols.set_sensitive(true);
-        nbCols.set_range(1, 60);
+		nbCols.set_sensitive(true);
+		nbCols.set_range(1, 60);
 		nbCols.set_value(11);
 		nbCols.set_value(SETTINGS.get_int('nbcols'));
-        nbCols.set_increments(1, 2);
-        
+		nbCols.set_increments(1, 2);
+		
 		nbCols.connect('value-changed', Lang.bind(this, function(w){
 			var value = w.get_value_as_int();
 			SETTINGS.set_int('nbcols', value);
@@ -167,17 +167,17 @@ function buildPrefsWidget() {
 		colsBox.pack_end(nbCols, false, false, 0);
 		
 		//-------------------------------------------------------
-    	
-    settingsPage.add_widget(sizeBox);
-    settingsPage.add_widget(lightThemeBox);
-    settingsPage.add_widget(colsBox);
-    settingsPage.add_widget(positionBox);
-    
+		
+	settingsPage.add_widget(sizeBox);
+	settingsPage.add_widget(lightThemeBox);
+	settingsPage.add_widget(colsBox);
+	settingsPage.add_widget(positionBox);
+	
 		//---------------------------------------------------
 		
 		let keybindingBox = new Gtk.Box({
 			orientation: Gtk.Orientation.VERTICAL,
-			spacing: 0,
+			spacing: 5,
 			tooltip_text: _("Default value is") +  " <Super>e"
 		});
 		
@@ -239,11 +239,11 @@ function buildPrefsWidget() {
 		let a_description = _( Me.metadata.description.toString() );
 		
 		let label_name = new Gtk.Label({ label: a_name, use_markup: true, halign: Gtk.Align.CENTER });
-        
-        let url_button = new Gtk.LinkButton({ label: a_uuid, uri: Me.metadata.url.toString() });
-        
-        let a_image = new Gtk.Image({ pixbuf: GdkPixbuf.Pixbuf.new_from_file_at_size(Me.path+'/icons/about_icon.png', 128, 128) });
-        
+		
+		let url_button = new Gtk.LinkButton({ label: a_uuid, uri: Me.metadata.url.toString() });
+		
+		let a_image = new Gtk.Image({ pixbuf: GdkPixbuf.Pixbuf.new_from_file_at_size(Me.path+'/icons/about_icon.png', 128, 128) });
+		
 		let label_version = new Gtk.Label({ label: a_version, use_markup: true, halign: Gtk.Align.CENTER });
 		let label_description = new Gtk.Label({ label: a_description, wrap: true, halign: Gtk.Align.CENTER });
 		
@@ -282,8 +282,8 @@ function buildPrefsWidget() {
 //I guess this is like the "enable" in extension.js : something called each
 //time he user try to access the settings' window
 //function buildPrefsWidget() {
-//    let widget = new EmojiSettingsWidget();
-//    widget.show_all();
+//	let widget = new EmojiSettingsWidget();
+//	widget.show_all();
 
-//    return widget;
+//	return widget;
 //}
