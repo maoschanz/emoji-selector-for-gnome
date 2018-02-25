@@ -2,7 +2,7 @@
 
 //http://unicode.org/emoji/charts/full-emoji-list.html
 	
-let ALL_KEYWORDS = [
+var ALL_KEYWORDS = [
 	[
 		['grinning face', 'grin'],
 		['grinning face with smiling eyes', 'eye', 'grin', 'smile'],
@@ -122,7 +122,59 @@ let ALL_KEYWORDS = [
 		['hear-no-evil monkey', 'evil', 'forbidden', 'gesture', 'hear', 'monkey', 'no', 'not', 'prohibited'],
 		['speak-no-evil monkey', 'evil', 'forbidden', 'gesture', 'monkey', 'no', 'not', 'prohibited', 'speak'],
 		
-
+	//-----body
+		['selfie', 'camera', 'phone', 'selfie'],
+		['flexed biceps', 'biceps', 'comic', 'flex', 'muscle'],
+		
+		//-------------
+		
+		['backhand index pointing left', 'backhand', 'finger', 'hand', 'index', 'point'],
+		['backhand index pointing right', 'backhand', 'finger', 'hand', 'index', 'point'],
+		['index pointing up', 'finger', 'hand', 'index', 'point', 'up'],
+		['backhand index pointing up', 'backhand', 'finger', 'hand', 'index', 'point', 'up'],
+		['middle finger', 'finger', 'hand'],
+		['backhand index pointing down', 'backhand', 'down', 'finger', 'hand', 'index', 'point'],
+		['victory hand', 'hand', 'v', 'victory'],
+		['crossed fingers', 'cross', 'finger', 'hand', 'luck'],
+		['vulcan salute', 'finger', 'hand', 'spock', 'vulcan'],
+		['sign of the horns', 'finger', 'hand', 'horns', 'rock-on'],
+		//-------------
+		['call me hand', 'call', 'hand'],
+		['raised hand with fingers splayed', 'finger', 'hand', 'splayed'],
+		['raised hand', 'hand'],
+		['ok hand', 'ok', 'ok', 'hand'],
+		['thumbs up', '+1', 'hand', 'thumb', 'up'],
+		['thumbs down', '-1', 'down', 'hand', 'thumb'],
+		['raised fist', 'clenched', 'fist', 'hand', 'punch'],
+		['oncoming fist', 'clenched', 'fist', 'hand', 'punch'],
+		['left-facing fist', 'fist', 'leftwards'],
+		['right-facing fist', 'fist', 'rightwards'],
+		
+		//-------------
+		['raised back of hand', 'backhand', 'raised'],
+		['waving hand', 'hand', 'wave', 'waving'],
+		['love-you gesture', 'hand', 'love'],
+		['writing hand', 'hand', 'write'],
+		['clapping hands', 'clap', 'hand'],
+		['open hands', 'hand', 'open'],
+		['raising hands', 'celebration', 'gesture', 'hand', 'hooray', 'raised'],
+		['palms up together', 'hand'],
+		['folded hands', 'ask', 'bow', 'folded', 'gesture', 'hand', 'please', 'pray', 'thanks'],
+		['handshake', 'agreement', 'hand', 'handshake', 'meeting', 'shake'],
+		['nail polish', 'care', 'cosmetics', 'manicure', 'nail', 'polish'],
+		['ear', 'body'],
+		//-------------
+		['nose', 'body'],
+		['footprints', 'clothing', 'footprint', 'print', 'gnome'],
+		['eyes', 'eye'],
+		['eye', 'body'],
+		['eye in speech bubble', 'eye', 'speech bubble', 'witness'],
+		['brain', 'body'],
+		['tongue', 'body'],
+		['mouth', 'lips'],
+	
+	], [	//people & clothes
+		
 		['baby', 'baby', 'young'],
 		['child', 'young'],
 		['boy', 'boy', 'young'],
@@ -254,58 +306,8 @@ let ALL_KEYWORDS = [
 		['two women holding hands', 'couple', 'hand', 'hold', 'woman'],
 		['kiss', 'couple'],
 		['couple with heart', 'couple', 'love'],
-		['family'],
-	//-----body
-		['selfie', 'camera', 'phone', 'selfie'],
-		['flexed biceps', 'biceps', 'comic', 'flex', 'muscle'],
+		['family'],	
 		
-		//-------------
-		
-		['backhand index pointing left', 'backhand', 'finger', 'hand', 'index', 'point'],
-		['backhand index pointing right', 'backhand', 'finger', 'hand', 'index', 'point'],
-		['index pointing up', 'finger', 'hand', 'index', 'point', 'up'],
-		['backhand index pointing up', 'backhand', 'finger', 'hand', 'index', 'point', 'up'],
-		['middle finger', 'finger', 'hand'],
-		['backhand index pointing down', 'backhand', 'down', 'finger', 'hand', 'index', 'point'],
-		['victory hand', 'hand', 'v', 'victory'],
-		['crossed fingers', 'cross', 'finger', 'hand', 'luck'],
-		['vulcan salute', 'finger', 'hand', 'spock', 'vulcan'],
-		['sign of the horns', 'finger', 'hand', 'horns', 'rock-on'],
-		//-------------
-		['call me hand', 'call', 'hand'],
-		['raised hand with fingers splayed', 'finger', 'hand', 'splayed'],
-		['raised hand', 'hand'],
-		['ok hand', 'ok', 'ok', 'hand'],
-		['thumbs up', '+1', 'hand', 'thumb', 'up'],
-		['thumbs down', '-1', 'down', 'hand', 'thumb'],
-		['raised fist', 'clenched', 'fist', 'hand', 'punch'],
-		['oncoming fist', 'clenched', 'fist', 'hand', 'punch'],
-		['left-facing fist', 'fist', 'leftwards'],
-		['right-facing fist', 'fist', 'rightwards'],
-		
-		//-------------
-		['raised back of hand', 'backhand', 'raised'],
-		['waving hand', 'hand', 'wave', 'waving'],
-		['love-you gesture', 'hand', 'love'],
-		['writing hand', 'hand', 'write'],
-		['clapping hands', 'clap', 'hand'],
-		['open hands', 'hand', 'open'],
-		['raising hands', 'celebration', 'gesture', 'hand', 'hooray', 'raised'],
-		['palms up together', 'hand'],
-		['folded hands', 'ask', 'bow', 'folded', 'gesture', 'hand', 'please', 'pray', 'thanks'],
-		['handshake', 'agreement', 'hand', 'handshake', 'meeting', 'shake'],
-		['nail polish', 'care', 'cosmetics', 'manicure', 'nail', 'polish'],
-		['ear', 'body'],
-		//-------------
-		['nose', 'body'],
-		['footprints', 'clothing', 'footprint', 'print', 'gnome'],
-		['eyes', 'eye'],
-		['eye', 'body'],
-		['eye in speech bubble', 'eye', 'speech bubble', 'witness'],
-		['brain', 'body'],
-		['tongue', 'body'],
-		['mouth', 'lips'],
-	
 	//clothing
 		['glasses', 'clothing', 'eye', 'eyeglasses', 'eyewear'],
 		['sunglasses', 'dark', 'eye', 'sun', 'eyewear', 'glasses'],

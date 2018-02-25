@@ -121,12 +121,8 @@ const EmojiCategory = new Lang.Class({
 	
 	_init:		function(categoryName, iconName, id) {
 		this.parent(categoryName);
-		let ln, container;
-		
 		this.actor.visible = false;
-		
 		this.id = id;
-		
 		this.emojiButtons = [];
 
 		this.categoryButton = new St.Button({
@@ -148,6 +144,7 @@ const EmojiCategory = new Lang.Class({
 	},
 	
 	build: function() {
+		let ln, container;
 		for (var i = 0; i < EMOJIS_CHARACTERS[this.id].length; i++) {
 			
 			// management of lines of emojis
@@ -422,18 +419,19 @@ const EmojisMenu = new Lang.Class({
 		this.emojiCategories = [];
 	
 		/* creating new categories with emojis loaded in EMOJIS_CHARACTERS */
-		this.emojiCategories[0] = new EmojiCategory(	_('Smileys & People'),		'face-smile-symbolic',			0	);
-		this.emojiCategories[1] = new EmojiCategory(	_('Animals & Nature'),		'face-monkey-symbolic',			1	);	
-		this.emojiCategories[2] = new EmojiCategory(	_('Food & Drink'), 			'my-caffeine-on-symbolic',		2	);
-		this.emojiCategories[3] = new EmojiCategory(	_('Travel & Places'), 		'airplane-mode-symbolic',		3	);
-		this.emojiCategories[4] = new EmojiCategory(	_('Activities & Sports'),	'applications-games-symbolic',	4	);
-		this.emojiCategories[5] = new EmojiCategory(	_('Objects'),				'alarm-symbolic',				5	);
-		this.emojiCategories[6] = new EmojiCategory(	_('Symbols'),				'emblem-default-symbolic',		6	);
-		this.emojiCategories[7] = new EmojiCategory(	_('Flags'),					'flag-symbolic',				7	);
+		this.emojiCategories[0] = new EmojiCategory(	_('Smileys & Body'),		'face-smile-symbolic',			0	);
+		this.emojiCategories[1] = new EmojiCategory(	_('Peoples & Clothing'),		'contact-new-symbolic',			1	);	
+		this.emojiCategories[2] = new EmojiCategory(	_('Animals & Nature'),		'face-monkey-symbolic',			2	);	
+		this.emojiCategories[3] = new EmojiCategory(	_('Food & Drink'), 			'my-caffeine-on-symbolic',		3	);
+		this.emojiCategories[4] = new EmojiCategory(	_('Travel & Places'), 		'airplane-mode-symbolic',		4	);
+		this.emojiCategories[5] = new EmojiCategory(	_('Activities & Sports'),	'applications-games-symbolic',	5	);
+		this.emojiCategories[6] = new EmojiCategory(	_('Objects'),				'alarm-symbolic',				6	);
+		this.emojiCategories[7] = new EmojiCategory(	_('Symbols'),				'emblem-default-symbolic',		7	);
+		this.emojiCategories[8] = new EmojiCategory(	_('Flags'),					'flag-symbolic',				8	);
 	},
 	
 	_addAllCategories: function() {
-		for (let i = 0; i< 8; i++) {			
+		for (let i = 0; i< 9; i++) {			
 			this.menu.addMenuItem(this.emojiCategories[i]);
 		}
 	},
@@ -460,7 +458,7 @@ const EmojisMenu = new Lang.Class({
 		
 		this.categoryButton = [];
 		
-		for (let i = 0; i< 8; i++) {
+		for (let i = 0; i< 9; i++) {
 			this._buttonMenu.actor.add_actor(this.emojiCategories[i].getButton());
 		}
 		
