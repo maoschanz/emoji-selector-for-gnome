@@ -169,7 +169,7 @@ const EmojiCategory = new Lang.Class({
 			
 			//connection of the button
 			button.connect('clicked', Lang.bind(this, function(){
-				if(CurrentEmoji != ' ') {
+				if(CurrentEmoji != '') {
 					/* setting the emoji in the clipboard */
 					Clipboard.set_text(CLIPBOARD_TYPE, CurrentEmoji);
 					shiftFor(CurrentEmoji);
@@ -275,7 +275,7 @@ const EmojiResearchItem = new Lang.Class({
 			searchedText = searchedText.toLowerCase();
 			
 			for (let j = 0; j < NB_COLS; j++) {
-				recents[j].label = ' ';
+				recents[j].label = '';
 			}
 			
 			let empty = 0;
@@ -405,7 +405,7 @@ const EmojisMenu = new Lang.Class({
 			}));
 		}));
 		
-		if(_settings.get_boolean('use-keybinding')) {
+		if(SETTINGS.get_boolean('use-keybinding')) {
 			this._bindShortcut();
 		}
 		// end of _init //----------------------------------		
@@ -444,13 +444,10 @@ const EmojisMenu = new Lang.Class({
 			track_hover: true,
 			accessible_name: _("Back"),
 			style_class: 'system-menu-action',
-//			style_class: 'emoji-back-button',
 			style: 'background-color: rgba(200,0,0,0.2);',
 		});
 		this.backBtn.child = new St.Icon({
 			icon_name: 'go-previous-symbolic',
-//			icon_name: 'window-close-symbolic',
-//			icon_size: 16,
 		});
 		
 		this._buttonMenu = new PopupMenu.PopupBaseMenuItem(	{	reactive: false	}	);
@@ -604,10 +601,9 @@ function init() {
 
 //------------------------------------------------------------
 
-let _settings
+let SETTINGS
 function enable() {	
-	_settings = Convenience.getSettings();
-	//_settings = Convenience.getSettings('org.gnome.shell.extensions.emoji-selector');
+	SETTINGS = Convenience.getSettings();
 	
 	/* TODO paramètres restants à dynamiser
 	emoji-keybinding (tableau de chaînes)
@@ -615,8 +611,8 @@ function enable() {
 	position (chaîne)
 	*/
 	
-	NB_COLS = _settings.get_int('nbcols');
-	POSITION = _settings.get_string('position');
+	NB_COLS = SETTINGS.get_int('nbcols');
+	POSITION = SETTINGS.get_string('position');
 	
 	globalButton = new EmojisMenu();
 //	about addToStatusArea :
@@ -624,13 +620,13 @@ function enable() {
 //	- `right` is the box where we want our globalButton to be displayed (left/center/right)
 	Main.panel.addToStatusArea('EmojisMenu', globalButton, 0, 'right');
 	
-	_settings.connect('changed::emojisize', Lang.bind(this, function(){
+	SETTINGS.connect('changed::emojisize', Lang.bind(this, function(){
 		updateStyle();
 	}));
-	_settings.connect('changed::light-theme', Lang.bind(this, function(){
+	SETTINGS.connect('changed::light-theme', Lang.bind(this, function(){
 		updateStyle();
 	}));
-	_settings.connect('changed::use-keybinding', Lang.bind(this, function(z){
+	SETTINGS.connect('changed::use-keybinding', Lang.bind(this, function(z){
 		if(z.get_boolean('use-keybinding')) {
 			Main.wm.removeKeybinding('emoji-keybinding');
 			globalButton._bindShortcut();
@@ -647,7 +643,7 @@ function disable() {
 	//we need to save labels currently in recents[] for the next session
 	saveRecents();
 
-	if(_settings.get_boolean('use-keybinding')) {
+	if(SETTINGS.get_boolean('use-keybinding')) {
 		Main.wm.removeKeybinding('emoji-keybinding');
 	}
 	globalButton.destroy();
