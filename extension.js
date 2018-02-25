@@ -439,11 +439,23 @@ const EmojisMenu = new Lang.Class({
 	},
 	
 	_renderPanelMenuHeaderBox: function() {
-	
-		let systemMenu = Main.panel.statusArea.aggregateMenu._system;
-		this._buttonMenu = new PopupMenu.PopupBaseMenuItem(	{	reactive: false	}	);
 		
-		this.backBtn = systemMenu._createActionButton('go-previous-symbolic', _("Back"));
+		this.backBtn = new St.Button({
+			reactive: true,
+			can_focus: true,
+			track_hover: true,
+			accessible_name: _("Back"),
+			style_class: 'system-menu-action',
+//			style_class: 'emoji-back-button',
+			style: 'background-color: rgba(200,0,0,0.2);',
+		});
+		this.backBtn.child = new St.Icon({
+			icon_name: 'go-previous-symbolic',
+//			icon_name: 'window-close-symbolic',
+//			icon_size: 16,
+		});
+		
+		this._buttonMenu = new PopupMenu.PopupBaseMenuItem(	{	reactive: false	}	);
 		this._buttonMenu.actor.add_actor(this.backBtn);
 		
 		this.categoryButton = [];
