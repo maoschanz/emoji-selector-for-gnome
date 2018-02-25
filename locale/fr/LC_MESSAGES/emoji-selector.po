@@ -13,9 +13,13 @@ msgstr ""
 "Last-Translator: \n"
 "Language: fr\n"
 
+#: extension.js:53
+msgid "Smileys & Body"
+msgstr "Émoticônes & corps humain"
+
 #: extension.js:54
-msgid "Smileys & People"
-msgstr "Émoticônes & personnes"
+msgid "Peoples & Clothing"
+msgstr "Personnes & vêtements"
 
 #: extension.js:55
 msgid "Animals & Nature"
