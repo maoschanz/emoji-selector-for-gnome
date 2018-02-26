@@ -3,14 +3,7 @@ const Clutter = imports.gi.Clutter;
 const Main = imports.ui.main;
 const Shell = imports.gi.Shell;
 const Lang = imports.lang;
-/*
-TODO
-- qui restent enfoncés -> pas encore
-- séquence d'émojis -> à faire
-- paramètres dynamiques -> mouais
-- paramètres de keybinding fonctionnels -> ... en partie
 
-*/
 //cause it is needed to grab the damn focus
 const Mainloop = imports.mainloop;
 
@@ -287,7 +280,7 @@ const EmojiResearchItem = new Lang.Class({
 						let isMatching = false;
 						if (empty < NB_COLS) {
 							for (let k = 0; k < EMOJIS_KEYWORDS[cat][i].length; k++) {
-								if ( searchedText.substr(0, searchedText.length) == _( EMOJIS_KEYWORDS[cat][i][k]).substr(0, searchedText.length) ){
+								if (_(EMOJIS_KEYWORDS[cat][i][k]).includes(searchedText)) {
 									isMatching = true;
 								}
 							}
@@ -307,7 +300,7 @@ const EmojiResearchItem = new Lang.Class({
 					let isMatching = false;
 					if (empty < NB_COLS) {
 						for (let k = 0; k < EMOJIS_KEYWORDS[cat][i].length; k++) {
-							if ( searchedText.substr(0, searchedText.length) == _( EMOJIS_KEYWORDS[cat][i][k]).substr(0, searchedText.length) ){
+							if (_(EMOJIS_KEYWORDS[cat][i][k]).includes(searchedText)) {
 								isMatching = true;
 							}
 						}
