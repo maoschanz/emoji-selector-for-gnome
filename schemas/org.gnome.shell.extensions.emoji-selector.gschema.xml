@@ -7,23 +7,13 @@
       <summary>orientation of the interface</summary>
       <description>Possible values can be 'top' or 'bottom'.</description>
     </key>
-    <key type="s" name="action">
-      <default>'copy'</default>
-      <summary>action of a clic on an emoji</summary>
-      <description>Possible values can be 'copy' or 'insert'.</description>
-    </key>
-    <key type="i" name="nbrecents">
-      <default>13</default>
-      <summary>Number of recently used emojis</summary>
-      <description>Sets the number of recently used emojis to display.</description>
-    </key>
     <key type="i" name="nbcols">
-      <default>14</default>
+      <default>11</default>
       <summary>Number of emojis per line</summary>
-      <description>Sets the number of column of emojis to display in subcategories.</description>
+      <description>Sets the number of column of emojis to display.</description>
     </key>
     <key type="i" name="emojisize">
-      <default>28</default>
+      <default>32</default>
       <summary>Default size of emojis</summary>
       <description>Default size of emojis (px) ; doesn't concern recently used items</description>
     </key>
@@ -32,25 +22,10 @@
       <summary>default memorized emojis</summary>
       <description></description>
     </key>
-    <key type="b" name="classic-interface">
-      <default>false</default>
-      <summary>if submenus or buttons should be used</summary>
-      <description>If false, buttons will be used. If true, the classic interface with submenus will be used.</description>
-    </key>
-    <key type="b" name="search-enabled">
-      <default>true</default>
-      <summary>if search is enabled</summary>
-      <description>If false, the search entry will not be displayed.</description>
-    </key>
     <key type="b" name="use-keybinding">
       <default>true</default>
       <summary>if keybinding is enabled</summary>
       <description>if true, Super+E will toggle the menu.</description>
-    </key>
-    <key type="b" name="color-emojis">
-      <default>true</default>
-      <summary>if color emojis are used</summary>
-      <description>[Experimental]</description>
     </key>
     <key type="b" name="light-theme">
       <default>false</default>
