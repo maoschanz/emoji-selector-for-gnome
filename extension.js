@@ -108,6 +108,141 @@ function shiftFor(CurrentEmoji) {
 //methods :	_init()
 //			...
 //			destroy()
+const SkinTonesBar = new Lang.Class({
+	Name:		'SkinTonesBar',
+	
+	_init:	function (catActor) {
+		this.noTone = new St.Button({ //TODO style_class + for
+			reactive: true,
+			can_focus: true,
+			track_hover: true,
+			width: 20,
+			accessible_name: _("No skin tone"),
+			style: 'background-color: #FFEE00; border-radius: 10px; border-color: rgba(0,0,200,0.5);'
+		});
+		this.light = new St.Button({
+			reactive: true,
+			can_focus: true,
+			track_hover: true,
+			width: 20,
+			accessible_name: _("Light skin tone"),
+			style: 'background-color: #FFD8A8; border-radius: 10px; border-color: rgba(0,0,200,0.5);'
+		});
+		this.mediumLight = new St.Button({
+			reactive: true,
+			can_focus: true,
+			track_hover: true,
+			width: 20,
+			accessible_name: _("Medium light skin tone"),
+			style: 'background-color: #E5B590; border-radius: 10px; border-color: rgba(0,0,200,0.5);'
+		});
+		this.medium = new St.Button({
+			reactive: true,
+			can_focus: true,
+			track_hover: true,
+			width: 20,
+			accessible_name: _("Medium skin tone"),
+			style: 'background-color: #B88750; border-radius: 10px; border-color: rgba(0,0,200,0.5);'
+		});
+		this.mediumDark = new St.Button({
+			reactive: true,
+			can_focus: true,
+			track_hover: true,
+			width: 20,
+			accessible_name: _("Medium dark tone"),
+			style: 'background-color: #9B6020; border-radius: 10px; border-color: rgba(0,0,200,0.5);'
+		});
+		this.dark = new St.Button({
+			reactive: true,
+			can_focus: true,
+			track_hover: true,
+			width: 20,
+			accessible_name: _("Dark skin tone"),
+			style: 'background-color: #4B2000; border-radius: 10px; border-color: rgba(0,0,200,0.5);'
+		});
+		
+		this.noTone.connect('clicked', Lang.bind(this, function(w){
+			this.removeCircle();
+			w.style += ' border-width: 3px;';
+			SETTINGS.set_int('skin-tone', 0);
+		}));
+		this.light.connect('clicked', Lang.bind(this, function(w){
+			this.removeCircle();
+			w.style += ' border-width: 3px;';
+			SETTINGS.set_int('skin-tone', 1);
+		}));
+		this.mediumLight.connect('clicked', Lang.bind(this, function(w){
+			this.removeCircle();
+			w.style += ' border-width: 3px;';
+			SETTINGS.set_int('skin-tone', 2);
+		}));
+		this.medium.connect('clicked', Lang.bind(this, function(w){
+			this.removeCircle();
+			w.style += ' border-width: 3px;';
+			SETTINGS.set_int('skin-tone', 3);
+		}));
+		this.mediumDark.connect('clicked', Lang.bind(this, function(w){
+			this.removeCircle();
+			w.style += ' border-width: 3px;';
+			SETTINGS.set_int('skin-tone', 4);
+		}));
+		this.dark.connect('clicked', Lang.bind(this, function(w){
+			this.removeCircle();
+			w.style += ' border-width: 3px;';
+			SETTINGS.set_int('skin-tone', 5);
+		}));
+		
+		this.update();
+		
+		//TODO array & for loop
+		catActor.add(this.noTone);
+		catActor.add(this.light);
+		catActor.add(this.mediumLight);
+		catActor.add(this.medium);
+		catActor.add(this.mediumDark);
+		catActor.add(this.dark);
+	},
+	
+	removeCircle: function() { //TODO style_class 
+		this.noTone.style += 'border-width: 0px;'
+		this.light.style += 'border-width: 0px;'
+		this.mediumLight.style += 'border-width: 0px;'
+		this.medium.style += 'border-width: 0px;'
+		this.mediumDark.style += 'border-width: 0px;'
+		this.dark.style += 'border-width: 0px;'
+	},
+	
+	update: function() { //TODO style_class 
+		this.removeCircle();
+		switch ( SETTINGS.get_int('skin-tone') ) {
+			case 1:
+				this.light.style += ' border-width: 3px;';
+			break;
+			case 2:
+				this.mediumLight.style += ' border-width: 3px;';
+			break;
+			case 3:
+				this.medium.style += ' border-width: 3px;';
+			break;
+			case 4:
+				this.mediumDark.style += ' border-width: 3px;';
+			break;
+			case 5:
+				this.dark.style += ' border-width: 3px;';
+			break;
+			default:
+				this.noTone.style += ' border-width: 3px;';
+			break;
+		}
+	},
+});
+
+//-------------------------------------------------
+
+//class EmojiCategory
+//methods :	_init()
+//			...
+//			destroy()
 const EmojiCategory = new Lang.Class({
 	Name:		'EmojiCategory',
 	Extends:	PopupMenu.PopupSubMenuMenuItem,
@@ -117,6 +252,11 @@ const EmojiCategory = new Lang.Class({
 		this.actor.visible = false;
 		this.id = id;
 		this.emojiButtons = [];
+		
+		/////////////////////////////////////////////
+		
+		this.actor.reactive = false;
+		this.skinTonesBar = new SkinTonesBar(this.actor); //FIXME pas pour toutes les catégories
 
 		this.categoryButton = new St.Button({
 			reactive: true,
@@ -159,17 +299,35 @@ const EmojiCategory = new Lang.Class({
 			);
 			let CurrentEmoji = EMOJIS_CHARACTERS[this.id][i];
 			button.label = CurrentEmoji;
+			this.tones = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
+			
+			for (var j = 0; j < EMOJIS_KEYWORDS[this.id][i].length; j++) {
+				var tonable = (EMOJIS_KEYWORDS[this.id][i][j] == 'HAS_TONE');
+			}
 			
 			//connection of the button
-			button.connect('clicked', Lang.bind(this, function(){
-				if(CurrentEmoji != '') {
-					/* setting the emoji in the clipboard */
-					Clipboard.set_text(CLIPBOARD_TYPE, CurrentEmoji);
-					shiftFor(CurrentEmoji);
-					this.menu.close();
-					globalButton.menu.close(); /*?? FIXME inutile ? */
-				}
-			}));
+			if (tonable) {
+				button.connect('clicked', Lang.bind(this, function(){
+					if(CurrentEmoji != '') {
+						/* setting the emoji in the clipboard */
+						var my_tone = SETTINGS.get_int('skin-tone');
+						Clipboard.set_text(CLIPBOARD_TYPE, CurrentEmoji + this.tones[my_tone]);
+						shiftFor(CurrentEmoji);
+						this.menu.close();
+						globalButton.menu.close(); /*?? FIXME inutile ? */
+					}
+				}));
+			} else {	
+				button.connect('clicked', Lang.bind(this, function(){
+					if(CurrentEmoji != '') {
+						/* setting the emoji in the clipboard */
+						Clipboard.set_text(CLIPBOARD_TYPE, CurrentEmoji);
+						shiftFor(CurrentEmoji);
+						this.menu.close();
+						globalButton.menu.close(); /*?? FIXME inutile ? */
+					}
+				}));
+			}
 			this.emojiButtons.push(button);
 			container.add_child(button);
 		}
@@ -192,7 +350,9 @@ const EmojiCategory = new Lang.Class({
 		if(!this._built) {
 			this.build();
 		}
+		this.skinTonesBar.update();
 		
+		this.categoryButton.style = 'background-color: rgba(0,0,200,0.2);';
 		this.actor.visible = true;		
 		this.setSubmenuShown(true);
 		globalButton._activeCat = this.id;
@@ -385,8 +545,6 @@ const EmojisMenu = new Lang.Class({
 		
 		// this sets the default behavior of each submenu : false means it is close when the extension's menu opens
 		this.menu.connect('open-state-changed', Lang.bind(this, function(self, open){
-			
-
 			this.clearCategories();
 
 			let a = Mainloop.timeout_add(20, Lang.bind(this, function() {
@@ -456,9 +614,14 @@ const EmojisMenu = new Lang.Class({
 	},
 	
 	clearCategories: function(){
+		// removing the blue color of previously opened category's button
+		for (let i = 0; i< 9; i++) {
+			this.emojiCategories[i].getButton().style = 'background-color: transparent;';
+		}
 		
 		let items = this.menu._getMenuItems();
 		
+		// closing and hinding opened categories
 		if (POSITION == 'top') {
 			for( var i = this._permanentItems; i < items.length; i++){
 				items[i].setSubmenuShown(false);
