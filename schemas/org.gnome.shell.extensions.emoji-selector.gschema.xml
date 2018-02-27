@@ -32,6 +32,11 @@
       <summary>if a darker font is used</summary>
       <description>if true, emojis characters will be black (adapted for GS themes which are light).</description>
     </key>
+    <key type="i" name="skin-tone">
+      <default>0</default>
+      <summary>Favorite skin tone</summary>
+      <description>0 is none, 1 is light, ..., 5 is dark.</description>
+    </key>
     <key name="emoji-keybinding" type="as">
       <default><![CDATA[['<Super>e']]]></default>
       <summary>Keyboard shortcut.</summary>
