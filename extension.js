@@ -34,6 +34,24 @@ const EMOJIS_KEYWORDS = Me.imports.emojisKeywords.ALL_KEYWORDS;
 
 //------------------------------------------------------------
 
+/*
+
+TODO
+
+problème d'update des états des genres entre catégories
+
+virer les logs
+
+remarque qu'on peut génériciser le prétraitement 
+
+support générique pour les récents
+
+support générique pour touche entrée btw
+
+indicateur de la couleur/genre dans l'entrée de recherche ?? ou recherche parmi pré-traités
+
+*/
+
 /* Global variable : globalButton to click in the topbar */
 let globalButton;
 
@@ -102,6 +120,79 @@ function shiftFor(CurrentEmoji) {
 	saveRecents(); 
 }
 
+function genericOnButtonPress (actor, event, tags, CurrentEmoji){
+	let mouseButton = event.get_button();
+	if (mouseButton == 1) {
+		genericActivate(tags, false, CurrentEmoji);
+		globalButton.menu.close();
+		return Clutter.EVENT_STOP;
+	} else if (mouseButton == 2) {
+		genericActivate(tags, false, CurrentEmoji);
+		return Clutter.EVENT_STOP;
+	} else if (mouseButton == 3) {
+		genericActivate(tags, true, CurrentEmoji);
+		return Clutter.EVENT_STOP;
+	}
+	return Clutter.EVENT_PROPAGATE;		
+}
+	
+	/* setting the emoji in the clipboard */
+function genericActivate (tags, shallConcat, CurrentEmoji) {
+	if(CurrentEmoji != '') {
+		let tonable = tags[0];
+		let genrable = tags[1];
+		let gendered = tags[2];
+		let temp = CurrentEmoji;
+		log( tags + " appliqués à " + CurrentEmoji );
+		if (shallConcat) {
+			Clipboard.get_text(CLIPBOARD_TYPE, function (clipBoard, text) {
+				if (tonable) {
+					if (gendered) {
+						if (temp.includes(GENDERS2[0])) {
+						CurrentEmoji = CurrentEmoji.replace(GENDERS2[0], GENDERS2[0]+TONES[SETTINGS.get_int('skin-tone')])
+						log('meuf');
+					} else if (temp.includes(GENDERS2[1])) {
+						CurrentEmoji = CurrentEmoji.replace(GENDERS2[1], GENDERS2[1]+TONES[SETTINGS.get_int('skin-tone')])
+						log('mec');
+					} else {
+						log('erreur : ' + GENDERS2[0]);
+					}
+					} else {
+						temp += TONES[SETTINGS.get_int('skin-tone')];
+					}
+				}
+				if (genrable) {
+					temp += GENDERS[SETTINGS.get_int('gender')];
+				}
+				Clipboard.set_text(CLIPBOARD_TYPE, text + temp);
+			});
+		} else {
+			if (tonable) {
+				if (gendered) {
+					if (temp.includes(GENDERS2[0])) {
+						CurrentEmoji = CurrentEmoji.replace(GENDERS2[0], GENDERS2[0]+TONES[SETTINGS.get_int('skin-tone')])
+						log('meuf');
+					} else if (temp.includes(GENDERS2[1])) {
+						CurrentEmoji = CurrentEmoji.replace(GENDERS2[1], GENDERS2[1]+TONES[SETTINGS.get_int('skin-tone')])
+						log('mec');
+					} else {
+						log('erreur : ' + GENDERS2[0]);
+					}
+					temp = CurrentEmoji;
+				} else {
+					temp += TONES[SETTINGS.get_int('skin-tone')];
+				}
+			}
+			if (genrable) {
+				temp += GENDERS[SETTINGS.get_int('gender')];
+			}
+			log("Et donc : " + temp);
+			Clipboard.set_text(CLIPBOARD_TYPE, temp);
+		}
+		shiftFor(temp);
+	}
+}
+
 //-------------------------------------------------
 
 //class EmojiCategory
@@ -109,133 +200,184 @@ function shiftFor(CurrentEmoji) {
 //			...
 //			destroy()
 const SkinTonesBar = new Lang.Class({
-	Name:		'SkinTonesBar',
+	Name:	'SkinTonesBar',
 	
-	_init:	function (catActor) {
-		this.noTone = new St.Button({ //TODO style_class + for
+	_init:	function (hasGender) {
+		this._toneArray = [];
+		
+		this._toneArray[0] = new St.Button({ //TODO for
 			reactive: true,
 			can_focus: true,
 			track_hover: true,
 			width: 20,
 			accessible_name: _("No skin tone"),
-			style: 'background-color: #FFEE00; border-radius: 10px; border-color: rgba(0,0,200,0.5);'
+			style_class: 'UnselectedTone',
+			style: 'background-color: #FFEE00;'
 		});
-		this.light = new St.Button({
+		this._toneArray[1] = new St.Button({
 			reactive: true,
 			can_focus: true,
 			track_hover: true,
 			width: 20,
 			accessible_name: _("Light skin tone"),
-			style: 'background-color: #FFD8A8; border-radius: 10px; border-color: rgba(0,0,200,0.5);'
+			style_class: 'UnselectedTone',
+			style: 'background-color: #FFD8A8;'
 		});
-		this.mediumLight = new St.Button({
+		this._toneArray[2] = new St.Button({
 			reactive: true,
 			can_focus: true,
 			track_hover: true,
 			width: 20,
 			accessible_name: _("Medium light skin tone"),
-			style: 'background-color: #E5B590; border-radius: 10px; border-color: rgba(0,0,200,0.5);'
+			style_class: 'UnselectedTone',
+			style: 'background-color: #E5B590;'
 		});
-		this.medium = new St.Button({
+		this._toneArray[3] = new St.Button({
 			reactive: true,
 			can_focus: true,
 			track_hover: true,
 			width: 20,
 			accessible_name: _("Medium skin tone"),
-			style: 'background-color: #B88750; border-radius: 10px; border-color: rgba(0,0,200,0.5);'
+			style_class: 'UnselectedTone',
+			style: 'background-color: #B88750;'
 		});
-		this.mediumDark = new St.Button({
+		this._toneArray[4] = new St.Button({
 			reactive: true,
 			can_focus: true,
 			track_hover: true,
 			width: 20,
 			accessible_name: _("Medium dark tone"),
-			style: 'background-color: #9B6020; border-radius: 10px; border-color: rgba(0,0,200,0.5);'
+			style_class: 'UnselectedTone',
+			style: 'background-color: #9B6020;'
 		});
-		this.dark = new St.Button({
+		this._toneArray[5] = new St.Button({
 			reactive: true,
 			can_focus: true,
 			track_hover: true,
 			width: 20,
 			accessible_name: _("Dark skin tone"),
-			style: 'background-color: #4B2000; border-radius: 10px; border-color: rgba(0,0,200,0.5);'
+			style_class: 'UnselectedTone',
+			style: 'background-color: #4B2000;'
 		});
 		
-		this.noTone.connect('clicked', Lang.bind(this, function(w){
+		this._toneArray[0].connect('clicked', Lang.bind(this, function(w){
 			this.removeCircle();
-			w.style += ' border-width: 3px;';
+			w.style_class = 'SelectedTone';
 			SETTINGS.set_int('skin-tone', 0);
 		}));
-		this.light.connect('clicked', Lang.bind(this, function(w){
+		this._toneArray[1].connect('clicked', Lang.bind(this, function(w){
 			this.removeCircle();
-			w.style += ' border-width: 3px;';
+			w.style_class = 'SelectedTone';
 			SETTINGS.set_int('skin-tone', 1);
 		}));
-		this.mediumLight.connect('clicked', Lang.bind(this, function(w){
+		this._toneArray[2].connect('clicked', Lang.bind(this, function(w){
 			this.removeCircle();
-			w.style += ' border-width: 3px;';
+			w.style_class = 'SelectedTone';
 			SETTINGS.set_int('skin-tone', 2);
 		}));
-		this.medium.connect('clicked', Lang.bind(this, function(w){
+		this._toneArray[3].connect('clicked', Lang.bind(this, function(w){
 			this.removeCircle();
-			w.style += ' border-width: 3px;';
+			w.style_class = 'SelectedTone';
 			SETTINGS.set_int('skin-tone', 3);
 		}));
-		this.mediumDark.connect('clicked', Lang.bind(this, function(w){
+		this._toneArray[4].connect('clicked', Lang.bind(this, function(w){
 			this.removeCircle();
-			w.style += ' border-width: 3px;';
+			w.style_class = 'SelectedTone';
 			SETTINGS.set_int('skin-tone', 4);
 		}));
-		this.dark.connect('clicked', Lang.bind(this, function(w){
+		this._toneArray[5].connect('clicked', Lang.bind(this, function(w){
 			this.removeCircle();
-			w.style += ' border-width: 3px;';
+			w.style_class = 'SelectedTone';
 			SETTINGS.set_int('skin-tone', 5);
 		}));
 		
+		this._genderArray = [];
+		if(hasGender) {
+			this._genderArray[0] = new St.Button({
+				visible: false,
+				label: 'dummy button',
+			});
+			this._genderArray[1] = new St.Button({
+				reactive: true,
+				can_focus: true,
+				track_hover: true,
+				width: 20,
+				accessible_name: _("Men"),
+				style: 'background-color: black;',
+				label: '♀',
+			});
+			this._genderArray[2] = new St.Button({
+				reactive: true,
+				can_focus: true,
+				track_hover: true,
+				width: 20,
+				accessible_name: _("Women"),
+				style: 'background-color: black;',
+				label: '♂',
+			});
+			
+			this._genderArray[1].connect('clicked', Lang.bind(this, function(w){
+				
+				if (SETTINGS.get_int('gender') != 1) {
+					this.clearGender();
+					w.style = 'background-color: blue;';
+					SETTINGS.set_int('gender', 1);
+				} else {
+					this.clearGender();
+				}
+			}));
+			this._genderArray[2].connect('clicked', Lang.bind(this, function(w){
+			
+				if (SETTINGS.get_int('gender') != 2) {
+					this.clearGender();
+					w.style = 'background-color: blue;';
+					SETTINGS.set_int('gender', 2);
+				} else {
+					this.clearGender();
+				}
+			}));
+		}
 		this.update();
-		
-		//TODO array & for loop
-		catActor.add(this.noTone);
-		catActor.add(this.light);
-		catActor.add(this.mediumLight);
-		catActor.add(this.medium);
-		catActor.add(this.mediumDark);
-		catActor.add(this.dark);
 	},
 	
-	removeCircle: function() { //TODO style_class 
-		this.noTone.style += 'border-width: 0px;'
-		this.light.style += 'border-width: 0px;'
-		this.mediumLight.style += 'border-width: 0px;'
-		this.medium.style += 'border-width: 0px;'
-		this.mediumDark.style += 'border-width: 0px;'
-		this.dark.style += 'border-width: 0px;'
+	clearGender: function() {
+		SETTINGS.set_int('gender', 0);
+		this._genderArray.forEach(function(b) {
+			b.style = 'background-color: black;';
+			log("351");
+		});
+		log("354\n");
 	},
 	
-	update: function() { //TODO style_class 
+	addBar: function(catActor) {
+		this._genderArray.forEach(function(b) {
+			catActor.add(b);
+		});
+		this._toneArray.forEach(function(b) {
+			catActor.add(b);
+		});
+	},
+	
+	removeCircle: function() {
+		this._toneArray.forEach(function(b) {
+			b.style_class = 'UnselectedTone';
+		});
+	},
+	
+	update: function() {
 		this.removeCircle();
-		switch ( SETTINGS.get_int('skin-tone') ) {
-			case 1:
-				this.light.style += ' border-width: 3px;';
-			break;
-			case 2:
-				this.mediumLight.style += ' border-width: 3px;';
-			break;
-			case 3:
-				this.medium.style += ' border-width: 3px;';
-			break;
-			case 4:
-				this.mediumDark.style += ' border-width: 3px;';
-			break;
-			case 5:
-				this.dark.style += ' border-width: 3px;';
-			break;
-			default:
-				this.noTone.style += ' border-width: 3px;';
-			break;
+		this._toneArray[SETTINGS.get_int('skin-tone')].style_class = 'SelectedTone';
+		if (this._genderArray.length != 0) {
+			this._genderArray[SETTINGS.get_int('gender')].style = 'background-color: blue;';
 		}
 	},
 });
+
+const TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
+
+//				none		woman				man
+const GENDERS = ['', '\u200D\u2640\uFE0F', '\u200D\u2642\uFE0F'];
+const GENDERS2 = ['👩','👨'];
 
 //-------------------------------------------------
 
@@ -250,20 +392,29 @@ const EmojiCategory = new Lang.Class({
 	_init:		function(categoryName, iconName, id) {
 		this.parent(categoryName);
 		this.actor.visible = false;
+//		this.actor._delegate = this; //??????????????FIXME
 		this.id = id;
 		this.emojiButtons = [];
-		
-		/////////////////////////////////////////////
-		
 		this.actor.reactive = false;
-		this.skinTonesBar = new SkinTonesBar(this.actor); //FIXME pas pour toutes les catégories
-
+		
+		// A bar is created for all categories to simplify the update method
+		if ((this.id == 1) || (this.id == 5)) {
+			this.skinTonesBar = new SkinTonesBar(true);
+		} else {
+			this.skinTonesBar = new SkinTonesBar(false);
+		}
+		
+		//	Smileys & body		Peoples			Activities
+		if ((this.id == 0) || (this.id == 1) || (this.id == 5)) {
+			this.skinTonesBar.addBar(this.actor);
+		}
+		
 		this.categoryButton = new St.Button({
 			reactive: true,
 			can_focus: true,
 			track_hover: true,
 			accessible_name: categoryName,
-			style_class: 'system-menu-action'
+			style_class: 'system-menu-action',
 		});
 		this.categoryButton.child = new St.Icon({ icon_name: iconName });
 		this.categoryButton.connect('clicked', Lang.bind(this, this._openCategory));
@@ -284,7 +435,8 @@ const EmojiCategory = new Lang.Class({
 			if (i % NB_COLS === 0) {
 				ln = new PopupMenu.PopupBaseMenuItem({
 					style_class: 'EmojisList',
-					reactive: false
+					reactive: false,
+					can_focus: false,
 				});
 				ln.actor.track_hover = false;
 				container = new St.BoxLayout();
@@ -294,46 +446,41 @@ const EmojiCategory = new Lang.Class({
 			
 			// creation of the clickable button
 			let fontStyle = this.getStyle();
-			let button = new St.Button(
-				{ style_class: 'EmojisItemStyle', style: fontStyle }
-			);
+			let button = new St.Button({
+				style_class: 'EmojisItemStyle',
+				style: fontStyle,
+				can_focus: true,
+			});
 			let CurrentEmoji = EMOJIS_CHARACTERS[this.id][i];
 			button.label = CurrentEmoji;
-			this.tones = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
+			
+			let tonable = false;
+			let genrable = false;
+			let gendered = false;
 			
 			for (var j = 0; j < EMOJIS_KEYWORDS[this.id][i].length; j++) {
-				var tonable = (EMOJIS_KEYWORDS[this.id][i][j] == 'HAS_TONE');
+				if (EMOJIS_KEYWORDS[this.id][i][j] == 'HAS_TONE') {
+					tonable = true;
+				} else if (EMOJIS_KEYWORDS[this.id][i][j] == 'HAS_GENDER') {
+					genrable = true;
+				} else if (EMOJIS_KEYWORDS[this.id][i][j] == 'IS_GENDERED') {
+					gendered = true;
+				}
 			}
 			
-			//connection of the button
-			if (tonable) {
-				button.connect('clicked', Lang.bind(this, function(){
-					if(CurrentEmoji != '') {
-						/* setting the emoji in the clipboard */
-						var my_tone = SETTINGS.get_int('skin-tone');
-						Clipboard.set_text(CLIPBOARD_TYPE, CurrentEmoji + this.tones[my_tone]);
-						shiftFor(CurrentEmoji);
-						this.menu.close();
-						globalButton.menu.close(); /*?? FIXME inutile ? */
-					}
-				}));
-			} else {	
-				button.connect('clicked', Lang.bind(this, function(){
-					if(CurrentEmoji != '') {
-						/* setting the emoji in the clipboard */
-						Clipboard.set_text(CLIPBOARD_TYPE, CurrentEmoji);
-						shiftFor(CurrentEmoji);
-						this.menu.close();
-						globalButton.menu.close(); /*?? FIXME inutile ? */
-					}
-				}));
-			}
+			button.connect('button-press-event', Lang.bind(
+				this,
+				genericOnButtonPress,
+				[tonable, genrable, gendered],
+				CurrentEmoji
+			));
+			
 			this.emojiButtons.push(button);
 			container.add_child(button);
 		}
 		this._built = true;
 	},
-
+	
 	getStyle: function() {
 		let fontStyle = 'font-size: ' + Convenience.getSettings().get_int('emojisize') + 'px;';
 		if (Convenience.getSettings().get_boolean('light-theme')) {
@@ -380,7 +527,7 @@ const EmojiResearchItem = new Lang.Class({
 			reactive: false,
 			can_focus: false
 		});
-			
+		
 		this.searchEntry = new St.Entry({
 			name: 'searchEntry',
 			style_class: 'search-entry',
@@ -396,7 +543,8 @@ const EmojiResearchItem = new Lang.Class({
 		
 		this.searchEntry.clutter_text.connect('key-press-event', Lang.bind(this, function(o, e) {
 			let symbol = e.get_key_symbol();
-			if (symbol == Clutter.Return || symbol == Clutter.KP_Enter) {
+			
+			if (symbol == Clutter.Return || symbol == Clutter.KP_Enter) { //FIXME use generic functions
 				let CurrentEmoji = recents[0].label;
 				Clipboard.set_text(CLIPBOARD_TYPE, CurrentEmoji);
 				this.searchEntry.set_text('');
@@ -601,7 +749,10 @@ const EmojisMenu = new Lang.Class({
 			icon_name: 'go-previous-symbolic',
 		});
 		
-		this._buttonMenu = new PopupMenu.PopupBaseMenuItem(	{	reactive: false	}	);
+		this._buttonMenu = new PopupMenu.PopupBaseMenuItem({
+			reactive: false,
+			can_focus: false,
+		});
 		this._buttonMenu.actor.add_actor(this.backBtn);
 		
 		this.categoryButton = [];
@@ -658,14 +809,19 @@ const EmojisMenu = new Lang.Class({
 	_recentlyUsedInit: function () {
 		
 		let RecentlyUsed = new PopupMenu.PopupBaseMenuItem({
-			reactive: false
+			reactive: false,
+			can_focus: false,
 		});
 		recents = [];
 		
 		let fontStyle = this.getStyle();
 		
 		for(var i = 0;i<NB_COLS;i++){
-			recents[i] = new St.Button({ style_class: 'EmojisItemStyle', style: fontStyle });
+			recents[i] = new St.Button({
+				style_class: 'EmojisItemStyle',
+				style: fontStyle,
+				can_focus: true,
+			});
 		}
 		
 		let container = new St.BoxLayout();

@@ -132,8 +132,8 @@ var ALL_KEYWORDS = [
 		['backhand index pointing right', 'backhand', 'finger', 'hand', 'index', 'point', 'HAS_TONE'],
 		['index pointing up', 'finger', 'hand', 'index', 'point', 'up', 'HAS_TONE'],
 		['backhand index pointing up', 'backhand', 'finger', 'hand', 'index', 'point', 'up', 'HAS_TONE'],
-		['middle finger', 'finger', 'hand'],
-		['backhand index pointing down', 'backhand', 'down', 'finger', 'hand', 'index', 'point'],
+		['middle finger', 'finger', 'hand', 'HAS_TONE'],
+		['backhand index pointing down', 'backhand', 'down', 'finger', 'hand', 'index', 'point', 'HAS_TONE'],
 		['victory hand', 'hand', 'v', 'victory', 'HAS_TONE'],
 		['crossed fingers', 'cross', 'finger', 'hand', 'luck', 'HAS_TONE'],
 		['vulcan salute', 'finger', 'hand', 'spock', 'vulcan', 'HAS_TONE'],
@@ -143,8 +143,8 @@ var ALL_KEYWORDS = [
 		['raised hand with fingers splayed', 'finger', 'hand', 'splayed', 'HAS_TONE'],
 		['raised hand', 'hand', 'HAS_TONE'],
 		['ok hand', 'ok', 'ok', 'hand', 'HAS_TONE'],
-		['thumbs up', '+1', 'hand', 'thumb', 'up', 'HAS_TONE'],
-		['thumbs down', '-1', 'down', 'hand', 'thumb', 'HAS_TONE'],
+		['thumbs up', 'hand', 'thumb', 'up', 'HAS_TONE'],
+		['thumbs down', 'down', 'hand', 'thumb', 'HAS_TONE'],
 		['raised fist', 'clenched', 'fist', 'hand', 'punch', 'HAS_TONE'],
 		['oncoming fist', 'clenched', 'fist', 'hand', 'punch', 'HAS_TONE'],
 		['left-facing fist', 'fist', 'leftwards', 'HAS_TONE'],
@@ -186,116 +186,92 @@ var ALL_KEYWORDS = [
 		['old man', 'man', 'old', 'HAS_TONE'],
 		['old woman', 'old', 'woman', 'HAS_TONE'],
 		//-------------
-		['man health worker', 'doctor', 'healthcare', 'nurse', 'therapist'], //TODO tones test for all persons + activities
-		['woman health worker', 'doctor', 'healthcare', 'nurse', 'therapist'],
-		['man student', 'student', 'university'],
-		['woman student', 'student', 'university'],
-		['man teacher', 'teacher'],
-		['woman teacher', 'teacher'],
-		['man judge', 'judge'],
-		['woman judge', 'judge'],
-		['man farmer', 'farmer'],
-		['woman farmer', 'farmer'],
+		['health worker', 'doctor', 'healthcare', 'nurse', 'therapist', 'IS_GENDERED', 'HAS_TONE'],
+		['health worker', 'doctor', 'healthcare', 'nurse', 'therapist', 'IS_GENDERED', 'HAS_TONE'],
+		['student', 'university', 'IS_GENDERED', 'HAS_TONE'],
+		['student', 'university', 'IS_GENDERED', 'HAS_TONE'],
+		['teacher', 'school', 'IS_GENDERED', 'HAS_TONE'],
+		['teacher', 'school', 'IS_GENDERED', 'HAS_TONE'],
+		['judge', 'IS_GENDERED', 'HAS_TONE'],
+		['judge', 'IS_GENDERED', 'HAS_TONE'],
+		['farmer', 'farm', 'worker', 'IS_GENDERED', 'HAS_TONE'],
+		['farmer', 'farm', 'worker', 'IS_GENDERED', 'HAS_TONE'],
 		//-------------
-		['man cook', 'cook'],
-		['woman cook', 'cook'],
-		['man mechanic', 'mechanic'],
-		['woman mechanic', 'mechanic'],
-		['man factory worker', 'factory', 'factory worker'],
-		['woman factory worker', 'factory', 'factory worker'],
-		['man office worker', 'office', 'office worker'],
-		['woman office worker', 'office', 'office worker'],
-		['man scientist', 'scientist'],
-		['woman scientist', 'scientist'],
+		['cook', 'cooking', 'chef', 'IS_GENDERED', 'HAS_TONE'],
+		['cook', 'cooking', 'chef', 'IS_GENDERED', 'HAS_TONE'],
+		['mechanic', 'worker', 'IS_GENDERED', 'HAS_TONE'],
+		['mechanic', 'worker', 'IS_GENDERED', 'HAS_TONE'],
+		['factory worker', 'factory', 'IS_GENDERED', 'HAS_TONE'],
+		['factory worker', 'factory', 'IS_GENDERED', 'HAS_TONE'],
+		['office worker', 'office', 'office worker', 'HAS_TONE', 'IS_GENDERED'],
+		['office worker', 'office', 'office worker', 'HAS_TONE', 'IS_GENDERED'],
+		['scientist', 'scientist', 'IS_GENDERED', 'HAS_TONE'],
+		['scientist', 'scientist', 'IS_GENDERED', 'HAS_TONE'],
 		//-------------
-		['man technologist', 'hacker', 'matrix', 'computing'],
-		['woman technologist', 'hacker', 'matrix', 'computing'],
-		['man singer', 'singer', 'rock', 'music'],
-		['woman singer', 'singer', 'rock', 'music'],
-		['man artist', 'artist'],
-		['woman artist', 'artist'],
-		['man pilot', 'pilot'],
-		['woman pilot', 'pilot'],
-		['man astronaut', 'cosmonaut', 'spationaut'],
-		['woman astronaut', 'cosmonaut', 'spationaut'],
+		['technologist', 'hacker', 'matrix', 'computing', 'IS_GENDERED', 'HAS_TONE'],
+		['technologist', 'hacker', 'matrix', 'computing', 'IS_GENDERED', 'HAS_TONE'],
+		['singer', 'star', 'rock', 'music', 'IS_GENDERED', 'HAS_TONE'],
+		['singer', 'star', 'rock', 'music', 'IS_GENDERED', 'HAS_TONE'],
+		['artist', 'painter', 'IS_GENDERED', 'HAS_TONE'],
+		['artist', 'painter', 'IS_GENDERED', 'HAS_TONE'],
+		['airplane pilot', 'pilot', 'IS_GENDERED', 'HAS_TONE'],
+		['airplane pilot', 'pilot', 'IS_GENDERED', 'HAS_TONE'],
+		['astronaut', 'cosmonaut', 'spationaut', 'IS_GENDERED', 'HAS_TONE'],
+		['astronaut', 'cosmonaut', 'spationaut', 'IS_GENDERED', 'HAS_TONE'],
 		//------------
-		['man firefighter', 'firefighter', 'fireman'],
-		['woman firefighter', 'firefighter', 'firewoman'],
-		['police officer', 'cop', 'officer', 'police'],
-		['woman police officer', 'cop', 'officer', 'police'],
-		['detective', 'detective', 'sleuth', 'spy'],
-		['woman detective', 'detective', 'sleuth', 'spy'],
-		['guard', 'royal guard'],
-		['woman guard', 'guard', 'royal guard'],
-		['construction worker', 'construction', 'hat', 'worker'],
-		['woman construction worker', 'construction', 'hat', 'worker'],
+		['firefighter', 'fire', 'IS_GENDERED', 'HAS_TONE'],
+		['firefighter', 'fire', 'IS_GENDERED', 'HAS_TONE'],
+		['police officer', 'cop', 'officer', 'police', 'HAS_GENDER', 'HAS_TONE'],
+		['detective', 'detective', 'sleuth', 'spy', 'HAS_GENDER', 'HAS_TONE'],
+		['guard', 'royal guard', 'HAS_GENDER', 'HAS_TONE'],
+		['construction worker', 'construction', 'hat', 'worker', 'HAS_GENDER', 'HAS_TONE'],
 		//-------------
-		['prince', 'king'],
-		['princess', 'fairy tale', 'fantasy'],
-		['person wearing turban', 'turban'],
-		['woman wearing turban', 'turban'],
-		['man with chinese cap', 'gua pi mao', 'hat', 'chinese'],
-		['woman with headscarf', 'headscarf', 'hijab', 'mantilla', 'tichel', 'bandana', 'head kerchief'],
-		['bearded person', 'beard'],
-		['blond-haired person', 'blond'],
-		['blond-haired woman', 'blond'],
+		['prince', 'king', 'HAS_TONE'],
+		['princess', 'fairy tale', 'fantasy', 'HAS_TONE'],
+		['person wearing turban', 'turban', 'HAS_GENDER', 'HAS_TONE'],
+		['man with chinese cap', 'gua pi mao', 'hat', 'chinese', 'HAS_TONE'],
+		['woman with headscarf', 'headscarf', 'hijab', 'mantilla', 'tichel', 'bandana', 'head kerchief', 'HAS_TONE'],
+		['bearded person', 'beard', 'HAS_TONE'],
+		['blond-haired person', 'blond', 'HAS_GENDER', 'HAS_TONE'],
 		//missing unicode 11 items FIXME
-		['man in tuxedo', 'groom', 'tuxedo', 'wedding'],
+		['man in tuxedo', 'groom', 'tuxedo', 'wedding', 'HAS_TONE'],
 		//-------------
-		['bride with veil', 'bride', 'veil', 'wedding'],
-		['pregnant woman', 'pregnant', 'woman'],
-		['breast-feeding', 'breast', 'woman', 'baby', 'milk'],
+		['bride with veil', 'bride', 'veil', 'wedding', 'HAS_TONE'],
+		['pregnant woman', 'pregnant', 'woman', 'HAS_TONE'],
+		['breast-feeding', 'breast', 'woman', 'baby', 'milk', 'HAS_TONE'],
 		//------------person (fantasy)		
-		['baby angel', 'angel', 'baby', 'fantasy'],
-		['santa claus', 'christmas', 'celebration', 'claus', 'father', 'santa'],
-		['mrs. claus', 'christmas', 'mrs.', 'celebration', 'claus', 'mother'],
+		['baby angel', 'angel', 'baby', 'fantasy', 'HAS_TONE'],
+		['santa claus', 'christmas', 'celebration', 'claus', 'father', 'santa', 'HAS_TONE'],
+		['mrs. claus', 'christmas', 'mrs.', 'celebration', 'claus', 'mother', 'HAS_TONE'],
 		//missing unicode 11 items FIXME
-		['mage', 'magus', 'wizard', 'fantasy'],
-		['fairy', 'pixy', 'fantasy'],
-		['vampire', 'blood', 'fantasy'],
-		['mermaid', 'merperson', 'sea'],
-		['elf', 'fantasy'],
-		['genie', 'wish', 'jinn'],
-		['zombie'],
+		['mage', 'magus', 'wizard', 'fantasy', 'HAS_GENDER', 'HAS_TONE'],
+		['fairy', 'pixy', 'fantasy', 'HAS_GENDER', 'HAS_TONE'],
+		['vampire', 'blood', 'fantasy', 'HAS_GENDER', 'HAS_TONE'],
+		['mermaid', 'merperson', 'sea', 'HAS_GENDER', 'HAS_TONE'],
+		['elf', 'fantasy', 'HAS_GENDER', 'HAS_TONE'],
+		['genie', 'wish', 'jinn', 'HAS_GENDER'],
+		['zombie', 'HAS_GENDER'],
 		//------------person (gesture)
-		['person frowning', 'frown', 'gesture'],
-		['person pouting', 'gesture', 'pouting'],
-		['person gesturing no', 'forbidden', 'gesture', 'hand', 'no', 'not', 'prohibited'],
-		['person gesturing ok', 'ok', 'gesture', 'hand'],
-		['person tipping hand', 'hand', 'help', 'information', 'sassy', 'tipping'],
-		['person raising hand', 'gesture', 'hand', 'happy', 'raised'],
-		['person bowing', 'apology', 'bow', 'gesture', 'sorry'],
-		['person facepalming', 'disbelief', 'exasperation', 'palm'],
-		['person shrugging', 'doubt', 'ignorance', 'indifference', 'shrug'],
+		['person frowning', 'frown', 'gesture', 'HAS_GENDER', 'HAS_TONE'],
+		['person pouting', 'gesture', 'pouting', 'HAS_GENDER', 'HAS_TONE'],
+		['person gesturing no', 'forbidden', 'gesture', 'hand', 'no', 'not', 'prohibited', 'HAS_GENDER', 'HAS_TONE'],
+		['person gesturing ok', 'ok', 'gesture', 'hand', 'HAS_GENDER', 'HAS_TONE'],
+		['person tipping hand', 'hand', 'help', 'information', 'sassy', 'tipping', 'HAS_GENDER', 'HAS_TONE'],
+		['person raising hand', 'gesture', 'hand', 'happy', 'raised', 'HAS_GENDER', 'HAS_TONE'],
+		['person bowing', 'apology', 'bow', 'gesture', 'sorry', 'HAS_GENDER', 'HAS_TONE'],
+		['person facepalming', 'disbelief', 'exasperation', 'palm', 'HAS_GENDER', 'HAS_TONE'],
+		['person shrugging', 'doubt', 'ignorance', 'indifference', 'shrug', 'HAS_GENDER', 'HAS_TONE'],
 		//-------------
-		['man frowning', 'frown', 'gesture'],
-		['man pouting', 'gesture', 'pouting'],
-		['man gesturing no', 'forbidden', 'gesture', 'hand', 'no', 'not', 'prohibited'],
-		['man gesturing ok', 'ok', 'ok', 'gesture', 'hand'],
-		['man tipping hand', 'hand', 'help', 'information', 'sassy', 'tipping'],
-		['man raising hand', 'gesture', 'hand', 'happy', 'raised'],
-		['woman bowing', 'apology', 'bow', 'gesture', 'sorry'],
-		['man facepalming', 'disbelief', 'exasperation', 'palm'],
-		['man shrugging', 'doubt', 'ignorance', 'indifference', 'shrug'],
-		//-------------
-		['person getting massage', 'massage', 'salon'],
-		['person getting haircut', 'barber', 'beauty', 'haircut', 'parlor'],
-		['person walking', 'hike', 'walk', 'walking'],
-		['person running', 'marathon', 'running'],
+		['person getting massage', 'massage', 'salon', 'HAS_GENDER', 'HAS_TONE'],
+		['person getting haircut', 'barber', 'beauty', 'haircut', 'parlor', 'HAS_GENDER', 'HAS_TONE'],
+		['person walking', 'hike', 'walk', 'walking', 'HAS_GENDER', 'HAS_TONE'],
+		['person running', 'marathon', 'running', 'HAS_GENDER', 'HAS_TONE'],
 		['woman dancing', 'dancing', 'woman'],
 		['man dancing', 'dance', 'man'],
-		['people with bunny ears partying', 'bunny ear', 'dancer', 'partying'],
+		['people with bunny ears partying', 'bunny ear', 'dancer', 'partying', 'HAS_GENDER'],
 		['person taking bath', 'bath', 'bathtub'],
 		['person in bed', 'hotel', 'sleep', 'bed'],
 		['man in business suit levitating', 'business', 'suit'],
-		//-------------
-		['man getting massage', 'massage', 'salon'],
-		['man getting haircut', 'barber', 'beauty', 'haircut', 'parlor'],
-		['woman walking', 'hike', 'walk', 'walking'],
-		['woman running', 'marathon', 'running'],
-		['person in steamy room', 'steam', 'sauna'],
-		['person climbing', 'climbing', 'cliff'],
-		['person in lotus position', 'yoga', 'lotus'],
 		//-------------
 		['speaking head', 'head', 'silhouette', 'speak', 'speaking'],
 		['bust in silhouette', 'bust', 'silhouette'],
@@ -395,9 +371,7 @@ var ALL_KEYWORDS = [
 		['hedgehog'],
 		['bat', 'bat', 'vampire'],
 		['bear face', 'bear'],
-		
 		//-------------
-		
 		['koala'],
 		['panda face', 'panda'],
 		['paw prints', 'feet', 'paw', 'print'],
@@ -408,9 +382,7 @@ var ALL_KEYWORDS = [
 		['baby chick', 'baby', 'bird', 'chick'],
 		['front-facing baby chick', 'baby', 'bird', 'chick'],
 		['bird'],
-		
 		//-------------
-		
 		['penguin', 'bird', 'tux', 'linux'],
 		['dove', 'bird', 'fly', 'peace'],
 		['eagle', 'bird'],
@@ -421,9 +393,7 @@ var ALL_KEYWORDS = [
 		['turtle', 'terrapin', 'tortoise', 'turtle'],
 		['lizard', 'lizard', 'reptile'],
 		['snake', 'ophiuchus', 'bearer', 'serpent', 'zodiac'],
-		
 		//-------------
-		
 		['dragon face', 'dragon', 'fairy tale'],
 		['dragon', 'fairy tale'],
 		['sauropod', 'brachiosaurus', 'brontosaurus', 'diplodocus', 'dinosaur'],
@@ -547,9 +517,7 @@ var ALL_KEYWORDS = [
 		//food ?
 		['grapes', 'fruit', 'grape', 'raisin'],
 		['melon', 'fruit'],
-		
 		//-------------
-		
 		['watermelon', 'fruit'],
 		['tangerine', 'fruit', 'orange'],
 		['lemon', 'citrus', 'fruit'],
@@ -560,9 +528,7 @@ var ALL_KEYWORDS = [
 		['pear', 'fruit'],
 		['peach', 'fruit'],
 		['cherries', 'cherry', 'fruit'],
-		
 		//-------------
-		
 		['strawberry', 'berry', 'fruit'],
 		['kiwi fruit', 'food', 'fruit', 'kiwi'],
 		['tomato', 'fruit', 'vegetable'],
@@ -573,9 +539,7 @@ var ALL_KEYWORDS = [
 		['carrot', 'carrot', 'food', 'vegetable'],
 		['ear of corn', 'corn', 'ear', 'maize', 'maze'],
 		['hot pepper', 'hot', 'pepper'],
-		
 		//-------------
-		
 		['cucumber', 'cucumber', 'food', 'pickle', 'vegetable'],
 		['broccoli', 'vegetable'],
 		['mushroom', 'toadstool'],
@@ -586,9 +550,7 @@ var ALL_KEYWORDS = [
 		['baguette bread', 'baguette', 'bread', 'food', 'french'],
 		['pretzel', 'twisted', 'convoluted'],
 		['pancakes', 'crêpe', 'food', 'hotcake', 'pancake'],
-		
 		//-------------
-		
 		['cheese wedge', 'cheese'],
 		['meat on bone', 'bone', 'meat'],
 		['poultry leg', 'bone', 'chicken', 'leg', 'poultry'],
@@ -599,9 +561,7 @@ var ALL_KEYWORDS = [
 		['pizza', 'cheese', 'slice'],
 		['hot dog', 'frankfurter', 'hotdog', 'sausage'],
 		['sandwich'],
-		
 		//-------------
-		
 		['taco', 'mexican'],
 		['burrito', 'mexican', 'wrap'],
 		['stuffed flatbread', 'falafel', 'flatbread', 'food', 'gyro', 'kebab', 'stuffed'],
@@ -612,9 +572,7 @@ var ALL_KEYWORDS = [
 		['bowl with spoon', 'breakfast', 'cereal', 'congee', 'oatmeal', 'porridge'],
 		['green salad', 'food', 'green', 'salad'],
 		['popcorn'],
-		
 		//-------------
-		
 		['canned food', 'can'],
 		['bento box', 'bento', 'box'],
 		['rice cracker', 'cracker', 'rice'],
@@ -625,9 +583,7 @@ var ALL_KEYWORDS = [
 		['spaghetti', 'pasta'],
 		['roasted sweet potato', 'potato', 'roasted', 'sweet'],
 		['oden', 'seafood', 'skewer', 'stick'],
-		
 		//-------------
-		
 		['sushi', 'fish'],
 		['fried shrimp', 'fried', 'prawn', 'shrimp', 'tempura'],
 		['fish cake with swirl', 'cake', 'fish', 'pastry', 'swirl', 'debian'],
@@ -638,9 +594,7 @@ var ALL_KEYWORDS = [
 		['soft ice cream', 'cream', 'dessert', 'ice', 'icecream', 'soft', 'sweet'],
 		['shaved ice', 'dessert', 'ice', 'shaved', 'sweet'],
 		['ice cream', 'cream', 'dessert', 'ice', 'sweet'],
-		
 		//-------------
-		
 		['doughnut', 'dessert', 'donut', 'sweet'],
 		['cookie', 'dessert', 'sweet'],
 		['birthday cake', 'birthday', 'cake', 'celebration', 'dessert', 'pastry', 'sweet'],
@@ -651,9 +605,7 @@ var ALL_KEYWORDS = [
 		['lollipop', 'sweet'],
 		['custard', 'dessert'],
 		['honey pot', 'sugar', 'bee'],
-		
 		//-------------
-		
 		['baby bottle', 'milk', 'baby', 'drink'],
 		['glass of milk', 'milk', 'glass', 'drink'],
 		['hot beverage', 'coffee', 'tea', 'soup', 'cup'],
@@ -664,9 +616,7 @@ var ALL_KEYWORDS = [
 		['cocktail glass', 'alcohol', 'party'],
 		['tropical drink', 'fruits', 'party'],
 		['beer mug', 'beer', 'alcohol'],
-		
 		//-------------
-		
 		['clinking beer mugs', 'party', 'beer mug', 'beer', 'alcohol'],
 		['clinking glasses', 'party', 'glass'],
 		['tumbler glass', 'glass'],
@@ -745,9 +695,7 @@ var ALL_KEYWORDS = [
 		['night with stars', 'night', 'stars'],
 		['sunrise over mountains', 'sunrise', 'mountains'],
 		['sunrise', 'sun'],
-		
 		//-------------
-		
 		['cityscape at dusk', 'skyscraper', 'city'],
 		['sunset', 'sun'],
 		['bridge at night', 'bridge', 'night'],
@@ -758,9 +706,7 @@ var ALL_KEYWORDS = [
 		['roller coaster', 'amusement park'],
 		['barber pole', 'barber'],
 		['circus tent', 'circus', 'show'],
-		
 		//-------------
-		
 		['performing arts', 'arts', 'theater'],
 		['framed picture', 'picture', 'painting'],
 		['artist palette', 'painting'],
@@ -772,9 +718,7 @@ var ALL_KEYWORDS = [
 		['high-speed train with bullet nose', 'transport', 'train'],
 		['train', 'transport', 'vehicle'],
 		['metro', 'transport', 'vehicle'],
-		
 		//-------------
-		
 		['light rail', 'transport', 'train'],
 		['station', 'transport', 'train'],
 		['tram', 'transport', 'vehicle'],
@@ -785,9 +729,7 @@ var ALL_KEYWORDS = [
 		['oncoming bus', 'transport', 'bus'],
 		['trolleybus', 'transport'],
 		['minibus', 'transport', 'vehicle'],
-		
 		//-------------
-		
 		['ambulance', 'car', 'hospital', 'vehicle'],
 		['fire engine', 'fire', 'firemen', 'vehicle'],
 		['police car', 'car', 'police', 'vehicle'],
@@ -798,9 +740,7 @@ var ALL_KEYWORDS = [
 		['oncoming automobile', 'automobile', 'car'],
 		['sport utility vehicle', 'automobile', 'utility', 'car'],
 		['delivery truck', 'truck', 'vehicle'],
-		
 		//-------------
-		
 		['articulated lorry', 'truck', 'vehicle'],
 		['tractor', 'vehicle'],
 		['bicycle', 'bike', 'vehicle'],
@@ -811,9 +751,7 @@ var ALL_KEYWORDS = [
 		['railway track', 'rails', 'train'],
 		['fuel pump', 'fuel'],
 		['police car light', 'police'],
-		
 		//-------------
-		
 		['horizontal traffic light', 'traffic light', 'road sign'],
 		['vertical traffic light', 'traffic light', 'road sign'],
 		['construction', 'road sign'],
@@ -839,9 +777,7 @@ var ALL_KEYWORDS = [
 		['helicopter', 'fly'],
 		['suspension railway', 'railway'],
 		['mountain cableway', 'mountain'],
-		
 		//-------------
-		
 		['aerial tramway', 'mountain'],
 		['satellite', 'space'],
 		['rocket', 'spaceship'],
@@ -862,9 +798,7 @@ var ALL_KEYWORDS = [
 		['fireworks', 'party'],
 		['sparkler', 'party'],
 		['sparkles', 'party'],
-		
 		//-------------
-		
 		['balloon', 'party'],
 		['party popper', 'party'],
 		['confetti ball', 'party'],
@@ -875,9 +809,7 @@ var ALL_KEYWORDS = [
 		['wind chime', 'wind', 'japan'],
 		['moon viewing ceremony', 'moon', 'japan'],
 		['ribbon'],
-		
 		//-------------
-		
 		['wrapped gift', 'gift'],
 		['reminder ribbon', 'ribbon'],
 		['admission tickets', 'ticket'],
@@ -888,7 +820,6 @@ var ALL_KEYWORDS = [
 		['1st place medal', 'medal', 'gold'],
 		['2nd place medal', 'medal', 'silver'],
 		['3rd place medal', 'medal', 'bronze'],
-		
 		//-------------
 	
 	//sport
@@ -902,9 +833,7 @@ var ALL_KEYWORDS = [
 		['pool 8 ball', 'ball'],
 		['bowling'],
 		['cricket game', 'cricket'],
-		
 		//-------------
-		
 		['field hockey', 'hockey'],
 		['ice hockey', 'hockey'],
 		['ping pong', 'table tennis'],
@@ -915,9 +844,7 @@ var ALL_KEYWORDS = [
 		['direct hit', 'target'],
 		['flag in hole', 'golf'],
 		['ice skate', 'ice'],
-		
 		//-------------
-		
 		['fishing pole', 'fishing'],
 		['running shirt', 'shirt'],
 		['skis', 'skiing'],
@@ -929,9 +856,7 @@ var ALL_KEYWORDS = [
 		['game die', 'game', 'dice'],
 		['spade suit', 'game', 'spade', 'playing cards'],
 		['heart suit', 'game', 'heart', 'playing cards'],
-		
 		//-------------
-		
 		['diamond suit', 'game', 'diamond', 'playing cards'],
 		['club suit', 'game', 'club', 'playing cards'],
 		['joker', 'game', 'playing cards'],
@@ -959,26 +884,29 @@ var ALL_KEYWORDS = [
 		
 	//-----person-sport
 		['person fencing', 'fencer', 'fencing', 'sword'],
-		['horse racing', 'horse', 'jockey', 'racehorse', 'racing'],
+		['horse racing', 'horse', 'jockey', 'racehorse', 'racing', 'HAS_TONE'],
 		['skier', 'ski', 'snow'],
-		['snowboarder', 'ski', 'snow', 'snowboard'],
-		['person golfing', 'ball', 'golf'],
-		['person surfing', 'surfing'],
-		['person rowing boat', 'boat', 'rowboat'],
+		['snowboarder', 'ski', 'snow', 'snowboard', 'HAS_TONE'],
+		['person golfing', 'ball', 'golf', 'HAS_GENDER', 'HAS_TONE'],
+		['person surfing', 'surfing', 'HAS_GENDER', 'HAS_TONE'],
+		['person rowing boat', 'boat', 'rowboat', 'HAS_GENDER', 'HAS_TONE'],
 		//-------------
-		['person swimming', 'swim'],
-		['person bouncing ball', 'ball'],
-		['person lifting weights', 'lifter', 'weight'],
-		['person biking', 'bicycle', 'biking', 'cyclist'],
-		['person mountain biking', 'bicycle', 'bike', 'cyclist', 'mountain'],
+		['person swimming', 'swim', 'HAS_GENDER', 'HAS_TONE'],
+		['person bouncing ball', 'ball', 'HAS_GENDER', 'HAS_TONE'],
+		['person lifting weights', 'lifter', 'weight', 'HAS_GENDER', 'HAS_TONE'],
+		['person biking', 'bicycle', 'biking', 'cyclist', 'HAS_GENDER', 'HAS_TONE'],
+		['person mountain biking', 'bicycle', 'bike', 'cyclist', 'mountain', 'HAS_GENDER', 'HAS_TONE'],
 		['racing car', 'car', 'racing'],
 		['motorcycle', 'racing'],
-		['person cartwheeling', 'cartwheel', 'gymnastics'],
-		['people wrestling', 'wrestle', 'wrestler'],
-		['person playing water polo', 'polo', 'water'],
+		['person cartwheeling', 'cartwheel', 'gymnastics', 'HAS_GENDER', 'HAS_TONE'],
+		['people wrestling', 'wrestle', 'wrestler', 'HAS_GENDER'],
+		['person playing water polo', 'polo', 'water', 'HAS_GENDER', 'HAS_TONE'],
 		//-------------
-		['person playing handball', 'ball', 'handball'],
-		['person juggling', 'balance', 'juggle', 'multitask', 'skill']
+		['person playing handball', 'ball', 'handball', 'HAS_GENDER', 'HAS_TONE'],
+		['person juggling', 'balance', 'juggle', 'multitask', 'skill', 'HAS_GENDER', 'HAS_TONE'],
+		['person in steamy room', 'steam', 'sauna', 'HAS_GENDER', 'HAS_TONE'],
+		['person climbing', 'climbing', 'cliff', 'HAS_GENDER', 'HAS_TONE'],
+		['person in lotus position', 'yoga', 'lotus', 'HAS_GENDER', 'HAS_TONE']
 	], [
 	
 	//objects
