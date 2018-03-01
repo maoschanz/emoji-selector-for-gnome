@@ -5,9 +5,16 @@
 This GNOME shell extension provides a simple popup menu with some emojis in it ; Clicking on an emoji copies it to your clipboard.
 
 ## New features
-- keyboard shorcut to open the extension's menu
+- keyboard shorcut to open the extension's menu (Super+E by defaut)
 - dynamic research (press enter to copy the first result to the clipboard)
+- Unicode 10
 - lots of parametrable things
+
+#### Development version
+- skin tone & gender modifiers (only for specific emojis)
+- keyboard navigation
+- middle click to set to the cliboard without closing the menu
+- right click to add the emoji at the end of the current clipboard content
 
 ![Screenshot](http://i65.tinypic.com/juthdv.png)
 
@@ -15,13 +22,13 @@ This GNOME shell extension provides a simple popup menu with some emojis in it ;
 
 ## Installation
 
-### Default way to do
+#### Default way to do
 The better option is to install it from https://extensions.gnome.org/extension/1162/emoji-selector/
 
-### For Arch Linux users
+#### For Arch Linux users
 Arch Linux users can install [gnome-shell-extension-emoji-selector-git](https://aur.archlinux.org/packages/gnome-shell-extension-emoji-selector-git/) from **AUR**.
 
-### Manual installation
+#### Manual installation
 Download files and put them in an "emoji-selector@maestroschan.fr" folder to `~/.local/share/gnome-shell/extensions/`
 
 You may need to restart the gnome shell environnment ("logout and login again", or `alt` + `f2` + `r` + enter).
