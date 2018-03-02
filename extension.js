@@ -29,20 +29,26 @@ const CLIPBOARD_TYPE = St.ClipboardType.CLIPBOARD;
 
 //----------------------------------------------
 
+/*
+ * Import data (array of arrays of characters, and array of arrays of strings).
+ * Keywords are used for both:
+ * - research
+ * - skin tone management
+ * - gender management
+ */
 const EMOJIS_CHARACTERS = Me.imports.emojisCharacters.ALL;
 const EMOJIS_KEYWORDS = Me.imports.emojisKeywords.ALL_KEYWORDS;
+
+//				none	woman					man
+const GENDERS =	['',	'\u200D\u2640\uFE0F',	'\u200D\u2642\uFE0F'];
+const GENDERS2 = ['👩','👨'];
+const TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
 
 //------------------------------------------------------------
 
 /*
 
 TODO
-
-problème d'update des états des genres entre catégories
-
-virer les logs
-
-remarque qu'on peut génériciser le prétraitement 
 
 support générique pour les récents
 
@@ -120,77 +126,77 @@ function shiftFor(CurrentEmoji) {
 	saveRecents(); 
 }
 
+/*
+ * This function is called at each click and copies the emoji to the clipboard.
+ * 
+ * The exact behavior of the method depends on the mouse button used:
+ * - left click overwrites clipboard content with the emoji, and closes the menu;
+ * - middle click too, but does not close the menu;
+ * - right click adds the emoji at the end of the current clipboard content (and does not close the menu).
+ */
 function genericOnButtonPress (actor, event, tags, CurrentEmoji){
 	let mouseButton = event.get_button();
 	if (mouseButton == 1) {
-		genericActivate(tags, false, CurrentEmoji);
+		Clipboard.set_text(
+			CLIPBOARD_TYPE,
+			applyTags(tags, CurrentEmoji)
+		);
 		globalButton.menu.close();
 		return Clutter.EVENT_STOP;
 	} else if (mouseButton == 2) {
-		genericActivate(tags, false, CurrentEmoji);
+		Clipboard.set_text(
+			CLIPBOARD_TYPE,
+			applyTags(tags, CurrentEmoji)
+		);
 		return Clutter.EVENT_STOP;
 	} else if (mouseButton == 3) {
-		genericActivate(tags, true, CurrentEmoji);
+		Clipboard.get_text(CLIPBOARD_TYPE, function (clipBoard, text) {
+			Clipboard.set_text(
+				CLIPBOARD_TYPE,
+				text + applyTags(tags, CurrentEmoji)
+			);
+		});
 		return Clutter.EVENT_STOP;
 	}
 	return Clutter.EVENT_PROPAGATE;		
 }
 	
-	/* setting the emoji in the clipboard */
-function genericActivate (tags, shallConcat, CurrentEmoji) {
+/*
+ * This returns an emoji corresponding to CurrentEmoji with tags applied to it.
+ * If all tags are false, it returns unmodified CurrentEmoji.
+ * "tags" is an array of 3 boolean, which describe how a composite emoji is built:
+ * - tonable -> return emoji concatened with the selected skin tone;
+ * - genrable -> return emoji concatened with the selected gender;
+ * - gendered -> the emoji is already gendered, which modifies the way skin tone is
+ * applied ([man|woman] + [skin tone if any] + [other symbol(s)]).
+ */
+function applyTags (tags, CurrentEmoji) {
 	if(CurrentEmoji != '') {
 		let tonable = tags[0];
 		let genrable = tags[1];
 		let gendered = tags[2];
 		let temp = CurrentEmoji;
-		log( tags + " appliqués à " + CurrentEmoji );
-		if (shallConcat) {
-			Clipboard.get_text(CLIPBOARD_TYPE, function (clipBoard, text) {
-				if (tonable) {
-					if (gendered) {
-						if (temp.includes(GENDERS2[0])) {
-						CurrentEmoji = CurrentEmoji.replace(GENDERS2[0], GENDERS2[0]+TONES[SETTINGS.get_int('skin-tone')])
-						log('meuf');
-					} else if (temp.includes(GENDERS2[1])) {
-						CurrentEmoji = CurrentEmoji.replace(GENDERS2[1], GENDERS2[1]+TONES[SETTINGS.get_int('skin-tone')])
-						log('mec');
-					} else {
-						log('erreur : ' + GENDERS2[0]);
-					}
-					} else {
-						temp += TONES[SETTINGS.get_int('skin-tone')];
-					}
-				}
-				if (genrable) {
-					temp += GENDERS[SETTINGS.get_int('gender')];
-				}
-				Clipboard.set_text(CLIPBOARD_TYPE, text + temp);
-			});
-		} else {
-			if (tonable) {
-				if (gendered) {
-					if (temp.includes(GENDERS2[0])) {
-						CurrentEmoji = CurrentEmoji.replace(GENDERS2[0], GENDERS2[0]+TONES[SETTINGS.get_int('skin-tone')])
-						log('meuf');
-					} else if (temp.includes(GENDERS2[1])) {
-						CurrentEmoji = CurrentEmoji.replace(GENDERS2[1], GENDERS2[1]+TONES[SETTINGS.get_int('skin-tone')])
-						log('mec');
-					} else {
-						log('erreur : ' + GENDERS2[0]);
-					}
-					temp = CurrentEmoji;
+//		log( tags + " appliqués à " + CurrentEmoji );
+		if (tonable) {
+			if (gendered) {
+				if (temp.includes(GENDERS2[0])) {
+					CurrentEmoji = CurrentEmoji.replace(GENDERS2[0], GENDERS2[0]+TONES[SETTINGS.get_int('skin-tone')])
+				} else if (temp.includes(GENDERS2[1])) {
+					CurrentEmoji = CurrentEmoji.replace(GENDERS2[1], GENDERS2[1]+TONES[SETTINGS.get_int('skin-tone')])
 				} else {
-					temp += TONES[SETTINGS.get_int('skin-tone')];
+					log('Error: ' + GENDERS2[0] + " isn't a valid gender prefix.");
 				}
+				temp = CurrentEmoji;
+			} else {
+				temp += TONES[SETTINGS.get_int('skin-tone')];
 			}
-			if (genrable) {
-				temp += GENDERS[SETTINGS.get_int('gender')];
-			}
-			log("Et donc : " + temp);
-			Clipboard.set_text(CLIPBOARD_TYPE, temp);
+		}
+		if (genrable) {
+			temp += GENDERS[SETTINGS.get_int('gender')];
 		}
 		shiftFor(temp);
-	}
+		return temp;
+	} // FIXME else ?
 }
 
 //-------------------------------------------------
@@ -205,60 +211,12 @@ const SkinTonesBar = new Lang.Class({
 	_init:	function (hasGender) {
 		this._toneArray = [];
 		
-		this._toneArray[0] = new St.Button({ //TODO for
-			reactive: true,
-			can_focus: true,
-			track_hover: true,
-			width: 20,
-			accessible_name: _("No skin tone"),
-			style_class: 'UnselectedTone',
-			style: 'background-color: #FFEE00;'
-		});
-		this._toneArray[1] = new St.Button({
-			reactive: true,
-			can_focus: true,
-			track_hover: true,
-			width: 20,
-			accessible_name: _("Light skin tone"),
-			style_class: 'UnselectedTone',
-			style: 'background-color: #FFD8A8;'
-		});
-		this._toneArray[2] = new St.Button({
-			reactive: true,
-			can_focus: true,
-			track_hover: true,
-			width: 20,
-			accessible_name: _("Medium light skin tone"),
-			style_class: 'UnselectedTone',
-			style: 'background-color: #E5B590;'
-		});
-		this._toneArray[3] = new St.Button({
-			reactive: true,
-			can_focus: true,
-			track_hover: true,
-			width: 20,
-			accessible_name: _("Medium skin tone"),
-			style_class: 'UnselectedTone',
-			style: 'background-color: #B88750;'
-		});
-		this._toneArray[4] = new St.Button({
-			reactive: true,
-			can_focus: true,
-			track_hover: true,
-			width: 20,
-			accessible_name: _("Medium dark tone"),
-			style_class: 'UnselectedTone',
-			style: 'background-color: #9B6020;'
-		});
-		this._toneArray[5] = new St.Button({
-			reactive: true,
-			can_focus: true,
-			track_hover: true,
-			width: 20,
-			accessible_name: _("Dark skin tone"),
-			style_class: 'UnselectedTone',
-			style: 'background-color: #4B2000;'
-		});
+		this._toneArray[0] = this.buildToneButton(	_("No skin tone")			, '#FFEE00'	);
+		this._toneArray[1] = this.buildToneButton(	_("Light skin tone")		, '#FFD8A8'	);
+		this._toneArray[2] = this.buildToneButton(	_("Medium light skin tone")	, '#E5B590'	);
+		this._toneArray[3] = this.buildToneButton(	_("Medium skin tone")		, '#B88750'	);
+		this._toneArray[4] = this.buildToneButton(	_("Medium dark skin tone")	, '#9B6020'	);
+		this._toneArray[5] = this.buildToneButton(	_("Dark skin tone")			, '#4B2000'	);
 		
 		this._toneArray[0].connect('clicked', Lang.bind(this, function(w){
 			this.removeCircle();
@@ -344,9 +302,7 @@ const SkinTonesBar = new Lang.Class({
 		SETTINGS.set_int('gender', 0);
 		this._genderArray.forEach(function(b) {
 			b.style = 'background-color: black;';
-			log("351");
 		});
-		log("354\n");
 	},
 	
 	addBar: function(catActor) {
@@ -367,17 +323,26 @@ const SkinTonesBar = new Lang.Class({
 	update: function() {
 		this.removeCircle();
 		this._toneArray[SETTINGS.get_int('skin-tone')].style_class = 'SelectedTone';
+		this._genderArray.forEach(function(b) {
+			b.style = 'background-color: black;';
+		});
 		if (this._genderArray.length != 0) {
 			this._genderArray[SETTINGS.get_int('gender')].style = 'background-color: blue;';
 		}
 	},
+	
+	buildToneButton: function(accessibleName, color) {
+		return (new St.Button({
+			reactive: true,
+			can_focus: true,
+			track_hover: true,
+			width: 20,
+			accessible_name: accessibleName,
+			style_class: 'UnselectedTone',
+			style: 'background-color: ' + color + ';',
+		}));
+	},
 });
-
-const TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
-
-//				none		woman				man
-const GENDERS = ['', '\u200D\u2640\uFE0F', '\u200D\u2642\uFE0F'];
-const GENDERS2 = ['👩','👨'];
 
 //-------------------------------------------------
 
@@ -396,6 +361,7 @@ const EmojiCategory = new Lang.Class({
 		this.id = id;
 		this.emojiButtons = [];
 		this.actor.reactive = false;
+		this._triangleBin.visible = false;
 		
 		// A bar is created for all categories to simplify the update method
 		if ((this.id == 1) || (this.id == 5)) {
