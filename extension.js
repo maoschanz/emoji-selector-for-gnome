@@ -119,11 +119,23 @@ function buildRecents() {
 function shiftFor(CurrentEmoji) {
 	if (CurrentEmoji == '') {return;}
 	
-	for(var j = NB_COLS-1;j > 0;j--){
-		recents[j].label = recents[j-1].label;
+	//	The "isIn" boolean is true if the clicked emoji is already saved as recently used in the setting key.
+	let isIn = false;
+	let temp = Convenience.getSettings().get_string('recents').split(',');
+	for(var i = 0;i<NB_COLS;i++){
+		if (temp[i] == CurrentEmoji) {
+			isIn = true;
+		}
 	}
-	recents[0].label = CurrentEmoji;
-	saveRecents(); 
+	
+	if (!isIn) {
+		buildRecents();
+		for(var j = NB_COLS-1;j > 0;j--){
+			recents[j].label = recents[j-1].label;
+		}
+		recents[0].label = CurrentEmoji;
+		saveRecents();
+	}
 }
 
 /*
@@ -510,22 +522,13 @@ const EmojiResearchItem = new Lang.Class({
 		this.searchEntry.clutter_text.connect('key-press-event', Lang.bind(this, function(o, e) {
 			let symbol = e.get_key_symbol();
 			
-			if (symbol == Clutter.Return || symbol == Clutter.KP_Enter) { //FIXME use generic functions
+			if (symbol == Clutter.Return || symbol == Clutter.KP_Enter) {
 				let CurrentEmoji = recents[0].label;
-				Clipboard.set_text(CLIPBOARD_TYPE, CurrentEmoji);
-				this.searchEntry.set_text('');
-				buildRecents();
-				
-				let isIn = false;
-				for(var i = 0;i<NB_COLS;i++){
-					if (recents[i].label == CurrentEmoji) {
-						isIn = true;
-					}
-				}
-			
-				if(!isIn) {
-					shiftFor(CurrentEmoji);
-				}
+				let tags = [false, false, false]; //FIXME ??
+				Clipboard.set_text(
+					CLIPBOARD_TYPE,
+					applyTags(tags, CurrentEmoji)
+				);
 				globalButton.menu.close();
 			}
 		}));
@@ -805,27 +808,24 @@ const EmojisMenu = new Lang.Class({
 			- when the item is a search result (in this case, it needs to
 			be added to recent emojis)
 			*/
-			recents[i].connect('clicked', Lang.bind(this, function(){
-				let retour = recents[arguments[2]].label;
+			recents[i].connect('button-press-event', Lang.bind(
+				this,
+				this.copyRecent,
+				i
+			));
+			
+			recents[i].connect('key-press-event', Lang.bind(this, function(o, e, i) {
+				let symbol = e.get_key_symbol();
 				
-				Clipboard.set_text(CLIPBOARD_TYPE, retour);
-				
-			//	The "isIn" boolean is true if the clicked emoji is already saved as recently used in the setting key.
-				let isIn = false;
-				let temp = Convenience.getSettings().get_string('recents').split(',');
-				for(var i = 0;i<NB_COLS;i++){
-					if (temp[i] == retour) {
-						isIn = true;
-					}
+				if (symbol == Clutter.Return || symbol == Clutter.KP_Enter) {
+					let CurrentEmoji = recents[i].label;
+					let tags = [false, false, false]; //FIXME ??
+					Clipboard.set_text(
+						CLIPBOARD_TYPE,
+						applyTags(tags, CurrentEmoji)
+					);
+					globalButton.menu.close();
 				}
-				/* The "recents" list from before the research is rebuild */
-				buildRecents();
-				/* Then it's modified because the searched emoji need to be added */
-				if (!isIn) {
-					shiftFor(retour);
-				}
-				saveRecents();
-				this.menu.close();
 			}, i));
 		}
 		
@@ -835,6 +835,11 @@ const EmojisMenu = new Lang.Class({
 		
 		return RecentlyUsed;
 		//end of _recentlyUsedInit
+	},
+	
+	copyRecent: function(a, e, i) {
+//		log(recents[i].label);
+		genericOnButtonPress(a, e, [false, false, false], recents[i].label);
 	},
 	
 	_bindShortcut: function() {
