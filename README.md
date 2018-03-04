@@ -1,7 +1,8 @@
 
 **WARNING: if you install this extension from github but want updates from extensions.gnome.org, please set manually the version number (in metadata.json) to 10 or 11, do not let "999", which is the developement version!**
 
-# Emoji Selector (for Gnome Shell)
+# Emoji Selector (for GNOME Shell)
+
 This GNOME shell extension provides a simple popup menu with some emojis in it ; Clicking on an emoji copies it to your clipboard.
 
 ## New features
@@ -13,10 +14,10 @@ This GNOME shell extension provides a simple popup menu with some emojis in it ;
 #### Development version
 - skin tone & gender modifiers (only for specific emojis)
 - keyboard navigation
-- middle click to set to the cliboard without closing the menu
-- right click to add the emoji at the end of the current clipboard content
+- middle click to set to the cliboard without closing the menu (or Ctrl+Enter)
+- right click to add the emoji at the end of the current clipboard content (or Shift+Enter)
 
-![Screenshot](http://i65.tinypic.com/juthdv.png)
+![Screenshot](https://i.imgur.com/sSjj3vH.png)
 
 (Color emojis depends on your system, not on the extension.)
 
