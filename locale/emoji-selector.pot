@@ -61,6 +61,18 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
+#: prefs.js:83
+msgid "Layout"
+msgstr ""
+
+#: prefs.js:83
+msgid "Appearance"
+msgstr ""
+
+#: prefs.js:83
+msgid "Keybinding"
+msgstr ""
+
 #: prefs.js:107
 msgid "Size of emojis (px):"
 msgstr ""
@@ -70,15 +82,15 @@ msgid "Use darker font:"
 msgstr ""
 
 #: prefs.js:165
-msgid "Display of recent emojis:"
+msgid "General layout:"
 msgstr ""
 
 #: prefs.js:174
-msgid "Top"
+msgid "From top to bottom"
 msgstr ""
 
 #: prefs.js:175
-msgid "Bottom"
+msgid "From bottom to top"
 msgstr ""
 
 #: prefs.js:189
@@ -95,6 +107,10 @@ msgstr ""
 
 #: prefs.js:285
 msgid "Use a keyboard shortcut to toggle the menu:"
+msgstr ""
+
+#: prefs.js:344
+msgid "Report bugs or ideas"
 msgstr ""
 
 #: prefs.js:344
