@@ -47,15 +47,9 @@ const TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
 //------------------------------------------------------------
 
 /*
-
 TODO
-
-support générique pour les récents
-
-support générique pour touche entrée btw
-
-indicateur de la couleur/genre dans l'entrée de recherche ?? ou recherche parmi pré-traités
-
+affichage prétraité ?
+...
 */
 
 /* Global variable : globalButton to click in the topbar */
@@ -136,6 +130,7 @@ function shiftFor(CurrentEmoji) {
 		recents[0].label = CurrentEmoji;
 		saveRecents();
 	}
+	globalButton._onSearchTextChanged();
 }
 
 /*
@@ -369,7 +364,6 @@ const EmojiCategory = new Lang.Class({
 	_init:		function(categoryName, iconName, id) {
 		this.parent(categoryName);
 		this.actor.visible = false;
-//		this.actor._delegate = this; //??????????????FIXME
 		this.id = id;
 		this.emojiButtons = [];
 		this.actor.reactive = false;
@@ -675,8 +669,7 @@ const EmojisMenu = new Lang.Class({
 		
 		if(SETTINGS.get_boolean('use-keybinding')) {
 			this._bindShortcut();
-		}
-		// end of _init //----------------------------------		
+		}		
 	},
 	
 	toggle: function() {
@@ -820,11 +813,31 @@ const EmojisMenu = new Lang.Class({
 				if (symbol == Clutter.Return || symbol == Clutter.KP_Enter) {
 					let CurrentEmoji = recents[i].label;
 					let tags = [false, false, false]; //FIXME ??
-					Clipboard.set_text(
-						CLIPBOARD_TYPE,
-						applyTags(tags, CurrentEmoji)
-					);
-					globalButton.menu.close();
+					let [x, y, mods] = global.get_pointer();
+					let majPressed = (mods & Clutter.ModifierType.SHIFT_MASK) != 0;
+					let ctrlPressed = (mods & Clutter.ModifierType.CONTROL_MASK) != 0;
+					if (majPressed) {
+						Clipboard.get_text(CLIPBOARD_TYPE, function (clipBoard, text) {
+							Clipboard.set_text(
+								CLIPBOARD_TYPE,
+								text + applyTags(tags, CurrentEmoji)
+							);
+						});
+						return Clutter.EVENT_STOP;
+					} else if (ctrlPressed) {
+						Clipboard.set_text(
+							CLIPBOARD_TYPE,
+							applyTags(tags, CurrentEmoji)
+						);
+						return Clutter.EVENT_STOP;
+					} else {
+						Clipboard.set_text(
+							CLIPBOARD_TYPE,
+							applyTags(tags, CurrentEmoji)
+						);
+						globalButton.menu.close();
+						return Clutter.EVENT_STOP;
+					}
 				}
 			}, i));
 		}
@@ -838,7 +851,6 @@ const EmojisMenu = new Lang.Class({
 	},
 	
 	copyRecent: function(a, e, i) {
-//		log(recents[i].label);
 		genericOnButtonPress(a, e, [false, false, false], recents[i].label);
 	},
 	
