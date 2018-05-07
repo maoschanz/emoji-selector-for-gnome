@@ -37,6 +37,11 @@
       <summary>Favorite skin tone</summary>
       <description>0 is none, 1 is light, ..., 5 is dark.</description>
     </key>
+    <key type="i" name="gender">
+      <default>0</default>
+      <summary>Favorite gender</summary>
+      <description>0 is none, 1 is women, 2 is men.</description>
+    </key>
     <key name="emoji-keybinding" type="as">
       <default><![CDATA[['<Super>e']]]></default>
       <summary>Keyboard shortcut.</summary>
