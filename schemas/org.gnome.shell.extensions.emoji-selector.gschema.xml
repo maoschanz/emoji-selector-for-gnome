@@ -27,6 +27,11 @@
       <summary>if keybinding is enabled</summary>
       <description>if true, Super+E will toggle the menu.</description>
     </key>
+    <key type="b" name="always-show">
+      <default>true</default>
+      <summary>if icon should always be shown</summary>
+      <description>if false, Super+E will be the only way to display the popup menu.</description>
+    </key>
     <key type="b" name="light-theme">
       <default>false</default>
       <summary>if a darker font is used</summary>
