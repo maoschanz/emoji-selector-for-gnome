@@ -62,10 +62,7 @@ const PrefsPage = new Lang.Class({
 		}
 	
 		let a = new Gtk.ListBox({
-			can_focus: false,
-			has_focus: false,
-			is_focus: false,
-			has_default: false,
+			can_focus: true,
 			selection_mode: Gtk.SelectionMode.NONE,
 		});
 		section.add(a);
@@ -75,11 +72,7 @@ const PrefsPage = new Lang.Class({
 
 	add_row: function(filledbox, section) {
 		let a = new Gtk.ListBoxRow({
-			can_focus: false,
-			has_focus: false,
-			is_focus: false,
-			has_default: false,
-//			activatable: false,
+			can_focus: true,
 			selectable: false,	
 		});
 		a.add(filledbox);
@@ -130,7 +123,7 @@ function buildPrefsWidget() {
 	
 		//-------------------------------------------------
 		
-		let labelSizeEmojis = _("Size of emojis (px):");
+		let emojiSizeLabel = _("Size of emojis (px):");
 		
 		let emojiSize = new Gtk.SpinButton();
 		emojiSize.set_sensitive(true);
@@ -149,12 +142,12 @@ function buildPrefsWidget() {
 			spacing: 15,
 			margin: 6,
 		});
-		sizeBox.pack_start(new Gtk.Label({ label: labelSizeEmojis, halign: Gtk.Align.START }), false, false, 0);
+		sizeBox.pack_start(new Gtk.Label({ label: emojiSizeLabel, halign: Gtk.Align.START }), false, false, 0);
 		sizeBox.pack_end(emojiSize, false, false, 0);
 		
 		//------------------------------------------------
 		
-		let labelLightTheme = _("Use darker font:");
+		let lightThemeLabel = _("Use darker font:");
 		let lightThemeSwitch = new Gtk.Switch();
 		lightThemeSwitch.set_state(false);
 		lightThemeSwitch.set_state(SETTINGS.get_boolean('light-theme'));
@@ -173,16 +166,16 @@ function buildPrefsWidget() {
 			margin: 6,
 			tooltip_text: _("This is useful if your system doesn't support color emojis and your GNOME Shell theme has a white menu background."),
 		});
-		lightThemeBox.pack_start(new Gtk.Label({ label: labelLightTheme, halign: Gtk.Align.START }), false, false, 0);
+		lightThemeBox.pack_start(new Gtk.Label({ label: lightThemeLabel, halign: Gtk.Align.START }), false, false, 0);
 		lightThemeBox.pack_end(lightThemeSwitch, false, false, 0);
 		
 		//------------------------------------------------
 		
-		let labelPosRecent = _("General layout:");
+		let positionLabel = _("General layout:");
 		
 		let positionCombobox = new Gtk.ComboBoxText({
 			visible: true,
-			can_focus: true,
+			can_focus: false,
 			halign: Gtk.Align.END,
 			valign: Gtk.Align.CENTER
 		});
@@ -202,12 +195,12 @@ function buildPrefsWidget() {
 			margin: 6,
 			tooltip_text: _("Displaying the interface from the bottom is nice if you use a bottom panel instead of the default top bar.")+'\n'+ RELOAD_TEXT,
 		});
-		positionBox.pack_start(new Gtk.Label({ label: labelPosRecent, halign: Gtk.Align.START }), false, false, 0);
+		positionBox.pack_start(new Gtk.Label({ label: positionLabel, halign: Gtk.Align.START }), false, false, 0);
 		positionBox.pack_end(positionCombobox, false, false, 0);
 
 		//-------------------------------------
 		
-		let labelNbEmojis = _("Number of emojis per line:");
+		let nbColsLabel = _("Number of emojis per line:");
 		
 		let nbCols = new Gtk.SpinButton();
 		nbCols.set_sensitive(true);
@@ -226,7 +219,7 @@ function buildPrefsWidget() {
 			spacing: 15,
 			margin: 6,
 		});
-		colsBox.pack_start(new Gtk.Label({ label: labelNbEmojis, halign: Gtk.Align.START }), false, false, 0);
+		colsBox.pack_start(new Gtk.Label({ label: nbColsLabel, halign: Gtk.Align.START }), false, false, 0);
 		colsBox.pack_end(nbCols, false, false, 0);
 	
 		//---------------------------------------------------
@@ -259,7 +252,7 @@ function buildPrefsWidget() {
 		
 		//---------------------------------------------------------------
 		
-		let labelKeybinding = _("Use a keyboard shortcut to toggle the menu:");
+		let keybindingLabel = _("Use a keyboard shortcut to toggle the menu:");
 		
 		let keybindingSwitch = new Gtk.Switch();
 		keybindingSwitch.set_state(true);
@@ -270,11 +263,14 @@ function buildPrefsWidget() {
 				SETTINGS.set_boolean('use-keybinding', true);
 				keybindingEntry.sensitive = true;
 				keybindingButton.sensitive = true;
-				
+				alwaysShowSwitch.sensitive = true;
 			} else {
 				SETTINGS.set_boolean('use-keybinding', false);
 				keybindingEntry.sensitive = false;
 				keybindingButton.sensitive = false;
+				SETTINGS.set_boolean('always-show', true);
+				alwaysShowSwitch.set_state(true);
+				alwaysShowSwitch.sensitive = false;
 			}
 		}));
 		
@@ -283,7 +279,7 @@ function buildPrefsWidget() {
 			spacing: 15,
 			margin: 6,
 		});
-		keybindingBox2.pack_start(new Gtk.Label({ label: labelKeybinding, halign: Gtk.Align.START }), false, false, 0);
+		keybindingBox2.pack_start(new Gtk.Label({ label: keybindingLabel, halign: Gtk.Align.START }), false, false, 0);
 		keybindingBox2.pack_end(keybindingSwitch, false, false, 0);
 		
 		keybindingBox.pack_start(keybindingBox2, false, false, 0);
@@ -293,7 +289,7 @@ function buildPrefsWidget() {
 		
 		//-------------------------------------------------------
 		
-		let labelAlwaysShow = _("Always show the icon:");
+		let alwaysShowLabel = _("Always show the icon:");
 		let alwaysShowSwitch = new Gtk.Switch();
 		alwaysShowSwitch.set_state(true);
 		alwaysShowSwitch.set_state(SETTINGS.get_boolean('always-show'));
@@ -310,9 +306,9 @@ function buildPrefsWidget() {
 			orientation: Gtk.Orientation.HORIZONTAL,
 			spacing: 15,
 			margin: 6,
-//			tooltip_text: _("This is useful if your system doesn't support color emojis and your GNOME Shell theme has a white menu background."),
+//			tooltip_text: _(""),
 		});
-		alwaysShowBox.pack_start(new Gtk.Label({ label: labelAlwaysShow, halign: Gtk.Align.START }), false, false, 0);
+		alwaysShowBox.pack_start(new Gtk.Label({ label: alwaysShowLabel, halign: Gtk.Align.START }), false, false, 0);
 		alwaysShowBox.pack_end(alwaysShowSwitch, false, false, 0);
 		
 		//-------------------------------------------------------

@@ -659,11 +659,12 @@ const EmojisMenu = new Lang.Class({
 		// this sets the default behavior of each submenu : false means it is close when the extension's menu opens
 		this.menu.connect('open-state-changed', Lang.bind(this, function(self, open){
 			this.actor.visible = open || SETTINGS.get_boolean('always-show');
+			
 			this.clearCategories();
-
+			this.researchItem.searchEntry.set_text('');
+			
 			let a = Mainloop.timeout_add(20, Lang.bind(this, function() {
 				if (open) {
-					this.researchItem.searchEntry.set_text('');
 					global.stage.set_key_focus(this.researchItem.searchEntry);
 				}
 				Mainloop.source_remove(a);
@@ -672,7 +673,7 @@ const EmojisMenu = new Lang.Class({
 		
 		if(SETTINGS.get_boolean('use-keybinding')) {
 			this._bindShortcut();
-		}		
+		}
 	},
 	
 	toggle: function() {
@@ -684,7 +685,7 @@ const EmojisMenu = new Lang.Class({
 	
 		/* creating new categories with emojis loaded in EMOJIS_CHARACTERS */
 		this.emojiCategories[0] = new EmojiCategory(	_('Smileys & Body'),		'face-smile-symbolic',			0	);
-		this.emojiCategories[1] = new EmojiCategory(	_('Peoples & Clothing'),		'contact-new-symbolic',			1	);	
+		this.emojiCategories[1] = new EmojiCategory(	_('Peoples & Clothing'),	'contact-new-symbolic',			1	);	
 		this.emojiCategories[2] = new EmojiCategory(	_('Animals & Nature'),		'face-monkey-symbolic',			2	);	
 		this.emojiCategories[3] = new EmojiCategory(	_('Food & Drink'), 			'my-caffeine-on-symbolic',		3	);
 		this.emojiCategories[4] = new EmojiCategory(	_('Travel & Places'), 		'airplane-mode-symbolic',		4	);
@@ -924,6 +925,9 @@ function enable() {
 	SETTINGS.connect('changed::light-theme', Lang.bind(this, function(){
 		updateStyle();
 	}));
+	SETTINGS.connect('changed::always-show', Lang.bind(this, function(){
+		globalButton.actor.visible = SETTINGS.get_boolean('always-show');
+	}));
 	SETTINGS.connect('changed::use-keybinding', Lang.bind(this, function(z){
 		if(z.get_boolean('use-keybinding')) {
 			Main.wm.removeKeybinding('emoji-keybinding');
@@ -932,7 +936,7 @@ function enable() {
 			Main.wm.removeKeybinding('emoji-keybinding');
 		}
 	}));
-	//TODO disconnect
+	//TODO disconnect !!!
 }
 
 //------------------------------------------------------------
