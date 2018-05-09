@@ -609,6 +609,8 @@ const EmojisMenu = new Lang.Class({
 		this._permanentItems = 0;
 		this._activeCat = -1;
 		
+		this.actor.visible = SETTINGS.get_boolean('always-show');
+		
 		//--------------------------------------------------
 		
 		//initializing categories
@@ -656,6 +658,7 @@ const EmojisMenu = new Lang.Class({
 		
 		// this sets the default behavior of each submenu : false means it is close when the extension's menu opens
 		this.menu.connect('open-state-changed', Lang.bind(this, function(self, open){
+			this.actor.visible = open || SETTINGS.get_boolean('always-show');
 			this.clearCategories();
 
 			let a = Mainloop.timeout_add(20, Lang.bind(this, function() {
@@ -890,8 +893,8 @@ const SettingsSchema = getSchema();
 
 function init() {
 	Convenience.initTranslations("emoji-selector");
-    let theme = imports.gi.Gtk.IconTheme.get_default();
-    theme.append_search_path(Me.path + "/icons");
+	let theme = imports.gi.Gtk.IconTheme.get_default();
+	theme.append_search_path(Me.path + "/icons");
 }
 
 //------------------------------------------------------------
@@ -929,7 +932,7 @@ function enable() {
 			Main.wm.removeKeybinding('emoji-keybinding');
 		}
 	}));
-	
+	//TODO disconnect
 }
 
 //------------------------------------------------------------

@@ -292,7 +292,28 @@ function buildPrefsWidget() {
 		keybindingBox.pack_end(keybindingBox1, false, false, 0);
 		
 		//-------------------------------------------------------
-	
+		
+		let labelAlwaysShow = _("Always show the icon:");
+		let alwaysShowSwitch = new Gtk.Switch();
+		alwaysShowSwitch.set_state(true);
+		alwaysShowSwitch.set_state(SETTINGS.get_boolean('always-show'));
+		
+		alwaysShowSwitch.connect('notify::active', Lang.bind(this, function(widget) {
+			if (widget.active) {
+				SETTINGS.set_boolean('always-show', true);
+			} else {
+				SETTINGS.set_boolean('always-show', false);
+			}
+		}));
+		
+		let alwaysShowBox = new Gtk.Box({
+			orientation: Gtk.Orientation.HORIZONTAL,
+			spacing: 15,
+			margin: 6,
+//			tooltip_text: _("This is useful if your system doesn't support color emojis and your GNOME Shell theme has a white menu background."),
+		});
+		alwaysShowBox.pack_start(new Gtk.Label({ label: labelAlwaysShow, halign: Gtk.Align.START }), false, false, 0);
+		alwaysShowBox.pack_end(alwaysShowSwitch, false, false, 0);
 		
 		//-------------------------------------------------------
 	
@@ -301,6 +322,7 @@ function buildPrefsWidget() {
 	settingsPage.add_row(lightThemeBox, appearanceSection);
 	settingsPage.add_row(sizeBox, appearanceSection);
 	settingsPage.add_row(keybindingBox, keybindingSection);	
+	settingsPage.add_row(alwaysShowBox, keybindingSection);	
 	
 	//------------------------------------
 
