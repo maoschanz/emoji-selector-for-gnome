@@ -67,7 +67,11 @@ msgstr "Apparence"
 
 #: prefs.js:83
 msgid "Keybinding"
-msgstr "Paramètres"
+msgstr "Raccourci clavier"
+
+#: prefs.js:83
+msgid "Always show the icon:"
+msgstr "Toujours afficher l'icône :"
 
 #: prefs.js:107
 msgid "Size of emojis (px):"
