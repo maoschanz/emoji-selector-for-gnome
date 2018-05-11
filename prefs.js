@@ -21,8 +21,6 @@ function init() {
 	Convenience.initTranslations();
 }
 
-//TODO UN RECHARGEMENT AUTO DE L'EXTENSION ? 
-
 //-----------------------------------------------
 
 const PrefsPage = new Lang.Class({
@@ -374,13 +372,3 @@ function buildPrefsWidget() {
 }
 
 
-
-
-//I guess this is like the "enable" in extension.js : something called each
-//time he user try to access the settings' window
-//function buildPrefsWidget() {
-//	let widget = new EmojiSettingsWidget();
-//	widget.show_all();
-
-//	return widget;
-//}

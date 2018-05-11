@@ -32,7 +32,7 @@ const CLIPBOARD_TYPE = St.ClipboardType.CLIPBOARD;
 /*
  * Import data (array of arrays of characters, and array of arrays of strings).
  * Keywords are used for both:
- * - research
+ * - search
  * - skin tone management
  * - gender management
  */
@@ -45,12 +45,6 @@ const GENDERS2 = ['👩','👨'];
 const TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
 
 //------------------------------------------------------------
-
-/*
-TODO
-affichage prétraité ?
-...
-*/
 
 /* Global variable : globalButton to click in the topbar */
 let globalButton;
@@ -447,7 +441,7 @@ const EmojiCategory = new Lang.Class({
 				}
 			}
 			
-			// Copy the emoji to the clipboard this adequate tags and behavior
+			// Copy the emoji to the clipboard with adequate tags and behavior
 			button.connect('button-press-event', Lang.bind(
 				this,
 				genericOnButtonPress,
@@ -498,19 +492,19 @@ const EmojiCategory = new Lang.Class({
 	},
 	
 	destroy: function() {
-		//TODO ??
+		
 		this.parent();
 	}
 });
 
 //------------------------------------------------
 
-//class EmojiResearchItem
+//class EmojiSearchItem
 //methods :
 //	_init()					create and connect a search entry, added to a menu item
 //	_onSearchTextChanged()	change the "recently used" array content in reaction to a new search
-const EmojiResearchItem = new Lang.Class({
-	Name:		'EmojiResearchItem',
+const EmojiSearchItem = new Lang.Class({
+	Name:		'EmojiSearchItem',
 	Extends:	PopupMenu.PopupBaseMenuItem,
 	
 	_init: function() {
@@ -619,7 +613,7 @@ const EmojiResearchItem = new Lang.Class({
 //	_addAllCategories()			add all invisible submenu menuitems to the extension interface
 //	_renderPanelMenuHeaderBox()	add "back" button & categories' buttons to the extension interface
 //	clearCategories()			clean the interface & close an eventual opened category
-//	_onSearchTextChanged		wrapper calling EmojiResearchItem's _onSearchTextChanged
+//	_onSearchTextChanged		wrapper calling EmojiSearchItem's _onSearchTextChanged
 //	getStyle()					return the CSS to apply to buttons (as a string)
 //	_recentlyUsedInit()			initialize the array of recently used emojis
 //	copyRecent(??,??,??)		euh...
@@ -656,7 +650,7 @@ const EmojisMenu = new Lang.Class({
 		this._renderPanelMenuHeaderBox();
 		
 		//creating the search entry
-		this.researchItem = new EmojiResearchItem();
+		this.searchItem = new EmojiSearchItem();
 		
 		//initializing the "recently used" buttons	
 		let RecentlyUsed = this._recentlyUsedInit();
@@ -666,7 +660,7 @@ const EmojisMenu = new Lang.Class({
 		if (POSITION === 'top') {
 			this.menu.addMenuItem(this._buttonMenu);
 			this._permanentItems++;
-			this.menu.addMenuItem(this.researchItem);
+			this.menu.addMenuItem(this.searchItem);
 			this._permanentItems++;
 			
 			this.menu.addMenuItem(RecentlyUsed);
@@ -683,7 +677,7 @@ const EmojisMenu = new Lang.Class({
 			this.menu.addMenuItem(RecentlyUsed);
 			this._permanentItems++;
 			
-			this.menu.addMenuItem(this.researchItem);
+			this.menu.addMenuItem(this.searchItem);
 			this._permanentItems++;
 			
 			this.menu.addMenuItem(this._buttonMenu);
@@ -697,11 +691,11 @@ const EmojisMenu = new Lang.Class({
 			this.actor.visible = open || SETTINGS.get_boolean('always-show');
 			
 			this.clearCategories();
-			this.researchItem.searchEntry.set_text('');
+			this.searchItem.searchEntry.set_text('');
 			
 			let a = Mainloop.timeout_add(20, Lang.bind(this, function() {
 				if (open) {
-					global.stage.set_key_focus(this.researchItem.searchEntry);
+					global.stage.set_key_focus(this.searchItem.searchEntry);
 				}
 				Mainloop.source_remove(a);
 			}));
@@ -794,7 +788,7 @@ const EmojisMenu = new Lang.Class({
 	},
 	
 	_onSearchTextChanged: function() {
-		this.researchItem._onSearchTextChanged();
+		this.searchItem._onSearchTextChanged();
 		return;
 	},
 	
@@ -835,7 +829,7 @@ const EmojisMenu = new Lang.Class({
 		
 		for(var i = 0;i<NB_COLS;i++){
 			/*
-			These buttons will not be destroy during research.
+			These buttons will not be destroy during search.
 			The signal needs to be able to handle different situations :
 			- when the item is actually a recent emoji
 			- when the item is a search result (in this case, it needs to
