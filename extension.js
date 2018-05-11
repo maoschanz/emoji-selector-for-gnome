@@ -208,9 +208,10 @@ function applyTags (tags, CurrentEmoji) {
 
 //-------------------------------------------------
 
-//class EmojiCategory
+//class SkinTonesBar
 //methods :	_init()
 //			...
+//			TODO
 //			destroy()
 const SkinTonesBar = new Lang.Class({
 	Name:	'SkinTonesBar',
@@ -354,15 +355,21 @@ const SkinTonesBar = new Lang.Class({
 //-------------------------------------------------
 
 //class EmojiCategory
-//methods :	_init()
-//			...
-//			destroy()
+//methods :
+//	_init(string, string, int)	init the button & the submenu's menu-item (label, tone/gender)
+//	clear()						remove all emojis from the category
+//	build()						build category's rows and buttons in it
+//	getStyle()					return the CSS to apply to buttons (as a string)
+//	_openCategory()				do everything needed when the user click on the category's button
+//	getButton()					not useful getter
+//	destroy()					//TODO
 const EmojiCategory = new Lang.Class({
 	Name:		'EmojiCategory',
 	Extends:	PopupMenu.PopupSubMenuMenuItem,
 	
 	_init:		function(categoryName, iconName, id) {
 		this.parent(categoryName);
+		this.categoryName = categoryName;
 		this.actor.visible = false;
 		this.id = id;
 		this.emojiButtons = [];
@@ -440,12 +447,19 @@ const EmojiCategory = new Lang.Class({
 				}
 			}
 			
+			// Copy the emoji to the clipboard this adequate tags and behavior
 			button.connect('button-press-event', Lang.bind(
 				this,
 				genericOnButtonPress,
 				[tonable, genrable, gendered],
 				CurrentEmoji
 			));
+			
+			// Update the category label on hover, allowing the user to know the
+			// of the emoji he's copying.
+			button.connect('notify::hover', Lang.bind(this, function(a, b, c) {
+				this.label.text = EMOJIS_KEYWORDS[globalButton._activeCat][c][0];
+			}, i));
 			
 			this.emojiButtons.push(button);
 			container.add_child(button);
@@ -465,6 +479,7 @@ const EmojiCategory = new Lang.Class({
 	
 	_openCategory: function() {
 		globalButton.clearCategories();
+		this.label.text = this.categoryName;
 		
 		if(!this._built) {
 			this.build();
@@ -483,12 +498,17 @@ const EmojiCategory = new Lang.Class({
 	},
 	
 	destroy: function() {
+		//TODO ??
 		this.parent();
 	}
 });
 
 //------------------------------------------------
 
+//class EmojiResearchItem
+//methods :
+//	_init()					create and connect a search entry, added to a menu item
+//	_onSearchTextChanged()	change the "recently used" array content in reaction to a new search
 const EmojiResearchItem = new Lang.Class({
 	Name:		'EmojiResearchItem',
 	Extends:	PopupMenu.PopupBaseMenuItem,
@@ -518,7 +538,8 @@ const EmojiResearchItem = new Lang.Class({
 			
 			if (symbol == Clutter.Return || symbol == Clutter.KP_Enter) {
 				let CurrentEmoji = recents[0].label;
-				let tags = [false, false, false]; //FIXME ??
+				// FIXME il faudrait appliquer des tags à la recherche, mais comment ?
+				let tags = [false, false, false];
 				Clipboard.set_text(
 					CLIPBOARD_TYPE,
 					applyTags(tags, CurrentEmoji)
@@ -589,6 +610,21 @@ const EmojiResearchItem = new Lang.Class({
 
 //------------------------------------------------
 
+//class EmojiCategory
+//This is the main class of this extension, corresponding to the menu in the top panel
+//methods :
+//	_init()						initialize the menu (buttons, search entry, recently used)
+//	toggle()					open/close the menu (not useful wrapper)
+//	_createAllCategories()		create all categories (buttons & submenu menuitems), empty
+//	_addAllCategories()			add all invisible submenu menuitems to the extension interface
+//	_renderPanelMenuHeaderBox()	add "back" button & categories' buttons to the extension interface
+//	clearCategories()			clean the interface & close an eventual opened category
+//	_onSearchTextChanged		wrapper calling EmojiResearchItem's _onSearchTextChanged
+//	getStyle()					return the CSS to apply to buttons (as a string)
+//	_recentlyUsedInit()			initialize the array of recently used emojis
+//	copyRecent(??,??,??)		euh...
+//	_bindShortcut()				bind the keyboard shorcut
+//	destroy()					destroy the button and its menu
 const EmojisMenu = new Lang.Class({
 	Name:		'EmojisMenu',		// Class Name
 	Extends:	PanelMenu.Button,	// Parent Class
@@ -772,7 +808,7 @@ const EmojisMenu = new Lang.Class({
 		return fontStyle;
 	},
 	
-	_recentlyUsedInit: function () {
+	_recentlyUsedInit: function() {
 		
 		let RecentlyUsed = new PopupMenu.PopupBaseMenuItem({
 			reactive: false,
@@ -900,14 +936,16 @@ function init() {
 
 //------------------------------------------------------------
 
-let SETTINGS
+let SETTINGS;
+let SIGNAUX = [];
+
 function enable() {	
 	SETTINGS = Convenience.getSettings();
 	
 	/* TODO paramètres restants à dynamiser
-	emoji-keybinding (tableau de chaînes)
-	nbcols (int)
-	position (chaîne)
+	emoji-keybinding (tableau de chaînes), pourri de toutes manières
+	nbcols (int), rebuild nécessaire
+	position (chaîne) impossible tout court ?
 	*/
 	
 	NB_COLS = SETTINGS.get_int('nbcols');
@@ -919,16 +957,16 @@ function enable() {
 //	- `right` is the box where we want our globalButton to be displayed (left/center/right)
 	Main.panel.addToStatusArea('EmojisMenu', globalButton, 0, 'right');
 	
-	SETTINGS.connect('changed::emojisize', Lang.bind(this, function(){
+	SIGNAUX[0] = SETTINGS.connect('changed::emojisize', Lang.bind(this, function(){
 		updateStyle();
 	}));
-	SETTINGS.connect('changed::light-theme', Lang.bind(this, function(){
+	SIGNAUX[1] = SETTINGS.connect('changed::light-theme', Lang.bind(this, function(){
 		updateStyle();
 	}));
-	SETTINGS.connect('changed::always-show', Lang.bind(this, function(){
+	SIGNAUX[2] = SETTINGS.connect('changed::always-show', Lang.bind(this, function(){
 		globalButton.actor.visible = SETTINGS.get_boolean('always-show');
 	}));
-	SETTINGS.connect('changed::use-keybinding', Lang.bind(this, function(z){
+	SIGNAUX[3] = SETTINGS.connect('changed::use-keybinding', Lang.bind(this, function(z){
 		if(z.get_boolean('use-keybinding')) {
 			Main.wm.removeKeybinding('emoji-keybinding');
 			globalButton._bindShortcut();
@@ -936,7 +974,6 @@ function enable() {
 			Main.wm.removeKeybinding('emoji-keybinding');
 		}
 	}));
-	//TODO disconnect !!!
 }
 
 //------------------------------------------------------------
@@ -948,5 +985,11 @@ function disable() {
 	if(SETTINGS.get_boolean('use-keybinding')) {
 		Main.wm.removeKeybinding('emoji-keybinding');
 	}
+	
+	SETTINGS.disconnect(SIGNAUX[0]);
+	SETTINGS.disconnect(SIGNAUX[1]);
+	SETTINGS.disconnect(SIGNAUX[2]);
+	SETTINGS.disconnect(SIGNAUX[3]);
+	
 	globalButton.destroy();
 }
