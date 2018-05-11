@@ -1,21 +1,17 @@
-
-**WARNING: if you install this extension from github but want updates from extensions.gnome.org, please set manually the version number (in metadata.json) to 10 or 11, do not let "999", which is the developement version!**
-
 # Emoji Selector (for GNOME Shell)
 
-This GNOME shell extension provides a simple popup menu with some emojis in it ; Clicking on an emoji copies it to your clipboard.
+This GNOME shell extension provides a searchable popup menu displaying most emojis ; Clicking on an emoji copies it to your clipboard.
 
-## New features
+## Features
+
 - keyboard shorcut to open the extension's menu (Super+E by defaut)
 - dynamic research (press enter to copy the first result to the clipboard)
-- Unicode 10
 - lots of parametrable things
-
-#### Development version
-- skin tone & gender modifiers (only for specific emojis)
-- keyboard navigation
+- skin tone & gender modifiers
 - middle click to set to the cliboard without closing the menu (or Ctrl+Enter)
 - right click to add the emoji at the end of the current clipboard content (or Shift+Enter)
+
+>currently Unicode 10
 
 ![Screenshot](https://i.imgur.com/sSjj3vH.png)
 
@@ -24,23 +20,28 @@ This GNOME shell extension provides a simple popup menu with some emojis in it ;
 ## Installation
 
 #### Default way to do
+
 The better option is to install it from https://extensions.gnome.org/extension/1162/emoji-selector/
 
 #### For Arch Linux users
+
 Arch Linux users can install [gnome-shell-extension-emoji-selector-git](https://aur.archlinux.org/packages/gnome-shell-extension-emoji-selector-git/) from **AUR**.
 
 #### Manual installation
+
 Download files and put them in an "emoji-selector@maestroschan.fr" folder to `~/.local/share/gnome-shell/extensions/`
 
 You may need to restart the gnome shell environnment ("logout and login again", or `alt` + `f2` + `r` + enter).
 
 ## About fonts
+
 It will be less ugly if you have the « [Twitter Color Emoji](https://github.com/eosrei/twemoji-color-font/releases) » font, or the « [EmojiOne Color](https://github.com/emojione/emojione) » font installed on your system. These fonts are on github.
 
 **Arch Linux** users can install [emojione-fonts from **AUR**](https://aur.archlinux.org/packages/emojione-fonts/).
 
 ## Your eventual observations :
-> Settings don't apply
+
+> [some setting] don't apply
 
 Yes sorry it's not automatic for all settings. Disable the extension, re-enable it, and it will be applied.
 
