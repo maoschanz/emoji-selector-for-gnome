@@ -44,7 +44,7 @@ const GENDERS =	['',	'\u200D\u2640\uFE0F',	'\u200D\u2642\uFE0F'];
 const GENDERS2 = ['👩','👨'];
 const TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
 
-//------------------------------------------------------------
+//-----------------------------------------------
 
 /* Global variable : globalButton to click in the topbar */
 let globalButton;
@@ -52,13 +52,28 @@ let globalButton;
 /* this array will stock some St.Button(s) */
 let recents = [];
 
-//-----------------------------------------------
-
-/* These global variables are used to store some settings */
+/* These global variables are used to store some static settings */
 let NB_COLS;
 let POSITION;
 
 //-----------------------------------------------
+
+// This function is a copy-paste from clipboard-indicator, however it's
+// not very good imo so FIXME TODO
+
+const SCHEMA_NAME = 'org.gnome.shell.extensions.emoji-selector';
+
+const getSchema = function () {
+	let schemaDir = Me.dir.get_child('schemas').get_path();
+	let schemaSource = Gio.SettingsSchemaSource.new_from_directory(schemaDir, Gio.SettingsSchemaSource.get_default(), false);
+	let schema = schemaSource.lookup(SCHEMA_NAME, false);
+
+	return new Gio.Settings({ settings_schema: schema });
+}
+
+const SettingsSchema = getSchema();
+
+//-----------------------------------------
 
 function updateStyle() {
 	recents.forEach(function(b){
@@ -200,13 +215,16 @@ function applyTags (tags, CurrentEmoji) {
 	} // FIXME else ?
 }
 
-//-------------------------------------------------
+//----------------------------------------------
 
 //class SkinTonesBar
-//methods :	_init()
-//			...
-//			TODO
-//			destroy()
+//methods :
+//	_init()				
+//	clearGender()					reset the gender
+//	addBar(actor)					add all SkinTonesBar's buttons to `actor`
+//	removeCircle()					reset the visual indication of the selected skin tone
+//	update()						update buttons appearance, reflecting the actual settings
+//	buildToneButton(name, color)	build a button for a specific skin tone
 const SkinTonesBar = new Lang.Class({
 	Name:	'SkinTonesBar',
 	
@@ -345,8 +363,6 @@ const SkinTonesBar = new Lang.Class({
 		}));
 	},
 });
-
-//-------------------------------------------------
 
 //class EmojiCategory
 //methods :
@@ -497,8 +513,6 @@ const EmojiCategory = new Lang.Class({
 	}
 });
 
-//------------------------------------------------
-
 //class EmojiSearchItem
 //methods :
 //	_init()					create and connect a search entry, added to a menu item
@@ -602,8 +616,6 @@ const EmojiSearchItem = new Lang.Class({
 	}
 });
 
-//------------------------------------------------
-
 //class EmojiCategory
 //This is the main class of this extension, corresponding to the menu in the top panel
 //methods :
@@ -638,10 +650,7 @@ const EmojisMenu = new Lang.Class({
 		this.actor.add_child(box);
 		this._permanentItems = 0;
 		this._activeCat = -1;
-		
 		this.actor.visible = SETTINGS.get_boolean('always-show');
-		
-		//--------------------------------------------------
 		
 		//initializing categories
 		this._createAllCategories();
@@ -906,20 +915,6 @@ const EmojisMenu = new Lang.Class({
 	}
 });
 
-//-----------------
-
-const SCHEMA_NAME = 'org.gnome.shell.extensions.emoji-selector';
-
-const getSchema = function () {
-	let schemaDir = Me.dir.get_child('schemas').get_path();
-	let schemaSource = Gio.SettingsSchemaSource.new_from_directory(schemaDir, Gio.SettingsSchemaSource.get_default(), false);
-	let schema = schemaSource.lookup(SCHEMA_NAME, false);
-
-	return new Gio.Settings({ settings_schema: schema });
-}
-
-const SettingsSchema = getSchema();
-
 //------------------------------------------------------------
 
 function init() {
@@ -987,3 +982,4 @@ function disable() {
 	
 	globalButton.destroy();
 }
+

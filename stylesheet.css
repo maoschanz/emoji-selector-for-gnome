@@ -1,17 +1,27 @@
 
 .EmojisItemStyle {
-    font-family: EmojiOne Color, Twitter Color Emoji, Noto Emoji;
-    /*padding: 1px 3px;*/
-    height: 1.5em;
-    width: 1.5em;
+	font-family: EmojiOne Color, Twitter Color Emoji, Noto Emoji;
+	/*padding: 1px 3px;*/
+	height: 1.5em;
+	width: 1.5em;
 }
 
-.EmojisItemStyle:hover {
+.EmojisItemStyle:hover, .EmojisItemStyle:focus {
 	background-color: rgba(0, 0, 0, 0.5);
 	border-radius: 6px;
 }
 
 .EmojisList {
-    padding: 0px;
-    margin: 0px;
+	padding: 0px;
+	margin: 0px;
+}
+
+.UnselectedTone {
+	border-radius: 10px;
+}
+
+.SelectedTone {
+	border-radius: 10px;
+	border-color: rgba(0,0,200,1.0);
+	border-width: 3px;
 }
