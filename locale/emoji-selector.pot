@@ -73,6 +73,10 @@ msgstr ""
 msgid "Keybinding"
 msgstr ""
 
+#: prefs.js:83
+msgid "Always show the icon:"
+msgstr ""
+
 #: prefs.js:107
 msgid "Size of emojis (px):"
 msgstr ""
