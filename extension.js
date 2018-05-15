@@ -468,7 +468,11 @@ const EmojiCategory = new Lang.Class({
 			// Update the category label on hover, allowing the user to know the
 			// of the emoji he's copying.
 			button.connect('notify::hover', Lang.bind(this, function(a, b, c) {
-				this.label.text = EMOJIS_KEYWORDS[globalButton._activeCat][c][0];
+				if (a.hover) {
+					this.label.text = EMOJIS_KEYWORDS[globalButton._activeCat][c][0];
+				} else {
+					this.label.text = this.categoryName;
+				}
 			}, i));
 			
 			this.emojiButtons.push(button);
