@@ -23,8 +23,8 @@ function init() {
 
 //-----------------------------------------------
 
-const PrefsPage = new Lang.Class({
-	Name: "PrefsPage",
+const EmojiSelector_PrefsPage = new Lang.Class({
+	Name: "EmojiSelector_PrefsPage",
 	Extends: Gtk.ScrolledWindow,
 
 	_init: function () {
@@ -87,8 +87,8 @@ const PrefsPage = new Lang.Class({
 
 //--------------------
 
-const EmojiPrefsWidget = new Lang.Class({
-	Name: "EmojiPrefsWidget",
+const EmojiSelector_PrefsWidget = new Lang.Class({
+	Name: "EmojiSelector_PrefsWidget",
 	Extends: Gtk.Stack,
 	
 	_init: function () {
@@ -102,7 +102,7 @@ const EmojiPrefsWidget = new Lang.Class({
 	},
 	
 	add_page: function (id, title) {
-		let page = new PrefsPage();
+		let page = new EmojiSelector_PrefsPage();
 		this.add_titled(page, id, title);
 		return page;
 	}
@@ -111,7 +111,7 @@ const EmojiPrefsWidget = new Lang.Class({
 let SETTINGS = Convenience.getSettings();
 
 function buildPrefsWidget() {
-	let widget = new EmojiPrefsWidget();
+	let widget = new EmojiSelector_PrefsWidget();
 	
 	let settingsPage = widget.add_page("settings", _("Settings"));	
 	
