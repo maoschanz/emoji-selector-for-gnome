@@ -77,6 +77,14 @@ msgstr ""
 msgid "Always show the icon:"
 msgstr ""
 
+#: prefs.js:??
+msgid "If you access the menu with the keyboard shorcut, you might not need to always display the icon."
+msgstr ""
+
+#: prefs.js:??
+msgid "Reset"
+msgstr ""
+
 #: prefs.js:107
 msgid "Size of emojis (px):"
 msgstr ""

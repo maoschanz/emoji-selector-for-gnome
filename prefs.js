@@ -59,11 +59,13 @@ const PrefsPage = new Lang.Class({
 			}));
 		}
 	
+		let frame = new Gtk.Frame();
 		let a = new Gtk.ListBox({
 			can_focus: true,
 			selection_mode: Gtk.SelectionMode.NONE,
 		});
-		section.add(a);
+		frame.add(a)
+		section.add(frame);
 		this.stackpageMainBox.add(section);
 		return a;
 	},
@@ -135,6 +137,10 @@ function buildPrefsWidget() {
 			SETTINGS.set_int('emojisize', value);
 		}));
 		
+		SETTINGS.connect('changed::emojisize', Lang.bind(this, function(){
+			emojiSize.set_value(SETTINGS.get_int('emojisize'));
+		}));
+		
 		let sizeBox = new Gtk.Box({
 			orientation: Gtk.Orientation.HORIZONTAL,
 			spacing: 15,
@@ -156,6 +162,10 @@ function buildPrefsWidget() {
 			} else {
 				SETTINGS.set_boolean('light-theme', false);
 			}
+		}));
+		
+		SETTINGS.connect('changed::light-theme', Lang.bind(this, function(){
+			lightThemeSwitch.set_state(SETTINGS.get_boolean('light-theme'));
 		}));
 		
 		let lightThemeBox = new Gtk.Box({
@@ -187,6 +197,10 @@ function buildPrefsWidget() {
 			SETTINGS.set_string('position', widget.get_active_id());
 		});
 		
+		SETTINGS.connect('changed::position', Lang.bind(this, function(){
+			positionCombobox.set_active_id(SETTINGS.get_string('position'));
+		}));
+		
 		let positionBox = new Gtk.Box({
 			orientation: Gtk.Orientation.HORIZONTAL,
 			spacing: 15,
@@ -200,16 +214,20 @@ function buildPrefsWidget() {
 		
 		let nbColsLabel = _("Number of emojis per line:");
 		
-		let nbCols = new Gtk.SpinButton();
-		nbCols.set_sensitive(true);
-		nbCols.set_range(1, 60);
-		nbCols.set_value(11);
-		nbCols.set_value(SETTINGS.get_int('nbcols'));
-		nbCols.set_increments(1, 2);
+		let nbColsSpinBtn = new Gtk.SpinButton();
+		nbColsSpinBtn.set_sensitive(true);
+		nbColsSpinBtn.set_range(1, 60);
+		nbColsSpinBtn.set_value(11);
+		nbColsSpinBtn.set_value(SETTINGS.get_int('nbcols'));
+		nbColsSpinBtn.set_increments(1, 2);
 		
-		nbCols.connect('value-changed', Lang.bind(this, function(w){
+		nbColsSpinBtn.connect('value-changed', Lang.bind(this, function(w){
 			var value = w.get_value_as_int();
 			SETTINGS.set_int('nbcols', value);
+		}));
+		
+		SETTINGS.connect('changed::nbcols', Lang.bind(this, function(){
+			nbColsSpinBtn.set_value(SETTINGS.get_int('nbcols'));
 		}));
 		
 		let colsBox =  new Gtk.Box({
@@ -218,7 +236,7 @@ function buildPrefsWidget() {
 			margin: 6,
 		});
 		colsBox.pack_start(new Gtk.Label({ label: nbColsLabel, halign: Gtk.Align.START }), false, false, 0);
-		colsBox.pack_end(nbCols, false, false, 0);
+		colsBox.pack_end(nbColsSpinBtn, false, false, 0);
 	
 		//---------------------------------------------------
 		
@@ -236,6 +254,10 @@ function buildPrefsWidget() {
 		if (SETTINGS.get_strv('emoji-keybinding') != '') {
 			keybindingEntry.text = SETTINGS.get_strv('emoji-keybinding')[0];
 		}
+		
+		SETTINGS.connect('changed::emoji-keybinding', Lang.bind(this, function(){
+			keybindingEntry.set_text(SETTINGS.get_strv('emoji-keybinding')[0]);
+		}));
 		
 		let keybindingButton = new Gtk.Button({ sensitive: SETTINGS.get_boolean('use-keybinding'), label: _("Apply") });
 		
@@ -272,6 +294,10 @@ function buildPrefsWidget() {
 			}
 		}));
 		
+		SETTINGS.connect('changed::use-keybinding', Lang.bind(this, function(){
+			keybindingSwitch.set_state(SETTINGS.get_boolean('use-keybinding'));
+		}));
+		
 		let keybindingBox2 =  new Gtk.Box({
 			orientation: Gtk.Orientation.HORIZONTAL,
 			spacing: 15,
@@ -300,11 +326,15 @@ function buildPrefsWidget() {
 			}
 		}));
 		
+		SETTINGS.connect('changed::always-show', Lang.bind(this, function(){
+			alwaysShowSwitch.set_state(SETTINGS.get_boolean('always-show'));
+		}));
+		
 		let alwaysShowBox = new Gtk.Box({
 			orientation: Gtk.Orientation.HORIZONTAL,
 			spacing: 15,
 			margin: 6,
-//			tooltip_text: _(""),
+			tooltip_text: _("If you access the menu with the keyboard shorcut, you might not need to always display the icon."),
 		});
 		alwaysShowBox.pack_start(new Gtk.Label({ label: alwaysShowLabel, halign: Gtk.Align.START }), false, false, 0);
 		alwaysShowBox.pack_end(alwaysShowSwitch, false, false, 0);
@@ -363,12 +393,28 @@ function buildPrefsWidget() {
 	Mainloop.timeout_add(0, () => {
 		let headerBar = widget.get_toplevel().get_titlebar();
 		headerBar.custom_title = widget.switcher;
+		
+		let reset_btn = new Gtk.Button({ label: _("Reset"), visible: true });
+		reset_btn.get_style_context().add_class('destructive-action')
+		reset_btn.connect('clicked', reset_settings);
+		headerBar.pack_start(reset_btn);
+		
 		return false;
 	});
 
 	widget.show_all();
 	
 	return widget;
+}
+
+function reset_settings(b) {
+	SETTINGS.reset('emojisize');
+	SETTINGS.reset('light-theme');
+	SETTINGS.reset('nbcols');
+	SETTINGS.reset('position');
+	SETTINGS.reset('emoji-keybinding');
+	SETTINGS.reset('use-keybinding');
+	SETTINGS.reset('always-show');
 }
 
 

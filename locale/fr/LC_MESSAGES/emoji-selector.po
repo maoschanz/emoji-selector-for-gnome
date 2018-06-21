@@ -73,6 +73,14 @@ msgstr "Raccourci clavier"
 msgid "Always show the icon:"
 msgstr "Toujours afficher l'icône :"
 
+#: prefs.js:??
+msgid "If you access the menu with the keyboard shorcut, you might not need to always display the icon."
+msgstr "Si vous accédez au menu avec le raccourci clavier, vous préférez peut-être ne pas toujours en afficher l'icône."
+
+#: prefs.js:??
+msgid "Reset"
+msgstr "Réinitialiser"
+
 #: prefs.js:107
 msgid "Size of emojis (px):"
 msgstr "Taille des émojis (en pixels) :"
