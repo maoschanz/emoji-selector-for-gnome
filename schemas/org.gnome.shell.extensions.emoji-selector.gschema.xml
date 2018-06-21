@@ -13,7 +13,7 @@
       <description>Sets the number of column of emojis to display.</description>
     </key>
     <key type="i" name="emojisize">
-      <default>32</default>
+      <default>30</default>
       <summary>Default size of emojis</summary>
       <description>Default size of emojis (px) ; doesn't concern recently used items</description>
     </key>

@@ -370,7 +370,8 @@ const SkinTonesBar = new Lang.Class({
 //	clear()						remove all emojis from the category
 //	build()						build category's rows and buttons in it
 //	getStyle()					return the CSS to apply to buttons (as a string)
-//	_openCategory()				do everything needed when the user click on the category's button
+//	_toggle()					do everything needed when the user click on the category's button
+//	_openCategory()				open the category
 //	getButton()					not useful getter
 //	destroy()					//TODO
 const EmojiCategory = new Lang.Class({
@@ -406,7 +407,7 @@ const EmojiCategory = new Lang.Class({
 			style_class: 'system-menu-action',
 		});
 		this.categoryButton.child = new St.Icon({ icon_name: iconName });
-		this.categoryButton.connect('clicked', Lang.bind(this, this._openCategory));
+		this.categoryButton.connect('clicked', Lang.bind(this, this._toggle));
 		
 		this._built = false;
 	},
@@ -491,6 +492,14 @@ const EmojiCategory = new Lang.Class({
 		return fontStyle;
 	},
 	
+	_toggle: function() {
+		if (this._getOpenState()) {
+			globalButton.clearCategories();
+		} else {
+			this._openCategory();
+		}
+	},
+	
 	_openCategory: function() {
 		globalButton.clearCategories();
 		this.label.text = this.categoryName;
@@ -512,7 +521,6 @@ const EmojiCategory = new Lang.Class({
 	},
 	
 	destroy: function() {
-		
 		this.parent();
 	}
 });
@@ -659,7 +667,7 @@ const EmojisMenu = new Lang.Class({
 		//initializing categories
 		this._createAllCategories();
 		
-		//initializing this._buttonMenu
+		//initializing this._buttonMenuItem
 		this._renderPanelMenuHeaderBox();
 		
 		//creating the search entry
@@ -671,7 +679,7 @@ const EmojisMenu = new Lang.Class({
 		//-------------------------------------------------
 		
 		if (POSITION === 'top') {
-			this.menu.addMenuItem(this._buttonMenu);
+			this.menu.addMenuItem(this._buttonMenuItem);
 			this._permanentItems++;
 			this.menu.addMenuItem(this.searchItem);
 			this._permanentItems++;
@@ -693,7 +701,7 @@ const EmojisMenu = new Lang.Class({
 			this.menu.addMenuItem(this.searchItem);
 			this._permanentItems++;
 			
-			this.menu.addMenuItem(this._buttonMenu);
+			this.menu.addMenuItem(this._buttonMenuItem);
 			this._permanentItems++;
 		}
 		
@@ -745,32 +753,14 @@ const EmojisMenu = new Lang.Class({
 	},
 	
 	_renderPanelMenuHeaderBox: function() {
-		
-		this.backBtn = new St.Button({
-			reactive: true,
-			can_focus: true,
-			track_hover: true,
-			accessible_name: _("Back"),
-			style_class: 'system-menu-action',
-			style: 'background-color: rgba(200,0,0,0.2);',
-		});
-		this.backBtn.child = new St.Icon({
-			icon_name: 'go-previous-symbolic',
-		});
-		
-		this._buttonMenu = new PopupMenu.PopupBaseMenuItem({
+		this._buttonMenuItem = new PopupMenu.PopupBaseMenuItem({
 			reactive: false,
 			can_focus: false,
 		});
-		this._buttonMenu.actor.add_actor(this.backBtn);
-		
 		this.categoryButton = [];
-		
 		for (let i = 0; i< 9; i++) {
-			this._buttonMenu.actor.add_actor(this.emojiCategories[i].getButton());
+			this._buttonMenuItem.actor.add_actor(this.emojiCategories[i].getButton());
 		}
-		
-		this.backBtn.connect('clicked', Lang.bind(this, this.clearCategories));
 	},
 	
 	clearCategories: function(){
