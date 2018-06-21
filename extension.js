@@ -652,12 +652,7 @@ const EmojisMenu = new Lang.Class({
 		let box = new St.BoxLayout();
 		let icon = new St.Icon({ icon_name: 'face-cool-symbolic', style_class: 'system-status-icon emotes-icon'});
 
-		let toplabel = new St.Label({
-			y_align: Clutter.ActorAlign.CENTER
-		});
-
 		box.add(icon);
-		box.add(toplabel);
 		box.add(PopupMenu.arrowIcon(St.Side.BOTTOM));
 		this.actor.add_child(box);
 		this._permanentItems = 0;
