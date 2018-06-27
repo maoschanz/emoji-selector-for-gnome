@@ -37,7 +37,7 @@ You may need to restart the gnome shell environnment ("logout and login again", 
 
 It will be less ugly if you have the « [Twitter Color Emoji](https://github.com/eosrei/twemoji-color-font/releases) » font, or the « [EmojiOne Color](https://github.com/emojione/emojione) » font installed on your system. These fonts are on github.
 
-**Arch Linux** users can install [emojione-fonts from **AUR**](https://aur.archlinux.org/packages/emojione-fonts/).
+**Arch Linux** users can install [ttf-emojione from **AUR**](https://aur.archlinux.org/packages/ttf-emojione/).
 
 ## Your eventual observations :
 
