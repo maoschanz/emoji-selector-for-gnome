@@ -354,7 +354,7 @@ function buildPrefsWidget() {
 		
 		let a_name = '<b>' + Me.metadata.name.toString() + '</b>';
 		let a_uuid = Me.metadata.uuid.toString();
-		let a_description = _(Me.metadata.description.toString());
+		let a_description = Me.metadata.description.toString();
 		
 		let label_name = new Gtk.Label({ label: a_name, use_markup: true, halign: Gtk.Align.CENTER });
 		
@@ -394,10 +394,10 @@ function buildPrefsWidget() {
 		let headerBar = widget.get_toplevel().get_titlebar();
 		headerBar.custom_title = widget.switcher;
 		
-		let reset_btn = new Gtk.Button({ label: _("Reset"), visible: true });
-		reset_btn.get_style_context().add_class('destructive-action')
-		reset_btn.connect('clicked', reset_settings);
-		headerBar.pack_start(reset_btn);
+//		let reset_btn = new Gtk.Button({ label: _("Reset"), visible: true });
+//		reset_btn.get_style_context().add_class('destructive-action')
+//		reset_btn.connect('clicked', reset_settings);
+//		headerBar.pack_start(reset_btn);
 		
 		return false;
 	});

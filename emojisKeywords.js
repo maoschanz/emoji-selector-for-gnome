@@ -21,7 +21,7 @@ var ALL_KEYWORDS = [
 		['face blowing a kiss', 'kiss'],
 		['kissing face', 'kiss'],
 		['kissing face with smiling eyes', 'kiss', 'smile'],
-		['kissing face with closed eyes', 'closed', 'kiss'],
+		['kissing face with closed eyes', 'kiss'],
 		['smiling face', 'outlined', 'relaxed', 'smile'],
 		['slightly smiling face', 'smile'],
 		['hugging face', 'hug', 'hugging'],
@@ -55,7 +55,7 @@ var ALL_KEYWORDS = [
 		['confused face	', 'confused'],
 		['upside-down face', 'upside-down'],
 		['money-mouth face', 'money', 'mouth'],
-		['astonished face', 'astonished', 'shocked', 'totally'],
+		['astonished face', 'astonished', 'shocked'],
 		['frowning face', 'frown'],
 		['slightly frowning face', 'frown'],
 		//-------------
@@ -1692,7 +1692,7 @@ var ALL_KEYWORDS = [
 		['el salvador'],
 		['sint maarten'],
 		['syria'],
-		['swaziland'],
+		['swaziland', 'eswatini'],
 		['tristan da cunha'],
 		['turks & caicos islands', 'turks', 'caicos'],
 		
