@@ -279,18 +279,16 @@ const SkinTonesBar = new Lang.Class({
 				reactive: true,
 				can_focus: true,
 				track_hover: true,
-				width: 20,
 				accessible_name: _("Men"),
-				style: 'background-color: black;',
+				style_class: 'GenderUnselected',
 				label: '♀',
 			});
 			this._genderArray[2] = new St.Button({
 				reactive: true,
 				can_focus: true,
 				track_hover: true,
-				width: 20,
 				accessible_name: _("Women"),
-				style: 'background-color: black;',
+				style_class: 'GenderUnselected',
 				label: '♂',
 			});
 			
@@ -298,7 +296,7 @@ const SkinTonesBar = new Lang.Class({
 				
 				if (SETTINGS.get_int('gender') != 1) {
 					this.clearGender();
-					w.style = 'background-color: blue;';
+					w.style_class = 'GenderSelected';
 					SETTINGS.set_int('gender', 1);
 				} else {
 					this.clearGender();
@@ -308,7 +306,7 @@ const SkinTonesBar = new Lang.Class({
 			
 				if (SETTINGS.get_int('gender') != 2) {
 					this.clearGender();
-					w.style = 'background-color: blue;';
+					w.style_class = 'GenderSelected';
 					SETTINGS.set_int('gender', 2);
 				} else {
 					this.clearGender();
@@ -321,7 +319,7 @@ const SkinTonesBar = new Lang.Class({
 	clearGender: function() {
 		SETTINGS.set_int('gender', 0);
 		this._genderArray.forEach(function(b) {
-			b.style = 'background-color: black;';
+			b.style_class = 'GenderUnselected';
 		});
 	},
 	
@@ -344,10 +342,10 @@ const SkinTonesBar = new Lang.Class({
 		this.removeCircle();
 		this._toneArray[SETTINGS.get_int('skin-tone')].style_class = 'SelectedTone';
 		this._genderArray.forEach(function(b) {
-			b.style = 'background-color: black;';
+			style_class: 'GenderUnselected';
 		});
 		if (this._genderArray.length != 0) {
-			this._genderArray[SETTINGS.get_int('gender')].style = 'background-color: blue;';
+			this._genderArray[SETTINGS.get_int('gender')].style_class = 'GenderSelected';
 		}
 	},
 	
@@ -356,7 +354,6 @@ const SkinTonesBar = new Lang.Class({
 			reactive: true,
 			can_focus: true,
 			track_hover: true,
-			width: 20,
 			accessible_name: accessibleName,
 			style_class: 'UnselectedTone',
 			style: 'background-color: ' + color + ';',
@@ -751,6 +748,7 @@ const EmojisMenu = new Lang.Class({
 		this._buttonMenuItem = new PopupMenu.PopupBaseMenuItem({
 			reactive: false,
 			can_focus: false,
+			style_class: 'CategoryButtonList',
 		});
 		this.categoryButton = [];
 		for (let i = 0; i< 9; i++) {
