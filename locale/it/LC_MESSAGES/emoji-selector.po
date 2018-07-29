@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-28 19:13+0200\n"
-"PO-Revision-Date: 2018-05-13 11:17+0200\n"
+"PO-Revision-Date: 2018-07-29 10:32+0200\n"
 "Last-Translator: Jimmy Scionti <jimmy.scionti@gmail.com>\n"
 "Language-Team: \n"
 "Language: it_IT\n"
@@ -19,35 +19,35 @@ msgstr ""
 
 #: extension.js:234
 msgid "No skin tone"
-msgstr ""
+msgstr "Pelle neutra"
 
 #: extension.js:235
 msgid "Light skin tone"
-msgstr ""
+msgstr "Pelle chiara"
 
 #: extension.js:236
 msgid "Medium light skin tone"
-msgstr ""
+msgstr "Pelle chiara intermedia"
 
 #: extension.js:237
 msgid "Medium skin tone"
-msgstr ""
+msgstr "Pelle olivastra"
 
 #: extension.js:238
 msgid "Medium dark skin tone"
-msgstr ""
+msgstr "Pelle scura intermedia"
 
 #: extension.js:239
 msgid "Dark skin tone"
-msgstr ""
+msgstr "Pelle scura"
 
 #: extension.js:283
 msgid "Men"
-msgstr ""
+msgstr "Uomini"
 
 #: extension.js:292
 msgid "Women"
-msgstr ""
+msgstr "Donne"
 
 #: extension.js:547
 msgid "Type here to search..."
@@ -95,7 +95,7 @@ msgstr "Impostazioni"
 
 #: prefs.js:118
 msgid "Layout"
-msgstr "Layout"
+msgstr "Aspetto"
 
 #: prefs.js:119
 msgid "Appearance"
@@ -107,7 +107,7 @@ msgstr "Scorciatoie da tastiera"
 
 #: prefs.js:122
 msgid "Modifications will be effective after reloading the extension."
-msgstr ""
+msgstr "Le modifiche avranno effetto dopo aver ricaricato l'estensione."
 
 #: prefs.js:126
 msgid "Size of emojis (px):"
@@ -122,10 +122,12 @@ msgid ""
 "This is useful if your system doesn't support color emojis and your GNOME "
 "Shell theme has a white menu background."
 msgstr ""
+"Questo è utile se il tuo sistema non supporta le emoji colorate e il tuo "
+"tema GNOME Shell ha uno sfondo bianco per i menu."
 
 #: prefs.js:182
 msgid "General layout:"
-msgstr "Layout generale:"
+msgstr "Aspetto generale:"
 
 #: prefs.js:191
 msgid "From top to bottom"
@@ -140,6 +142,8 @@ msgid ""
 "Displaying the interface from the bottom is nice if you use a bottom panel "
 "instead of the default top bar."
 msgstr ""
+"Mostrare l'interfaccia dal basso verso l'alto si adatta meglio se usi un "
+"pannello inferiore invece del pannello superiore di default."
 
 #: prefs.js:215
 msgid "Number of emojis per line:"
@@ -159,13 +163,15 @@ msgstr "Usa una scorciatoia da tastiera per mostrare il menu:"
 
 #: prefs.js:316
 msgid "Always show the icon:"
-msgstr ""
+msgstr "Mostra sempre l'icona:"
 
 #: prefs.js:337
 msgid ""
 "If you access the menu with the keyboard shorcut, you might not need to "
 "always display the icon."
 msgstr ""
+"Se accedi al menu con la scorciatoia da tastiera, potresti non aver "
+"bisogno di mostrare sempre l'icona."
 
 #: prefs.js:353
 msgid "About"
@@ -194,7 +200,7 @@ msgstr ""
 #: emojisKeywords.js:90 emojisKeywords.js:99 emojisKeywords.js:111
 #: emojisKeywords.js:112 emojisKeywords.js:114 emojisKeywords.js:115
 msgid "smile"
-msgstr ""
+msgstr "sorriso"
 
 #: emojisKeywords.js:9
 msgid "face with tears of joy"
@@ -202,16 +208,16 @@ msgstr ""
 
 #: emojisKeywords.js:9 emojisKeywords.js:113
 msgid "joy"
-msgstr ""
+msgstr "gioia"
 
 #: emojisKeywords.js:9 emojisKeywords.js:10 emojisKeywords.js:14
 msgid "laugh"
-msgstr ""
+msgstr "risata"
 
 #: emojisKeywords.js:9 emojisKeywords.js:66 emojisKeywords.js:67
 #: emojisKeywords.js:113 emojisKeywords.js:119
 msgid "tear"
-msgstr ""
+msgstr "lacrima"
 
 #: emojisKeywords.js:10
 msgid "rolling on the floor laughing"
@@ -234,63 +240,63 @@ msgstr ""
 #: emojisKeywords.js:57 emojisKeywords.js:68 emojisKeywords.js:111
 #: emojisKeywords.js:174
 msgid "mouth"
-msgstr ""
+msgstr "bocca"
 
 #: emojisKeywords.js:11 emojisKeywords.js:12 emojisKeywords.js:13
 #: emojisKeywords.js:14 emojisKeywords.js:40 emojisKeywords.js:68
 #: emojisKeywords.js:111 emojisKeywords.js:159
 msgid "open"
-msgstr ""
+msgstr "apri"
 
 #: emojisKeywords.js:12
 msgid "smiling face with open mouth & smiling eyes"
-msgstr ""
+msgstr "volto sorridente con bocca aperta & occhi sorridenti"
 
 #: emojisKeywords.js:13
 msgid "smiling face with open mouth & cold sweat"
-msgstr ""
+msgstr "volto sorridente con bocca aperta & sudore freddo"
 
 #: emojisKeywords.js:13 emojisKeywords.js:53 emojisKeywords.js:75
 #: emojisKeywords.js:84 emojisKeywords.js:295
 msgid "cold"
-msgstr ""
+msgstr "freddo"
 
 #: emojisKeywords.js:13 emojisKeywords.js:53 emojisKeywords.js:75
 #: emojisKeywords.js:1140
 msgid "sweat"
-msgstr ""
+msgstr "sudore"
 
 #: emojisKeywords.js:14
 msgid "smiling face with open mouth & closed eyes"
-msgstr ""
+msgstr "volto sorridete con bocca aperta & occhi chiusi"
 
 #: emojisKeywords.js:14
 msgid "satisfied"
-msgstr ""
+msgstr "soddisfatto"
 
 #: emojisKeywords.js:15
 msgid "winking face"
-msgstr ""
+msgstr "volto ammiccante"
 
 #: emojisKeywords.js:15 emojisKeywords.js:48
 msgid "wink"
-msgstr ""
+msgstr "occhiolino"
 
 #: emojisKeywords.js:16
 msgid "smiling face with smiling eyes"
-msgstr ""
+msgstr "volto sorridente con occhi sorridenti"
 
 #: emojisKeywords.js:16
 msgid "blush"
-msgstr ""
+msgstr "rossore"
 
 #: emojisKeywords.js:18
 msgid "face savouring delicious food"
-msgstr ""
+msgstr "volto che gusta cibo delizioso"
 
 #: emojisKeywords.js:18
 msgid "delicious"
-msgstr ""
+msgstr "delizioso"
 
 #: emojisKeywords.js:18
 msgid "savouring"
@@ -298,23 +304,23 @@ msgstr ""
 
 #: emojisKeywords.js:18
 msgid "um"
-msgstr ""
+msgstr "um"
 
 #: emojisKeywords.js:18
 msgid "yum"
-msgstr ""
+msgstr "yum"
 
 #: emojisKeywords.js:19
 msgid "smiling face with sunglasses"
-msgstr ""
+msgstr "volto sorridente con occhiali"
 
 #: emojisKeywords.js:19
 msgid "bright"
-msgstr ""
+msgstr "luminoso"
 
 #: emojisKeywords.js:19
 msgid "cool"
-msgstr ""
+msgstr "figo"
 
 #: emojisKeywords.js:19 emojisKeywords.js:288 emojisKeywords.js:289
 msgid "eyewear"
@@ -322,52 +328,52 @@ msgstr ""
 
 #: emojisKeywords.js:19 emojisKeywords.js:288 emojisKeywords.js:289
 msgid "glasses"
-msgstr ""
+msgstr "occhiali"
 
 #: emojisKeywords.js:19 emojisKeywords.js:289 emojisKeywords.js:440
 #: emojisKeywords.js:475 emojisKeywords.js:477 emojisKeywords.js:485
 #: emojisKeywords.js:487 emojisKeywords.js:488 emojisKeywords.js:489
 #: emojisKeywords.js:697 emojisKeywords.js:700
 msgid "sun"
-msgstr ""
+msgstr "sole"
 
 #: emojisKeywords.js:19 emojisKeywords.js:289
 msgid "sunglasses"
-msgstr ""
+msgstr "occhiali da sole"
 
 #: emojisKeywords.js:20
 msgid "smiling face with heart-eyes"
-msgstr ""
+msgstr "volto sorridente con occhi a cuoricino"
 
 #: emojisKeywords.js:20 emojisKeywords.js:114 emojisKeywords.js:156
 #: emojisKeywords.js:284 emojisKeywords.js:669 emojisKeywords.js:680
 #: emojisKeywords.js:1120 emojisKeywords.js:1135
 msgid "love"
-msgstr ""
+msgstr "amore"
 
 #: emojisKeywords.js:20 emojisKeywords.js:858 emojisKeywords.js:1119
 #: emojisKeywords.js:1120 emojisKeywords.js:1121 emojisKeywords.js:1122
 #: emojisKeywords.js:1129 emojisKeywords.js:1135
 msgid "heart"
-msgstr ""
+msgstr "cuore"
 
 #: emojisKeywords.js:21
 msgid "face blowing a kiss"
-msgstr ""
+msgstr "volto che manda un bacio"
 
 #: emojisKeywords.js:21 emojisKeywords.js:22 emojisKeywords.js:23
 #: emojisKeywords.js:24 emojisKeywords.js:117 emojisKeywords.js:283
 #: emojisKeywords.js:1114
 msgid "kiss"
-msgstr ""
+msgstr "bacio"
 
 #: emojisKeywords.js:22
 msgid "kissing face"
-msgstr ""
+msgstr "volto che bacia"
 
 #: emojisKeywords.js:23
 msgid "kissing face with smiling eyes"
-msgstr ""
+msgstr "volto che bacia con occhi sorridenti"
 
 #: emojisKeywords.js:24
 msgid "kissing face with closed eyes"
@@ -383,7 +389,7 @@ msgstr ""
 
 #: emojisKeywords.js:25
 msgid "relaxed"
-msgstr ""
+msgstr "rilassato"
 
 #: emojisKeywords.js:26
 msgid "slightly smiling face"
@@ -395,11 +401,11 @@ msgstr ""
 
 #: emojisKeywords.js:27
 msgid "hug"
-msgstr ""
+msgstr "abbraccio"
 
 #: emojisKeywords.js:27
 msgid "hugging"
-msgstr ""
+msgstr "abbracciare"
 
 #: emojisKeywords.js:29
 msgid "star-struck"
@@ -407,7 +413,7 @@ msgstr ""
 
 #: emojisKeywords.js:29 emojisKeywords.js:169
 msgid "eyes"
-msgstr ""
+msgstr "occhi"
 
 #: emojisKeywords.js:29
 msgid "grinning"
@@ -417,7 +423,7 @@ msgstr ""
 #: emojisKeywords.js:478 emojisKeywords.js:479 emojisKeywords.js:480
 #: emojisKeywords.js:512 emojisKeywords.js:1143
 msgid "star"
-msgstr ""
+msgstr "stella"
 
 #: emojisKeywords.js:29
 msgid "starry-eyed"
@@ -425,11 +431,11 @@ msgstr ""
 
 #: emojisKeywords.js:30
 msgid "thinking face"
-msgstr ""
+msgstr "volto pensieroso"
 
 #: emojisKeywords.js:30
 msgid "thinking"
-msgstr ""
+msgstr "pensare"
 
 #: emojisKeywords.js:31
 msgid "face with raised eyebrow"
@@ -469,7 +475,7 @@ msgstr ""
 
 #: emojisKeywords.js:32
 msgid "neutral"
-msgstr ""
+msgstr "neutrale"
 
 #: emojisKeywords.js:33
 msgid "expressionless face"
@@ -481,27 +487,27 @@ msgstr ""
 
 #: emojisKeywords.js:33
 msgid "inexpressive"
-msgstr ""
+msgstr "inespressivo"
 
 #: emojisKeywords.js:33
 msgid "unexpressive"
-msgstr ""
+msgstr "inespressivo"
 
 #: emojisKeywords.js:34
 msgid "face without mouth"
-msgstr ""
+msgstr "volto senza bocca"
 
 #: emojisKeywords.js:34
 msgid "quiet"
-msgstr ""
+msgstr "quieto"
 
 #: emojisKeywords.js:34
 msgid "silent"
-msgstr ""
+msgstr "silenzioso"
 
 #: emojisKeywords.js:35
 msgid "face with rolling eyes"
-msgstr ""
+msgstr "volto con occhi roteanti"
 
 #: emojisKeywords.js:36
 msgid "smirking face"
@@ -521,15 +527,15 @@ msgstr ""
 
 #: emojisKeywords.js:38
 msgid "disappointed but relieved face"
-msgstr ""
+msgstr "volto deluso ma sollevato"
 
 #: emojisKeywords.js:38 emojisKeywords.js:63
 msgid "disappointed"
-msgstr ""
+msgstr "deluso"
 
 #: emojisKeywords.js:38 emojisKeywords.js:46
 msgid "relieved"
-msgstr ""
+msgstr "sollevato"
 
 #: emojisKeywords.js:38
 msgid "whew"
@@ -537,7 +543,7 @@ msgstr ""
 
 #: emojisKeywords.js:40
 msgid "face with open mouth"
-msgstr ""
+msgstr "volto con bocca aperta"
 
 #: emojisKeywords.js:40
 msgid "sympathy"
@@ -582,7 +588,7 @@ msgstr ""
 
 #: emojisKeywords.js:44 emojisKeywords.js:71
 msgid "tired"
-msgstr ""
+msgstr "stanco"
 
 #: emojisKeywords.js:45
 msgid "sleeping face"
@@ -590,7 +596,7 @@ msgstr ""
 
 #: emojisKeywords.js:45 emojisKeywords.js:1136
 msgid "zzz"
-msgstr ""
+msgstr "zzz"
 
 #: emojisKeywords.js:46
 msgid "relieved face"
@@ -603,7 +609,7 @@ msgstr ""
 #: emojisKeywords.js:47 emojisKeywords.js:48 emojisKeywords.js:49
 #: emojisKeywords.js:173
 msgid "tongue"
-msgstr ""
+msgstr "lingua"
 
 #: emojisKeywords.js:48
 msgid "face with stuck-out tongue & winking eye"
@@ -611,7 +617,7 @@ msgstr ""
 
 #: emojisKeywords.js:48
 msgid "joke"
-msgstr ""
+msgstr "scherzo"
 
 #: emojisKeywords.js:49
 msgid "face with stuck-out tongue & closed eyes"
@@ -619,7 +625,7 @@ msgstr ""
 
 #: emojisKeywords.js:49
 msgid "horrible"
-msgstr ""
+msgstr "orribile"
 
 #: emojisKeywords.js:49
 msgid "taste"
@@ -643,7 +649,7 @@ msgstr ""
 
 #: emojisKeywords.js:52
 msgid "unhappy"
-msgstr ""
+msgstr "infelice"
 
 #: emojisKeywords.js:53
 msgid "face with cold sweat"
@@ -667,7 +673,7 @@ msgstr ""
 
 #: emojisKeywords.js:55
 msgid "confused"
-msgstr ""
+msgstr "confuso"
 
 #: emojisKeywords.js:56
 msgid "upside-down face"
@@ -683,7 +689,7 @@ msgstr ""
 
 #: emojisKeywords.js:57 emojisKeywords.js:667
 msgid "money"
-msgstr ""
+msgstr "denaro"
 
 #: emojisKeywords.js:58
 msgid "astonished face"
@@ -695,7 +701,7 @@ msgstr ""
 
 #: emojisKeywords.js:58 emojisKeywords.js:73
 msgid "shocked"
-msgstr ""
+msgstr "scioccato"
 
 #: emojisKeywords.js:59
 msgid "frowning face"
@@ -724,11 +730,11 @@ msgstr ""
 
 #: emojisKeywords.js:64
 msgid "worried face"
-msgstr ""
+msgstr "volto preoccupato"
 
 #: emojisKeywords.js:64
 msgid "worried"
-msgstr ""
+msgstr "preoccupato"
 
 #: emojisKeywords.js:65
 msgid "face with steam from nose"
@@ -748,11 +754,11 @@ msgstr ""
 
 #: emojisKeywords.js:66 emojisKeywords.js:67 emojisKeywords.js:119
 msgid "cry"
-msgstr ""
+msgstr "piangere"
 
 #: emojisKeywords.js:66 emojisKeywords.js:67 emojisKeywords.js:119
 msgid "sad"
-msgstr ""
+msgstr "triste"
 
 #: emojisKeywords.js:67
 msgid "loudly crying face"
@@ -760,7 +766,7 @@ msgstr ""
 
 #: emojisKeywords.js:67
 msgid "sob"
-msgstr ""
+msgstr "sob"
 
 #: emojisKeywords.js:68
 msgid "frowning face with open mouth"
@@ -780,15 +786,15 @@ msgstr ""
 
 #: emojisKeywords.js:70 emojisKeywords.js:76
 msgid "fear"
-msgstr ""
+msgstr "paura"
 
 #: emojisKeywords.js:70 emojisKeywords.js:76
 msgid "fearful"
-msgstr ""
+msgstr "pauroso"
 
 #: emojisKeywords.js:70 emojisKeywords.js:76
 msgid "scared"
-msgstr ""
+msgstr "spaventato"
 
 #: emojisKeywords.js:71
 msgid "weary face"
@@ -832,7 +838,7 @@ msgstr ""
 
 #: emojisKeywords.js:76
 msgid "scream"
-msgstr ""
+msgstr "urlo"
 
 #: emojisKeywords.js:77
 msgid "flushed face"
@@ -852,11 +858,11 @@ msgstr ""
 
 #: emojisKeywords.js:78
 msgid "large"
-msgstr ""
+msgstr "largo"
 
 #: emojisKeywords.js:78 emojisKeywords.js:414
 msgid "small"
-msgstr ""
+msgstr "piccolo"
 
 #: emojisKeywords.js:79
 msgid "dizzy face"
@@ -873,12 +879,12 @@ msgstr ""
 #: emojisKeywords.js:80 emojisKeywords.js:81 emojisKeywords.js:1137
 #: emojisKeywords.js:1146
 msgid "angry"
-msgstr ""
+msgstr "arrabbiato"
 
 #: emojisKeywords.js:80 emojisKeywords.js:81 emojisKeywords.js:1137
 #: emojisKeywords.js:1146
 msgid "mad"
-msgstr ""
+msgstr "furioso"
 
 #: emojisKeywords.js:80 emojisKeywords.js:120 emojisKeywords.js:256
 msgid "pouting"
@@ -886,15 +892,15 @@ msgstr ""
 
 #: emojisKeywords.js:80
 msgid "rage"
-msgstr ""
+msgstr "rabbia"
 
 #: emojisKeywords.js:80 emojisKeywords.js:526
 msgid "red"
-msgstr ""
+msgstr "rosso"
 
 #: emojisKeywords.js:81
 msgid "angry face"
-msgstr ""
+msgstr "volto arrabbiato"
 
 #: emojisKeywords.js:82
 msgid "face with symbols over mouth"
@@ -911,83 +917,83 @@ msgstr ""
 #: emojisKeywords.js:84 emojisKeywords.js:189 emojisKeywords.js:190
 #: emojisKeywords.js:666
 msgid "doctor"
-msgstr ""
+msgstr "dottore"
 
 #: emojisKeywords.js:84
 msgid "mask"
-msgstr ""
+msgstr "maschera"
 
 #: emojisKeywords.js:84
 msgid "medicine"
-msgstr ""
+msgstr "medicina"
 
 #: emojisKeywords.js:84 emojisKeywords.js:85 emojisKeywords.js:88
 msgid "sick"
-msgstr ""
+msgstr "malato"
 
 #: emojisKeywords.js:85
 msgid "face with thermometer"
-msgstr ""
+msgstr "volto con termometro"
 
 #: emojisKeywords.js:85
 msgid "ill"
-msgstr ""
+msgstr "malato"
 
 #: emojisKeywords.js:85 emojisKeywords.js:474
 msgid "thermometer"
-msgstr ""
+msgstr "termometro"
 
 #: emojisKeywords.js:86
 msgid "face with head-bandage"
-msgstr ""
+msgstr "volto con fasciatura alla testa"
 
 #: emojisKeywords.js:86
 msgid "bandage"
-msgstr ""
+msgstr "fasciatura"
 
 #: emojisKeywords.js:86
 msgid "hurt"
-msgstr ""
+msgstr "ferito"
 
 #: emojisKeywords.js:86
 msgid "injury"
-msgstr ""
+msgstr "ferita"
 
 #: emojisKeywords.js:87
 msgid "nauseated face"
-msgstr ""
+msgstr "volto nauseato"
 
 #: emojisKeywords.js:87
 msgid "nauseated"
-msgstr ""
+msgstr "nauseato"
 
 #: emojisKeywords.js:87 emojisKeywords.js:88
 msgid "vomit"
-msgstr ""
+msgstr "vomito"
 
 #: emojisKeywords.js:88
 msgid "face vomiting"
-msgstr ""
+msgstr "volto che vomita"
 
 #: emojisKeywords.js:89
 msgid "sneezing face"
-msgstr ""
+msgstr "volto che starnutische"
 
 #: emojisKeywords.js:89
 msgid "\tface"
-msgstr ""
+msgstr "\tvolto"
 
 #: emojisKeywords.js:89
 msgid "sneeze"
-msgstr ""
+msgstr "startuno"
 
 #: emojisKeywords.js:90
 msgid "smiling face with halo"
-msgstr ""
+msgstr "volto sorridente con aureola"
 
 #: emojisKeywords.js:90 emojisKeywords.js:243
 msgid "angel"
-msgstr ""
+msgstr "angelo"
 
 #: emojisKeywords.js:90 emojisKeywords.js:99 emojisKeywords.js:100
 #: emojisKeywords.js:101 emojisKeywords.js:102 emojisKeywords.js:106
@@ -995,15 +1001,15 @@ msgstr ""
 #: emojisKeywords.js:243 emojisKeywords.js:247 emojisKeywords.js:248
 #: emojisKeywords.js:249 emojisKeywords.js:251 emojisKeywords.js:343
 msgid "fantasy"
-msgstr ""
+msgstr "fantasy"
 
 #: emojisKeywords.js:90
 msgid "halo"
-msgstr ""
+msgstr "aureola"
 
 #: emojisKeywords.js:90
 msgid "innocent"
-msgstr ""
+msgstr "innocente"
 
 #: emojisKeywords.js:91
 msgid "cowboy hat face"
@@ -1011,29 +1017,29 @@ msgstr ""
 
 #: emojisKeywords.js:91
 msgid "cowboy"
-msgstr ""
+msgstr "cowboy"
 
 #: emojisKeywords.js:91
 msgid "cowgirl"
-msgstr ""
+msgstr "covgirl"
 
 #: emojisKeywords.js:91 emojisKeywords.js:227 emojisKeywords.js:232
 #: emojisKeywords.js:314 emojisKeywords.js:315 emojisKeywords.js:316
 #: emojisKeywords.js:317 emojisKeywords.js:319
 msgid "hat"
-msgstr ""
+msgstr "cappello"
 
 #: emojisKeywords.js:92
 msgid "clown face"
-msgstr ""
+msgstr "volto da clown"
 
 #: emojisKeywords.js:92
 msgid "clown"
-msgstr ""
+msgstr "clown"
 
 #: emojisKeywords.js:92
 msgid "donald trump"
-msgstr ""
+msgstr "donald trump"
 
 #: emojisKeywords.js:93
 msgid "lying face"
@@ -1045,7 +1051,7 @@ msgstr ""
 
 #: emojisKeywords.js:93
 msgid "pinocchio"
-msgstr ""
+msgstr "pinocchio"
 
 #: emojisKeywords.js:95
 msgid "shushing face"
@@ -1065,7 +1071,7 @@ msgstr ""
 
 #: emojisKeywords.js:96
 msgid "shock"
-msgstr ""
+msgstr "shock"
 
 #: emojisKeywords.js:96
 msgid "sudden realization"
@@ -1073,7 +1079,7 @@ msgstr ""
 
 #: emojisKeywords.js:96
 msgid "surprise"
-msgstr ""
+msgstr "sorpreso"
 
 #: emojisKeywords.js:97
 msgid "face with monocle"
@@ -1093,11 +1099,11 @@ msgstr ""
 
 #: emojisKeywords.js:98
 msgid "geek"
-msgstr ""
+msgstr "geek"
 
 #: emojisKeywords.js:98
 msgid "nerd"
-msgstr ""
+msgstr "nerd"
 
 #: emojisKeywords.js:99
 msgid "smiling face with horns"
@@ -1105,11 +1111,11 @@ msgstr ""
 
 #: emojisKeywords.js:99 emojisKeywords.js:100
 msgid "demon"
-msgstr ""
+msgstr "demone"
 
 #: emojisKeywords.js:99 emojisKeywords.js:100
 msgid "devil"
-msgstr ""
+msgstr "diavolo"
 
 #: emojisKeywords.js:100
 msgid "angry face with horns"
@@ -1126,7 +1132,7 @@ msgstr ""
 #: emojisKeywords.js:101 emojisKeywords.js:102 emojisKeywords.js:106
 #: emojisKeywords.js:107 emojisKeywords.js:108
 msgid "creature"
-msgstr ""
+msgstr "creatura"
 
 #: emojisKeywords.js:101 emojisKeywords.js:102 emojisKeywords.js:103
 #: emojisKeywords.js:230 emojisKeywords.js:397 emojisKeywords.js:398
@@ -1137,11 +1143,11 @@ msgstr ""
 #: emojisKeywords.js:104 emojisKeywords.js:106 emojisKeywords.js:107
 #: emojisKeywords.js:108 emojisKeywords.js:109 emojisKeywords.js:110
 msgid "monster"
-msgstr ""
+msgstr "mostro"
 
 #: emojisKeywords.js:101
 msgid "troll"
-msgstr ""
+msgstr "troll"
 
 #: emojisKeywords.js:102
 msgid "goblin"
@@ -1149,11 +1155,11 @@ msgstr ""
 
 #: emojisKeywords.js:103 emojisKeywords.js:104
 msgid "skull"
-msgstr ""
+msgstr "teschio"
 
 #: emojisKeywords.js:103 emojisKeywords.js:104
 msgid "death"
-msgstr ""
+msgstr "morte"
 
 #: emojisKeywords.js:104
 msgid "skull and crossbones"
@@ -1165,42 +1171,42 @@ msgstr ""
 
 #: emojisKeywords.js:106
 msgid "ghost"
-msgstr ""
+msgstr "fantasma"
 
 #: emojisKeywords.js:107 emojisKeywords.js:108 emojisKeywords.js:784
 msgid "alien"
-msgstr ""
+msgstr "alieno"
 
 #: emojisKeywords.js:107 emojisKeywords.js:108
 msgid "extraterrestrial"
-msgstr ""
+msgstr "extraterrestre"
 
 #: emojisKeywords.js:107 emojisKeywords.js:108
 msgid "ufo"
-msgstr ""
+msgstr "ufo"
 
 #: emojisKeywords.js:108
 msgid "alien monster"
-msgstr ""
+msgstr "mostro alieno"
 
 #: emojisKeywords.js:109
 msgid "robot face"
-msgstr ""
+msgstr "volto da robot"
 
 #: emojisKeywords.js:109
 msgid "robot"
-msgstr ""
+msgstr "robot"
 
 #: emojisKeywords.js:110
 msgid "pile of poo"
-msgstr ""
+msgstr "pilla di cacca"
 
 #: emojisKeywords.js:110 emojisKeywords.js:127 emojisKeywords.js:1136
 #: emojisKeywords.js:1137 emojisKeywords.js:1138 emojisKeywords.js:1139
 #: emojisKeywords.js:1140 emojisKeywords.js:1142 emojisKeywords.js:1143
 #: emojisKeywords.js:1144 emojisKeywords.js:1147
 msgid "comic"
-msgstr ""
+msgstr "comico"
 
 #: emojisKeywords.js:110
 msgid "dung"
@@ -1212,7 +1218,7 @@ msgstr ""
 
 #: emojisKeywords.js:110
 msgid "poop"
-msgstr ""
+msgstr "cacca"
 
 #: emojisKeywords.js:111
 msgid "smiling cat face with open mouth"
@@ -1223,7 +1229,7 @@ msgstr ""
 #: emojisKeywords.js:118 emojisKeywords.js:119 emojisKeywords.js:120
 #: emojisKeywords.js:334 emojisKeywords.js:335
 msgid "cat"
-msgstr ""
+msgstr "gatto"
 
 #: emojisKeywords.js:112
 msgid "grinning cat face with smiling eyes"
@@ -1243,7 +1249,7 @@ msgstr ""
 
 #: emojisKeywords.js:115
 msgid "ironic"
-msgstr ""
+msgstr "ironico"
 
 #: emojisKeywords.js:115
 msgid "wry"
@@ -1259,7 +1265,7 @@ msgstr ""
 
 #: emojisKeywords.js:118
 msgid "oh"
-msgstr ""
+msgstr "oh"
 
 #: emojisKeywords.js:119
 msgid "crying cat face"
@@ -1276,37 +1282,37 @@ msgstr ""
 #: emojisKeywords.js:121 emojisKeywords.js:122 emojisKeywords.js:123
 #: emojisKeywords.js:1127
 msgid "evil"
-msgstr ""
+msgstr "cattivo"
 
 #: emojisKeywords.js:121 emojisKeywords.js:122 emojisKeywords.js:123
 #: emojisKeywords.js:257
 msgid "forbidden"
-msgstr ""
+msgstr "proibito"
 
 #: emojisKeywords.js:121 emojisKeywords.js:122 emojisKeywords.js:123
 #: emojisKeywords.js:255 emojisKeywords.js:256 emojisKeywords.js:257
 #: emojisKeywords.js:258 emojisKeywords.js:260 emojisKeywords.js:261
 msgid "gesture"
-msgstr ""
+msgstr "gesto"
 
 #: emojisKeywords.js:121 emojisKeywords.js:122 emojisKeywords.js:123
 #: emojisKeywords.js:325 emojisKeywords.js:326 emojisKeywords.js:327
 msgid "monkey"
-msgstr ""
+msgstr "scimmia"
 
 #: emojisKeywords.js:121 emojisKeywords.js:122 emojisKeywords.js:123
 #: emojisKeywords.js:257
 msgid "no"
-msgstr ""
+msgstr "no"
 
 #: emojisKeywords.js:121 emojisKeywords.js:122 emojisKeywords.js:123
 #: emojisKeywords.js:257 emojisKeywords.js:1188
 msgid "prohibited"
-msgstr ""
+msgstr "vietato"
 
 #: emojisKeywords.js:121
 msgid "see"
-msgstr ""
+msgstr "vedere"
 
 #: emojisKeywords.js:122
 msgid "hear-no-evil monkey"
@@ -1314,7 +1320,7 @@ msgstr ""
 
 #: emojisKeywords.js:122
 msgid "hear"
-msgstr ""
+msgstr "sentire"
 
 #: emojisKeywords.js:123
 msgid "speak-no-evil monkey"
@@ -1322,19 +1328,19 @@ msgstr ""
 
 #: emojisKeywords.js:123 emojisKeywords.js:276
 msgid "speak"
-msgstr ""
+msgstr "parlare"
 
 #: emojisKeywords.js:126
 msgid "selfie"
-msgstr ""
+msgstr "selfie"
 
 #: emojisKeywords.js:126 emojisKeywords.js:947
 msgid "camera"
-msgstr ""
+msgstr "camera"
 
 #: emojisKeywords.js:126
 msgid "phone"
-msgstr ""
+msgstr "telefono"
 
 #: emojisKeywords.js:126 emojisKeywords.js:127 emojisKeywords.js:131
 #: emojisKeywords.js:132 emojisKeywords.js:133 emojisKeywords.js:134
@@ -1389,7 +1395,7 @@ msgstr ""
 
 #: emojisKeywords.js:127
 msgid "biceps"
-msgstr ""
+msgstr "bicipiti"
 
 #: emojisKeywords.js:127
 msgid "flex"
@@ -1397,7 +1403,7 @@ msgstr ""
 
 #: emojisKeywords.js:127
 msgid "muscle"
-msgstr ""
+msgstr "muscolo"
 
 #: emojisKeywords.js:131
 msgid "backhand index pointing left"
@@ -1413,7 +1419,7 @@ msgstr ""
 #: emojisKeywords.js:138 emojisKeywords.js:139 emojisKeywords.js:140
 #: emojisKeywords.js:143
 msgid "finger"
-msgstr ""
+msgstr "dito"
 
 #: emojisKeywords.js:131 emojisKeywords.js:132 emojisKeywords.js:133
 #: emojisKeywords.js:134 emojisKeywords.js:135 emojisKeywords.js:136
@@ -1428,17 +1434,17 @@ msgstr ""
 #: emojisKeywords.js:260 emojisKeywords.js:280 emojisKeywords.js:281
 #: emojisKeywords.js:282
 msgid "hand"
-msgstr ""
+msgstr "mano"
 
 #: emojisKeywords.js:131 emojisKeywords.js:132 emojisKeywords.js:133
 #: emojisKeywords.js:134 emojisKeywords.js:136
 msgid "index"
-msgstr ""
+msgstr "indice"
 
 #: emojisKeywords.js:131 emojisKeywords.js:132 emojisKeywords.js:133
 #: emojisKeywords.js:134 emojisKeywords.js:136
 msgid "point"
-msgstr ""
+msgstr "punto"
 
 #: emojisKeywords.js:132
 msgid "backhand index pointing right"
@@ -1450,7 +1456,7 @@ msgstr ""
 
 #: emojisKeywords.js:133 emojisKeywords.js:134 emojisKeywords.js:146
 msgid "up"
-msgstr ""
+msgstr "su"
 
 #: emojisKeywords.js:134
 msgid "backhand index pointing up"
@@ -1458,7 +1464,7 @@ msgstr ""
 
 #: emojisKeywords.js:135
 msgid "middle finger"
-msgstr ""
+msgstr "dito medio"
 
 #: emojisKeywords.js:136
 msgid "backhand index pointing down"
@@ -1466,23 +1472,23 @@ msgstr ""
 
 #: emojisKeywords.js:136 emojisKeywords.js:147
 msgid "down"
-msgstr ""
+msgstr "giù"
 
 #: emojisKeywords.js:137
 msgid "victory hand"
-msgstr ""
+msgstr "mano vittoriosa"
 
 #: emojisKeywords.js:137
 msgid "v"
-msgstr ""
+msgstr "v"
 
 #: emojisKeywords.js:137
 msgid "victory"
-msgstr ""
+msgstr "vittoria"
 
 #: emojisKeywords.js:138
 msgid "crossed fingers"
-msgstr ""
+msgstr "dita incrociate"
 
 #: emojisKeywords.js:138 emojisKeywords.js:319
 msgid "cross"
@@ -1490,7 +1496,7 @@ msgstr ""
 
 #: emojisKeywords.js:138
 msgid "luck"
-msgstr ""
+msgstr "fortuna"
 
 #: emojisKeywords.js:139
 msgid "vulcan salute"
@@ -1502,7 +1508,7 @@ msgstr ""
 
 #: emojisKeywords.js:139
 msgid "vulcan"
-msgstr ""
+msgstr "vulcano"
 
 #: emojisKeywords.js:140
 msgid "sign of the horns"
@@ -1510,7 +1516,7 @@ msgstr ""
 
 #: emojisKeywords.js:140
 msgid "horns"
-msgstr ""
+msgstr "corna"
 
 #: emojisKeywords.js:140
 msgid "rock-on"
@@ -1522,7 +1528,7 @@ msgstr ""
 
 #: emojisKeywords.js:142
 msgid "call"
-msgstr ""
+msgstr "chiama"
 
 #: emojisKeywords.js:143
 msgid "raised hand with fingers splayed"
@@ -1542,7 +1548,7 @@ msgstr ""
 
 #: emojisKeywords.js:145 emojisKeywords.js:258
 msgid "ok"
-msgstr ""
+msgstr "ok"
 
 #: emojisKeywords.js:146
 msgid "thumbs up"
@@ -1550,7 +1556,7 @@ msgstr ""
 
 #: emojisKeywords.js:146 emojisKeywords.js:147
 msgid "thumb"
-msgstr ""
+msgstr "pollice"
 
 #: emojisKeywords.js:147
 msgid "thumbs down"
@@ -1567,7 +1573,7 @@ msgstr ""
 #: emojisKeywords.js:148 emojisKeywords.js:149 emojisKeywords.js:150
 #: emojisKeywords.js:151
 msgid "fist"
-msgstr ""
+msgstr "pugno"
 
 #: emojisKeywords.js:148 emojisKeywords.js:149
 msgid "punch"
@@ -1607,11 +1613,11 @@ msgstr ""
 
 #: emojisKeywords.js:155 emojisKeywords.js:515
 msgid "wave"
-msgstr ""
+msgstr "onda"
 
 #: emojisKeywords.js:155
 msgid "waving"
-msgstr ""
+msgstr "ondeggiare"
 
 #: emojisKeywords.js:156
 msgid "love-you gesture"
@@ -1619,11 +1625,11 @@ msgstr ""
 
 #: emojisKeywords.js:157
 msgid "writing hand"
-msgstr ""
+msgstr "mano che scrive"
 
 #: emojisKeywords.js:157
 msgid "write"
-msgstr ""
+msgstr "scrivere"
 
 #: emojisKeywords.js:158
 msgid "clapping hands"
@@ -1631,7 +1637,7 @@ msgstr ""
 
 #: emojisKeywords.js:158
 msgid "clap"
-msgstr ""
+msgstr "applauso"
 
 #: emojisKeywords.js:159
 msgid "open hands"
@@ -1660,7 +1666,7 @@ msgstr ""
 
 #: emojisKeywords.js:162
 msgid "ask"
-msgstr ""
+msgstr "chiedere"
 
 #: emojisKeywords.js:162 emojisKeywords.js:261
 msgid "bow"
@@ -1676,11 +1682,11 @@ msgstr ""
 
 #: emojisKeywords.js:162
 msgid "pray"
-msgstr ""
+msgstr "pregare"
 
 #: emojisKeywords.js:162
 msgid "thanks"
-msgstr ""
+msgstr "grazie"
 
 #: emojisKeywords.js:163
 msgid "handshake"
@@ -1716,7 +1722,7 @@ msgstr ""
 
 #: emojisKeywords.js:164
 msgid "nail"
-msgstr ""
+msgstr "unghia"
 
 #: emojisKeywords.js:164
 msgid "polish"
@@ -1724,16 +1730,16 @@ msgstr ""
 
 #: emojisKeywords.js:165 emojisKeywords.js:451 emojisKeywords.js:540
 msgid "ear"
-msgstr ""
+msgstr "orecchio"
 
 #: emojisKeywords.js:165 emojisKeywords.js:167 emojisKeywords.js:170
 #: emojisKeywords.js:172 emojisKeywords.js:173
 msgid "body"
-msgstr ""
+msgstr "corpo"
 
 #: emojisKeywords.js:167 emojisKeywords.js:354
 msgid "nose"
-msgstr ""
+msgstr "naso"
 
 #: emojisKeywords.js:168
 msgid "footprints"
@@ -1753,11 +1759,11 @@ msgstr ""
 
 #: emojisKeywords.js:168
 msgid "gnome"
-msgstr ""
+msgstr "gnomo"
 
 #: emojisKeywords.js:169 emojisKeywords.js:170 emojisKeywords.js:288
 msgid "eye"
-msgstr ""
+msgstr "occhio"
 
 #: emojisKeywords.js:171
 msgid "eye in speech bubble"
@@ -1773,11 +1779,11 @@ msgstr ""
 
 #: emojisKeywords.js:172
 msgid "brain"
-msgstr ""
+msgstr "cervello"
 
 #: emojisKeywords.js:174 emojisKeywords.js:1114
 msgid "lips"
-msgstr ""
+msgstr "labbra"
 
 #: emojisKeywords.js:178 emojisKeywords.js:241 emojisKeywords.js:243
 #: emojisKeywords.js:381 emojisKeywords.js:382 emojisKeywords.js:383
@@ -1788,63 +1794,63 @@ msgstr ""
 #: emojisKeywords.js:178 emojisKeywords.js:179 emojisKeywords.js:180
 #: emojisKeywords.js:181 emojisKeywords.js:182 emojisKeywords.js:443
 msgid "young"
-msgstr ""
+msgstr "giovane"
 
 #: emojisKeywords.js:179
 msgid "child"
-msgstr ""
+msgstr "bimbo"
 
 #: emojisKeywords.js:180
 msgid "boy"
-msgstr ""
+msgstr "ragazzo"
 
 #: emojisKeywords.js:181
 msgid "girl"
-msgstr ""
+msgstr "ragazza"
 
 #: emojisKeywords.js:181 emojisKeywords.js:1252
 msgid "virgo"
-msgstr ""
+msgstr "vergine"
 
 #: emojisKeywords.js:181 emojisKeywords.js:281 emojisKeywords.js:336
 #: emojisKeywords.js:347 emojisKeywords.js:355 emojisKeywords.js:357
 #: emojisKeywords.js:395 emojisKeywords.js:404 emojisKeywords.js:413
 #: emojisKeywords.js:428
 msgid "zodiac"
-msgstr ""
+msgstr "zodiaco"
 
 #: emojisKeywords.js:182 emojisKeywords.js:185
 msgid "adult"
-msgstr ""
+msgstr "adulto"
 
 #: emojisKeywords.js:182 emojisKeywords.js:183 emojisKeywords.js:186
 #: emojisKeywords.js:270 emojisKeywords.js:280 emojisKeywords.js:281
 #: emojisKeywords.js:308 emojisKeywords.js:1586
 msgid "man"
-msgstr ""
+msgstr "uomo"
 
 #: emojisKeywords.js:184 emojisKeywords.js:187 emojisKeywords.js:240
 #: emojisKeywords.js:241 emojisKeywords.js:269 emojisKeywords.js:280
 #: emojisKeywords.js:282 emojisKeywords.js:301 emojisKeywords.js:310
 #: emojisKeywords.js:311 emojisKeywords.js:312 emojisKeywords.js:314
 msgid "woman"
-msgstr ""
+msgstr "donna"
 
 #: emojisKeywords.js:185
 msgid "older adult"
-msgstr ""
+msgstr "adulto anziano"
 
 #: emojisKeywords.js:185 emojisKeywords.js:186 emojisKeywords.js:187
 msgid "old"
-msgstr ""
+msgstr "anziano"
 
 #: emojisKeywords.js:186
 msgid "old man"
-msgstr ""
+msgstr "anziano"
 
 #: emojisKeywords.js:187
 msgid "old woman"
-msgstr ""
+msgstr "anziana"
 
 #: emojisKeywords.js:189 emojisKeywords.js:190
 msgid "health worker"
@@ -1878,7 +1884,7 @@ msgstr ""
 
 #: emojisKeywords.js:191 emojisKeywords.js:192
 msgid "student"
-msgstr ""
+msgstr "studente"
 
 #: emojisKeywords.js:191 emojisKeywords.js:192
 msgid "university"
@@ -1886,20 +1892,20 @@ msgstr ""
 
 #: emojisKeywords.js:193 emojisKeywords.js:194
 msgid "teacher"
-msgstr ""
+msgstr "insegnate"
 
 #: emojisKeywords.js:193 emojisKeywords.js:194 emojisKeywords.js:307
 #: emojisKeywords.js:674
 msgid "school"
-msgstr ""
+msgstr "scuola"
 
 #: emojisKeywords.js:195 emojisKeywords.js:196
 msgid "judge"
-msgstr ""
+msgstr "giudice"
 
 #: emojisKeywords.js:197 emojisKeywords.js:198
 msgid "farmer"
-msgstr ""
+msgstr "contadino"
 
 #: emojisKeywords.js:197 emojisKeywords.js:198
 msgid "farm"
@@ -1908,7 +1914,7 @@ msgstr ""
 #: emojisKeywords.js:197 emojisKeywords.js:198 emojisKeywords.js:202
 #: emojisKeywords.js:203 emojisKeywords.js:227
 msgid "worker"
-msgstr ""
+msgstr "lavoratore"
 
 #: emojisKeywords.js:200 emojisKeywords.js:201
 msgid "cook"
@@ -1932,32 +1938,32 @@ msgstr ""
 
 #: emojisKeywords.js:204 emojisKeywords.js:205 emojisKeywords.js:676
 msgid "factory"
-msgstr ""
+msgstr "campagna"
 
 #: emojisKeywords.js:206 emojisKeywords.js:207
 msgid "office worker"
-msgstr ""
+msgstr "impiegato"
 
 #: emojisKeywords.js:206 emojisKeywords.js:207 emojisKeywords.js:663
 #: emojisKeywords.js:665 emojisKeywords.js:667
 msgid "office"
-msgstr ""
+msgstr "uffiico"
 
 #: emojisKeywords.js:208 emojisKeywords.js:209
 msgid "scientist"
-msgstr ""
+msgstr "scienziato"
 
 #: emojisKeywords.js:211 emojisKeywords.js:212
 msgid "technologist"
-msgstr ""
+msgstr "tecnologo"
 
 #: emojisKeywords.js:211 emojisKeywords.js:212
 msgid "hacker"
-msgstr ""
+msgstr "hacker"
 
 #: emojisKeywords.js:211 emojisKeywords.js:212
 msgid "matrix"
-msgstr ""
+msgstr "matrix"
 
 #: emojisKeywords.js:211 emojisKeywords.js:212
 msgid "computing"
@@ -1969,19 +1975,19 @@ msgstr ""
 
 #: emojisKeywords.js:213 emojisKeywords.js:214
 msgid "rock"
-msgstr ""
+msgstr "rock"
 
 #: emojisKeywords.js:213 emojisKeywords.js:214
 msgid "music"
-msgstr ""
+msgstr "musica"
 
 #: emojisKeywords.js:215 emojisKeywords.js:216
 msgid "artist"
-msgstr ""
+msgstr "artista"
 
 #: emojisKeywords.js:215 emojisKeywords.js:216
 msgid "painter"
-msgstr ""
+msgstr "pittore"
 
 #: emojisKeywords.js:217 emojisKeywords.js:218
 msgid "airplane pilot"
@@ -1989,15 +1995,15 @@ msgstr ""
 
 #: emojisKeywords.js:217 emojisKeywords.js:218
 msgid "pilot"
-msgstr ""
+msgstr "pilota"
 
 #: emojisKeywords.js:219 emojisKeywords.js:220
 msgid "astronaut"
-msgstr ""
+msgstr "astronauta"
 
 #: emojisKeywords.js:219 emojisKeywords.js:220
 msgid "cosmonaut"
-msgstr ""
+msgstr "cosmonauta"
 
 #: emojisKeywords.js:219 emojisKeywords.js:220
 msgid "spationaut"
@@ -2005,12 +2011,12 @@ msgstr ""
 
 #: emojisKeywords.js:222 emojisKeywords.js:223
 msgid "firefighter"
-msgstr ""
+msgstr "pompiere"
 
 #: emojisKeywords.js:222 emojisKeywords.js:223 emojisKeywords.js:513
 #: emojisKeywords.js:734
 msgid "fire"
-msgstr ""
+msgstr "fuoco"
 
 #: emojisKeywords.js:224
 msgid "police officer"
@@ -2018,7 +2024,7 @@ msgstr ""
 
 #: emojisKeywords.js:224
 msgid "cop"
-msgstr ""
+msgstr "poliziotto"
 
 #: emojisKeywords.js:224
 msgid "officer"
@@ -2027,7 +2033,7 @@ msgstr ""
 #: emojisKeywords.js:224 emojisKeywords.js:735 emojisKeywords.js:736
 #: emojisKeywords.js:753
 msgid "police"
-msgstr ""
+msgstr "polizia"
 
 #: emojisKeywords.js:224 emojisKeywords.js:225 emojisKeywords.js:226
 #: emojisKeywords.js:227 emojisKeywords.js:231 emojisKeywords.js:235
@@ -2057,7 +2063,7 @@ msgstr ""
 
 #: emojisKeywords.js:225
 msgid "spy"
-msgstr ""
+msgstr "spia"
 
 #: emojisKeywords.js:226
 msgid "guard"
@@ -2077,15 +2083,15 @@ msgstr ""
 
 #: emojisKeywords.js:229
 msgid "prince"
-msgstr ""
+msgstr "principe"
 
 #: emojisKeywords.js:229 emojisKeywords.js:313
 msgid "king"
-msgstr ""
+msgstr "re"
 
 #: emojisKeywords.js:230
 msgid "princess"
-msgstr ""
+msgstr "principessa"
 
 #: emojisKeywords.js:231
 msgid "person wearing turban"
@@ -2105,7 +2111,7 @@ msgstr ""
 
 #: emojisKeywords.js:232
 msgid "chinese"
-msgstr ""
+msgstr "cinese"
 
 #: emojisKeywords.js:233
 msgid "woman with headscarf"
@@ -2181,11 +2187,11 @@ msgstr ""
 
 #: emojisKeywords.js:240
 msgid "pregnant woman"
-msgstr ""
+msgstr "donna incinta"
 
 #: emojisKeywords.js:240
 msgid "pregnant"
-msgstr ""
+msgstr "incinta"
 
 #: emojisKeywords.js:241
 msgid "breast-feeding"
@@ -2193,11 +2199,11 @@ msgstr ""
 
 #: emojisKeywords.js:241
 msgid "breast"
-msgstr ""
+msgstr "seno"
 
 #: emojisKeywords.js:241 emojisKeywords.js:609 emojisKeywords.js:610
 msgid "milk"
-msgstr ""
+msgstr "latte"
 
 #: emojisKeywords.js:243
 msgid "baby angel"
@@ -2205,11 +2211,11 @@ msgstr ""
 
 #: emojisKeywords.js:244
 msgid "santa claus"
-msgstr ""
+msgstr "babbo natale"
 
 #: emojisKeywords.js:244 emojisKeywords.js:245 emojisKeywords.js:797
 msgid "christmas"
-msgstr ""
+msgstr "natale"
 
 #: emojisKeywords.js:244 emojisKeywords.js:245
 msgid "claus"
@@ -2217,35 +2223,35 @@ msgstr ""
 
 #: emojisKeywords.js:244
 msgid "father"
-msgstr ""
+msgstr "padre"
 
 #: emojisKeywords.js:244
 msgid "santa"
-msgstr ""
+msgstr "babbo"
 
 #: emojisKeywords.js:245
 msgid "mrs. claus"
-msgstr ""
+msgstr "babba"
 
 #: emojisKeywords.js:245
 msgid "mrs."
-msgstr ""
+msgstr "babba"
 
 #: emojisKeywords.js:245
 msgid "mother"
-msgstr ""
+msgstr "madre"
 
 #: emojisKeywords.js:247
 msgid "mage"
-msgstr ""
+msgstr "maga"
 
 #: emojisKeywords.js:247
 msgid "magus"
-msgstr ""
+msgstr "mago"
 
 #: emojisKeywords.js:247
 msgid "wizard"
-msgstr ""
+msgstr "stregone"
 
 #: emojisKeywords.js:248
 msgid "fairy"
@@ -2257,15 +2263,15 @@ msgstr ""
 
 #: emojisKeywords.js:249 emojisKeywords.js:372
 msgid "vampire"
-msgstr ""
+msgstr "vampiro"
 
 #: emojisKeywords.js:249
 msgid "blood"
-msgstr ""
+msgstr "sangue"
 
 #: emojisKeywords.js:250
 msgid "mermaid"
-msgstr ""
+msgstr "sirenetta"
 
 #: emojisKeywords.js:250
 msgid "merperson"
@@ -2273,19 +2279,19 @@ msgstr ""
 
 #: emojisKeywords.js:250 emojisKeywords.js:760 emojisKeywords.js:761
 msgid "sea"
-msgstr ""
+msgstr "mare"
 
 #: emojisKeywords.js:251
 msgid "elf"
-msgstr ""
+msgstr "elfo"
 
 #: emojisKeywords.js:252
 msgid "genie"
-msgstr ""
+msgstr "genio"
 
 #: emojisKeywords.js:252
 msgid "wish"
-msgstr ""
+msgstr "desiderio"
 
 #: emojisKeywords.js:252
 msgid "jinn"
@@ -2293,7 +2299,7 @@ msgstr ""
 
 #: emojisKeywords.js:253
 msgid "zombie"
-msgstr ""
+msgstr "zombie"
 
 #: emojisKeywords.js:255
 msgid "person frowning"
@@ -2309,7 +2315,7 @@ msgstr ""
 
 #: emojisKeywords.js:257
 msgid "not"
-msgstr ""
+msgstr "no"
 
 #: emojisKeywords.js:258
 msgid "person gesturing ok"
@@ -2321,11 +2327,11 @@ msgstr ""
 
 #: emojisKeywords.js:259
 msgid "help"
-msgstr ""
+msgstr "aiuto"
 
 #: emojisKeywords.js:259 emojisKeywords.js:1372
 msgid "information"
-msgstr ""
+msgstr "informazione"
 
 #: emojisKeywords.js:259
 msgid "sassy"
@@ -2341,7 +2347,7 @@ msgstr ""
 
 #: emojisKeywords.js:260
 msgid "happy"
-msgstr ""
+msgstr "felice"
 
 #: emojisKeywords.js:261
 msgid "person bowing"
@@ -2353,7 +2359,7 @@ msgstr ""
 
 #: emojisKeywords.js:261
 msgid "sorry"
-msgstr ""
+msgstr "scusa"
 
 #: emojisKeywords.js:262
 msgid "person facepalming"
@@ -2361,11 +2367,11 @@ msgstr ""
 
 #: emojisKeywords.js:262
 msgid "exasperation"
-msgstr ""
+msgstr "esasperazione"
 
 #: emojisKeywords.js:262 emojisKeywords.js:446
 msgid "palm"
-msgstr ""
+msgstr "palmo"
 
 #: emojisKeywords.js:263
 msgid "person shrugging"
@@ -2373,11 +2379,11 @@ msgstr ""
 
 #: emojisKeywords.js:263
 msgid "doubt"
-msgstr ""
+msgstr "dubbio"
 
 #: emojisKeywords.js:263
 msgid "ignorance"
-msgstr ""
+msgstr "ignoranza"
 
 #: emojisKeywords.js:263
 msgid "indifference"
@@ -2393,7 +2399,7 @@ msgstr ""
 
 #: emojisKeywords.js:265
 msgid "massage"
-msgstr ""
+msgstr "massaggio"
 
 #: emojisKeywords.js:265
 msgid "salon"
@@ -2409,7 +2415,7 @@ msgstr ""
 
 #: emojisKeywords.js:266
 msgid "beauty"
-msgstr ""
+msgstr "bellezza"
 
 #: emojisKeywords.js:266
 msgid "haircut"
@@ -2429,7 +2435,7 @@ msgstr ""
 
 #: emojisKeywords.js:267
 msgid "walk"
-msgstr ""
+msgstr "camminare"
 
 #: emojisKeywords.js:267
 msgid "walking"
@@ -2441,7 +2447,7 @@ msgstr ""
 
 #: emojisKeywords.js:268
 msgid "marathon"
-msgstr ""
+msgstr "maratona"
 
 #: emojisKeywords.js:268 emojisKeywords.js:1142
 msgid "running"
@@ -2453,15 +2459,15 @@ msgstr ""
 
 #: emojisKeywords.js:269
 msgid "dancing"
-msgstr ""
+msgstr "ballare"
 
 #: emojisKeywords.js:270
 msgid "man dancing"
-msgstr ""
+msgstr "uomo che balla"
 
 #: emojisKeywords.js:270
 msgid "dance"
-msgstr ""
+msgstr "ballo"
 
 #: emojisKeywords.js:271
 msgid "people with bunny ears partying"
@@ -2485,7 +2491,7 @@ msgstr ""
 
 #: emojisKeywords.js:272
 msgid "bath"
-msgstr ""
+msgstr "bagno"
 
 #: emojisKeywords.js:272 emojisKeywords.js:793
 msgid "bathtub"
@@ -2498,11 +2504,11 @@ msgstr ""
 #: emojisKeywords.js:273 emojisKeywords.js:305 emojisKeywords.js:668
 #: emojisKeywords.js:669
 msgid "hotel"
-msgstr ""
+msgstr "hotel"
 
 #: emojisKeywords.js:273 emojisKeywords.js:788
 msgid "bed"
-msgstr ""
+msgstr "letto"
 
 #: emojisKeywords.js:274
 msgid "man in business suit levitating"
@@ -2522,7 +2528,7 @@ msgstr ""
 
 #: emojisKeywords.js:276
 msgid "head"
-msgstr ""
+msgstr "testa"
 
 #: emojisKeywords.js:276 emojisKeywords.js:277 emojisKeywords.js:278
 msgid "silhouette"
@@ -2530,7 +2536,7 @@ msgstr ""
 
 #: emojisKeywords.js:276
 msgid "speaking"
-msgstr ""
+msgstr "parlare"
 
 #: emojisKeywords.js:277
 msgid "bust in silhouette"
@@ -2551,7 +2557,7 @@ msgstr ""
 #: emojisKeywords.js:280 emojisKeywords.js:281 emojisKeywords.js:282
 #: emojisKeywords.js:283 emojisKeywords.js:284
 msgid "couple"
-msgstr ""
+msgstr "coppia"
 
 #: emojisKeywords.js:280 emojisKeywords.js:281 emojisKeywords.js:282
 msgid "hold"
@@ -2563,11 +2569,11 @@ msgstr ""
 
 #: emojisKeywords.js:281 emojisKeywords.js:1246
 msgid "gemini"
-msgstr ""
+msgstr "gemelli"
 
 #: emojisKeywords.js:281
 msgid "twins"
-msgstr ""
+msgstr "gemelli"
 
 #: emojisKeywords.js:282
 msgid "two women holding hands"
@@ -2579,15 +2585,15 @@ msgstr ""
 
 #: emojisKeywords.js:285
 msgid "family"
-msgstr ""
+msgstr "famiglia"
 
 #: emojisKeywords.js:288
 msgid "eyeglasses"
-msgstr ""
+msgstr "occhiali da vista"
 
 #: emojisKeywords.js:289
 msgid "dark"
-msgstr ""
+msgstr "scuro"
 
 #: emojisKeywords.js:290
 msgid "necktie"
@@ -2595,7 +2601,7 @@ msgstr ""
 
 #: emojisKeywords.js:290 emojisKeywords.js:292 emojisKeywords.js:849
 msgid "shirt"
-msgstr ""
+msgstr "maglietta"
 
 #: emojisKeywords.js:292
 msgid "t-shirt"
@@ -2607,62 +2613,62 @@ msgstr ""
 
 #: emojisKeywords.js:293
 msgid "jeans"
-msgstr ""
+msgstr "jeans"
 
 #: emojisKeywords.js:293
 msgid "pants"
-msgstr ""
+msgstr "pantaloni"
 
 #: emojisKeywords.js:293
 msgid "trousers"
-msgstr ""
+msgstr "pantaloni"
 
 #: emojisKeywords.js:294
 msgid "scarf"
-msgstr ""
+msgstr "sciarpa"
 
 #: emojisKeywords.js:295
 msgid "gloves"
-msgstr ""
+msgstr "guanti"
 
 #: emojisKeywords.js:296
 msgid "coat"
-msgstr ""
+msgstr "cappotto"
 
 #: emojisKeywords.js:297
 msgid "socks"
-msgstr ""
+msgstr "calze"
 
 #: emojisKeywords.js:297 emojisKeywords.js:377
 msgid "feet"
-msgstr ""
+msgstr "piedi"
 
 #: emojisKeywords.js:298
 msgid "dress"
-msgstr ""
+msgstr "vestito"
 
 #: emojisKeywords.js:299 emojisKeywords.js:842
 msgid "kimono"
-msgstr ""
+msgstr "chimono"
 
 #: emojisKeywords.js:299 emojisKeywords.js:613 emojisKeywords.js:637
 #: emojisKeywords.js:664 emojisKeywords.js:677 emojisKeywords.js:689
 #: emojisKeywords.js:702 emojisKeywords.js:807 emojisKeywords.js:808
 #: emojisKeywords.js:809 emojisKeywords.js:810 emojisKeywords.js:1596
 msgid "japan"
-msgstr ""
+msgstr "giapponese"
 
 #: emojisKeywords.js:300
 msgid "bikini"
-msgstr ""
+msgstr "bikini"
 
 #: emojisKeywords.js:300 emojisKeywords.js:647
 msgid "beach"
-msgstr ""
+msgstr "spiaggia"
 
 #: emojisKeywords.js:300 emojisKeywords.js:894
 msgid "swim"
-msgstr ""
+msgstr "nuotare"
 
 #: emojisKeywords.js:301
 msgid "woman's clothes"
@@ -2674,7 +2680,7 @@ msgstr ""
 
 #: emojisKeywords.js:302
 msgid "coin"
-msgstr ""
+msgstr "moneta"
 
 #: emojisKeywords.js:303
 msgid "handbag"
@@ -2715,12 +2721,12 @@ msgstr ""
 
 #: emojisKeywords.js:308
 msgid "foot"
-msgstr ""
+msgstr "piede"
 
 #: emojisKeywords.js:308 emojisKeywords.js:309 emojisKeywords.js:310
 #: emojisKeywords.js:311 emojisKeywords.js:312
 msgid "shoe"
-msgstr ""
+msgstr "scarpa"
 
 #: emojisKeywords.js:309
 msgid "running shoe"
@@ -2740,7 +2746,7 @@ msgstr ""
 
 #: emojisKeywords.js:310
 msgid "heel"
-msgstr ""
+msgstr "tacco"
 
 #: emojisKeywords.js:311
 msgid "woman's sandal"
@@ -2748,7 +2754,7 @@ msgstr ""
 
 #: emojisKeywords.js:311
 msgid "sandal"
-msgstr ""
+msgstr "sandalo"
 
 #: emojisKeywords.js:312
 msgid "woman's boot"
@@ -2756,15 +2762,15 @@ msgstr ""
 
 #: emojisKeywords.js:312
 msgid "boot"
-msgstr ""
+msgstr "stivale"
 
 #: emojisKeywords.js:313
 msgid "crown"
-msgstr ""
+msgstr "corona"
 
 #: emojisKeywords.js:313
 msgid "queen"
-msgstr ""
+msgstr "regina"
 
 #: emojisKeywords.js:314
 msgid "woman's hat"
@@ -2808,7 +2814,7 @@ msgstr ""
 
 #: emojisKeywords.js:319
 msgid "helmet"
-msgstr ""
+msgstr "elmetto"
 
 #: emojisKeywords.js:320
 msgid "prayer beads"
@@ -2829,7 +2835,7 @@ msgstr ""
 #: emojisKeywords.js:320 emojisKeywords.js:683 emojisKeywords.js:687
 #: emojisKeywords.js:688 emojisKeywords.js:689 emojisKeywords.js:690
 msgid "religion"
-msgstr ""
+msgstr "religione"
 
 #: emojisKeywords.js:321
 msgid "lipstick"
@@ -2837,11 +2843,11 @@ msgstr ""
 
 #: emojisKeywords.js:321
 msgid "makeup"
-msgstr ""
+msgstr "trucco"
 
 #: emojisKeywords.js:322
 msgid "ring"
-msgstr ""
+msgstr "anello"
 
 #: emojisKeywords.js:322 emojisKeywords.js:323 emojisKeywords.js:860
 msgid "diamond"
@@ -2853,11 +2859,11 @@ msgstr ""
 
 #: emojisKeywords.js:323
 msgid "gem"
-msgstr ""
+msgstr "gemma"
 
 #: emojisKeywords.js:323
 msgid "jewel"
-msgstr ""
+msgstr "gioiello"
 
 #: emojisKeywords.js:325
 msgid "monkey face"
@@ -2865,7 +2871,7 @@ msgstr ""
 
 #: emojisKeywords.js:327
 msgid "gorilla"
-msgstr ""
+msgstr "gorilla"
 
 #: emojisKeywords.js:328
 msgid "dog face"
@@ -2873,13 +2879,13 @@ msgstr ""
 
 #: emojisKeywords.js:328 emojisKeywords.js:329 emojisKeywords.js:331
 msgid "dog"
-msgstr ""
+msgstr "cane"
 
 #: emojisKeywords.js:328 emojisKeywords.js:329 emojisKeywords.js:334
 #: emojisKeywords.js:335 emojisKeywords.js:367 emojisKeywords.js:368
 #: emojisKeywords.js:369
 msgid "pet"
-msgstr ""
+msgstr "animale"
 
 #: emojisKeywords.js:331
 msgid "poodle"
@@ -2891,7 +2897,7 @@ msgstr ""
 
 #: emojisKeywords.js:332
 msgid "wolf"
-msgstr ""
+msgstr "lupo"
 
 #: emojisKeywords.js:333
 msgid "fox face"
@@ -2899,7 +2905,7 @@ msgstr ""
 
 #: emojisKeywords.js:333
 msgid "fox"
-msgstr ""
+msgstr "volpe"
 
 #: emojisKeywords.js:334
 msgid "cat face"
@@ -2907,7 +2913,7 @@ msgstr ""
 
 #: emojisKeywords.js:335 emojisKeywords.js:338 emojisKeywords.js:339
 msgid "feline"
-msgstr ""
+msgstr "felino"
 
 #: emojisKeywords.js:336
 msgid "lion face"
@@ -2915,11 +2921,11 @@ msgstr ""
 
 #: emojisKeywords.js:336 emojisKeywords.js:1251
 msgid "leo"
-msgstr ""
+msgstr "leone"
 
 #: emojisKeywords.js:336
 msgid "lion"
-msgstr ""
+msgstr "leone"
 
 #: emojisKeywords.js:337
 msgid "tiger face"
@@ -2927,11 +2933,11 @@ msgstr ""
 
 #: emojisKeywords.js:337 emojisKeywords.js:338
 msgid "tiger"
-msgstr ""
+msgstr "tigre"
 
 #: emojisKeywords.js:339
 msgid "leopard"
-msgstr ""
+msgstr "leopardo"
 
 #: emojisKeywords.js:340
 msgid "horse face"
@@ -2939,7 +2945,7 @@ msgstr ""
 
 #: emojisKeywords.js:340 emojisKeywords.js:342 emojisKeywords.js:887
 msgid "horse"
-msgstr ""
+msgstr "cavallo"
 
 #: emojisKeywords.js:342
 msgid "equestrian"
@@ -2964,7 +2970,7 @@ msgstr ""
 
 #: emojisKeywords.js:344
 msgid "zebra"
-msgstr ""
+msgstr "zebra"
 
 #: emojisKeywords.js:345
 msgid "deer"
@@ -2976,7 +2982,7 @@ msgstr ""
 
 #: emojisKeywords.js:346 emojisKeywords.js:349
 msgid "cow"
-msgstr ""
+msgstr "mucca"
 
 #: emojisKeywords.js:347
 msgid "ox"
@@ -2984,11 +2990,11 @@ msgstr ""
 
 #: emojisKeywords.js:347 emojisKeywords.js:1245
 msgid "taurus"
-msgstr ""
+msgstr "toro"
 
 #: emojisKeywords.js:347
 msgid "bull"
-msgstr ""
+msgstr "toro"
 
 #: emojisKeywords.js:348
 msgid "water buffalo"
@@ -3001,7 +3007,7 @@ msgstr ""
 #: emojisKeywords.js:348 emojisKeywords.js:514 emojisKeywords.js:515
 #: emojisKeywords.js:692 emojisKeywords.js:903
 msgid "water"
-msgstr ""
+msgstr "acqua"
 
 #: emojisKeywords.js:350
 msgid "pig face"
@@ -7492,7 +7498,7 @@ msgstr ""
 
 #: emojisKeywords.js:1284
 msgid "cinema"
-msgstr ""
+msgstr "cinema"
 
 #: emojisKeywords.js:1285
 msgid "dim button"
@@ -7616,19 +7622,19 @@ msgstr ""
 
 #: emojisKeywords.js:1326
 msgid "question mark"
-msgstr ""
+msgstr "punto interrogativo"
 
 #: emojisKeywords.js:1330
 msgid "white question mark"
-msgstr ""
+msgstr "punto interrogativo bianco"
 
 #: emojisKeywords.js:1331
 msgid "white exclamation mark"
-msgstr ""
+msgstr "punto esclamativo bianco"
 
 #: emojisKeywords.js:1332
 msgid "exclamation mark"
-msgstr ""
+msgstr "punto esclamativo"
 
 #: emojisKeywords.js:1333
 msgid "wavy dash"
@@ -7636,19 +7642,19 @@ msgstr ""
 
 #: emojisKeywords.js:1334
 msgid "copyright"
-msgstr ""
+msgstr "diritto d'autore"
 
 #: emojisKeywords.js:1335
 msgid "registered"
-msgstr ""
+msgstr "registrato"
 
 #: emojisKeywords.js:1336
 msgid "trade mark"
-msgstr ""
+msgstr "marchio"
 
 #: emojisKeywords.js:1338
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #: emojisKeywords.js:1338 emojisKeywords.js:1339 emojisKeywords.js:1340
 #: emojisKeywords.js:1344 emojisKeywords.js:1345 emojisKeywords.js:1346
@@ -7660,47 +7666,47 @@ msgstr ""
 
 #: emojisKeywords.js:1339
 msgid "*"
-msgstr ""
+msgstr "*"
 
 #: emojisKeywords.js:1340
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: emojisKeywords.js:1344
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: emojisKeywords.js:1345
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: emojisKeywords.js:1346
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: emojisKeywords.js:1348
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: emojisKeywords.js:1349
 msgid "6"
-msgstr ""
+msgstr "6"
 
 #: emojisKeywords.js:1350
 msgid "7"
-msgstr ""
+msgstr "7"
 
 #: emojisKeywords.js:1351
 msgid "8"
-msgstr ""
+msgstr "8"
 
 #: emojisKeywords.js:1352
 msgid "9"
-msgstr ""
+msgstr "9"
 
 #: emojisKeywords.js:1353
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #: emojisKeywords.js:1357
 msgid "hundred points"
@@ -7960,7 +7966,7 @@ msgstr ""
 #: emojisKeywords.js:1457 emojisKeywords.js:1458 emojisKeywords.js:1459
 #: emojisKeywords.js:1460 emojisKeywords.js:1461 emojisKeywords.js:1462
 msgid "hour"
-msgstr ""
+msgstr "ora"
 
 #: emojisKeywords.js:1437
 msgid "12h00"
@@ -8160,31 +8166,31 @@ msgstr ""
 
 #: emojisKeywords.js:1468 emojisKeywords.js:1472
 msgid "flag"
-msgstr ""
+msgstr "bandiera"
 
 #: emojisKeywords.js:1469
 msgid "triangular flag"
-msgstr ""
+msgstr "bandiera triangolare"
 
 #: emojisKeywords.js:1470
 msgid "crossed flags"
-msgstr ""
+msgstr "bandiere incrociate"
 
 #: emojisKeywords.js:1471
 msgid "black flag"
-msgstr ""
+msgstr "bandiera nera"
 
 #: emojisKeywords.js:1472
 msgid "white flag"
-msgstr ""
+msgstr "bandiera bianca"
 
 #: emojisKeywords.js:1473
 msgid "rainbow flag"
-msgstr ""
+msgstr "bandiera arcobaleno"
 
 #: emojisKeywords.js:1473
 msgid "lgbt"
-msgstr ""
+msgstr "lgbt"
 
 #: emojisKeywords.js:1477
 msgid "ascension island"
@@ -8192,15 +8198,15 @@ msgstr ""
 
 #: emojisKeywords.js:1478
 msgid "andorra"
-msgstr ""
+msgstr "andorra"
 
 #: emojisKeywords.js:1479
 msgid "united arab emirates"
-msgstr ""
+msgstr "emirati arabi uniti"
 
 #: emojisKeywords.js:1480
 msgid "afghanistan"
-msgstr ""
+msgstr "afghanistan"
 
 #: emojisKeywords.js:1481
 msgid "antigua & barbuda"
@@ -8212,23 +8218,23 @@ msgstr ""
 
 #: emojisKeywords.js:1483
 msgid "albania"
-msgstr ""
+msgstr "albania"
 
 #: emojisKeywords.js:1484
 msgid "armenia"
-msgstr ""
+msgstr "armenia"
 
 #: emojisKeywords.js:1485
 msgid "angola"
-msgstr ""
+msgstr "angola"
 
 #: emojisKeywords.js:1486
 msgid "antarctica"
-msgstr ""
+msgstr "antartide"
 
 #: emojisKeywords.js:1487
 msgid "argentina"
-msgstr ""
+msgstr "argentina"
 
 #: emojisKeywords.js:1488
 msgid "american samoa"
@@ -8236,7 +8242,7 @@ msgstr ""
 
 #: emojisKeywords.js:1489
 msgid "austria"
-msgstr ""
+msgstr "austria"
 
 #: emojisKeywords.js:1491
 msgid "aruba"
@@ -8264,11 +8270,11 @@ msgstr ""
 
 #: emojisKeywords.js:1495
 msgid "barbados"
-msgstr ""
+msgstr "barbados"
 
 #: emojisKeywords.js:1496
 msgid "bangladesh"
-msgstr ""
+msgstr "bangladesh"
 
 #: emojisKeywords.js:1497
 msgid "belgium"
@@ -8276,11 +8282,11 @@ msgstr ""
 
 #: emojisKeywords.js:1498
 msgid "burkina faso"
-msgstr ""
+msgstr "burkina faso"
 
 #: emojisKeywords.js:1499
 msgid "bulgaria"
-msgstr ""
+msgstr "bulgaria"
 
 #: emojisKeywords.js:1500
 msgid "bahrain"
@@ -8288,7 +8294,7 @@ msgstr ""
 
 #: emojisKeywords.js:1501
 msgid "burundi"
-msgstr ""
+msgstr "burundi"
 
 #: emojisKeywords.js:1502
 msgid "benin"
@@ -8308,7 +8314,7 @@ msgstr ""
 
 #: emojisKeywords.js:1504
 msgid "bermuda"
-msgstr ""
+msgstr "bermuda"
 
 #: emojisKeywords.js:1505 emojisKeywords.js:1506
 msgid "brunei"
@@ -8320,7 +8326,7 @@ msgstr ""
 
 #: emojisKeywords.js:1508
 msgid "brazil"
-msgstr ""
+msgstr "brasile"
 
 #: emojisKeywords.js:1509
 msgid "bahamas"
@@ -8348,7 +8354,7 @@ msgstr ""
 
 #: emojisKeywords.js:1515
 msgid "canada"
-msgstr ""
+msgstr "canada"
 
 #: emojisKeywords.js:1516
 msgid "cocos islands"
@@ -8360,7 +8366,7 @@ msgstr ""
 
 #: emojisKeywords.js:1517 emojisKeywords.js:1519
 msgid "congo"
-msgstr ""
+msgstr "congo"
 
 #: emojisKeywords.js:1517
 msgid "kinshasa"
@@ -8376,7 +8382,7 @@ msgstr ""
 
 #: emojisKeywords.js:1520
 msgid "switzerland"
-msgstr ""
+msgstr "svizzera"
 
 #: emojisKeywords.js:1520
 msgid "helvetic confederation"
@@ -8392,7 +8398,7 @@ msgstr ""
 
 #: emojisKeywords.js:1523
 msgid "chile"
-msgstr ""
+msgstr "cile"
 
 #: emojisKeywords.js:1524
 msgid "cameroon"
@@ -8400,11 +8406,11 @@ msgstr ""
 
 #: emojisKeywords.js:1525
 msgid "china"
-msgstr ""
+msgstr "cina"
 
 #: emojisKeywords.js:1526
 msgid "colombia"
-msgstr ""
+msgstr "colombia"
 
 #: emojisKeywords.js:1527
 msgid "clipperton island"
@@ -8412,11 +8418,11 @@ msgstr ""
 
 #: emojisKeywords.js:1528
 msgid "costa rica"
-msgstr ""
+msgstr "costa rica"
 
 #: emojisKeywords.js:1529
 msgid "cuba"
-msgstr ""
+msgstr "cuba"
 
 #: emojisKeywords.js:1530
 msgid "cape verde"
@@ -8432,7 +8438,7 @@ msgstr ""
 
 #: emojisKeywords.js:1533
 msgid "cyprus"
-msgstr ""
+msgstr "cipro"
 
 #: emojisKeywords.js:1534
 msgid "czechia"
@@ -8440,7 +8446,7 @@ msgstr ""
 
 #: emojisKeywords.js:1535
 msgid "germany"
-msgstr ""
+msgstr "germania"
 
 #: emojisKeywords.js:1536
 msgid "diego garcia"
@@ -8452,7 +8458,7 @@ msgstr ""
 
 #: emojisKeywords.js:1538
 msgid "denmark"
-msgstr ""
+msgstr "danimarca"
 
 #: emojisKeywords.js:1539
 msgid "dominica"
@@ -8464,7 +8470,7 @@ msgstr ""
 
 #: emojisKeywords.js:1541
 msgid "algeria"
-msgstr ""
+msgstr "algeria"
 
 #: emojisKeywords.js:1542
 msgid "ceuta & melilla"
@@ -8492,7 +8498,7 @@ msgstr ""
 
 #: emojisKeywords.js:1547
 msgid "eritrea"
-msgstr ""
+msgstr "eritrea"
 
 #: emojisKeywords.js:1548
 msgid "spain"
@@ -8500,15 +8506,15 @@ msgstr ""
 
 #: emojisKeywords.js:1549
 msgid "ethiopia"
-msgstr ""
+msgstr "etiopia"
 
 #: emojisKeywords.js:1550
 msgid "european union"
-msgstr ""
+msgstr "unione europea"
 
 #: emojisKeywords.js:1551
 msgid "finland"
-msgstr ""
+msgstr "finlandia"
 
 #: emojisKeywords.js:1552
 msgid "fiji"
@@ -8528,7 +8534,7 @@ msgstr ""
 
 #: emojisKeywords.js:1556
 msgid "france"
-msgstr ""
+msgstr "francia"
 
 #: emojisKeywords.js:1557
 msgid "gabon"
@@ -8536,7 +8542,7 @@ msgstr ""
 
 #: emojisKeywords.js:1558
 msgid "united kingdom"
-msgstr ""
+msgstr "regno unito"
 
 #: emojisKeywords.js:1558
 msgid "great britain"
@@ -8548,7 +8554,7 @@ msgstr ""
 
 #: emojisKeywords.js:1560
 msgid "georgia"
-msgstr ""
+msgstr "georgia"
 
 #: emojisKeywords.js:1561
 msgid "french guiana"
@@ -8560,15 +8566,15 @@ msgstr ""
 
 #: emojisKeywords.js:1563
 msgid "ghana"
-msgstr ""
+msgstr "ghana"
 
 #: emojisKeywords.js:1564
 msgid "gibraltar"
-msgstr ""
+msgstr "gibilterra"
 
 #: emojisKeywords.js:1565
 msgid "greenland"
-msgstr ""
+msgstr "groenlandia"
 
 #: emojisKeywords.js:1566
 msgid "gambia"
@@ -8588,7 +8594,7 @@ msgstr ""
 
 #: emojisKeywords.js:1570
 msgid "greece"
-msgstr ""
+msgstr "grecia"
 
 #: emojisKeywords.js:1571
 msgid "south georgia"
@@ -8620,7 +8626,7 @@ msgstr ""
 
 #: emojisKeywords.js:1576
 msgid "hong kong"
-msgstr ""
+msgstr "hong kong"
 
 #: emojisKeywords.js:1577
 msgid "heard & mcdonald islands"
@@ -8632,27 +8638,27 @@ msgstr ""
 
 #: emojisKeywords.js:1579
 msgid "croatia"
-msgstr ""
+msgstr "croazia"
 
 #: emojisKeywords.js:1580
 msgid "haiti"
-msgstr ""
+msgstr "haiti"
 
 #: emojisKeywords.js:1581
 msgid "hungary"
-msgstr ""
+msgstr "ungheria"
 
 #: emojisKeywords.js:1582
 msgid "canary islands"
-msgstr ""
+msgstr "isole canarie"
 
 #: emojisKeywords.js:1583
 msgid "indonesia"
-msgstr ""
+msgstr "indonesia"
 
 #: emojisKeywords.js:1585
 msgid "israel"
-msgstr ""
+msgstr "israele"
 
 #: emojisKeywords.js:1586
 msgid "isle of man"
@@ -8660,7 +8666,7 @@ msgstr ""
 
 #: emojisKeywords.js:1587
 msgid "india"
-msgstr ""
+msgstr "india"
 
 #: emojisKeywords.js:1588
 msgid "british indian ocean territory"
@@ -8668,27 +8674,27 @@ msgstr ""
 
 #: emojisKeywords.js:1588
 msgid "indian ocean"
-msgstr ""
+msgstr "oceano indiano"
 
 #: emojisKeywords.js:1589
 msgid "iraq"
-msgstr ""
+msgstr "iraq"
 
 #: emojisKeywords.js:1590
 msgid "iran"
-msgstr ""
+msgstr "iran"
 
 #: emojisKeywords.js:1590
 msgid "persia"
-msgstr ""
+msgstr "persia"
 
 #: emojisKeywords.js:1591
 msgid "iceland"
-msgstr ""
+msgstr "islanda"
 
 #: emojisKeywords.js:1592
 msgid "italy"
-msgstr ""
+msgstr "italia"
 
 #: emojisKeywords.js:1593
 msgid "jersey"
@@ -8704,7 +8710,7 @@ msgstr ""
 
 #: emojisKeywords.js:1597
 msgid "kenya"
-msgstr ""
+msgstr "kenya"
 
 #: emojisKeywords.js:1598
 msgid "kyrgyzstan"
@@ -8712,7 +8718,7 @@ msgstr ""
 
 #: emojisKeywords.js:1599
 msgid "cambodia"
-msgstr ""
+msgstr "cambogia"
 
 #: emojisKeywords.js:1600
 msgid "kiribati"
@@ -8728,31 +8734,31 @@ msgstr ""
 
 #: emojisKeywords.js:1603
 msgid "north korea"
-msgstr ""
+msgstr "nord corea"
 
 #: emojisKeywords.js:1603 emojisKeywords.js:1604
 msgid "korea"
-msgstr ""
+msgstr "corea"
 
 #: emojisKeywords.js:1604
 msgid "south korea"
-msgstr ""
+msgstr "sud corea"
 
 #: emojisKeywords.js:1605
 msgid "kuwait"
-msgstr ""
+msgstr "kuwait"
 
 #: emojisKeywords.js:1606
 msgid "cayman islands"
-msgstr ""
+msgstr "isole cayman"
 
 #: emojisKeywords.js:1606
 msgid "cayman"
-msgstr ""
+msgstr "cayman"
 
 #: emojisKeywords.js:1607
 msgid "kazakhstan"
-msgstr ""
+msgstr "kazakistan"
 
 #: emojisKeywords.js:1608
 msgid "laos"
@@ -8760,11 +8766,11 @@ msgstr ""
 
 #: emojisKeywords.js:1609
 msgid "lebanon"
-msgstr ""
+msgstr "libano"
 
 #: emojisKeywords.js:1610
 msgid "st. lucia"
-msgstr ""
+msgstr "santa lucia"
 
 #: emojisKeywords.js:1611
 msgid "liechtenstein"
@@ -8772,11 +8778,11 @@ msgstr ""
 
 #: emojisKeywords.js:1612
 msgid "sri lanka"
-msgstr ""
+msgstr "sri lanka"
 
 #: emojisKeywords.js:1613
 msgid "liberia"
-msgstr ""
+msgstr "liberia"
 
 #: emojisKeywords.js:1614
 msgid "lesotho"
@@ -8784,11 +8790,11 @@ msgstr ""
 
 #: emojisKeywords.js:1615
 msgid "lithuania"
-msgstr ""
+msgstr "lituania"
 
 #: emojisKeywords.js:1616
 msgid "luxembourg"
-msgstr ""
+msgstr "lussemburgo"
 
 #: emojisKeywords.js:1617
 msgid "latvia"
@@ -8796,7 +8802,7 @@ msgstr ""
 
 #: emojisKeywords.js:1618
 msgid "libya"
-msgstr ""
+msgstr "libia"
 
 #: emojisKeywords.js:1619
 msgid "morocco"
@@ -8804,15 +8810,15 @@ msgstr ""
 
 #: emojisKeywords.js:1620
 msgid "monaco"
-msgstr ""
+msgstr "monaco"
 
 #: emojisKeywords.js:1621
 msgid "moldova"
-msgstr ""
+msgstr "moldavia"
 
 #: emojisKeywords.js:1622
 msgid "montenegro"
-msgstr ""
+msgstr "montenegro"
 
 #: emojisKeywords.js:1623
 msgid "st. martin"
@@ -8824,7 +8830,7 @@ msgstr ""
 
 #: emojisKeywords.js:1624
 msgid "madagascar"
-msgstr ""
+msgstr "madagascar"
 
 #: emojisKeywords.js:1625
 msgid "marshall islands"
@@ -8836,7 +8842,7 @@ msgstr ""
 
 #: emojisKeywords.js:1627
 msgid "mali"
-msgstr ""
+msgstr "mali"
 
 #: emojisKeywords.js:1628
 msgid "myanmar "
@@ -8848,7 +8854,7 @@ msgstr ""
 
 #: emojisKeywords.js:1629
 msgid "mongolia"
-msgstr ""
+msgstr "mongolia"
 
 #: emojisKeywords.js:1630
 msgid "macau"
@@ -8864,7 +8870,7 @@ msgstr ""
 
 #: emojisKeywords.js:1633
 msgid "mauritania"
-msgstr ""
+msgstr "mauritania"
 
 #: emojisKeywords.js:1634
 msgid "montserrat"
@@ -8872,7 +8878,7 @@ msgstr ""
 
 #: emojisKeywords.js:1635
 msgid "malta"
-msgstr ""
+msgstr "malta"
 
 #: emojisKeywords.js:1636
 msgid "mauritius"
@@ -8880,7 +8886,7 @@ msgstr ""
 
 #: emojisKeywords.js:1637
 msgid "maldives"
-msgstr ""
+msgstr "maldive"
 
 #: emojisKeywords.js:1638
 msgid "malawi"
@@ -8888,7 +8894,7 @@ msgstr ""
 
 #: emojisKeywords.js:1639
 msgid "mexico"
-msgstr ""
+msgstr "messico"
 
 #: emojisKeywords.js:1640
 msgid "malaysia"
@@ -8896,11 +8902,11 @@ msgstr ""
 
 #: emojisKeywords.js:1641
 msgid "mozambique"
-msgstr ""
+msgstr "mozambico"
 
 #: emojisKeywords.js:1642
 msgid "namibia"
-msgstr ""
+msgstr "namibia"
 
 #: emojisKeywords.js:1643
 msgid "new caledonia"
@@ -8912,7 +8918,7 @@ msgstr ""
 
 #: emojisKeywords.js:1644
 msgid "niger"
-msgstr ""
+msgstr "niger"
 
 #: emojisKeywords.js:1645
 msgid "norfolk island"
@@ -8920,27 +8926,27 @@ msgstr ""
 
 #: emojisKeywords.js:1646
 msgid "nigeria"
-msgstr ""
+msgstr "nigeria"
 
 #: emojisKeywords.js:1647
 msgid "nicaragua"
-msgstr ""
+msgstr "nicaragua"
 
 #: emojisKeywords.js:1648
 msgid "netherlands"
-msgstr ""
+msgstr "olanda"
 
 #: emojisKeywords.js:1648
 msgid "holland"
-msgstr ""
+msgstr "olanda"
 
 #: emojisKeywords.js:1649
 msgid "norway"
-msgstr ""
+msgstr "norvegia"
 
 #: emojisKeywords.js:1650
 msgid "nepal"
-msgstr ""
+msgstr "nepal"
 
 #: emojisKeywords.js:1651
 msgid "nauru"
@@ -8952,7 +8958,7 @@ msgstr ""
 
 #: emojisKeywords.js:1653
 msgid "new zealand"
-msgstr ""
+msgstr "nuova zelanda"
 
 #: emojisKeywords.js:1654
 msgid "oman"
@@ -8960,19 +8966,19 @@ msgstr ""
 
 #: emojisKeywords.js:1655
 msgid "panama"
-msgstr ""
+msgstr "panama"
 
 #: emojisKeywords.js:1656
 msgid "peru"
-msgstr ""
+msgstr "peru"
 
 #: emojisKeywords.js:1657
 msgid "french polynesia"
-msgstr ""
+msgstr "polinesia francese"
 
 #: emojisKeywords.js:1657
 msgid "polynesia"
-msgstr ""
+msgstr "polinesia"
 
 #: emojisKeywords.js:1658
 msgid "papua new guinea"
@@ -8980,15 +8986,15 @@ msgstr ""
 
 #: emojisKeywords.js:1659
 msgid "philippines"
-msgstr ""
+msgstr "filippine"
 
 #: emojisKeywords.js:1660
 msgid "pakistan"
-msgstr ""
+msgstr "pakistan"
 
 #: emojisKeywords.js:1661
 msgid "poland"
-msgstr ""
+msgstr "polonia"
 
 #: emojisKeywords.js:1662
 msgid "st. pierre & miquelon"
@@ -9004,7 +9010,7 @@ msgstr ""
 
 #: emojisKeywords.js:1665
 msgid "palestine"
-msgstr ""
+msgstr "palestina"
 
 #: emojisKeywords.js:1665
 msgid "palestinian territories"
@@ -9012,7 +9018,7 @@ msgstr ""
 
 #: emojisKeywords.js:1666
 msgid "portugal"
-msgstr ""
+msgstr "portogallo"
 
 #: emojisKeywords.js:1667
 msgid "palau"
@@ -9020,11 +9026,11 @@ msgstr ""
 
 #: emojisKeywords.js:1668
 msgid "paraguay"
-msgstr ""
+msgstr "paraguay"
 
 #: emojisKeywords.js:1669
 msgid "qatar"
-msgstr ""
+msgstr "qatar"
 
 #: emojisKeywords.js:1670
 msgid "réunion"
@@ -9032,35 +9038,35 @@ msgstr ""
 
 #: emojisKeywords.js:1671
 msgid "romania"
-msgstr ""
+msgstr "romania"
 
 #: emojisKeywords.js:1672
 msgid "serbia"
-msgstr ""
+msgstr "serbia"
 
 #: emojisKeywords.js:1673
 msgid "russia"
-msgstr ""
+msgstr "russia"
 
 #: emojisKeywords.js:1674
 msgid "rwanda"
-msgstr ""
+msgstr "ruanda"
 
 #: emojisKeywords.js:1675
 msgid "saudi arabia"
-msgstr ""
+msgstr "arabia saudita"
 
 #: emojisKeywords.js:1675
 msgid "arabia"
-msgstr ""
+msgstr "arabia"
 
 #: emojisKeywords.js:1676
 msgid "solomon islands"
-msgstr ""
+msgstr "isole di salomone"
 
 #: emojisKeywords.js:1676
 msgid "solomon"
-msgstr ""
+msgstr "salomone"
 
 #: emojisKeywords.js:1677
 msgid "seychelles"
@@ -9068,27 +9074,27 @@ msgstr ""
 
 #: emojisKeywords.js:1678 emojisKeywords.js:1690
 msgid "sudan"
-msgstr ""
+msgstr "sudan"
 
 #: emojisKeywords.js:1679
 msgid "sweden"
-msgstr ""
+msgstr "svezia"
 
 #: emojisKeywords.js:1680
 msgid "singapore"
-msgstr ""
+msgstr "singapore"
 
 #: emojisKeywords.js:1681
 msgid "st. helena"
-msgstr ""
+msgstr "sant'elena"
 
 #: emojisKeywords.js:1681
 msgid "helena"
-msgstr ""
+msgstr "elena"
 
 #: emojisKeywords.js:1682
 msgid "slovenia"
-msgstr ""
+msgstr "slovenia"
 
 #: emojisKeywords.js:1683
 msgid "svalbard & jan mayen"
@@ -9100,23 +9106,23 @@ msgstr ""
 
 #: emojisKeywords.js:1684
 msgid "slovakia"
-msgstr ""
+msgstr "slovacchia"
 
 #: emojisKeywords.js:1685
 msgid "sierra leone"
-msgstr ""
+msgstr "sierra leone"
 
 #: emojisKeywords.js:1686
 msgid "san marino"
-msgstr ""
+msgstr "san marino"
 
 #: emojisKeywords.js:1687
 msgid "senegal"
-msgstr ""
+msgstr "senegal"
 
 #: emojisKeywords.js:1688
 msgid "somalia"
-msgstr ""
+msgstr "somalia"
 
 #: emojisKeywords.js:1689
 msgid "suriname"
@@ -9124,7 +9130,7 @@ msgstr ""
 
 #: emojisKeywords.js:1690
 msgid "south sudan"
-msgstr ""
+msgstr "sud sudan"
 
 #: emojisKeywords.js:1691
 msgid "são tomé & príncipe"
@@ -9140,7 +9146,7 @@ msgstr ""
 
 #: emojisKeywords.js:1694
 msgid "syria"
-msgstr ""
+msgstr "siria"
 
 #: emojisKeywords.js:1695
 msgid "swaziland"
@@ -9184,7 +9190,7 @@ msgstr ""
 
 #: emojisKeywords.js:1702
 msgid "thailand"
-msgstr ""
+msgstr "tailandia"
 
 #: emojisKeywords.js:1703
 msgid "tajikistan"
@@ -9200,7 +9206,7 @@ msgstr ""
 
 #: emojisKeywords.js:1705
 msgid "timor"
-msgstr ""
+msgstr "timore"
 
 #: emojisKeywords.js:1705
 msgid "east timor"
@@ -9212,7 +9218,7 @@ msgstr ""
 
 #: emojisKeywords.js:1707
 msgid "tunisia"
-msgstr ""
+msgstr "tunisia"
 
 #: emojisKeywords.js:1708
 msgid "tonga"
@@ -9236,7 +9242,7 @@ msgstr ""
 
 #: emojisKeywords.js:1713
 msgid "tanzania"
-msgstr ""
+msgstr "tanzania"
 
 #: emojisKeywords.js:1714
 msgid "ukraine"
@@ -9244,7 +9250,7 @@ msgstr ""
 
 #: emojisKeywords.js:1715
 msgid "uganda"
-msgstr ""
+msgstr "uganda"
 
 #: emojisKeywords.js:1716
 msgid "u.s. outlying islands"
@@ -9252,7 +9258,7 @@ msgstr ""
 
 #: emojisKeywords.js:1717
 msgid "united nations"
-msgstr ""
+msgstr "nazioni unite"
 
 #: emojisKeywords.js:1717
 msgid "un"
@@ -9260,7 +9266,7 @@ msgstr ""
 
 #: emojisKeywords.js:1718
 msgid "united states"
-msgstr ""
+msgstr "stati uniti"
 
 #: emojisKeywords.js:1719
 msgid "uruguay"
@@ -9272,11 +9278,11 @@ msgstr ""
 
 #: emojisKeywords.js:1721
 msgid "vatican city"
-msgstr ""
+msgstr "citta del vaticano"
 
 #: emojisKeywords.js:1721
 msgid "vatican"
-msgstr ""
+msgstr "vaticano"
 
 #: emojisKeywords.js:1722
 msgid "st. vincent & grenadines"
@@ -9284,7 +9290,7 @@ msgstr ""
 
 #: emojisKeywords.js:1723
 msgid "venezuela"
-msgstr ""
+msgstr "venezuela"
 
 #: emojisKeywords.js:1724
 msgid "british virgin islands"
@@ -9300,7 +9306,7 @@ msgstr ""
 
 #: emojisKeywords.js:1726
 msgid "vietnam"
-msgstr ""
+msgstr "vietnam"
 
 #: emojisKeywords.js:1727
 msgid "vanuatu"
@@ -9324,7 +9330,7 @@ msgstr ""
 
 #: emojisKeywords.js:1730
 msgid "kosovo"
-msgstr ""
+msgstr "kosovo"
 
 #: emojisKeywords.js:1731
 msgid "yemen"
@@ -9336,7 +9342,7 @@ msgstr ""
 
 #: emojisKeywords.js:1733
 msgid "south africa"
-msgstr ""
+msgstr "sud africa"
 
 #: emojisKeywords.js:1734
 msgid "zambia"
@@ -9344,4 +9350,4 @@ msgstr ""
 
 #: emojisKeywords.js:1735
 msgid "zimbabwe"
-msgstr ""
+msgstr "zimbabwe"
