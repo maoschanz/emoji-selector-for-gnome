@@ -750,11 +750,11 @@ const EmojisMenu = new Lang.Class({
 	_renderPanelMenuHeaderBox: function() {
 		this._buttonMenuItem = new PopupMenu.PopupBaseMenuItem({
 			reactive: false,
-			can_focus: false,
+			can_focus: false
 		});
 		this.categoryButton = [];
 		for (let i = 0; i< 9; i++) {
-			this._buttonMenuItem.actor.add_actor(this.emojiCategories[i].getButton());
+			this._buttonMenuItem.actor.add(this.emojiCategories[i].getButton(), { expand: true, x_fill: false });
 		}
 	},
 	
