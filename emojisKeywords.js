@@ -1737,7 +1737,72 @@ var ALL_KEYWORDS = [
 		//['scotland'],
 		//['wales']
 		
-	]	
+	], [
+	
+	//Git
+	//https://gitmoji.carloscuesta.me/
+	
+		['format code', 'improve structure'],
+		['Improve performance'],
+		['remove code', 'remove file'],
+		['fix a bug'],
+		['critical hotfix'],
+		['introduce new feature'],
+		['write docs'],
+		['deploy stuff'],
+		['update ui', 'style file'],
+		['initial commit'],
+		['add test'],
+		['fix security issue'],
+		['macOS'],
+		['linux'],
+		['gnome'],
+		['shell'],
+		['windows'],
+		['android'],
+		['iOS'],
+		['release', 'version tag'],
+		['remove linter warning'],
+		['work in progress', 'wip'],
+		['fix CI build'],
+		['downgrade dependency'],
+		['upgrade dependency'],
+		['pin dependency'],
+		['add CI build system'],
+		['add analytics', 'track code'],
+		['refactore code'],
+		['remove a dependency'],
+		['work about docker'],
+		['add a dependency'],
+		['change configuration file'],
+		['internationalization', 'localization'],
+		['fix typo', 'edit'],
+		['write bad code', 'need to be improved'],
+		['revert changes'],
+		['merge branche'],
+		['update compiled file'],
+		['external API changes'],
+		['move file', 'rename file'],
+		['add licence', 'update licence'],
+		['introduce breaking changes'],
+		['add assets', 'update assets'],
+		['code review'],
+		['improve accessibility'],
+		['document source code'],
+		['write code drunkenly'],
+		['update text', 'update literal'],
+		['perform database related changes'],
+		['add logs'],
+		['remove logs'],
+		['add contributor'],
+		['improve user experience', 'usability', 'ux'],
+		['make architectural changes'],
+		['work on responsive design'],
+		['mock things'],
+		['add easter egg'],
+		['update gitignore file'],
+		['add snapshot', 'screenshot']
+	]
 ];	
 	
 

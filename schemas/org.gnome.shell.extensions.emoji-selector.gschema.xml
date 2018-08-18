@@ -8,7 +8,7 @@
       <description>Possible values can be 'top' or 'bottom'.</description>
     </key>
     <key type="i" name="nbcols">
-      <default>11</default>
+      <default>12</default>
       <summary>Number of emojis per line</summary>
       <description>Sets the number of column of emojis to display.</description>
     </key>

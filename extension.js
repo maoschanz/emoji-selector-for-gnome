@@ -730,19 +730,20 @@ const EmojisMenu = new Lang.Class({
 		this.emojiCategories = [];
 	
 		/* creating new categories with emojis loaded in EMOJIS_CHARACTERS */
-		this.emojiCategories[0] = new EmojiCategory(	_('Smileys & Body'),		'face-smile-symbolic',			0	);
-		this.emojiCategories[1] = new EmojiCategory(	_('Peoples & Clothing'),	'contact-new-symbolic',			1	);	
-		this.emojiCategories[2] = new EmojiCategory(	_('Animals & Nature'),		'face-monkey-symbolic',			2	);	
-		this.emojiCategories[3] = new EmojiCategory(	_('Food & Drink'), 			'my-caffeine-on-symbolic',		3	);
-		this.emojiCategories[4] = new EmojiCategory(	_('Travel & Places'), 		'airplane-mode-symbolic',		4	);
-		this.emojiCategories[5] = new EmojiCategory(	_('Activities & Sports'),	'applications-games-symbolic',	5	);
-		this.emojiCategories[6] = new EmojiCategory(	_('Objects'),				'alarm-symbolic',				6	);
-		this.emojiCategories[7] = new EmojiCategory(	_('Symbols'),				'emblem-default-symbolic',		7	);
-		this.emojiCategories[8] = new EmojiCategory(	_('Flags'),					'flag-symbolic',				8	);
+		this.emojiCategories[0] = new EmojiCategory(	_('Smileys & Body'),		'face-smile-symbolic',				0	);
+		this.emojiCategories[1] = new EmojiCategory(	_('Peoples & Clothing'),	'contact-new-symbolic',				1	);	
+		this.emojiCategories[2] = new EmojiCategory(	_('Animals & Nature'),		'face-monkey-symbolic',				2	);	
+		this.emojiCategories[3] = new EmojiCategory(	_('Food & Drink'), 			'my-caffeine-on-symbolic',			3	);
+		this.emojiCategories[4] = new EmojiCategory(	_('Travel & Places'), 		'airplane-mode-symbolic',			4	);
+		this.emojiCategories[5] = new EmojiCategory(	_('Activities & Sports'),	'applications-games-symbolic',		5	);
+		this.emojiCategories[6] = new EmojiCategory(	_('Objects'),				'alarm-symbolic',					6	);
+		this.emojiCategories[7] = new EmojiCategory(	_('Symbols'),				'emblem-default-symbolic',			7	);
+		this.emojiCategories[8] = new EmojiCategory(	_('Flags'),					'flag-symbolic',					8	);
+		this.emojiCategories[9] = new EmojiCategory(	_('Git'),					'accessories-text-editor-symbolic',	9	);
 	},
 	
 	_addAllCategories: function() {
-		for (let i = 0; i< 9; i++) {			
+		for (let i = 0; i< this.emojiCategories.length; i++) {			
 			this.menu.addMenuItem(this.emojiCategories[i]);
 		}
 	},
@@ -753,14 +754,14 @@ const EmojisMenu = new Lang.Class({
 			can_focus: false
 		});
 		this.categoryButton = [];
-		for (let i = 0; i< 9; i++) {
+		for (let i = 0; i< this.emojiCategories.length; i++) {
 			this._buttonMenuItem.actor.add(this.emojiCategories[i].getButton(), { expand: true, x_fill: false });
 		}
 	},
 	
 	clearCategories: function(){
 		// removing the blue color of previously opened category's button
-		for (let i = 0; i< 9; i++) {
+		for (let i = 0; i< this.emojiCategories.length; i++) {
 			this.emojiCategories[i].getButton().style = 'background-color: transparent;';
 		}
 		
