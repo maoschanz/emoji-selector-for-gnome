@@ -279,18 +279,18 @@ const SkinTonesBar = new Lang.Class({
 				reactive: true,
 				can_focus: true,
 				track_hover: true,
-				width: 20,
+				width: 32,
 				accessible_name: _("Men"),
-				style: 'background-color: black;',
+				style: 'UnselectedGender',
 				label: '♀',
 			});
 			this._genderArray[2] = new St.Button({
 				reactive: true,
 				can_focus: true,
 				track_hover: true,
-				width: 20,
+				width: 32,
 				accessible_name: _("Women"),
-				style: 'background-color: black;',
+				style_class: 'UnselectedGender',
 				label: '♂',
 			});
 			
@@ -298,7 +298,7 @@ const SkinTonesBar = new Lang.Class({
 				
 				if (SETTINGS.get_int('gender') != 1) {
 					this.clearGender();
-					w.style = 'background-color: blue;';
+					w.style_class = 'SelectedGender';
 					SETTINGS.set_int('gender', 1);
 				} else {
 					this.clearGender();
@@ -308,7 +308,7 @@ const SkinTonesBar = new Lang.Class({
 			
 				if (SETTINGS.get_int('gender') != 2) {
 					this.clearGender();
-					w.style = 'background-color: blue;';
+					w.style_class = 'SelectedGender';
 					SETTINGS.set_int('gender', 2);
 				} else {
 					this.clearGender();
@@ -321,7 +321,7 @@ const SkinTonesBar = new Lang.Class({
 	clearGender: function() {
 		SETTINGS.set_int('gender', 0);
 		this._genderArray.forEach(function(b) {
-			b.style = 'background-color: black;';
+			b.style_class = 'UnselectedGender';
 		});
 	},
 	
@@ -344,10 +344,10 @@ const SkinTonesBar = new Lang.Class({
 		this.removeCircle();
 		this._toneArray[SETTINGS.get_int('skin-tone')].style_class = 'SelectedTone';
 		this._genderArray.forEach(function(b) {
-			b.style = 'background-color: black;';
+			b.style_class = 'UnselectedGender';
 		});
 		if (this._genderArray.length != 0) {
-			this._genderArray[SETTINGS.get_int('gender')].style = 'background-color: blue;';
+			this._genderArray[SETTINGS.get_int('gender')].style_class = 'SelectedGender';
 		}
 	},
 	
@@ -356,7 +356,7 @@ const SkinTonesBar = new Lang.Class({
 			reactive: true,
 			can_focus: true,
 			track_hover: true,
-			width: 20,
+			width: 32,
 			accessible_name: accessibleName,
 			style_class: 'UnselectedTone',
 			style: 'background-color: ' + color + ';',
@@ -388,14 +388,15 @@ const EmojiCategory = new Lang.Class({
 		this._triangleBin.visible = false;
 		
 		// A bar is created for all categories to simplify the update method
-		if ((this.id == 1) || (this.id == 5)) {
+		//	 People            Activities
+		if ((this.id == 2) || (this.id == 7)) {
 			this.skinTonesBar = new SkinTonesBar(true);
 		} else {
 			this.skinTonesBar = new SkinTonesBar(false);
 		}
 		
-		//	Smileys & body		Peoples			Activities
-		if ((this.id == 0) || (this.id == 1) || (this.id == 5)) {
+		//	 Smileys           Body              People            Activities
+		if ((this.id == 0) || (this.id == 1) || (this.id == 2) || (this.id == 7)) {
 			this.skinTonesBar.addBar(this.actor);
 		}
 		
@@ -508,7 +509,6 @@ const EmojiCategory = new Lang.Class({
 			this.build();
 		}
 		this.skinTonesBar.update();
-		
 		this.categoryButton.style = 'background-color: rgba(0,0,200,0.2);';
 		this.actor.visible = true;		
 		this.setSubmenuShown(true);
@@ -730,19 +730,21 @@ const EmojisMenu = new Lang.Class({
 		this.emojiCategories = [];
 	
 		/* creating new categories with emojis loaded in EMOJIS_CHARACTERS */
-		this.emojiCategories[0] = new EmojiCategory(	_('Smileys & Body'),		'face-smile-symbolic',			0	);
-		this.emojiCategories[1] = new EmojiCategory(	_('Peoples & Clothing'),	'contact-new-symbolic',			1	);	
-		this.emojiCategories[2] = new EmojiCategory(	_('Animals & Nature'),		'face-monkey-symbolic',			2	);	
-		this.emojiCategories[3] = new EmojiCategory(	_('Food & Drink'), 			'my-caffeine-on-symbolic',		3	);
-		this.emojiCategories[4] = new EmojiCategory(	_('Travel & Places'), 		'airplane-mode-symbolic',		4	);
-		this.emojiCategories[5] = new EmojiCategory(	_('Activities & Sports'),	'applications-games-symbolic',	5	);
-		this.emojiCategories[6] = new EmojiCategory(	_('Objects'),				'alarm-symbolic',				6	);
-		this.emojiCategories[7] = new EmojiCategory(	_('Symbols'),				'emblem-default-symbolic',		7	);
-		this.emojiCategories[8] = new EmojiCategory(	_('Flags'),					'flag-symbolic',				8	);
+		this.emojiCategories[0] = new EmojiCategory(	_('Smileys'),				'face-smile-symbolic',							0);
+		this.emojiCategories[1] = new EmojiCategory(	_('Body'),		   			'preferences-system-privacy-symbolic',			1);
+		this.emojiCategories[2] = new EmojiCategory(	_('People'),				'avatar-default-symbolic',						2);
+		this.emojiCategories[3] = new EmojiCategory(	_('Animals'),				'face-monkey-symbolic',							3);
+		this.emojiCategories[4] = new EmojiCategory(	_('Nature'),				'preferences-desktop-screensaver-symbolic',		4);
+		this.emojiCategories[5] = new EmojiCategory(	_('Food & Drink'), 			'my-caffeine-on-symbolic',						5);
+		this.emojiCategories[6] = new EmojiCategory(	_('Travel & Places'), 		'airplane-mode-symbolic',						6);
+		this.emojiCategories[7] = new EmojiCategory(	_('Activities & Sports'),	'emoji-activities-symbolic',					7);
+		this.emojiCategories[8] = new EmojiCategory(	_('Objects'),				'alarm-symbolic',								8);
+		this.emojiCategories[9] = new EmojiCategory(	_('Symbols'),				'emblem-default-symbolic',						9);
+		this.emojiCategories[10] = new EmojiCategory(	_('Flags'),					'flag-symbolic',								10);
 	},
 	
 	_addAllCategories: function() {
-		for (let i = 0; i< 9; i++) {			
+		for (let i = 0; i< 11; i++) {			
 			this.menu.addMenuItem(this.emojiCategories[i]);
 		}
 	},
@@ -753,14 +755,14 @@ const EmojisMenu = new Lang.Class({
 			can_focus: false
 		});
 		this.categoryButton = [];
-		for (let i = 0; i< 9; i++) {
+		for (let i = 0; i< 11; i++) {
 			this._buttonMenuItem.actor.add(this.emojiCategories[i].getButton(), { expand: true, x_fill: false });
 		}
 	},
 	
 	clearCategories: function(){
 		// removing the blue color of previously opened category's button
-		for (let i = 0; i< 9; i++) {
+		for (let i = 0; i< 11; i++) {
 			this.emojiCategories[i].getButton().style = 'background-color: transparent;';
 		}
 		
