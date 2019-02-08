@@ -17,7 +17,7 @@ echo "Generating .pot file..."
 #echo "_(\"$description\")" >> other-strings.js
 
 xgettext --files-from=POTFILES.in --from-code=UTF-8 --output=locale/emoji-selector.pot
-xgettext -ja emojisKeywords.js --from-code=UTF-8 --output=locale/emoji-selector.pot
+#xgettext -ja emojisKeywords.js --from-code=UTF-8 --output=locale/emoji-selector.pot
 
 #####
 

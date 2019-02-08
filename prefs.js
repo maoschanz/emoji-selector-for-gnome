@@ -41,7 +41,7 @@ const EmojiSelector_PrefsPage = new Lang.Class({
 			margin_top: 20,
 			margin_bottom: 20,
 			orientation: Gtk.Orientation.VERTICAL,
-			spacing: 18
+			spacing: 12
 		});
 		this.add(this.stackpageMainBox);
 	},
@@ -362,7 +362,7 @@ function buildPrefsWidget() {
 		let label_description = new Gtk.Label({ label: a_description, wrap: true, halign: Gtk.Align.CENTER });
 		
 		let label_contributors = new Gtk.Label({
-			label: "Author: roschan. Contributors: amivaleo, picsi, jonnius",
+			label: "Author: Romain F.T.; Contributors: amivaleo, picsi, jonnius",
 			wrap: true,
 			halign: Gtk.Align.CENTER
 		});

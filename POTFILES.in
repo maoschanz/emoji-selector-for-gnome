@@ -1,2 +1,5 @@
 extension.js
 prefs.js
+emojiButton.js
+emojiCategory.js
+emojiOptionsBar.js

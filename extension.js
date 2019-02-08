@@ -29,6 +29,10 @@ const CLIPBOARD_TYPE = St.ClipboardType.CLIPBOARD;
 
 //----------------------------------------------
 
+const SkinTonesBar = Me.imports.emojiOptionsBar.SkinTonesBar;
+const EmojiCategory = Me.imports.emojiCategory.EmojiCategory;
+const EmojiButton = Me.imports.emojiButton;
+
 /*
  * Import data (array of arrays of characters, and array of arrays of strings).
  * Keywords are used for both:
@@ -36,24 +40,22 @@ const CLIPBOARD_TYPE = St.ClipboardType.CLIPBOARD;
  * - skin tone management
  * - gender management
  */
-const EMOJIS_CHARACTERS = Me.imports.emojisCharacters.ALL;
-const EMOJIS_KEYWORDS = Me.imports.emojisKeywords.ALL_KEYWORDS;
+var EMOJIS_CHARACTERS = Me.imports.emojisCharacters.ALL;
+var EMOJIS_KEYWORDS = Me.imports.emojisKeywords.ALL_KEYWORDS;
 
-//				none	woman					man
-const GENDERS =	['',	'\u200D\u2640\uFE0F',	'\u200D\u2642\uFE0F'];
-const GENDERS2 = ['👩','👨'];
-const TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
+var SETTINGS;
+let SIGNAUX = [];
 
 //-----------------------------------------------
 
-/* Global variable : globalButton to click in the topbar */
-let globalButton;
+/* Global variable : GLOBAL_BUTTON to click in the topbar */
+var GLOBAL_BUTTON;
 
-/* this array will stock some St.Button(s) */
-let recents = [];
+/* this array will store some St.Button(s) */
+var recents = [];
 
 /* These global variables are used to store some static settings */
-let NB_COLS;
+var NB_COLS;
 let POSITION;
 
 //-----------------------------------------------
@@ -77,9 +79,9 @@ const SettingsSchema = getSchema();
 
 function updateStyle() {
 	recents.forEach(function(b){
-		b.style = globalButton.getStyle();
+		b.style = GLOBAL_BUTTON.getStyle();
 	});
-	globalButton.emojiCategories.forEach(function(c){
+	GLOBAL_BUTTON.emojiCategories.forEach(function(c){
 		c.emojiButtons.forEach(function(b){
 			b.style = c.getStyle();
 		});
@@ -88,10 +90,10 @@ function updateStyle() {
 
 function saveRecents() {
 	let backUp = '';
-	for(var i = 0;i<NB_COLS;i++){
+	for(var i = 0; i<NB_COLS; i++){
 		backUp = backUp + recents[i].label + ',';
 	}
-	Convenience.getSettings().set_string('recents', backUp);	
+	Convenience.getSettings().set_string('recents', backUp);
 }
 
 function buildRecents() {
@@ -100,11 +102,11 @@ function buildRecents() {
 	so I put them in a setting key where it is stored as a string.
 	The format of the string is 'X,X,X,X,X,' where Xs are emojis.
 	So, temp is an array of strings like ['X','X','X','X','X',''] where
-	the last item is empty.
+	the last item is empty. FIXME use an array FIXME put at first index
 	*/
 	let temp = Convenience.getSettings().get_string('recents').split(',');
 	
-	for(var i = 0;i<NB_COLS;i++){
+	for(var i = 0; i<NB_COLS; i++){
 		if (i < temp.length - 1) {
 			//length - 1 because of the empty last item
 			recents[i].label = temp[i];
@@ -119,411 +121,7 @@ function buildRecents() {
 	}
 }
 
-function shiftFor(CurrentEmoji) {
-	if (CurrentEmoji == '') {return;}
-	
-	//	The "isIn" boolean is true if the clicked emoji is already saved as recently used in the setting key.
-	let isIn = false;
-	let temp = Convenience.getSettings().get_string('recents').split(',');
-	for(var i = 0;i<NB_COLS;i++){
-		if (temp[i] == CurrentEmoji) {
-			isIn = true;
-		}
-	}
-	
-	if (!isIn) {
-		buildRecents();
-		for(var j = NB_COLS-1;j > 0;j--){
-			recents[j].label = recents[j-1].label;
-		}
-		recents[0].label = CurrentEmoji;
-		saveRecents();
-	}
-	globalButton._onSearchTextChanged();
-}
-
-/*
- * This function is called at each click and copies the emoji to the clipboard.
- * 
- * The exact behavior of the method depends on the mouse button used:
- * - left click overwrites clipboard content with the emoji, and closes the menu;
- * - middle click too, but does not close the menu;
- * - right click adds the emoji at the end of the current clipboard content (and does not close the menu).
- */
-function genericOnButtonPress (actor, event, tags, CurrentEmoji){
-	let mouseButton = event.get_button();
-	if (mouseButton == 1) {
-		Clipboard.set_text(
-			CLIPBOARD_TYPE,
-			applyTags(tags, CurrentEmoji)
-		);
-		globalButton.menu.close();
-		return Clutter.EVENT_STOP;
-	} else if (mouseButton == 2) {
-		Clipboard.set_text(
-			CLIPBOARD_TYPE,
-			applyTags(tags, CurrentEmoji)
-		);
-		return Clutter.EVENT_STOP;
-	} else if (mouseButton == 3) {
-		Clipboard.get_text(CLIPBOARD_TYPE, function (clipBoard, text) {
-			Clipboard.set_text(
-				CLIPBOARD_TYPE,
-				text + applyTags(tags, CurrentEmoji)
-			);
-		});
-		return Clutter.EVENT_STOP;
-	}
-	return Clutter.EVENT_PROPAGATE;		
-}
-	
-/*
- * This returns an emoji corresponding to CurrentEmoji with tags applied to it.
- * If all tags are false, it returns unmodified CurrentEmoji.
- * "tags" is an array of 3 boolean, which describe how a composite emoji is built:
- * - tonable -> return emoji concatened with the selected skin tone;
- * - genrable -> return emoji concatened with the selected gender;
- * - gendered -> the emoji is already gendered, which modifies the way skin tone is
- * applied ([man|woman] + [skin tone if any] + [other symbol(s)]).
- */
-function applyTags (tags, CurrentEmoji) {
-	if(CurrentEmoji != '') {
-		let tonable = tags[0];
-		let genrable = tags[1];
-		let gendered = tags[2];
-		let temp = CurrentEmoji;
-//		log( tags + " appliqués à " + CurrentEmoji );
-		if (tonable) {
-			if (gendered) {
-				if (temp.includes(GENDERS2[0])) {
-					CurrentEmoji = CurrentEmoji.replace(GENDERS2[0], GENDERS2[0]+TONES[SETTINGS.get_int('skin-tone')])
-				} else if (temp.includes(GENDERS2[1])) {
-					CurrentEmoji = CurrentEmoji.replace(GENDERS2[1], GENDERS2[1]+TONES[SETTINGS.get_int('skin-tone')])
-				} else {
-					log('Error: ' + GENDERS2[0] + " isn't a valid gender prefix.");
-				}
-				temp = CurrentEmoji;
-			} else {
-				temp += TONES[SETTINGS.get_int('skin-tone')];
-			}
-		}
-		if (genrable) {
-			temp += GENDERS[SETTINGS.get_int('gender')];
-		}
-		shiftFor(temp);
-		return temp;
-	} // FIXME else ?
-}
-
 //----------------------------------------------
-
-//class SkinTonesBar
-//methods :
-//	_init()				
-//	clearGender()					reset the gender
-//	addBar(actor)					add all SkinTonesBar's buttons to `actor`
-//	removeCircle()					reset the visual indication of the selected skin tone
-//	update()						update buttons appearance, reflecting the actual settings
-//	buildToneButton(name, color)	build a button for a specific skin tone
-const SkinTonesBar = new Lang.Class({
-	Name:	'SkinTonesBar',
-	
-	_init:	function (hasGender) {
-		this._toneArray = [];
-		
-		this._toneArray[0] = this.buildToneButton(	_("No skin tone")			, '#FFEE00'	);
-		this._toneArray[1] = this.buildToneButton(	_("Light skin tone")		, '#FFD8A8'	);
-		this._toneArray[2] = this.buildToneButton(	_("Medium light skin tone")	, '#E5B590'	);
-		this._toneArray[3] = this.buildToneButton(	_("Medium skin tone")		, '#B88750'	);
-		this._toneArray[4] = this.buildToneButton(	_("Medium dark skin tone")	, '#9B6020'	);
-		this._toneArray[5] = this.buildToneButton(	_("Dark skin tone")			, '#4B2000'	);
-		
-		this._toneArray[0].connect('clicked', Lang.bind(this, function(w){
-			this.removeCircle();
-			w.style_class = 'SelectedTone';
-			SETTINGS.set_int('skin-tone', 0);
-		}));
-		this._toneArray[1].connect('clicked', Lang.bind(this, function(w){
-			this.removeCircle();
-			w.style_class = 'SelectedTone';
-			SETTINGS.set_int('skin-tone', 1);
-		}));
-		this._toneArray[2].connect('clicked', Lang.bind(this, function(w){
-			this.removeCircle();
-			w.style_class = 'SelectedTone';
-			SETTINGS.set_int('skin-tone', 2);
-		}));
-		this._toneArray[3].connect('clicked', Lang.bind(this, function(w){
-			this.removeCircle();
-			w.style_class = 'SelectedTone';
-			SETTINGS.set_int('skin-tone', 3);
-		}));
-		this._toneArray[4].connect('clicked', Lang.bind(this, function(w){
-			this.removeCircle();
-			w.style_class = 'SelectedTone';
-			SETTINGS.set_int('skin-tone', 4);
-		}));
-		this._toneArray[5].connect('clicked', Lang.bind(this, function(w){
-			this.removeCircle();
-			w.style_class = 'SelectedTone';
-			SETTINGS.set_int('skin-tone', 5);
-		}));
-		
-		this._genderArray = [];
-		if(hasGender) {
-			this._genderArray[0] = new St.Button({
-				visible: false,
-				label: 'dummy button',
-			});
-			this._genderArray[1] = new St.Button({
-				reactive: true,
-				can_focus: true,
-				track_hover: true,
-				width: 20,
-				accessible_name: _("Men"),
-				style: 'background-color: black;',
-				label: '♀',
-			});
-			this._genderArray[2] = new St.Button({
-				reactive: true,
-				can_focus: true,
-				track_hover: true,
-				width: 20,
-				accessible_name: _("Women"),
-				style: 'background-color: black;',
-				label: '♂',
-			});
-			
-			this._genderArray[1].connect('clicked', Lang.bind(this, function(w){
-				
-				if (SETTINGS.get_int('gender') != 1) {
-					this.clearGender();
-					w.style = 'background-color: blue;';
-					SETTINGS.set_int('gender', 1);
-				} else {
-					this.clearGender();
-				}
-			}));
-			this._genderArray[2].connect('clicked', Lang.bind(this, function(w){
-			
-				if (SETTINGS.get_int('gender') != 2) {
-					this.clearGender();
-					w.style = 'background-color: blue;';
-					SETTINGS.set_int('gender', 2);
-				} else {
-					this.clearGender();
-				}
-			}));
-		}
-		this.update();
-	},
-	
-	clearGender: function() {
-		SETTINGS.set_int('gender', 0);
-		this._genderArray.forEach(function(b) {
-			b.style = 'background-color: black;';
-		});
-	},
-	
-	addBar: function(catActor) {
-		this._genderArray.forEach(function(b) {
-			catActor.add(b);
-		});
-		this._toneArray.forEach(function(b) {
-			catActor.add(b);
-		});
-	},
-	
-	removeCircle: function() {
-		this._toneArray.forEach(function(b) {
-			b.style_class = 'UnselectedTone';
-		});
-	},
-	
-	update: function() {
-		this.removeCircle();
-		this._toneArray[SETTINGS.get_int('skin-tone')].style_class = 'SelectedTone';
-		this._genderArray.forEach(function(b) {
-			b.style = 'background-color: black;';
-		});
-		if (this._genderArray.length != 0) {
-			this._genderArray[SETTINGS.get_int('gender')].style = 'background-color: blue;';
-		}
-	},
-	
-	buildToneButton: function(accessibleName, color) {
-		return (new St.Button({
-			reactive: true,
-			can_focus: true,
-			track_hover: true,
-			width: 20,
-			accessible_name: accessibleName,
-			style_class: 'UnselectedTone',
-			style: 'background-color: ' + color + ';',
-		}));
-	},
-});
-
-//class EmojiCategory
-//methods :
-//	_init(string, string, int)	init the button & the submenu's menu-item (label, tone/gender)
-//	clear()						remove all emojis from the category
-//	build()						build category's rows and buttons in it
-//	getStyle()					return the CSS to apply to buttons (as a string)
-//	_toggle()					do everything needed when the user click on the category's button
-//	_openCategory()				open the category
-//	getButton()					not useful getter
-//	destroy()					//TODO
-const EmojiCategory = new Lang.Class({
-	Name:		'EmojiCategory',
-	Extends:	PopupMenu.PopupSubMenuMenuItem,
-	
-	_init:		function(categoryName, iconName, id) {
-		this.parent(categoryName);
-		this.categoryName = categoryName;
-		this.actor.visible = false;
-		this.id = id;
-		this.emojiButtons = [];
-		this.actor.reactive = false;
-		this._triangleBin.visible = false;
-		
-		// A bar is created for all categories to simplify the update method
-		if ((this.id == 1) || (this.id == 5)) {
-			this.skinTonesBar = new SkinTonesBar(true);
-		} else {
-			this.skinTonesBar = new SkinTonesBar(false);
-		}
-		
-		//	Smileys & body		Peoples			Activities
-		if ((this.id == 0) || (this.id == 1) || (this.id == 5)) {
-			this.skinTonesBar.addBar(this.actor);
-		}
-		
-		this.categoryButton = new St.Button({
-			reactive: true,
-			can_focus: true,
-			track_hover: true,
-			accessible_name: categoryName,
-			style_class: 'system-menu-action',
-		});
-		this.categoryButton.child = new St.Icon({ icon_name: iconName });
-		this.categoryButton.connect('clicked', Lang.bind(this, this._toggle));
-		
-		this._built = false;
-	},
-	
-	clear: function() {
-		this.menu.removeAll();
-		this.emojiButtons = [];
-	},
-	
-	build: function() {
-		let ln, container;
-		for (var i = 0; i < EMOJIS_CHARACTERS[this.id].length; i++) {
-			
-			// management of lines of emojis
-			if (i % NB_COLS === 0) {
-				ln = new PopupMenu.PopupBaseMenuItem({
-					style_class: 'EmojisList',
-					reactive: false,
-					can_focus: false,
-				});
-				ln.actor.track_hover = false;
-				container = new St.BoxLayout();
-				ln.actor.add(container, { expand: true });
-				this.menu.addMenuItem(ln);
-			}
-			
-			// creation of the clickable button
-			let fontStyle = this.getStyle();
-			let button = new St.Button({
-				style_class: 'EmojisItemStyle',
-				style: fontStyle,
-				can_focus: true,
-			});
-			let CurrentEmoji = EMOJIS_CHARACTERS[this.id][i];
-			button.label = CurrentEmoji;
-			
-			let tonable = false;
-			let genrable = false;
-			let gendered = false;
-			
-			for (var j = 0; j < EMOJIS_KEYWORDS[this.id][i].length; j++) {
-				if (EMOJIS_KEYWORDS[this.id][i][j] == 'HAS_TONE') {
-					tonable = true;
-				} else if (EMOJIS_KEYWORDS[this.id][i][j] == 'HAS_GENDER') {
-					genrable = true;
-				} else if (EMOJIS_KEYWORDS[this.id][i][j] == 'IS_GENDERED') {
-					gendered = true;
-				}
-			}
-			
-			// Copy the emoji to the clipboard with adequate tags and behavior
-			button.connect('button-press-event', Lang.bind(
-				this,
-				genericOnButtonPress,
-				[tonable, genrable, gendered],
-				CurrentEmoji
-			));
-			
-			// Update the category label on hover, allowing the user to know the
-			// of the emoji he's copying.
-			button.connect('notify::hover', Lang.bind(this, function(a, b, c) {
-				if (a.hover) {
-					this.label.text = _( EMOJIS_KEYWORDS[globalButton._activeCat][c][0] );
-				} else {
-					this.label.text = this.categoryName;
-				}
-			}, i));
-			
-			this.emojiButtons.push(button);
-			container.add_child(button);
-		}
-		this._built = true;
-	},
-	
-	getStyle: function() {
-		let fontStyle = 'font-size: ' + Convenience.getSettings().get_int('emojisize') + 'px;';
-		if (Convenience.getSettings().get_boolean('light-theme')) {
-			fontStyle += ' color: #000000;';
-		} else {
-			fontStyle += ' color: #FFFFFF;';
-		}
-		return fontStyle;
-	},
-	
-	_toggle: function() {
-		if (this._getOpenState()) {
-			globalButton.clearCategories();
-		} else {
-			this._openCategory();
-		}
-	},
-	
-	_openCategory: function() {
-		globalButton.clearCategories();
-		this.label.text = this.categoryName;
-		
-		if(!this._built) {
-			this.build();
-		}
-		this.skinTonesBar.update();
-		
-		this.categoryButton.style = 'background-color: rgba(0,0,200,0.2);';
-		this.actor.visible = true;		
-		this.setSubmenuShown(true);
-		globalButton._activeCat = this.id;
-		globalButton._onSearchTextChanged();
-	},
-	
-	getButton: function() {
-		return this.categoryButton;
-	},
-	
-	destroy: function() {
-		this.parent();
-	}
-});
 
 //class EmojiSearchItem
 //methods :
@@ -562,9 +160,9 @@ const EmojiSearchItem = new Lang.Class({
 				let tags = [false, false, false];
 				Clipboard.set_text(
 					CLIPBOARD_TYPE,
-					applyTags(tags, CurrentEmoji)
+					EmojiButton.applyTags(tags, CurrentEmoji)
 				);
-				globalButton.menu.close();
+				GLOBAL_BUTTON.menu.close();
 			}
 		}));
 		
@@ -586,7 +184,7 @@ const EmojiSearchItem = new Lang.Class({
 			let empty = 0;
 			
 			/* if no category is selected */
-			if (globalButton._activeCat == -1) {
+			if (GLOBAL_BUTTON._activeCat == -1) {
 				for (let cat = 0; cat < EMOJIS_CHARACTERS.length; cat++) {
 					for (let i = 0; i < EMOJIS_CHARACTERS[cat].length; i++) {
 						let isMatching = false;
@@ -607,7 +205,7 @@ const EmojiSearchItem = new Lang.Class({
 			
 			/* if a category is selected */
 			else {
-				let cat = globalButton._activeCat;
+				let cat = GLOBAL_BUTTON._activeCat;
 				for (let i = 0; i < EMOJIS_CHARACTERS[cat].length; i++) {
 					let isMatching = false;
 					if (empty < NB_COLS) {
@@ -742,7 +340,7 @@ const EmojisMenu = new Lang.Class({
 	},
 	
 	_addAllCategories: function() {
-		for (let i = 0; i< 9; i++) {			
+		for (let i = 0; i< 9; i++) {
 			this.menu.addMenuItem(this.emojiCategories[i]);
 		}
 	},
@@ -852,22 +450,22 @@ const EmojisMenu = new Lang.Class({
 						Clipboard.get_text(CLIPBOARD_TYPE, function (clipBoard, text) {
 							Clipboard.set_text(
 								CLIPBOARD_TYPE,
-								text + applyTags(tags, CurrentEmoji)
+								text + EmojiButton.applyTags(tags, CurrentEmoji)
 							);
 						});
 						return Clutter.EVENT_STOP;
 					} else if (ctrlPressed) {
 						Clipboard.set_text(
 							CLIPBOARD_TYPE,
-							applyTags(tags, CurrentEmoji)
+							EmojiButton.applyTags(tags, CurrentEmoji)
 						);
 						return Clutter.EVENT_STOP;
 					} else {
 						Clipboard.set_text(
 							CLIPBOARD_TYPE,
-							applyTags(tags, CurrentEmoji)
+							EmojiButton.applyTags(tags, CurrentEmoji)
 						);
-						globalButton.menu.close();
+						GLOBAL_BUTTON.menu.close();
 						return Clutter.EVENT_STOP;
 					}
 				}
@@ -883,7 +481,7 @@ const EmojisMenu = new Lang.Class({
 	},
 	
 	copyRecent: function(a, e, i) {
-		genericOnButtonPress(a, e, [false, false, false], recents[i].label);
+		EmojiButton.genericOnButtonPress(a, e, [false, false, false], recents[i].label);
 	},
 	
 	_bindShortcut: function() {
@@ -914,9 +512,6 @@ function init() {
 
 //------------------------------------------------------------
 
-let SETTINGS;
-let SIGNAUX = [];
-
 function enable() {	
 	SETTINGS = Convenience.getSettings();
 	
@@ -929,11 +524,11 @@ function enable() {
 	NB_COLS = SETTINGS.get_int('nbcols');
 	POSITION = SETTINGS.get_string('position');
 	
-	globalButton = new EmojisMenu();
+	GLOBAL_BUTTON = new EmojisMenu();
 //	about addToStatusArea :
 //	- 0 is the position
-//	- `right` is the box where we want our globalButton to be displayed (left/center/right)
-	Main.panel.addToStatusArea('EmojisMenu', globalButton, 0, 'right');
+//	- `right` is the box where we want our GLOBAL_BUTTON to be displayed (left/center/right)
+	Main.panel.addToStatusArea('EmojisMenu', GLOBAL_BUTTON, 0, 'right');
 	
 	SIGNAUX[0] = SETTINGS.connect('changed::emojisize', Lang.bind(this, function(){
 		updateStyle();
@@ -942,12 +537,12 @@ function enable() {
 		updateStyle();
 	}));
 	SIGNAUX[2] = SETTINGS.connect('changed::always-show', Lang.bind(this, function(){
-		globalButton.actor.visible = SETTINGS.get_boolean('always-show');
+		GLOBAL_BUTTON.actor.visible = SETTINGS.get_boolean('always-show');
 	}));
 	SIGNAUX[3] = SETTINGS.connect('changed::use-keybinding', Lang.bind(this, function(z){
 		if(z.get_boolean('use-keybinding')) {
 			Main.wm.removeKeybinding('emoji-keybinding');
-			globalButton._bindShortcut();
+			GLOBAL_BUTTON._bindShortcut();
 		} else {
 			Main.wm.removeKeybinding('emoji-keybinding');
 		}
@@ -969,6 +564,6 @@ function disable() {
 	SETTINGS.disconnect(SIGNAUX[2]);
 	SETTINGS.disconnect(SIGNAUX[3]);
 	
-	globalButton.destroy();
+	GLOBAL_BUTTON.destroy();
 }
 
