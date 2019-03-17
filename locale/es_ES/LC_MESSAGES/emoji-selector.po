@@ -1,0 +1,182 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-02-08 20:01+0100\n"
+"PO-Revision-Date: 2019-03-17 21:39+0100\n"
+"Last-Translator: Mario Rubio <mario.mra@hotmail.com>\n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+
+#: extension.js:145
+msgid "Type here to search..."
+msgstr "Escriba aquí para buscar..."
+
+#: extension.js:331
+msgid "Smileys & Body"
+msgstr "Emoticonos & Cuerpos"
+
+#: extension.js:332
+msgid "Peoples & Clothing"
+msgstr "Personas & Vestimentas"
+
+#: extension.js:333
+msgid "Animals & Nature"
+msgstr "Animales & Naturaleza"
+
+#: extension.js:334
+msgid "Food & Drink"
+msgstr "Comidas & Bebidas"
+
+#: extension.js:335
+msgid "Travel & Places"
+msgstr "Viajes & Lugares"
+
+#: extension.js:336
+msgid "Activities & Sports"
+msgstr "Actividades & Deportes"
+
+#: extension.js:337
+msgid "Objects"
+msgstr "Objetos"
+
+#: extension.js:338
+msgid "Symbols"
+msgstr "Símbolos"
+
+#: extension.js:339
+msgid "Flags"
+msgstr "Banderas"
+
+#: prefs.js:116
+msgid "Settings"
+msgstr "Ajustes"
+
+#: prefs.js:118
+msgid "Layout"
+msgstr "Distribución"
+
+#: prefs.js:119
+msgid "Appearance"
+msgstr "Apariencia"
+
+#: prefs.js:120
+msgid "Keybinding"
+msgstr "Atajos de teclado"
+
+#: prefs.js:122
+msgid "Modifications will be effective after reloading the extension."
+msgstr "Los cambios tendrán efecto tras recargar la extensión."
+
+#: prefs.js:126
+msgid "Size of emojis (px):"
+msgstr "Tamaño de los emojis (px):"
+
+#: prefs.js:154
+msgid "Use darker font:"
+msgstr "Usar color oscuro de fuente:"
+
+#: prefs.js:175
+msgid ""
+"This is useful if your system doesn't support color emojis and your GNOME "
+"Shell theme has a white menu background."
+msgstr ""
+"De gran utilidad si su sistema no soporta emojis de colores y su tema de "
+"GNOME Shell tiene un fondo de menú claro."
+
+#: prefs.js:182
+msgid "General layout:"
+msgstr "Distribución general:"
+
+#: prefs.js:191
+msgid "From top to bottom"
+msgstr "De arriba a abajo"
+
+#: prefs.js:192
+msgid "From bottom to top"
+msgstr "De abajo a arriba"
+
+#: prefs.js:208
+msgid ""
+"Displaying the interface from the bottom is nice if you use a bottom panel "
+"instead of the default top bar."
+msgstr ""
+"Mostrar la interfaz desde abajo puede ser de utilidad si usas un panel "
+"inferior en vez de la barra superior predeterminada."
+
+#: prefs.js:215
+msgid "Number of emojis per line:"
+msgstr "Número de emojis por linea:"
+
+#: prefs.js:246
+msgid "Default value is"
+msgstr "El valor por defecto es"
+
+#: prefs.js:262
+msgid "Apply"
+msgstr "Aplicar"
+
+#: prefs.js:275
+msgid "Use a keyboard shortcut to toggle the menu:"
+msgstr "Usar un atajo de teclado para mostrar el menú:"
+
+#: prefs.js:316
+msgid "Always show the icon:"
+msgstr "Mostrar siempre el icono:"
+
+#: prefs.js:337
+msgid ""
+"If you access the menu with the keyboard shorcut, you might not need to "
+"always display the icon."
+msgstr ""
+"Si accedes al menú con el atajo de teclado, puede que no necesites que se "
+"muestre siempre el icono."
+
+#: prefs.js:353
+msgid "About"
+msgstr "Sobre"
+
+#: prefs.js:380
+msgid "Report bugs or ideas"
+msgstr "Informar errores o ideas"
+
+#: emojiOptionsBar.js:28
+msgid "No skin tone"
+msgstr "Sin tonalidad de piel"
+
+#: emojiOptionsBar.js:29
+msgid "Light skin tone"
+msgstr "Tonalidad clara"
+
+#: emojiOptionsBar.js:30
+msgid "Medium light skin tone"
+msgstr "Tonalidad ligeramente clara"
+
+#: emojiOptionsBar.js:31
+msgid "Medium skin tone"
+msgstr "Tonalidad media"
+
+#: emojiOptionsBar.js:32
+msgid "Medium dark skin tone"
+msgstr "Tonalidad ligeramente oscura"
+
+#: emojiOptionsBar.js:33
+msgid "Dark skin tone"
+msgstr "Tonalidad oscura"
+
+#: emojiOptionsBar.js:77
+msgid "Men"
+msgstr "Hombre"
+
+#: emojiOptionsBar.js:86
+msgid "Women"
+msgstr "Mujer"
