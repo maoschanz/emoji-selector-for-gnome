@@ -1,5 +1,7 @@
 #!/bin/bash
 
+glib-compile-schemas ./emoji-selector@maestroschan.fr/schemas
+
 if (( $EUID == 0 )); then
 
 	if [ ! -d "/usr/share/gnome-shell/extensions" ]; then

@@ -420,7 +420,7 @@ const EmojisMenu = new Lang.Class({
 			- when the item is a search result (in this case, it needs to
 			be added to recent emojis)
 			*/
-			recents[i].connect('button-press-event', Lang.bind(
+			recents[i].connect('button-release-event', Lang.bind(
 				this,
 				this.copyRecent,
 				i
