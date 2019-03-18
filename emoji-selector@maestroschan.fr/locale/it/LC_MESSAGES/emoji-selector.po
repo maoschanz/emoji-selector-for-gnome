@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-08 20:01+0100\n"
+"POT-Creation-Date: 2019-03-18 14:32+0100\n"
 "PO-Revision-Date: 2018-05-13 11:17+0200\n"
 "Last-Translator: Jimmy Scionti <jimmy.scionti@gmail.com>\n"
 "Language-Team: \n"
@@ -17,160 +17,160 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: extension.js:145
+#: emoji-selector@maestroschan.fr/extension.js:145
 msgid "Type here to search..."
 msgstr "Digita qui per effettuare una ricerca…"
 
-#: extension.js:331
+#: emoji-selector@maestroschan.fr/extension.js:331
 msgid "Smileys & Body"
 msgstr "Emoticon & Volti"
 
-#: extension.js:332
+#: emoji-selector@maestroschan.fr/extension.js:332
 msgid "Peoples & Clothing"
 msgstr "Persone & Abiti"
 
-#: extension.js:333
+#: emoji-selector@maestroschan.fr/extension.js:333
 msgid "Animals & Nature"
 msgstr "Animali & Natura"
 
-#: extension.js:334
+#: emoji-selector@maestroschan.fr/extension.js:334
 msgid "Food & Drink"
 msgstr "Cibo & Bevande"
 
-#: extension.js:335
+#: emoji-selector@maestroschan.fr/extension.js:335
 msgid "Travel & Places"
 msgstr "Viaggi & Luoghi"
 
-#: extension.js:336
+#: emoji-selector@maestroschan.fr/extension.js:336
 msgid "Activities & Sports"
 msgstr "Attività & Sport"
 
-#: extension.js:337
+#: emoji-selector@maestroschan.fr/extension.js:337
 msgid "Objects"
 msgstr "Oggetti"
 
-#: extension.js:338
+#: emoji-selector@maestroschan.fr/extension.js:338
 msgid "Symbols"
 msgstr "Simboli"
 
-#: extension.js:339
+#: emoji-selector@maestroschan.fr/extension.js:339
 msgid "Flags"
 msgstr "Bandiere"
 
-#: prefs.js:116
+#: emoji-selector@maestroschan.fr/prefs.js:116
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: prefs.js:118
+#: emoji-selector@maestroschan.fr/prefs.js:118
 msgid "Layout"
 msgstr "Layout"
 
-#: prefs.js:119
+#: emoji-selector@maestroschan.fr/prefs.js:119
 msgid "Appearance"
 msgstr "Aspetto"
 
-#: prefs.js:120
+#: emoji-selector@maestroschan.fr/prefs.js:120
 msgid "Keybinding"
 msgstr "Scorciatoie da tastiera"
 
-#: prefs.js:122
+#: emoji-selector@maestroschan.fr/prefs.js:122
 msgid "Modifications will be effective after reloading the extension."
 msgstr ""
 
-#: prefs.js:126
+#: emoji-selector@maestroschan.fr/prefs.js:126
 msgid "Size of emojis (px):"
 msgstr "Dimensione degli emoji:"
 
-#: prefs.js:154
+#: emoji-selector@maestroschan.fr/prefs.js:154
 msgid "Use darker font:"
 msgstr "Usa un font scuro:"
 
-#: prefs.js:175
+#: emoji-selector@maestroschan.fr/prefs.js:175
 msgid ""
 "This is useful if your system doesn't support color emojis and your GNOME "
 "Shell theme has a white menu background."
 msgstr ""
 
-#: prefs.js:182
+#: emoji-selector@maestroschan.fr/prefs.js:182
 msgid "General layout:"
 msgstr "Layout generale:"
 
-#: prefs.js:191
+#: emoji-selector@maestroschan.fr/prefs.js:191
 msgid "From top to bottom"
 msgstr "Dall'alto verso il basso"
 
-#: prefs.js:192
+#: emoji-selector@maestroschan.fr/prefs.js:192
 msgid "From bottom to top"
 msgstr "Dal basso verso l'alto"
 
-#: prefs.js:208
+#: emoji-selector@maestroschan.fr/prefs.js:208
 msgid ""
 "Displaying the interface from the bottom is nice if you use a bottom panel "
 "instead of the default top bar."
 msgstr ""
 
-#: prefs.js:215
+#: emoji-selector@maestroschan.fr/prefs.js:215
 msgid "Number of emojis per line:"
 msgstr "Numero di emoji per riga:"
 
-#: prefs.js:246
+#: emoji-selector@maestroschan.fr/prefs.js:246
 msgid "Default value is"
 msgstr "Il valore di default è"
 
-#: prefs.js:262
+#: emoji-selector@maestroschan.fr/prefs.js:262
 msgid "Apply"
 msgstr "Applica"
 
-#: prefs.js:275
+#: emoji-selector@maestroschan.fr/prefs.js:275
 msgid "Use a keyboard shortcut to toggle the menu:"
 msgstr "Usa una scorciatoia da tastiera per mostrare il menu:"
 
-#: prefs.js:316
+#: emoji-selector@maestroschan.fr/prefs.js:316
 msgid "Always show the icon:"
 msgstr ""
 
-#: prefs.js:337
+#: emoji-selector@maestroschan.fr/prefs.js:337
 msgid ""
 "If you access the menu with the keyboard shorcut, you might not need to "
 "always display the icon."
 msgstr ""
 
-#: prefs.js:353
+#: emoji-selector@maestroschan.fr/prefs.js:353
 msgid "About"
 msgstr "Informazioni"
 
-#: prefs.js:380
+#: emoji-selector@maestroschan.fr/prefs.js:380
 msgid "Report bugs or ideas"
 msgstr "Segnala bug o idee"
 
-#: emojiOptionsBar.js:28
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:28
 msgid "No skin tone"
 msgstr ""
 
-#: emojiOptionsBar.js:29
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:29
 msgid "Light skin tone"
 msgstr ""
 
-#: emojiOptionsBar.js:30
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:30
 msgid "Medium light skin tone"
 msgstr ""
 
-#: emojiOptionsBar.js:31
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:31
 msgid "Medium skin tone"
 msgstr ""
 
-#: emojiOptionsBar.js:32
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:32
 msgid "Medium dark skin tone"
 msgstr ""
 
-#: emojiOptionsBar.js:33
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:33
 msgid "Dark skin tone"
 msgstr ""
 
-#: emojiOptionsBar.js:77
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:77
 msgid "Men"
 msgstr ""
 
-#: emojiOptionsBar.js:86
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:86
 msgid "Women"
 msgstr ""
