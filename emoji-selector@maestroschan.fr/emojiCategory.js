@@ -15,7 +15,6 @@ const EmojiButton = Me.imports.emojiButton;
 //	_init(string, string, int)	init the button & the submenu's menu-item (label, tone/gender)
 //	clear()						remove all emojis from the category
 //	build()						build category's rows and buttons in it
-//	getStyle()					return the CSS to apply to buttons (as a string)
 //	_toggle()					do everything needed when the user click on the category's button
 //	_openCategory()				open the category
 //	getButton()					not useful getter
@@ -80,62 +79,14 @@ const EmojiCategory = new Lang.Class({
 				this.menu.addMenuItem(ln);
 			}
 			
-			// creation of the clickable button
-			let fontStyle = this.getStyle();
-			let button = new St.Button({
-				style_class: 'EmojisItemStyle',
-				style: fontStyle,
-				can_focus: true,
-			});
-			let CurrentEmoji = Extension.EMOJIS_CHARACTERS[this.id][i];
-			button.label = CurrentEmoji;
-			
-			let tonable = false;
-			let genrable = false;
-			let gendered = false;
-			
-			for (var j = 0; j < Extension.EMOJIS_KEYWORDS[this.id][i].length; j++) {
-				if (Extension.EMOJIS_KEYWORDS[this.id][i][j] == 'HAS_TONE') {
-					tonable = true;
-				} else if (Extension.EMOJIS_KEYWORDS[this.id][i][j] == 'HAS_GENDER') {
-					genrable = true;
-				} else if (Extension.EMOJIS_KEYWORDS[this.id][i][j] == 'IS_GENDERED') {
-					gendered = true;
-				}
-			}
-			
-			// Copy the emoji to the clipboard with adequate tags and behavior
-			button.connect('button-press-event', Lang.bind(
-				this,
-				EmojiButton.genericOnButtonPress,
-				[tonable, genrable, gendered],
-				CurrentEmoji
-			));
-			
-			// Update the category label on hover, allowing the user to know the
-			// of the emoji he's copying.
-			button.connect('notify::hover', Lang.bind(this, function(a, b, c) {
-				if (a.hover) {
-					this.label.text = Extension.EMOJIS_KEYWORDS[Extension.GLOBAL_BUTTON._activeCat][c][0];
-				} else {
-					this.label.text = this.categoryName;
-				}
-			}, i));
-			
+			let button = new EmojiButton.EmojiButton(
+										Extension.EMOJIS_CHARACTERS[this.id][i],
+										this,
+										Extension.EMOJIS_KEYWORDS[this.id][i]);
 			this.emojiButtons.push(button);
 			container.add_child(button);
 		}
 		this._built = true;
-	},
-	
-	getStyle: function() {
-		let fontStyle = 'font-size: ' + Extension.SETTINGS.get_int('emojisize') + 'px;';
-		if (Extension.SETTINGS.get_boolean('light-theme')) {
-			fontStyle += ' color: #000000;';
-		} else {
-			fontStyle += ' color: #FFFFFF;';
-		}
-		return fontStyle;
 	},
 	
 	_toggle: function() {

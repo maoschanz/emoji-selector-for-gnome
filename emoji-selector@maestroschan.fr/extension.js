@@ -83,7 +83,7 @@ function updateStyle() {
 	});
 	GLOBAL_BUTTON.emojiCategories.forEach(function(c){
 		c.emojiButtons.forEach(function(b){
-			b.style = c.getStyle();
+			b.style = b.getStyle();
 		});
 	});
 }

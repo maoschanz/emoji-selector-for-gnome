@@ -22,14 +22,59 @@ const EmojiButton = new Lang.Class({
 	Name:		'EmojiButton',
 	Extends:	St.Button,
 
-	_init: function() {
+	_init: function(baseCharacter, category, keywords) {
 		this.parent({
 			style_class: 'EmojisItemStyle',
-			style: fontStyle,
+			style: this.getStyle(),
 			can_focus: true,
 		});
+		
+		this.label = baseCharacter;
+			
+		let tonable = false;
+		let genrable = false;
+		let gendered = false;
+		for (var j = 0; j < keywords.length; j++) {
+			if (keywords[j] == 'HAS_TONE') {
+				tonable = true;
+			} else if (keywords[j] == 'HAS_GENDER') {
+				genrable = true;
+			} else if (keywords[j] == 'IS_GENDERED') {
+				gendered = true;
+			}
+		}
+		this.keywords = keywords;
+		
+		// Copy the emoji to the clipboard with adequate tags and behavior
+		this.connect('button-press-event', Lang.bind(
+			this,
+			genericOnButtonPress,
+			[tonable, genrable, gendered],
+			baseCharacter
+		));
+		
+		// Update the category label on hover, allowing the user to know the
+		// of the emoji he's copying.
+		this.connect('notify::hover', Lang.bind(category, function(a, b, c) {
+			if (a.hover) {
+				this.label.text = c;
+			} else {
+				this.label.text = this.categoryName;
+			}
+		}, this.keywords[0]));
 	},
 
+	getStyle: function() {
+		let fontStyle = 'font-size: ' + Extension.SETTINGS.get_int('emojisize') + 'px;';
+		if (Extension.SETTINGS.get_boolean('light-theme')) {
+			fontStyle += ' color: #000000;';
+		} else {
+			fontStyle += ' color: #FFFFFF;';
+		}
+		return fontStyle;
+	},
+
+	
 	
 	
 	
