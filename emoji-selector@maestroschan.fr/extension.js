@@ -89,33 +89,22 @@ function updateStyle() {
 }
 
 function saveRecents() {
-	let backUp = '';
+	let backUp = [];
 	for(var i = 0; i<NB_COLS; i++){
-		backUp = backUp + recents[i].label + ',';
+		backUp.push(recents[i].label);
 	}
-	Convenience.getSettings().set_string('recents', backUp);
+	Convenience.getSettings().set_strv('recently-used', backUp);
 }
 
 function buildRecents() {
-	/*
-	I didn't know where to store "recently used emojis"
-	so I put them in a setting key where it is stored as a string.
-	The format of the string is 'X,X,X,X,X,' where Xs are emojis.
-	So, temp is an array of strings like ['X','X','X','X','X',''] where
-	the last item is empty. FIXME use an array FIXME put at first index
-	*/
-	let temp = Convenience.getSettings().get_string('recents').split(',');
-	
+	let temp = Convenience.getSettings().get_strv('recently-used')
 	for(var i = 0; i<NB_COLS; i++){
-		if (i < temp.length - 1) {
-			//length - 1 because of the empty last item
+		if (i < temp.length) {
 			recents[i].label = temp[i];
 		} else {
-			/* 
-			If the extension was previously set with less "recently used emojis",
-			we still need to load something in the labels.
-			It will be a penguin for obvious reasons.
-			*/
+			//If the extension was previously set with less "recently used emojis",
+			//we still need to load something in the labels.
+			//It will be a penguin for obvious reasons.
 			recents[i].label = '🐧';
 		}
 	}
@@ -172,7 +161,7 @@ const EmojiSearchItem = new Lang.Class({
 	_onSearchTextChanged: function() {
 		let searchedText = this.searchEntry.get_text();
 
-		if(searchedText === '') {
+		if (searchedText === '') {
 			buildRecents();
 		} else {
 			searchedText = searchedText.toLowerCase();
@@ -315,7 +304,7 @@ const EmojisMenu = new Lang.Class({
 			}));
 		}));
 		
-		if(SETTINGS.get_boolean('use-keybinding')) {
+		if (SETTINGS.get_boolean('use-keybinding')) {
 			this._bindShortcut();
 		}
 	},
@@ -390,7 +379,7 @@ const EmojisMenu = new Lang.Class({
 	
 	getStyle: function() {
 		let fontStyle = 'font-size: ' + ( Convenience.getSettings().get_int('emojisize') ) + 'px;';
-		if(Convenience.getSettings().get_boolean('light-theme')){
+		if (Convenience.getSettings().get_boolean('light-theme')){
 			fontStyle += ' color: #000000;';
 		} else {
 			fontStyle += ' color: #FFFFFF;';
@@ -540,7 +529,7 @@ function enable() {
 		GLOBAL_BUTTON.actor.visible = SETTINGS.get_boolean('always-show');
 	}));
 	SIGNAUX[3] = SETTINGS.connect('changed::use-keybinding', Lang.bind(this, function(z){
-		if(z.get_boolean('use-keybinding')) {
+		if (z.get_boolean('use-keybinding')) {
 			Main.wm.removeKeybinding('emoji-keybinding');
 			GLOBAL_BUTTON._bindShortcut();
 		} else {
@@ -555,7 +544,7 @@ function disable() {
 	//we need to save labels currently in recents[] for the next session
 	saveRecents();
 
-	if(SETTINGS.get_boolean('use-keybinding')) {
+	if (SETTINGS.get_boolean('use-keybinding')) {
 		Main.wm.removeKeybinding('emoji-keybinding');
 	}
 	

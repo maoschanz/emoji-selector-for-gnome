@@ -18,7 +18,13 @@
       <description>Default size of emojis (px) ; doesn't concern recently used items</description>
     </key>
     <key type="s" name="recents">
-      <default>'😂,❤️,😍,😭,😊,😒,😘,😩,🤔,☺️,👌,😔,😏,😁,😉,👍,😱,😳,😎,👀,💩,'</default>
+      <default>''</default>
+      <summary>deprecated</summary>
+<!--      FIXME TODO delete this-->
+      <description></description>
+    </key>
+    <key type="as" name="recently-used">
+      <default>['😂','❤️','😍','😭','😊','😒','😘','😩','🤔','☺️','👌','😔','😏','😁','😉','👍','😱','😳','😎','👀','💩']</default>
       <summary>default memorized emojis</summary>
       <description></description>
     </key>
