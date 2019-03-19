@@ -19,20 +19,22 @@ const EmojiButton = Me.imports.emojiButton;
 //	_openCategory()				open the category
 //	getButton()					not useful getter
 //	destroy()					//TODO
-const EmojiCategory = new Lang.Class({
+var EmojiCategory = new Lang.Class({
 	Name:		'EmojiCategory',
 	Extends:	PopupMenu.PopupSubMenuMenuItem,
-	
+
 	_init:		function(categoryName, iconName, id) {
 		this.parent(categoryName);
 		this.categoryName = categoryName;
-		this.actor.visible = false;
 		this.id = id;
-		this.emojiButtons = [];
+		
+		this.actor.visible = false;
 		this.actor.reactive = false;
 		this._triangleBin.visible = false;
 		
-		// A bar is created for all categories to simplify the update method
+		this.emojiButtons = [];
+		
+		// A single widget is created for all categories to simplify the update method
 		if ((this.id == 1) || (this.id == 5)) {
 			this.skinTonesBar = new SkinTonesBar(true);
 		} else {
@@ -50,23 +52,23 @@ const EmojiCategory = new Lang.Class({
 			track_hover: true,
 			accessible_name: categoryName,
 			style_class: 'system-menu-action',
+			child: new St.Icon({ icon_name: iconName }),
 		});
-		this.categoryButton.child = new St.Icon({ icon_name: iconName });
 		this.categoryButton.connect('clicked', Lang.bind(this, this._toggle));
+		this.categoryButton.connect('notify::hover', Lang.bind(this, this._onHover));
 		
-		this._built = false;
+		this._built = false; // will be true once loaded
 	},
-	
+
 	clear: function() {
 		this.menu.removeAll();
 		this.emojiButtons = [];
 	},
-	
-	build: function() {
+
+	build: function() { // load the category XXX
 		let ln, container;
 		for (var i = 0; i < Extension.EMOJIS_CHARACTERS[this.id].length; i++) {
-			
-			// management of lines of emojis
+			// lines of emojis
 			if (i % Extension.NB_COLS === 0) {
 				ln = new PopupMenu.PopupBaseMenuItem({
 					style_class: 'EmojisList',
@@ -79,16 +81,14 @@ const EmojiCategory = new Lang.Class({
 				this.menu.addMenuItem(ln);
 			}
 			
-			let button = new EmojiButton.EmojiButton(
-										Extension.EMOJIS_CHARACTERS[this.id][i],
-										this,
-										Extension.EMOJIS_KEYWORDS[this.id][i]);
+			let button = new EmojiButton.EmojiButton(Extension.EMOJIS_CHARACTERS[this.id][i],
+			                       this, Extension.EMOJIS_KEYWORDS[this.id][i]);
 			this.emojiButtons.push(button);
 			container.add_child(button);
 		}
 		this._built = true;
 	},
-	
+
 	_toggle: function() {
 		if (this._getOpenState()) {
 			Extension.GLOBAL_BUTTON.clearCategories();
@@ -96,7 +96,17 @@ const EmojiCategory = new Lang.Class({
 			this._openCategory();
 		}
 	},
-	
+
+	_onHover: function(a, b) {
+		if (a.hover) {
+			this.categoryButton.style = 'background-color: rgba(200, 200, 200, 0.2);';
+		} else if (this._getOpenState()) {
+			this.categoryButton.style = 'background-color: rgba(0, 0, 100, 0.2);';
+		} else {
+			this.categoryButton.style = '';
+		}
+	},
+
 	_openCategory: function() {
 		Extension.GLOBAL_BUTTON.clearCategories();
 		this.label.text = this.categoryName;
@@ -106,18 +116,20 @@ const EmojiCategory = new Lang.Class({
 		}
 		this.skinTonesBar.update();
 		
-		this.categoryButton.style = 'background-color: rgba(0,0,200,0.2);';
-		this.actor.visible = true;		
+		this.categoryButton.style = 'background-color: rgba(0, 0, 200, 0.2);';
+		this.actor.visible = true;
 		this.setSubmenuShown(true);
 		Extension.GLOBAL_BUTTON._activeCat = this.id;
 		Extension.GLOBAL_BUTTON._onSearchTextChanged();
 	},
-	
+
 	getButton: function() {
 		return this.categoryButton;
 	},
-	
+
 	destroy: function() {
 		this.parent();
 	}
 });
+
+

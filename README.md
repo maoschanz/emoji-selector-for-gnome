@@ -4,7 +4,7 @@ This GNOME shell extension provides a searchable popup menu displaying most emoj
 
 ## Features
 
-- keyboard shorcut to open the extension's menu (Super+E by defaut)
+- keyboard shortcut to open the extension's menu (Super+E by defaut)
 - dynamic research (press enter to copy the first result to the clipboard)
 - lots of parametrable things
 - skin tone & gender modifiers
@@ -25,24 +25,20 @@ Color emojis depends on the system you're using (GNOME > 3.26 is recommended).
 
 ## Contributors & translations
 
-amivaleo (italian translation + lot of ideas)
-
-jonnius (german translation)
-
-picsi / frnogueira (brazilian portuguese and esperanto translations)
-
-> Can you translate the extension in (some language) ?
+- amivaleo (italian translation + lot of ideas)
+- jonnius (german translation)
+- picsi / frnogueira (brazilian portuguese and esperanto translations)
 
 The extension is currently available in english, french, brazilian portuguese, italian, esperanto and german. I only know french and english, so if you need a specific language, please contribute : you just have to be inspired by the existing .po files !
 
-----
+<!-------->
 
-If you want to help by translating the interface, it's recommended to **NOT** translate the search/tooltips keywords (there are too many!). However, if you really want to translate them:
+<!--If you want to help by translating the interface, it's recommended to **NOT** translate the search/tooltips keywords (there are too many!). However, if you really want to translate them:-->
 
-- everything as to be **in lower case**
-- try to follow the Unicode wording for your language
-- special keywords (**in upper case**) should **not** be translated
-- your translations for keywords should **never** be more than 42 characters
+<!--- everything as to be **in lower case**-->
+<!--- try to follow the Unicode wording for your language-->
+<!--- special keywords (**in upper case**) should **not** be translated-->
+<!--- your translations for keywords should **never** be more than 42 characters-->
 
 ## Installation
 

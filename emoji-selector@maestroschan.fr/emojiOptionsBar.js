@@ -19,7 +19,7 @@ const _ = Gettext.gettext;
 //	removeCircle()					reset the visual indication of the selected skin tone
 //	update()						update buttons appearance, reflecting the actual settings
 //	buildToneButton(name, color)	build a button for a specific skin tone
-const SkinTonesBar = new Lang.Class({
+var SkinTonesBar = new Lang.Class({
 	Name:	'SkinTonesBar',
 	
 	_init:	function (hasGender) {
@@ -33,6 +33,7 @@ const SkinTonesBar = new Lang.Class({
 		this._toneArray[5] = this.buildToneButton(	_("Dark skin tone")			, '#4B2000'	);
 		
 		this._toneArray[0].connect('clicked', Lang.bind(this, function(w){
+//		this._toneArray[0].connect('clicked', (w) => { // TODO ES6
 			this.removeCircle();
 			w.style_class = 'SelectedTone';
 			Extension.SETTINGS.set_int('skin-tone', 0);

@@ -131,28 +131,17 @@ const EmojiSearchItem = new Lang.Class({
 			name: 'searchEntry',
 			style_class: 'search-entry',
 			can_focus: true,
-			hint_text: _('Type here to search...'),
+			hint_text: _('Type here to search…'),
 			track_hover: true
 		});
 		
 		this.searchEntry.get_clutter_text().connect(
-			'text-changed', 
+			'text-changed',
 			Lang.bind(this, this._onSearchTextChanged)
 		);
 		
 		this.searchEntry.clutter_text.connect('key-press-event', Lang.bind(this, function(o, e) {
-			let symbol = e.get_key_symbol();
-			
-			if (symbol == Clutter.Return || symbol == Clutter.KP_Enter) {
-				let CurrentEmoji = recents[0].label;
-				// FIXME il faudrait appliquer des tags à la recherche, mais comment ?
-				let tags = [false, false, false];
-				Clipboard.set_text(
-					CLIPBOARD_TYPE,
-					EmojiButton.applyTags(tags, CurrentEmoji)
-				);
-				GLOBAL_BUTTON.menu.close();
-			}
+			recents[0].onKeyPress(o, e);
 		}));
 		
 		this.actor.add(this.searchEntry, { expand: true });
@@ -163,50 +152,35 @@ const EmojiSearchItem = new Lang.Class({
 
 		if (searchedText === '') {
 			buildRecents();
-		} else {
-			searchedText = searchedText.toLowerCase();
-			
-			for (let j = 0; j < NB_COLS; j++) {
-				recents[j].label = '';
-			}
-			
-			let empty = 0;
-			
-			/* if no category is selected */
-			if (GLOBAL_BUTTON._activeCat == -1) {
-				for (let cat = 0; cat < EMOJIS_CHARACTERS.length; cat++) {
-					for (let i = 0; i < EMOJIS_CHARACTERS[cat].length; i++) {
-						let isMatching = false;
-						if (empty < NB_COLS) {
-							for (let k = 0; k < EMOJIS_KEYWORDS[cat][i].length; k++) {
-								if (_(EMOJIS_KEYWORDS[cat][i][k]).includes(searchedText)) {
-									isMatching = true;
-								}
-							}
-							if (isMatching){
-								recents[empty].label = EMOJIS_CHARACTERS[cat][i];
-								empty++;
-							}
+			return;
+		} // else {
+		searchedText = searchedText.toLowerCase();
+		
+		for (let j = 0; j < NB_COLS; j++) {
+			recents[j].label = '';
+		}
+		
+		let empty = 0;
+		
+		let minCat = 0;
+		let maxCat = EMOJIS_CHARACTERS.length;
+		if (GLOBAL_BUTTON._activeCat != -1) {
+			minCat = GLOBAL_BUTTON._activeCat;
+			maxCat = GLOBAL_BUTTON._activeCat+1;
+		}
+		
+		for (let cat = minCat; cat < maxCat; cat++) {
+			for (let i = 0; i < EMOJIS_CHARACTERS[cat].length; i++) {
+				let isMatching = false;
+				if (empty < NB_COLS) {
+					for (let k = 0; k < EMOJIS_KEYWORDS[cat][i].length; k++) {
+						if (EMOJIS_KEYWORDS[cat][i][k].includes(searchedText)) {
+							isMatching = true;
 						}
 					}
-				}
-			}
-			
-			/* if a category is selected */
-			else {
-				let cat = GLOBAL_BUTTON._activeCat;
-				for (let i = 0; i < EMOJIS_CHARACTERS[cat].length; i++) {
-					let isMatching = false;
-					if (empty < NB_COLS) {
-						for (let k = 0; k < EMOJIS_KEYWORDS[cat][i].length; k++) {
-							if (_(EMOJIS_KEYWORDS[cat][i][k]).includes(searchedText)) {
-								isMatching = true;
-							}
-						}
-						if (isMatching){
-							recents[empty].label = EMOJIS_CHARACTERS[cat][i];
-							empty++;
-						}
+					if (isMatching){
+						recents[empty].label = EMOJIS_CHARACTERS[cat][i];
+						empty++;
 					}
 				}
 			}
@@ -256,7 +230,7 @@ const EmojisMenu = new Lang.Class({
 		this.searchItem = new EmojiSearchItem();
 		
 		//initializing the "recently used" buttons	
-		let RecentlyUsed = this._recentlyUsedInit();
+		let recentlyUsed = this._recentlyUsedInit();
 		
 		//-------------------------------------------------
 		
@@ -266,7 +240,7 @@ const EmojisMenu = new Lang.Class({
 			this.menu.addMenuItem(this.searchItem);
 			this._permanentItems++;
 			
-			this.menu.addMenuItem(RecentlyUsed);
+			this.menu.addMenuItem(recentlyUsed);
 			this._permanentItems++;
 		}
 		
@@ -277,7 +251,7 @@ const EmojisMenu = new Lang.Class({
 		//-----------------------------------------------
 		
 		if (POSITION === 'bottom') {
-			this.menu.addMenuItem(RecentlyUsed);
+			this.menu.addMenuItem(recentlyUsed);
 			this._permanentItems++;
 			
 			this.menu.addMenuItem(this.searchItem);
@@ -290,7 +264,7 @@ const EmojisMenu = new Lang.Class({
 		//-----------------------------------------------
 		
 		// this sets the default behavior of each submenu : false means it is close when the extension's menu opens
-		this.menu.connect('open-state-changed', Lang.bind(this, function(self, open){
+		this.menu.connect('open-state-changed', Lang.bind(this, function(self, open) {
 			this.actor.visible = open || SETTINGS.get_boolean('always-show');
 			
 			this.clearCategories();
@@ -386,93 +360,33 @@ const EmojisMenu = new Lang.Class({
 		}
 		return fontStyle;
 	},
-	
+
 	_recentlyUsedInit: function() {
-		
-		let RecentlyUsed = new PopupMenu.PopupBaseMenuItem({
+		let recentlyUsed = new PopupMenu.PopupBaseMenuItem({
 			reactive: false,
 			can_focus: false,
 		});
+		let container = new St.BoxLayout();
+		recentlyUsed.actor.add(container, { expand: true });
 		recents = [];
 		
-		let fontStyle = this.getStyle();
-		
-		for(var i = 0;i<NB_COLS;i++){
-			recents[i] = new St.Button({
-				style_class: 'EmojisItemStyle',
-				style: fontStyle,
-				can_focus: true,
-			});
-		}
-		
-		let container = new St.BoxLayout();
-	
-		RecentlyUsed.actor.track_hover = false;
-		RecentlyUsed.actor.add(container, { expand: true });
-		
-		buildRecents();
-		
-		for(var i = 0;i<NB_COLS;i++){
-			/*
-			These buttons will not be destroy during search.
-			The signal needs to be able to handle different situations :
-			- when the item is actually a recent emoji
-			- when the item is a search result (in this case, it needs to
-			be added to recent emojis)
-			*/
-			recents[i].connect('button-release-event', Lang.bind(
-				this,
-				this.copyRecent,
-				i
-			));
-			
-			recents[i].connect('key-press-event', Lang.bind(this, function(o, e, i) {
-				let symbol = e.get_key_symbol();
-				
-				if (symbol == Clutter.Return || symbol == Clutter.KP_Enter) {
-					let CurrentEmoji = recents[i].label;
-					let tags = [false, false, false]; //FIXME ??
-					let [x, y, mods] = global.get_pointer();
-					let majPressed = (mods & Clutter.ModifierType.SHIFT_MASK) != 0;
-					let ctrlPressed = (mods & Clutter.ModifierType.CONTROL_MASK) != 0;
-					if (majPressed) {
-						Clipboard.get_text(CLIPBOARD_TYPE, function (clipBoard, text) {
-							Clipboard.set_text(
-								CLIPBOARD_TYPE,
-								text + EmojiButton.applyTags(tags, CurrentEmoji)
-							);
-						});
-						return Clutter.EVENT_STOP;
-					} else if (ctrlPressed) {
-						Clipboard.set_text(
-							CLIPBOARD_TYPE,
-							EmojiButton.applyTags(tags, CurrentEmoji)
-						);
-						return Clutter.EVENT_STOP;
-					} else {
-						Clipboard.set_text(
-							CLIPBOARD_TYPE,
-							EmojiButton.applyTags(tags, CurrentEmoji)
-						);
-						GLOBAL_BUTTON.menu.close();
-						return Clutter.EVENT_STOP;
-					}
-				}
-			}, i));
-		}
-		
-		for(var i = 0;i<NB_COLS;i++){
+		for(var i = 0; i<NB_COLS; i++){
+			recents[i] = new EmojiButton.EmojiButton('', null, []);
+
+//			These buttons will not be destroy during search.
+//			The signal needs to be able to handle different situations :
+//			- when the item is actually a recent emoji
+//			- when the item is a search result (in this case, it needs to be
+//			added to recent emojis)
+//			Keyboard and mouse activation are both possible.
+			recents[i].connect('key-press-event', Lang.bind(recents[i], recents[i].onKeyPress));
 			container.add_child(recents[i]);
 		}
 		
-		return RecentlyUsed;
-		//end of _recentlyUsedInit
+		buildRecents();
+		return recentlyUsed;
 	},
-	
-	copyRecent: function(a, e, i) {
-		EmojiButton.genericOnButtonPress(a, e, [false, false, false], recents[i].label);
-	},
-	
+
 	_bindShortcut: function() {
 		var ModeType = Shell.hasOwnProperty('ActionMode') ?
 			Shell.ActionMode : Shell.KeyBindingMode;
