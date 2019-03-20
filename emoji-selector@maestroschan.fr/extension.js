@@ -285,15 +285,15 @@ class EmojisMenu extends PanelMenu.Button {
 		this.emojiCategories = [];
 
 		/* creating new categories with emojis loaded in EMOJIS_CHARACTERS */
-		this.emojiCategories[0] = new EmojiCategory(	_('Smileys & Body'),		'face-smile-symbolic',			0	);
-		this.emojiCategories[1] = new EmojiCategory(	_('Peoples & Clothing'),	'contact-new-symbolic',			1	);
-		this.emojiCategories[2] = new EmojiCategory(	_('Animals & Nature'),		'face-monkey-symbolic',			2	);
-		this.emojiCategories[3] = new EmojiCategory(	_('Food & Drink'), 			'my-caffeine-on-symbolic',		3	);
-		this.emojiCategories[4] = new EmojiCategory(	_('Travel & Places'), 		'airplane-mode-symbolic',		4	);
-		this.emojiCategories[5] = new EmojiCategory(	_('Activities & Sports'),	'applications-games-symbolic',	5	);
-		this.emojiCategories[6] = new EmojiCategory(	_('Objects'),				'alarm-symbolic',				6	);
-		this.emojiCategories[7] = new EmojiCategory(	_('Symbols'),				'emblem-default-symbolic',		7	);
-		this.emojiCategories[8] = new EmojiCategory(	_('Flags'),					'flag-symbolic',				8	);
+		this.emojiCategories[0] = new EmojiCategory(	_('Smileys & Body'),		'emoji-body-symbolic',			0	);
+		this.emojiCategories[1] = new EmojiCategory(	_('Peoples & Clothing'),	'emoji-people-symbolic',			1	);
+		this.emojiCategories[2] = new EmojiCategory(	_('Animals & Nature'),		'emoji-nature-symbolic',			2	);
+		this.emojiCategories[3] = new EmojiCategory(	_('Food & Drink'), 			'emoji-food-symbolic',		3	);
+		this.emojiCategories[4] = new EmojiCategory(	_('Travel & Places'), 		'emoji-travel-symbolic',		4	);
+		this.emojiCategories[5] = new EmojiCategory(	_('Activities & Sports'),	'emoji-activities-symbolic',	5	);
+		this.emojiCategories[6] = new EmojiCategory(	_('Objects'),				'emoji-objects-symbolic',				6	);
+		this.emojiCategories[7] = new EmojiCategory(	_('Symbols'),				'emoji-symbols-symbolic',		7	);
+		this.emojiCategories[8] = new EmojiCategory(	_('Flags'),					'emoji-flags-symbolic',				8	);
 	}
 
 	_addAllCategories() {
@@ -399,8 +399,6 @@ class EmojisMenu extends PanelMenu.Button {
 
 function init() {
 	Convenience.initTranslations("emoji-selector");
-	let theme = imports.gi.Gtk.IconTheme.get_default();
-	theme.append_search_path(Me.path + "/icons");
 }
 
 //------------------------------------------------------------
