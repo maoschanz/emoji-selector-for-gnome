@@ -409,6 +409,6 @@ function disable() {
 	SETTINGS.disconnect(SIGNAUX[2]);
 	SETTINGS.disconnect(SIGNAUX[3]);
 
-	GLOBAL_BUTTON.destroy();
+	GLOBAL_BUTTON.super_btn.destroy();
 }
 
