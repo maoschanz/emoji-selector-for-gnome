@@ -1,3 +1,4 @@
+const GObject = imports.gi.GObject;
 const St = imports.gi.St;
 const Lang = imports.lang;
 const Clutter = imports.gi.Clutter;
@@ -18,19 +19,17 @@ const TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
 
 //------------------------------------------------------------------------------
 
-var EmojiButton = new Lang.Class({
-	Name:		'EmojiButton',
-	Extends:	St.Button,
-
-	_init: function(baseCharacter, category, keywords) {
-		this.parent({
+var EmojiButton = GObject.registerClass(
+class EmojiButton extends St.Button {
+	_init(baseCharacter, category, keywords) {
+		super._init({
 			style_class: 'EmojisItemStyle',
 			style: this.getStyle(),
 			can_focus: true,
 		});
-		
+
 		this.label = baseCharacter;
-		
+
 		let tonable = false;
 		let genrable = false;
 		let gendered = false;
@@ -45,24 +44,24 @@ var EmojiButton = new Lang.Class({
 		}
 		this.tags = [tonable, genrable, gendered]
 		this.keywords = keywords;
-		
+
 		// Copy the emoji to the clipboard with adequate tags and behavior
-		this.connect('button-press-event', Lang.bind(this, this.onButtonPress));
-		
+		this.connect('button-press-event', this.onButtonPress.bind(this));
+
 		if (category == null || this.keywords == []) {	return;	}
-		
+
 		// Update the category label on hover, allowing the user to know the
 		// name of the emoji he's copying.
-		this.connect('notify::hover', Lang.bind(category, function(a, b, c) {
+		this.connect('notify::hover', (a, b) => {
 			if (a.hover) {
-				this.label.text = c;
+				category.label.text = this.keywords[0];
 			} else {
-				this.label.text = this.categoryName;
+				category.label.text = category.categoryName;
 			}
-		}, this.keywords[0]));
-	},
+		});
+	}
 
-	getStyle: function() {
+	getStyle() {
 		let fontStyle = 'font-size: ' + Extension.SETTINGS.get_int('emojisize') + 'px;';
 		if (Extension.SETTINGS.get_boolean('light-theme')) {
 			fontStyle += ' color: #000000;';
@@ -70,9 +69,9 @@ var EmojiButton = new Lang.Class({
 			fontStyle += ' color: #FFFFFF;';
 		}
 		return fontStyle;
-	},
+	}
 
-	onKeyPress: function(o, e) {
+	onKeyPress(o, e) {
 		let symbol = e.get_key_symbol();
 		log(symbol);
 		if (symbol == Clutter.Return || symbol == Clutter.KP_Enter) {
@@ -89,8 +88,8 @@ var EmojiButton = new Lang.Class({
 			}
 		}
 		return Clutter.EVENT_PROPAGATE;
-	},
-	
+	}
+
 	//This function is called at each click and copies the emoji to the clipboard.
 
 	//The exact behavior of the method depends on the mouse button used:
@@ -98,11 +97,11 @@ var EmojiButton = new Lang.Class({
 	//- middle click too, but does not close the menu;
 	//- right click adds the emoji at the end of the current clipboard content (and
 	//  does not close the menu).
-	onButtonPress: function(actor, event) {
+	onButtonPress(actor, event) {
 		let mouseButton = event.get_button();
 		let emojiToCopy = this.getTaggedEmoji();
 		if (emojiToCopy == null) { return Clutter.EVENT_PROPAGATE; }
-		
+
 		if (mouseButton == 1) {
 			return this.replaceClipboardAndClose(emojiToCopy);
 		} else if (mouseButton == 2) {
@@ -111,26 +110,26 @@ var EmojiButton = new Lang.Class({
 			return this.addToClipboardAndStay(emojiToCopy);
 		}
 		return Clutter.EVENT_PROPAGATE;
-	},
-	
-	replaceClipboardAndClose: function(emojiToCopy) {
+	}
+
+	replaceClipboardAndClose(emojiToCopy) {
 		Clipboard.set_text(
 			CLIPBOARD_TYPE,
 			emojiToCopy
 		);
 		Extension.GLOBAL_BUTTON.menu.close();
 		return Clutter.EVENT_STOP;
-	},
-	
-	replaceClipboardAndStay: function(emojiToCopy) {
+	}
+
+	replaceClipboardAndStay(emojiToCopy) {
 		Clipboard.set_text(
 			CLIPBOARD_TYPE,
 			emojiToCopy
 		);
 		return Clutter.EVENT_STOP;
-	},
-	
-	addToClipboardAndStay: function(emojiToCopy) {
+	}
+
+	addToClipboardAndStay(emojiToCopy) {
 		Clipboard.get_text(CLIPBOARD_TYPE, function (clipBoard, text) {
 			Clipboard.set_text(
 				CLIPBOARD_TYPE,
@@ -138,7 +137,7 @@ var EmojiButton = new Lang.Class({
 			);
 		});
 		return Clutter.EVENT_STOP;
-	},
+	}
 
 	//This returns an emoji corresponding to currentEmoji with tags applied to it.
 	//If all tags are false, it returns unmodified currentEmoji.
@@ -147,7 +146,7 @@ var EmojiButton = new Lang.Class({
 	//- genrable -> return emoji concatened with the selected gender;
 	//- gendered -> the emoji is already gendered, which modifies the way skin tone is
 	//  applied ([man|woman] + [skin tone if any] + [other symbol(s)]).
-	getTaggedEmoji: function () {
+	getTaggedEmoji() {
 		let currentEmoji = this.label;
 		if(currentEmoji == '') {
 			log('Error: not a valid emoji.');
@@ -176,8 +175,8 @@ var EmojiButton = new Lang.Class({
 		}
 		shiftFor(temp);
 		return temp;
-	},
-	
+	}
+
 });
 
 //-----------------------------------------
