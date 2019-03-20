@@ -1,6 +1,4 @@
 const St = imports.gi.St;
-const Lang = imports.lang;
-
 const PopupMenu = imports.ui.popupMenu;
 
 /* Import the current extension, mainly because we need to access other files */
@@ -12,40 +10,36 @@ const EmojiButton = Me.imports.emojiButton;
 
 //class EmojiCategory
 //methods :
-//	_init(string, string, int)	init the button & the submenu's menu-item (label, tone/gender)
-//	clear()						remove all emojis from the category
-//	build()						build category's rows and buttons in it
-//	_toggle()					do everything needed when the user click on the category's button
-//	_openCategory()				open the category
-//	getButton()					not useful getter
-//	destroy()					//TODO
-var EmojiCategory = new Lang.Class({
-	Name:		'EmojiCategory',
-	Extends:	PopupMenu.PopupSubMenuMenuItem,
-
-	_init:		function(categoryName, iconName, id) {
-		this.parent(categoryName);
+//	constructor(string, string, int)	init the button & the submenu's menu-item (label, tone/gender)
+//	clear()								remove all emojis from the category
+//	build()								build category's rows and buttons in it
+//	_toggle()							do everything needed when the user click on the category's button
+//	_openCategory()						open the category
+//	getButton()							not useful getter
+class EmojiCategory extends PopupMenu.PopupSubMenuMenuItem {
+	constructor(categoryName, iconName, id) {
+		super(categoryName);
 		this.categoryName = categoryName;
 		this.id = id;
-		
+
 		this.actor.visible = false;
 		this.actor.reactive = false;
 		this._triangleBin.visible = false;
-		
+
 		this.emojiButtons = [];
-		
+
 		// A single widget is created for all categories to simplify the update method
 		if ((this.id == 1) || (this.id == 5)) {
 			this.skinTonesBar = new SkinTonesBar(true);
 		} else {
 			this.skinTonesBar = new SkinTonesBar(false);
 		}
-		
+
 		//	Smileys & body		Peoples			Activities
 		if ((this.id == 0) || (this.id == 1) || (this.id == 5)) {
 			this.skinTonesBar.addBar(this.actor);
 		}
-		
+
 		this.categoryButton = new St.Button({
 			reactive: true,
 			can_focus: true,
@@ -54,20 +48,20 @@ var EmojiCategory = new Lang.Class({
 			style_class: 'system-menu-action',
 			child: new St.Icon({ icon_name: iconName }),
 		});
-		this.categoryButton.connect('clicked', Lang.bind(this, this._toggle));
-		this.categoryButton.connect('notify::hover', Lang.bind(this, this._onHover));
-		
-		this._built = false; // will be true once loaded
-	},
+		this.categoryButton.connect('clicked', this._toggle.bind(this));
+		this.categoryButton.connect('notify::hover', this._onHover.bind(this));
 
-	clear: function() {
+		this._built = false; // will be true once loaded
+	}
+
+	clear() {
 		this.menu.removeAll();
 		this.emojiButtons = [];
-	},
+	}
 
-	build: function() { // load the category XXX
+	build() { // load the category XXX
 		let ln, container;
-		for (var i = 0; i < Extension.EMOJIS_CHARACTERS[this.id].length; i++) {
+		for (let i = 0; i < Extension.EMOJIS_CHARACTERS[this.id].length; i++) {
 			// lines of emojis
 			if (i % Extension.NB_COLS === 0) {
 				ln = new PopupMenu.PopupBaseMenuItem({
@@ -80,24 +74,24 @@ var EmojiCategory = new Lang.Class({
 				ln.actor.add(container, { expand: true });
 				this.menu.addMenuItem(ln);
 			}
-			
+
 			let button = new EmojiButton.EmojiButton(Extension.EMOJIS_CHARACTERS[this.id][i],
 			                       this, Extension.EMOJIS_KEYWORDS[this.id][i]);
 			this.emojiButtons.push(button);
 			container.add_child(button);
 		}
 		this._built = true;
-	},
+	}
 
-	_toggle: function() {
+	_toggle() {
 		if (this._getOpenState()) {
 			Extension.GLOBAL_BUTTON.clearCategories();
 		} else {
 			this._openCategory();
 		}
-	},
+	}
 
-	_onHover: function(a, b) {
+	_onHover(a, b) {
 		if (a.hover) {
 			this.categoryButton.style = 'background-color: rgba(200, 200, 200, 0.2);';
 		} else if (this._getOpenState()) {
@@ -105,31 +99,25 @@ var EmojiCategory = new Lang.Class({
 		} else {
 			this.categoryButton.style = '';
 		}
-	},
+	}
 
-	_openCategory: function() {
+	_openCategory() {
 		Extension.GLOBAL_BUTTON.clearCategories();
 		this.label.text = this.categoryName;
-		
+
 		if(!this._built) {
 			this.build();
 		}
 		this.skinTonesBar.update();
-		
+
 		this.categoryButton.style = 'background-color: rgba(0, 0, 200, 0.2);';
 		this.actor.visible = true;
 		this.setSubmenuShown(true);
 		Extension.GLOBAL_BUTTON._activeCat = this.id;
 		Extension.GLOBAL_BUTTON._onSearchTextChanged();
-	},
-
-	getButton: function() {
-		return this.categoryButton;
-	},
-
-	destroy: function() {
-		this.parent();
 	}
-});
 
-
+	getButton() {
+		return this.categoryButton;
+	}
+}
