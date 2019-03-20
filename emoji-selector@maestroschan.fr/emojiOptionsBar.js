@@ -29,34 +29,34 @@ class SkinTonesBar {
 		this._toneArray[4] = this.buildToneButton(	_("Medium dark skin tone")	, '#9B6020'	);
 		this._toneArray[5] = this.buildToneButton(	_("Dark skin tone")			, '#4B2000'	);
 
-		this._toneArray[0].connect('clicked', w => {
+		this._toneArray[0].connect('clicked', btn => {
 			this.removeCircle();
-			w.style_class = 'SelectedTone';
+			btn.style_class = 'SelectedTone';
 			Extension.SETTINGS.set_int('skin-tone', 0);
 		});
-		this._toneArray[1].connect('clicked', w => {
+		this._toneArray[1].connect('clicked', btn => {
 			this.removeCircle();
-			w.style_class = 'SelectedTone';
+			btn.style_class = 'SelectedTone';
 			Extension.SETTINGS.set_int('skin-tone', 1);
 		});
-		this._toneArray[2].connect('clicked', w => {
+		this._toneArray[2].connect('clicked', btn => {
 			this.removeCircle();
-			w.style_class = 'SelectedTone';
+			btn.style_class = 'SelectedTone';
 			Extension.SETTINGS.set_int('skin-tone', 2);
 		});
-		this._toneArray[3].connect('clicked', w => {
+		this._toneArray[3].connect('clicked', btn => {
 			this.removeCircle();
-			w.style_class = 'SelectedTone';
+			btn.style_class = 'SelectedTone';
 			Extension.SETTINGS.set_int('skin-tone', 3);
 		});
-		this._toneArray[4].connect('clicked', w => {
+		this._toneArray[4].connect('clicked', btn => {
 			this.removeCircle();
-			w.style_class = 'SelectedTone';
+			btn.style_class = 'SelectedTone';
 			Extension.SETTINGS.set_int('skin-tone', 4);
 		});
-		this._toneArray[5].connect('clicked', w => {
+		this._toneArray[5].connect('clicked', btn => {
 			this.removeCircle();
-			w.style_class = 'SelectedTone';
+			btn.style_class = 'SelectedTone';
 			Extension.SETTINGS.set_int('skin-tone', 5);
 		});
 

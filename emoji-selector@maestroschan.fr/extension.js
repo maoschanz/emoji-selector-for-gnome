@@ -33,7 +33,7 @@ const SkinTonesBar = Me.imports.emojiOptionsBar.SkinTonesBar;
 const EmojiCategory = Me.imports.emojiCategory.EmojiCategory;
 const EmojiButton = Me.imports.emojiButton;
 
-/*
+/* XXX it's shit
  * Import data (array of arrays of characters, and array of arrays of strings).
  * Keywords are used for both:
  * - search
@@ -77,7 +77,7 @@ const SettingsSchema = getSchema();
 
 //-----------------------------------------
 
-function updateStyle() {
+function updateStyle() { //XXX not oop
 	recents.forEach(function(b){
 		b.style = GLOBAL_BUTTON.getStyle();
 	});
@@ -88,7 +88,7 @@ function updateStyle() {
 	});
 }
 
-function saveRecents() {
+function saveRecents() { //XXX not oop
 	let backUp = [];
 	for(var i = 0; i<NB_COLS; i++){
 		backUp.push(recents[i].label);
@@ -96,7 +96,7 @@ function saveRecents() {
 	Convenience.getSettings().set_strv('recently-used', backUp);
 }
 
-function buildRecents() {
+function buildRecents() { //XXX not oop
 	let temp = Convenience.getSettings().get_strv('recently-used')
 	for(var i = 0; i<NB_COLS; i++){
 		if (i < temp.length) {
@@ -116,7 +116,7 @@ function buildRecents() {
 //methods :
 //	_init()					create and connect a search entry, added to a menu item
 //	_onSearchTextChanged()	change the "recently used" array content in reaction to a new search
-class EmojiSearchItem extends PopupMenu.PopupBaseMenuItem {
+class EmojiSearchItem extends PopupMenu.PopupBaseMenuItem { //TODO composition over inheritance
 	constructor() {
 		super({
 			reactive: false,
@@ -185,7 +185,7 @@ class EmojiSearchItem extends PopupMenu.PopupBaseMenuItem {
 	}
 }
 
-//class EmojiCategory
+//class EmojiCategory TODO update that huge obsolete comment
 //This is the main class of this extension, corresponding to the menu in the top panel
 //methods :
 //	_init()						initialize the menu (buttons, search entry, recently used)
@@ -200,9 +200,8 @@ class EmojiSearchItem extends PopupMenu.PopupBaseMenuItem {
 //	copyRecent(??,??,??)		euh...
 //	_bindShortcut()				bind the keyboard shorcut
 //	destroy()					destroy the button and its menu
-var EmojisMenu = GObject.registerClass(
-class EmojisMenu extends PanelMenu.Button {
-	_init() {
+var EmojisMenu = GObject.registerClass(class EmojisMenu extends PanelMenu.Button {
+	_init() { //TODO composition over inheritance
 		super._init(0.0, 'EmojisMenu');
 		let box = new St.BoxLayout();
 		let icon = new St.Icon({ icon_name: 'face-cool-symbolic', style_class: 'system-status-icon emotes-icon'});
@@ -226,36 +225,25 @@ class EmojisMenu extends PanelMenu.Button {
 		//initializing the "recently used" buttons
 		let recentlyUsed = this._recentlyUsedInit();
 
-		//-------------------------------------------------
-
 		if (POSITION === 'top') {
 			this.menu.addMenuItem(this._buttonMenuItem);
 			this._permanentItems++;
 			this.menu.addMenuItem(this.searchItem);
 			this._permanentItems++;
-
 			this.menu.addMenuItem(recentlyUsed);
 			this._permanentItems++;
 		}
-
 		//-----------------------------------------------
-
 		this._addAllCategories();
-
 		//-----------------------------------------------
-
 		if (POSITION === 'bottom') {
 			this.menu.addMenuItem(recentlyUsed);
 			this._permanentItems++;
-
 			this.menu.addMenuItem(this.searchItem);
 			this._permanentItems++;
-
 			this.menu.addMenuItem(this._buttonMenuItem);
 			this._permanentItems++;
 		}
-
-		//-----------------------------------------------
 
 		// this sets the default behavior of each submenu : false means it is close when the extension's menu opens
 		this.menu.connect('open-state-changed', (self, open) => {
@@ -285,15 +273,15 @@ class EmojisMenu extends PanelMenu.Button {
 		this.emojiCategories = [];
 
 		/* creating new categories with emojis loaded in EMOJIS_CHARACTERS */
-		this.emojiCategories[0] = new EmojiCategory(	_('Smileys & Body'),		'emoji-body-symbolic',			0	);
-		this.emojiCategories[1] = new EmojiCategory(	_('Peoples & Clothing'),	'emoji-people-symbolic',			1	);
-		this.emojiCategories[2] = new EmojiCategory(	_('Animals & Nature'),		'emoji-nature-symbolic',			2	);
-		this.emojiCategories[3] = new EmojiCategory(	_('Food & Drink'), 			'emoji-food-symbolic',		3	);
-		this.emojiCategories[4] = new EmojiCategory(	_('Travel & Places'), 		'emoji-travel-symbolic',		4	);
-		this.emojiCategories[5] = new EmojiCategory(	_('Activities & Sports'),	'emoji-activities-symbolic',	5	);
-		this.emojiCategories[6] = new EmojiCategory(	_('Objects'),				'emoji-objects-symbolic',				6	);
-		this.emojiCategories[7] = new EmojiCategory(	_('Symbols'),				'emoji-symbols-symbolic',		7	);
-		this.emojiCategories[8] = new EmojiCategory(	_('Flags'),					'emoji-flags-symbolic',				8	);
+		this.emojiCategories[0] = new EmojiCategory(	_('Smileys & Body'),		'emoji-body-symbolic',		0);
+		this.emojiCategories[1] = new EmojiCategory(	_('Peoples & Clothing'),	'emoji-people-symbolic',	1);
+		this.emojiCategories[2] = new EmojiCategory(	_('Animals & Nature'),		'emoji-nature-symbolic',	2);
+		this.emojiCategories[3] = new EmojiCategory(	_('Food & Drink'), 			'emoji-food-symbolic',		3);
+		this.emojiCategories[4] = new EmojiCategory(	_('Travel & Places'), 		'emoji-travel-symbolic',	4);
+		this.emojiCategories[5] = new EmojiCategory(	_('Activities & Sports'),	'emoji-activities-symbolic',5);
+		this.emojiCategories[6] = new EmojiCategory(	_('Objects'),				'emoji-objects-symbolic',	6);
+		this.emojiCategories[7] = new EmojiCategory(	_('Symbols'),				'emoji-symbols-symbolic',	7);
+		this.emojiCategories[8] = new EmojiCategory(	_('Flags'),					'emoji-flags-symbolic',		8);
 	}
 
 	_addAllCategories() {
@@ -366,14 +354,7 @@ class EmojisMenu extends PanelMenu.Button {
 
 		for(var i = 0; i<NB_COLS; i++){
 			recents[i] = new EmojiButton.EmojiButton('', null, []);
-
-//			These buttons will not be destroy during search.
-//			The signal needs to be able to handle different situations :
-//			- when the item is actually a recent emoji
-//			- when the item is a search result (in this case, it needs to be
-//			added to recent emojis)
-//			Keyboard and mouse activation are both possible.
-			recents[i].connect('key-press-event', recents[i].onKeyPress.bind(recents[i]));
+			recents[i].connect('key-press-event', recents[i].onKeyPress.bind(recents[i])); //TODO in the button constructor
 			container.add_child(recents[i]);
 		}
 
@@ -398,7 +379,7 @@ class EmojisMenu extends PanelMenu.Button {
 //------------------------------------------------------------
 
 function init() {
-	Convenience.initTranslations("emoji-selector");
+	Convenience.initTranslations('emoji-selector');
 }
 
 //------------------------------------------------------------

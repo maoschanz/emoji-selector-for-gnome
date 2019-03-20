@@ -16,7 +16,7 @@ const EmojiButton = Me.imports.emojiButton;
 //	_toggle()							do everything needed when the user click on the category's button
 //	_openCategory()						open the category
 //	getButton()							not useful getter
-class EmojiCategory extends PopupMenu.PopupSubMenuMenuItem {
+class EmojiCategory extends PopupMenu.PopupSubMenuMenuItem { //TODO composition over inheritance
 	constructor(categoryName, iconName, id) {
 		super(categoryName);
 		this.categoryName = categoryName;
@@ -121,3 +121,4 @@ class EmojiCategory extends PopupMenu.PopupSubMenuMenuItem {
 		return this.categoryButton;
 	}
 }
+

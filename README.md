@@ -25,6 +25,7 @@ Color emojis depends on the system you're using (GNOME > 3.26 is recommended).
 
 ## Contributors & translations
 
+- [Ryan Gonzalez](https://github.com/kirbyfan64) (port to ES6 classes)
 - amivaleo (italian translation + lot of ideas)
 - jonnius (german translation)
 - picsi / frnogueira (brazilian portuguese and esperanto translations)
@@ -44,7 +45,7 @@ The extension is currently available in english, french, brazilian portuguese, i
 
 #### Default way to do
 
-The better option is to install it from https://extensions.gnome.org/extension/1162/emoji-selector/
+The better option is to install it from [here](https://extensions.gnome.org/extension/1162/emoji-selector/).
 
 #### For Arch Linux users
 
@@ -52,7 +53,7 @@ Arch Linux users can install [gnome-shell-extension-emoji-selector-git](https://
 
 #### Manual installation
 
-Download files and put them in an "emoji-selector@maestroschan.fr" folder to `~/.local/share/gnome-shell/extensions/`
+Download and extract the ZIP, then open a terminal in the project's directory, and run `./install.sh`. It should copy the "emoji-selector@maestroschan.fr" folder to `~/.local/share/gnome-shell/extensions/`, which can be done manually if you want.
 
 You may need to restart the gnome shell environment ("logout and login again", or `alt` + `f2` + `r` + enter).
 

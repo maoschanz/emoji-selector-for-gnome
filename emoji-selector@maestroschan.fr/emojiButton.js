@@ -1,6 +1,5 @@
 const GObject = imports.gi.GObject;
 const St = imports.gi.St;
-const Lang = imports.lang;
 const Clutter = imports.gi.Clutter;
 
 /* Import the current extension, mainly because we need to access other files */
@@ -19,8 +18,7 @@ const TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
 
 //------------------------------------------------------------------------------
 
-var EmojiButton = GObject.registerClass(
-class EmojiButton extends St.Button {
+var EmojiButton = GObject.registerClass(class EmojiButton extends St.Button {
 	_init(baseCharacter, category, keywords) {
 		super._init({
 			style_class: 'EmojisItemStyle',
@@ -73,7 +71,6 @@ class EmojiButton extends St.Button {
 
 	onKeyPress(o, e) {
 		let symbol = e.get_key_symbol();
-		log(symbol);
 		if (symbol == Clutter.Return || symbol == Clutter.KP_Enter) {
 			let emojiToCopy = this.getTaggedEmoji();
 			let [x, y, mods] = global.get_pointer();
@@ -139,6 +136,7 @@ class EmojiButton extends St.Button {
 		return Clutter.EVENT_STOP;
 	}
 
+	// TODO update this old comment and add the tag for symbol
 	//This returns an emoji corresponding to currentEmoji with tags applied to it.
 	//If all tags are false, it returns unmodified currentEmoji.
 	//`tags` is an array of 3 booleans, which describe how a composite emoji is built:
@@ -176,7 +174,6 @@ class EmojiButton extends St.Button {
 		shiftFor(temp);
 		return temp;
 	}
-
 });
 
 //-----------------------------------------
