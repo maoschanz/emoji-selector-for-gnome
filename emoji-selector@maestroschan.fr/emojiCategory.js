@@ -1,3 +1,5 @@
+//this file is part of https://github.com/maoschanz/emoji-selector-for-gnome
+
 const St = imports.gi.St;
 const PopupMenu = imports.ui.popupMenu;
 
@@ -26,7 +28,7 @@ class EmojiCategory {
 		this.super_item.actor.reactive = false;
 		this.super_item._triangleBin.visible = false;
 
-		this.emojiButtons = []; //XXX useful ? used ?
+		this.emojiButtons = []; // used only for updating the size/style
 
 		// A single widget is created for all categories to simplify the update method
 		if ((this.id == 1) || (this.id == 5)) {

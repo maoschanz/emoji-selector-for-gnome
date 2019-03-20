@@ -1,4 +1,5 @@
-const GObject = imports.gi.GObject;
+//this file is part of https://github.com/maoschanz/emoji-selector-for-gnome
+
 const St = imports.gi.St;
 const Clutter = imports.gi.Clutter;
 const Main = imports.ui.main;
@@ -287,7 +288,7 @@ class EmojisMenu {
 	}
 
 	clearCategories(){
-		// removing the blue color of previously opened category's button XXX
+		// removing the blue color of previously opened category's button
 		for (let i = 0; i< 9; i++) {
 			this.emojiCategories[i].getButton().style = '';
 		}

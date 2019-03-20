@@ -1,4 +1,5 @@
-const GObject = imports.gi.GObject;
+//this file is part of https://github.com/maoschanz/emoji-selector-for-gnome
+
 const St = imports.gi.St;
 const Clutter = imports.gi.Clutter;
 

@@ -1,3 +1,5 @@
+//this file is part of https://github.com/maoschanz/emoji-selector-for-gnome
+
 const St = imports.gi.St;
 
 /* Import the current extension, mainly because we need to access other files */

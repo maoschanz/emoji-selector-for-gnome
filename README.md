@@ -29,17 +29,9 @@ Color emojis depends on the system you're using (GNOME > 3.26 is recommended).
 - amivaleo (italian translation + lot of ideas)
 - jonnius (german translation)
 - picsi / frnogueira (brazilian portuguese and esperanto translations)
+<!--TODO credit all translators + credit them in the about-->
 
-The extension is currently available in english, french, brazilian portuguese, italian, esperanto and german. I only know french and english, so if you need a specific language, please contribute : you just have to be inspired by the existing .po files !
-
-<!-------->
-
-<!--If you want to help by translating the interface, it's recommended to **NOT** translate the search/tooltips keywords (there are too many!). However, if you really want to translate them:-->
-
-<!--- everything as to be **in lower case**-->
-<!--- try to follow the Unicode wording for your language-->
-<!--- special keywords (**in upper case**) should **not** be translated-->
-<!--- your translations for keywords should **never** be more than 42 characters-->
+The extension is currently available in english, french, brazilian portuguese, italian, esperanto and german. I only know french and english, so if you need a specific language, please contribute: you just have to be inspired by the existing .po files !
 
 ## Installation
 
