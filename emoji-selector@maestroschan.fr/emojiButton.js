@@ -18,15 +18,15 @@ const TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
 
 //------------------------------------------------------------------------------
 
-var EmojiButton = GObject.registerClass(class EmojiButton extends St.Button {
-	_init(baseCharacter, category, keywords) {
-		super._init({
+class EmojiButton {
+	constructor(baseCharacter, category, keywords) {
+		this.super_btn = new St.Button({
 			style_class: 'EmojisItemStyle',
 			style: this.getStyle(),
 			can_focus: true,
 		});
 
-		this.label = baseCharacter;
+		this.super_btn.label = baseCharacter;
 
 		let tonable = false;
 		let genrable = false;
@@ -44,17 +44,18 @@ var EmojiButton = GObject.registerClass(class EmojiButton extends St.Button {
 		this.keywords = keywords;
 
 		// Copy the emoji to the clipboard with adequate tags and behavior
-		this.connect('button-press-event', this.onButtonPress.bind(this));
+		this.super_btn.connect('button-press-event', this.onButtonPress.bind(this));
+		this.super_btn.connect('key-press-event', this.onKeyPress.bind(this));
 
 		if (category == null || this.keywords == []) {	return;	}
 
 		// Update the category label on hover, allowing the user to know the
 		// name of the emoji he's copying.
-		this.connect('notify::hover', (a, b) => {
+		this.super_btn.connect('notify::hover', (a, b) => {
 			if (a.hover) {
-				category.label.text = this.keywords[0];
+				category.super_item.label.text = this.keywords[0];
 			} else {
-				category.label.text = category.categoryName;
+				category.super_item.label.text = category.categoryName;
 			}
 		});
 	}
@@ -114,7 +115,7 @@ var EmojiButton = GObject.registerClass(class EmojiButton extends St.Button {
 			CLIPBOARD_TYPE,
 			emojiToCopy
 		);
-		Extension.GLOBAL_BUTTON.menu.close();
+		Extension.GLOBAL_BUTTON.super_btn.menu.close();
 		return Clutter.EVENT_STOP;
 	}
 
@@ -137,15 +138,15 @@ var EmojiButton = GObject.registerClass(class EmojiButton extends St.Button {
 	}
 
 	// TODO update this old comment and add the tag for symbol
-	//This returns an emoji corresponding to currentEmoji with tags applied to it.
-	//If all tags are false, it returns unmodified currentEmoji.
+	//This returns an emoji corresponding to .super_btn.label with tags applied to it.
 	//`tags` is an array of 3 booleans, which describe how a composite emoji is built:
 	//- tonable -> return emoji concatened with the selected skin tone;
 	//- genrable -> return emoji concatened with the selected gender;
 	//- gendered -> the emoji is already gendered, which modifies the way skin tone is
 	//  applied ([man|woman] + [skin tone if any] + [other symbol(s)]).
+	//If all tags are false, it returns unmodified .super_btn.label
 	getTaggedEmoji() {
-		let currentEmoji = this.label;
+		let currentEmoji = this.super_btn.label;
 		if(currentEmoji == '') {
 			log('Error: not a valid emoji.');
 			return;
@@ -174,7 +175,7 @@ var EmojiButton = GObject.registerClass(class EmojiButton extends St.Button {
 		shiftFor(temp);
 		return temp;
 	}
-});
+};
 
 //-----------------------------------------
 

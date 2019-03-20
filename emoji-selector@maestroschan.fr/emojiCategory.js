@@ -16,17 +16,17 @@ const EmojiButton = Me.imports.emojiButton;
 //	_toggle()							do everything needed when the user click on the category's button
 //	_openCategory()						open the category
 //	getButton()							not useful getter
-class EmojiCategory extends PopupMenu.PopupSubMenuMenuItem { //TODO composition over inheritance
+class EmojiCategory {
 	constructor(categoryName, iconName, id) {
-		super(categoryName);
+		this.super_item = new PopupMenu.PopupSubMenuMenuItem(categoryName);
 		this.categoryName = categoryName;
 		this.id = id;
 
-		this.actor.visible = false;
-		this.actor.reactive = false;
-		this._triangleBin.visible = false;
+		this.super_item.actor.visible = false;
+		this.super_item.actor.reactive = false;
+		this.super_item._triangleBin.visible = false;
 
-		this.emojiButtons = [];
+		this.emojiButtons = []; //XXX useful ? used ?
 
 		// A single widget is created for all categories to simplify the update method
 		if ((this.id == 1) || (this.id == 5)) {
@@ -37,7 +37,7 @@ class EmojiCategory extends PopupMenu.PopupSubMenuMenuItem { //TODO composition 
 
 		//	Smileys & body		Peoples			Activities
 		if ((this.id == 0) || (this.id == 1) || (this.id == 5)) {
-			this.skinTonesBar.addBar(this.actor);
+			this.skinTonesBar.addBar(this.super_item.actor);
 		}
 
 		this.categoryButton = new St.Button({
@@ -55,7 +55,7 @@ class EmojiCategory extends PopupMenu.PopupSubMenuMenuItem { //TODO composition 
 	}
 
 	clear() {
-		this.menu.removeAll();
+		this.super_item.menu.removeAll();
 		this.emojiButtons = [];
 	}
 
@@ -72,19 +72,19 @@ class EmojiCategory extends PopupMenu.PopupSubMenuMenuItem { //TODO composition 
 				ln.actor.track_hover = false;
 				container = new St.BoxLayout();
 				ln.actor.add(container, { expand: true });
-				this.menu.addMenuItem(ln);
+				this.super_item.menu.addMenuItem(ln);
 			}
 
 			let button = new EmojiButton.EmojiButton(Extension.EMOJIS_CHARACTERS[this.id][i],
 			                       this, Extension.EMOJIS_KEYWORDS[this.id][i]);
 			this.emojiButtons.push(button);
-			container.add_child(button);
+			container.add_child(button.super_btn);
 		}
 		this._built = true;
 	}
 
 	_toggle() {
-		if (this._getOpenState()) {
+		if (this.super_item._getOpenState()) {
 			Extension.GLOBAL_BUTTON.clearCategories();
 		} else {
 			this._openCategory();
@@ -94,7 +94,7 @@ class EmojiCategory extends PopupMenu.PopupSubMenuMenuItem { //TODO composition 
 	_onHover(a, b) {
 		if (a.hover) {
 			this.categoryButton.style = 'background-color: rgba(200, 200, 200, 0.2);';
-		} else if (this._getOpenState()) {
+		} else if (this.super_item._getOpenState()) {
 			this.categoryButton.style = 'background-color: rgba(0, 0, 100, 0.2);';
 		} else {
 			this.categoryButton.style = '';
@@ -103,7 +103,7 @@ class EmojiCategory extends PopupMenu.PopupSubMenuMenuItem { //TODO composition 
 
 	_openCategory() {
 		Extension.GLOBAL_BUTTON.clearCategories();
-		this.label.text = this.categoryName;
+		this.super_item.label.text = this.categoryName;
 
 		if(!this._built) {
 			this.build();
@@ -111,8 +111,8 @@ class EmojiCategory extends PopupMenu.PopupSubMenuMenuItem { //TODO composition 
 		this.skinTonesBar.update();
 
 		this.categoryButton.style = 'background-color: rgba(0, 0, 200, 0.2);';
-		this.actor.visible = true;
-		this.setSubmenuShown(true);
+		this.super_item.actor.visible = true;
+		this.super_item.setSubmenuShown(true);
 		Extension.GLOBAL_BUTTON._activeCat = this.id;
 		Extension.GLOBAL_BUTTON._onSearchTextChanged();
 	}

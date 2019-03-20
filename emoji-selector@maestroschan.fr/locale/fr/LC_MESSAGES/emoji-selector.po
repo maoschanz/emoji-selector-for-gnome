@@ -418,8 +418,8 @@ msgstr "Femmes"
 #~ msgid "zimbabwe"
 #~ msgstr "zimbabwe"
 
-#~ msgid "Emoji Selector"
-#~ msgstr "Sélecteur d'émojis"
+msgid "Emoji Selector"
+msgstr "Sélecteur d'émojis"
 
 #~ msgid "Reset"
 #~ msgstr "Réinitialiser"

@@ -388,16 +388,10 @@ function buildPrefsWidget() {
 		let headerBar = widget.get_toplevel().get_titlebar();
 		headerBar.custom_title = widget.switcher;
 
-//		let reset_btn = new Gtk.Button({ label: _("Reset"), visible: true });
-//		reset_btn.get_style_context().add_class('destructive-action')
-//		reset_btn.connect('clicked', reset_settings);
-//		headerBar.pack_start(reset_btn);
-
 		return false;
 	});
 
 	widget.show_all();
-
 	return widget;
 }
 

@@ -60,26 +60,9 @@ let POSITION;
 
 //-----------------------------------------------
 
-// This function is a copy-paste from clipboard-indicator, however it's
-// not very good imo so FIXME TODO
-
-const SCHEMA_NAME = 'org.gnome.shell.extensions.emoji-selector';
-
-const getSchema = function () {
-	let schemaDir = Me.dir.get_child('schemas').get_path();
-	let schemaSource = Gio.SettingsSchemaSource.new_from_directory(schemaDir, Gio.SettingsSchemaSource.get_default(), false);
-	let schema = schemaSource.lookup(SCHEMA_NAME, false);
-
-	return new Gio.Settings({ settings_schema: schema });
-}
-
-const SettingsSchema = getSchema();
-
-//-----------------------------------------
-
-function updateStyle() { //XXX not oop
+function updateStyle() {
 	recents.forEach(function(b){
-		b.style = GLOBAL_BUTTON.getStyle();
+		b.style = b.getStyle();
 	});
 	GLOBAL_BUTTON.emojiCategories.forEach(function(c){
 		c.emojiButtons.forEach(function(b){
@@ -91,21 +74,21 @@ function updateStyle() { //XXX not oop
 function saveRecents() { //XXX not oop
 	let backUp = [];
 	for(var i = 0; i<NB_COLS; i++){
-		backUp.push(recents[i].label);
+		backUp.push(recents[i].super_btn.label);
 	}
 	Convenience.getSettings().set_strv('recently-used', backUp);
 }
 
 function buildRecents() { //XXX not oop
 	let temp = Convenience.getSettings().get_strv('recently-used')
-	for(var i = 0; i<NB_COLS; i++){
+	for(var i=0; i<NB_COLS; i++){
 		if (i < temp.length) {
-			recents[i].label = temp[i];
+			recents[i].super_btn.label = temp[i];
 		} else {
 			//If the extension was previously set with less "recently used emojis",
 			//we still need to load something in the labels.
 			//It will be a penguin for obvious reasons.
-			recents[i].label = '🐧';
+			recents[i].super_btn.label = '🐧';
 		}
 	}
 }
@@ -116,9 +99,9 @@ function buildRecents() { //XXX not oop
 //methods :
 //	_init()					create and connect a search entry, added to a menu item
 //	_onSearchTextChanged()	change the "recently used" array content in reaction to a new search
-class EmojiSearchItem extends PopupMenu.PopupBaseMenuItem { //TODO composition over inheritance
+class EmojiSearchItem {
 	constructor() {
-		super({
+		this.super_item = new PopupMenu.PopupBaseMenuItem({
 			reactive: false,
 			can_focus: false
 		});
@@ -140,7 +123,7 @@ class EmojiSearchItem extends PopupMenu.PopupBaseMenuItem { //TODO composition o
 			recents[0].onKeyPress(o, e);
 		});
 
-		this.actor.add(this.searchEntry, { expand: true });
+		this.super_item.actor.add(this.searchEntry, { expand: true });
 	}
 
 	_onSearchTextChanged() {
@@ -153,7 +136,7 @@ class EmojiSearchItem extends PopupMenu.PopupBaseMenuItem { //TODO composition o
 		searchedText = searchedText.toLowerCase();
 
 		for (let j = 0; j < NB_COLS; j++) {
-			recents[j].label = '';
+			recents[j].super_btn.label = '';
 		}
 
 		let empty = 0;
@@ -175,7 +158,7 @@ class EmojiSearchItem extends PopupMenu.PopupBaseMenuItem { //TODO composition o
 						}
 					}
 					if (isMatching){
-						recents[empty].label = EMOJIS_CHARACTERS[cat][i];
+						recents[empty].super_btn.label = EMOJIS_CHARACTERS[cat][i];
 						empty++;
 					}
 				}
@@ -195,23 +178,25 @@ class EmojiSearchItem extends PopupMenu.PopupBaseMenuItem { //TODO composition o
 //	_renderPanelMenuHeaderBox()	add "back" button & categories' buttons to the extension interface
 //	clearCategories()			clean the interface & close an eventual opened category
 //	_onSearchTextChanged		wrapper calling EmojiSearchItem's _onSearchTextChanged
-//	getStyle()					return the CSS to apply to buttons (as a string)
 //	_recentlyUsedInit()			initialize the array of recently used emojis
-//	copyRecent(??,??,??)		euh...
 //	_bindShortcut()				bind the keyboard shorcut
 //	destroy()					destroy the button and its menu
-var EmojisMenu = GObject.registerClass(class EmojisMenu extends PanelMenu.Button {
-	_init() { //TODO composition over inheritance
-		super._init(0.0, 'EmojisMenu');
+class EmojisMenu {
+	constructor() {
+		this._init();
+	}
+	
+	_init() {
+		this.super_btn = new PanelMenu.Button(0.0, _("Emoji Selector"), false);
 		let box = new St.BoxLayout();
 		let icon = new St.Icon({ icon_name: 'face-cool-symbolic', style_class: 'system-status-icon emotes-icon'});
 
 		box.add(icon);
 		box.add(PopupMenu.arrowIcon(St.Side.BOTTOM));
-		this.actor.add_child(box);
+		this.super_btn.actor.add_child(box);
 		this._permanentItems = 0;
 		this._activeCat = -1;
-		this.actor.visible = SETTINGS.get_boolean('always-show');
+		this.super_btn.actor.visible = SETTINGS.get_boolean('always-show');
 
 		//initializing categories
 		this._createAllCategories();
@@ -221,33 +206,33 @@ var EmojisMenu = GObject.registerClass(class EmojisMenu extends PanelMenu.Button
 
 		//creating the search entry
 		this.searchItem = new EmojiSearchItem();
-
+		
 		//initializing the "recently used" buttons
 		let recentlyUsed = this._recentlyUsedInit();
 
 		if (POSITION === 'top') {
-			this.menu.addMenuItem(this._buttonMenuItem);
+			this.super_btn.menu.addMenuItem(this._buttonMenuItem);
 			this._permanentItems++;
-			this.menu.addMenuItem(this.searchItem);
+			this.super_btn.menu.addMenuItem(this.searchItem.super_item);
 			this._permanentItems++;
-			this.menu.addMenuItem(recentlyUsed);
+			this.super_btn.menu.addMenuItem(recentlyUsed);
 			this._permanentItems++;
 		}
 		//-----------------------------------------------
 		this._addAllCategories();
 		//-----------------------------------------------
 		if (POSITION === 'bottom') {
-			this.menu.addMenuItem(recentlyUsed);
+			this.super_btn.menu.addMenuItem(recentlyUsed);
 			this._permanentItems++;
-			this.menu.addMenuItem(this.searchItem);
+			this.super_btn.menu.addMenuItem(this.searchItem.super_item);
 			this._permanentItems++;
-			this.menu.addMenuItem(this._buttonMenuItem);
+			this.super_btn.menu.addMenuItem(this._buttonMenuItem);
 			this._permanentItems++;
 		}
 
 		// this sets the default behavior of each submenu : false means it is close when the extension's menu opens
-		this.menu.connect('open-state-changed', (self, open) => {
-			this.actor.visible = open || SETTINGS.get_boolean('always-show');
+		this.super_btn.menu.connect('open-state-changed', (self, open) => {
+			this.super_btn.actor.visible = open || SETTINGS.get_boolean('always-show');
 
 			this.clearCategories();
 			this.searchItem.searchEntry.set_text('');
@@ -266,7 +251,7 @@ var EmojisMenu = GObject.registerClass(class EmojisMenu extends PanelMenu.Button
 	}
 
 	toggle() {
-		this.menu.toggle();
+		this.super_btn.menu.toggle();
 	}
 
 	_createAllCategories() {
@@ -286,7 +271,7 @@ var EmojisMenu = GObject.registerClass(class EmojisMenu extends PanelMenu.Button
 
 	_addAllCategories() {
 		for (let i = 0; i< 9; i++) {
-			this.menu.addMenuItem(this.emojiCategories[i]);
+			this.super_btn.menu.addMenuItem(this.emojiCategories[i].super_item);
 		}
 	}
 
@@ -296,22 +281,22 @@ var EmojisMenu = GObject.registerClass(class EmojisMenu extends PanelMenu.Button
 			can_focus: false
 		});
 		this.categoryButton = [];
-		for (let i = 0; i< 9; i++) {
+		for (let i=0; i<this.emojiCategories.length; i++) {
 			this._buttonMenuItem.actor.add(this.emojiCategories[i].getButton(), { expand: true, x_fill: false });
 		}
 	}
 
 	clearCategories(){
-		// removing the blue color of previously opened category's button
+		// removing the blue color of previously opened category's button XXX
 		for (let i = 0; i< 9; i++) {
-			this.emojiCategories[i].getButton().style = 'background-color: transparent;';
+			this.emojiCategories[i].getButton().style = '';
 		}
 
-		let items = this.menu._getMenuItems();
+		let items = this.super_btn.menu._getMenuItems();
 
 		// closing and hinding opened categories
 		if (POSITION == 'top') {
-			for( var i = this._permanentItems; i < items.length; i++){
+			for(var i=this._permanentItems; i < items.length; i++){
 				items[i].setSubmenuShown(false);
 				items[i].actor.visible = false;
 			}
@@ -333,16 +318,6 @@ var EmojisMenu = GObject.registerClass(class EmojisMenu extends PanelMenu.Button
 		return;
 	}
 
-	getStyle() {
-		let fontStyle = 'font-size: ' + ( Convenience.getSettings().get_int('emojisize') ) + 'px;';
-		if (Convenience.getSettings().get_boolean('light-theme')){
-			fontStyle += ' color: #000000;';
-		} else {
-			fontStyle += ' color: #FFFFFF;';
-		}
-		return fontStyle;
-	}
-
 	_recentlyUsedInit() {
 		let recentlyUsed = new PopupMenu.PopupBaseMenuItem({
 			reactive: false,
@@ -352,10 +327,9 @@ var EmojisMenu = GObject.registerClass(class EmojisMenu extends PanelMenu.Button
 		recentlyUsed.actor.add(container, { expand: true });
 		recents = [];
 
-		for(var i = 0; i<NB_COLS; i++){
+		for(var i=0; i<NB_COLS; i++){
 			recents[i] = new EmojiButton.EmojiButton('', null, []);
-			recents[i].connect('key-press-event', recents[i].onKeyPress.bind(recents[i])); //TODO in the button constructor
-			container.add_child(recents[i]);
+			container.add_child(recents[i].super_btn);
 		}
 
 		buildRecents();
@@ -368,13 +342,14 @@ var EmojisMenu = GObject.registerClass(class EmojisMenu extends PanelMenu.Button
 
 		Main.wm.addKeybinding(
 			'emoji-keybinding',
-			SettingsSchema,
+			Convenience.getSettings(),
 			Meta.KeyBindingFlags.NONE,
 			ModeType.ALL,
 			this.toggle.bind(this)
 		);
 	}
-});
+};
+//});
 
 //------------------------------------------------------------
 
@@ -397,15 +372,16 @@ function enable() {
 	POSITION = SETTINGS.get_string('position');
 
 	GLOBAL_BUTTON = new EmojisMenu();
+
 //	about addToStatusArea :
 //	- 0 is the position
 //	- `right` is the box where we want our GLOBAL_BUTTON to be displayed (left/center/right)
-	Main.panel.addToStatusArea('EmojisMenu', GLOBAL_BUTTON, 0, 'right');
+	Main.panel.addToStatusArea('EmojisMenu', GLOBAL_BUTTON.super_btn, 0, 'right');
 
 	SIGNAUX[0] = SETTINGS.connect('changed::emojisize', () => { updateStyle(); });
 	SIGNAUX[1] = SETTINGS.connect('changed::light-theme', () => { updateStyle(); });
 	SIGNAUX[2] = SETTINGS.connect('changed::always-show', () => {
-		GLOBAL_BUTTON.actor.visible = SETTINGS.get_boolean('always-show');
+		GLOBAL_BUTTON.super_btn.actor.visible = SETTINGS.get_boolean('always-show');
 	});
 	SIGNAUX[3] = SETTINGS.connect('changed::use-keybinding', (z) => {
 		if (z.get_boolean('use-keybinding')) {
