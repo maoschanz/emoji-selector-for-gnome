@@ -180,7 +180,7 @@ class EmojiSearchItem {
 //	clearCategories()			clean the interface & close an eventual opened category
 //	_onSearchTextChanged		wrapper calling EmojiSearchItem's _onSearchTextChanged
 //	_recentlyUsedInit()			initialize the array of recently used emojis
-//	_bindShortcut()				bind the keyboard shorcut
+//	_bindShortcut()				bind the keyboard shortcut
 //	destroy()					destroy the button and its menu
 class EmojisMenu {
 	constructor() {
