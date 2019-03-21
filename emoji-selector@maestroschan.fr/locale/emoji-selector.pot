@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-20 23:19+0100\n"
+"POT-Creation-Date: 2019-03-21 19:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -171,10 +171,10 @@ msgstr ""
 msgid "Dark skin tone"
 msgstr ""
 
-#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:76
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:52
 msgid "Men"
 msgstr ""
 
-#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:85
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:61
 msgid "Women"
 msgstr ""

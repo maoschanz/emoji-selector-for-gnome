@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-20 23:19+0100\n"
+"POT-Creation-Date: 2019-03-21 19:19+0100\n"
 "PO-Revision-Date: 2019-03-20 23:18+0100\n"
 "Last-Translator: Romain F. T. <rrroschan@gmail.com>\n"
 "Language-Team: French <none>\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: emoji-selector@maestroschan.fr/extension.js:114
 msgid "Type here to search…"
-msgstr ""
+msgstr "Taper ici pour rechercher…"
 
 #: emoji-selector@maestroschan.fr/extension.js:191
 msgid "Emoji Selector"
@@ -176,16 +176,13 @@ msgstr "Teinte moyennement sombre"
 msgid "Dark skin tone"
 msgstr "Teinte sombre"
 
-#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:76
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:52
 msgid "Men"
 msgstr "Hommes"
 
-#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:85
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:61
 msgid "Women"
 msgstr "Femmes"
-
-#~ msgid "Type here to search..."
-#~ msgstr "Taper ici pour rechercher..."
 
 #~ msgid "grinning face"
 #~ msgstr "visage rigolard"
@@ -429,6 +426,3 @@ msgstr "Femmes"
 
 #~ msgid "zimbabwe"
 #~ msgstr "zimbabwe"
-
-#~ msgid "Reset"
-#~ msgstr "Réinitialiser"

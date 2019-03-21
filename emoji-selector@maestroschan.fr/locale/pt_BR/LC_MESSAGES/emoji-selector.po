@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-20 23:19+0100\n"
+"POT-Creation-Date: 2019-03-21 19:19+0100\n"
 "PO-Revision-Date: 2017-11-10 10:59-0300\n"
 "Last-Translator: Fábio Nogueira <fnogueira@gnome.org>\n"
 "Language-Team: \n"
@@ -174,11 +174,11 @@ msgstr ""
 msgid "Dark skin tone"
 msgstr ""
 
-#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:76
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:52
 msgid "Men"
 msgstr ""
 
-#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:85
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:61
 msgid "Women"
 msgstr ""
 

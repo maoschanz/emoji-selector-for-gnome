@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-20 23:19+0100\n"
+"POT-Creation-Date: 2019-03-21 19:19+0100\n"
 "PO-Revision-Date: 2019-03-17 21:39+0100\n"
 "Last-Translator: Mario Rubio <mario.mra@hotmail.com>\n"
 "Language-Team: \n"
@@ -177,11 +177,11 @@ msgstr "Tonalidad ligeramente oscura"
 msgid "Dark skin tone"
 msgstr "Tonalidad oscura"
 
-#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:76
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:52
 msgid "Men"
 msgstr "Hombre"
 
-#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:85
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:61
 msgid "Women"
 msgstr "Mujer"
 
