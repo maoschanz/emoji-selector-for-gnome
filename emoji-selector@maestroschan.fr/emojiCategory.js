@@ -18,7 +18,7 @@ const EmojiButton = Me.imports.emojiButton;
 //	_toggle()							do everything needed when the user click on the category's button
 //	_openCategory()						open the category
 //	getButton()							not useful getter
-class EmojiCategory {
+var EmojiCategory = class EmojiCategory {
 	constructor(categoryName, iconName, id) {
 		this.super_item = new PopupMenu.PopupSubMenuMenuItem(categoryName);
 		this.categoryName = categoryName;

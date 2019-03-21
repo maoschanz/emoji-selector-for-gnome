@@ -19,7 +19,7 @@ const TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
 
 //------------------------------------------------------------------------------
 
-class EmojiButton {
+var EmojiButton = class EmojiButton {
 	constructor(baseCharacter, category, keywords) {
 		this.super_btn = new St.Button({
 			style_class: 'EmojisItemStyle',

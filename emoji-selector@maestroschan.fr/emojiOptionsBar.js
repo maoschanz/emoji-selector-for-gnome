@@ -20,7 +20,7 @@ const _ = Gettext.gettext;
 //	removeCircle()					reset the visual indication of the selected skin tone
 //	update()						update buttons appearance, reflecting the actual settings
 //	buildToneButton(name, color)	build a button for a specific skin tone
-class SkinTonesBar {
+var SkinTonesBar = class SkinTonesBar {
 	constructor(hasGender) {
 		this._toneArray = [];
 
