@@ -10,6 +10,16 @@ const SkinTonesBar = Me.imports.emojiOptionsBar.SkinTonesBar;
 const Extension = Me.imports.extension;
 const EmojiButton = Me.imports.emojiButton;
 
+/* XXX it's shit
+ * Import data (array of arrays of characters, and array of arrays of strings).
+ * Keywords are used for both:
+ * - search
+ * - skin tone management
+ * - gender management
+ */
+let EMOJIS_CHARACTERS = Me.imports.emojisCharacters.ALL;
+let EMOJIS_KEYWORDS = Me.imports.emojisKeywords.ALL_KEYWORDS;
+
 //class EmojiCategory
 //methods :
 //	constructor(string, string, int)	init the button & the submenu's menu-item (label, tone/gender)
@@ -28,9 +38,10 @@ var EmojiCategory = class EmojiCategory {
 		this.super_item.actor.reactive = false;
 		this.super_item._triangleBin.visible = false;
 
-		this.emojiButtons = []; // used only for updating the size/style
+		this.emojiButtons = []; // used for searching, and for updating the size/style
 
-		// A single widget is created for all categories to simplify the update method
+		// These options bar widgets have the same type for all categories to
+		// simplify the update method
 		if ((this.id == 1) || (this.id == 5)) {
 			this.skinTonesBar = new SkinTonesBar(true);
 		} else {
@@ -61,9 +72,29 @@ var EmojiCategory = class EmojiCategory {
 		this.emojiButtons = [];
 	}
 
-	build() { // load the category XXX
+	searchEmoji(searchedText, neededresults) {
+		let searchResults = [];
+		for (let i=0; i<this.emojiButtons.length; i++) {
+			if (neededresults >= 0) {
+				let isMatching = false;
+				for (let k=0; k<this.emojiButtons[i].keywords.length; k++) {
+					if (this.emojiButtons[i].keywords[k].includes(searchedText)) {
+						isMatching = true;
+					}
+				}
+				if (isMatching){
+					searchResults.push(this.emojiButtons[i].super_btn.label)
+					neededresults--;
+				}
+			}
+		}
+		return searchResults
+	}
+
+	load() {
+		if (this._built) { return; }
 		let ln, container;
-		for (let i = 0; i < Extension.EMOJIS_CHARACTERS[this.id].length; i++) {
+		for (let i=0; i<EMOJIS_CHARACTERS[this.id].length; i++) {
 			// lines of emojis
 			if (i % Extension.NB_COLS === 0) {
 				ln = new PopupMenu.PopupBaseMenuItem({
@@ -77,12 +108,23 @@ var EmojiCategory = class EmojiCategory {
 				this.super_item.menu.addMenuItem(ln);
 			}
 
-			let button = new EmojiButton.EmojiButton(Extension.EMOJIS_CHARACTERS[this.id][i],
-			                       this, Extension.EMOJIS_KEYWORDS[this.id][i]);
+			let button = new EmojiButton.EmojiButton(EMOJIS_CHARACTERS[this.id][i],
+			                                 this, EMOJIS_KEYWORDS[this.id][i]);
 			this.emojiButtons.push(button);
 			container.add_child(button.super_btn);
 		}
 		this._built = true;
+		EMOJIS_CHARACTERS[this.id] = []; //TODO shouldn't be used
+		EMOJIS_KEYWORDS[this.id] = []; //TODO shouldn't be used
+	}
+
+	unload() { //TODO isn't used yet
+		this._built = false;
+		for (let i=0; i<this.emojiButtons.length; i++) {
+			this.emojiButtons[i].destroy();
+		}
+		this.super_item.menu.removeAll();
+		this.emojiButtons = [];
 	}
 
 	_toggle() {
@@ -108,7 +150,7 @@ var EmojiCategory = class EmojiCategory {
 		this.super_item.label.text = this.categoryName;
 
 		if(!this._built) {
-			this.build();
+			this.load();
 		}
 		this.skinTonesBar.update();
 

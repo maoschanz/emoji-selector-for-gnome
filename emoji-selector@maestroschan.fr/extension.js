@@ -16,38 +16,24 @@ const Gio = imports.gi.Gio;
 const PanelMenu = imports.ui.panelMenu;
 const PopupMenu = imports.ui.popupMenu;
 
-/* Import the current extension, mainly because we need to access other files */
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
+const Clipboard = St.Clipboard.get_default();
+const CLIPBOARD_TYPE = St.ClipboardType.CLIPBOARD;
 
 /* Stuffs for settings, translations etc. */
 const Gettext = imports.gettext.domain('emoji-selector');
 const _ = Gettext.gettext;
+
+const ExtensionUtils = imports.misc.extensionUtils;
+const Me = ExtensionUtils.getCurrentExtension();
 const Convenience = Me.imports.convenience;
-
-const Clipboard = St.Clipboard.get_default();
-const CLIPBOARD_TYPE = St.ClipboardType.CLIPBOARD;
-
-//----------------------------------------------
-
 const SkinTonesBar = Me.imports.emojiOptionsBar.SkinTonesBar;
 const EmojiCategory = Me.imports.emojiCategory.EmojiCategory;
 const EmojiButton = Me.imports.emojiButton;
 
-/* XXX it's shit
- * Import data (array of arrays of characters, and array of arrays of strings).
- * Keywords are used for both:
- * - search
- * - skin tone management
- * - gender management
- */
-var EMOJIS_CHARACTERS = Me.imports.emojisCharacters.ALL;
-var EMOJIS_KEYWORDS = Me.imports.emojisKeywords.ALL_KEYWORDS;
+//----------------------------------------------
 
 var SETTINGS;
 let SIGNAUX = [];
-
-//-----------------------------------------------
 
 /* Global variable : GLOBAL_BUTTON to click in the topbar */
 var GLOBAL_BUTTON;
@@ -74,7 +60,7 @@ function updateStyle() {
 
 function saveRecents() { //XXX not oop
 	let backUp = [];
-	for(var i = 0; i<NB_COLS; i++){
+	for(let i=0; i<NB_COLS; i++){
 		backUp.push(recents[i].super_btn.label);
 	}
 	Convenience.getSettings().set_strv('recently-used', backUp);
@@ -82,7 +68,7 @@ function saveRecents() { //XXX not oop
 
 function buildRecents() { //XXX not oop
 	let temp = Convenience.getSettings().get_strv('recently-used')
-	for(var i=0; i<NB_COLS; i++){
+	for(let i=0; i<NB_COLS; i++){
 		if (i < temp.length) {
 			recents[i].super_btn.label = temp[i];
 		} else {
@@ -129,43 +115,40 @@ class EmojiSearchItem {
 
 	_onSearchTextChanged() {
 		let searchedText = this.searchEntry.get_text();
-
 		if (searchedText === '') {
 			buildRecents();
 			return;
-		} // else {
+		} // else { ...
 		searchedText = searchedText.toLowerCase();
 
 		for (let j = 0; j < NB_COLS; j++) {
 			recents[j].super_btn.label = '';
 		}
 
-		let empty = 0;
-
 		let minCat = 0;
-		let maxCat = EMOJIS_CHARACTERS.length;
+		let maxCat = GLOBAL_BUTTON.emojiCategories.length;
 		if (GLOBAL_BUTTON._activeCat != -1) {
 			minCat = GLOBAL_BUTTON._activeCat;
 			maxCat = GLOBAL_BUTTON._activeCat+1;
 		}
 
+		let results = [];
 		for (let cat = minCat; cat < maxCat; cat++) {
-			for (let i = 0; i < EMOJIS_CHARACTERS[cat].length; i++) {
-				let isMatching = false;
-				if (empty < NB_COLS) {
-					for (let k = 0; k < EMOJIS_KEYWORDS[cat][i].length; k++) {
-						if (EMOJIS_KEYWORDS[cat][i][k].includes(searchedText)) {
-							isMatching = true;
-						}
-					}
-					if (isMatching){
-						recents[empty].super_btn.label = EMOJIS_CHARACTERS[cat][i];
-						empty++;
-					}
-				}
+			let availableSlots = recents.length - results.length;
+			if (availableSlots > 0) {
+				GLOBAL_BUTTON.emojiCategories[cat].load();
+				let catResults = GLOBAL_BUTTON.emojiCategories[cat].searchEmoji(searchedText, availableSlots);
+				results = results.concat(catResults);
 			}
 		}
-		return;
+
+		let firstEmptyIndex = 0;
+		for (let i=0; i<results.length; i++) {
+			if (i < NB_COLS) {
+				recents[firstEmptyIndex].super_btn.label = results[i];
+				firstEmptyIndex++;
+			}
+		}
 	}
 }
 
@@ -190,7 +173,10 @@ class EmojisMenu {
 	_init() {
 		this.super_btn = new PanelMenu.Button(0.0, _("Emoji Selector"), false);
 		let box = new St.BoxLayout();
-		let icon = new St.Icon({ icon_name: 'face-cool-symbolic', style_class: 'system-status-icon emotes-icon'});
+		let icon = new St.Icon({
+			icon_name: 'face-cool-symbolic',
+			style_class: 'system-status-icon emotes-icon'
+		});
 
 		box.add(icon);
 		box.add(PopupMenu.arrowIcon(St.Side.BOTTOM));
@@ -232,22 +218,30 @@ class EmojisMenu {
 		}
 
 		// this sets the default behavior of each submenu : false means it is close when the extension's menu opens
-		this.super_btn.menu.connect('open-state-changed', (self, open) => {
-			this.super_btn.actor.visible = open || SETTINGS.get_boolean('always-show');
-
-			this.clearCategories();
-			this.searchItem.searchEntry.set_text('');
-
-			let a = Mainloop.timeout_add(20, () => {
-				if (open) {
-					global.stage.set_key_focus(this.searchItem.searchEntry);
-				}
-				Mainloop.source_remove(a);
-			});
-		});
+		this.super_btn.menu.connect('open-state-changed', this.onOpenStateChanged.bind(this));
 
 		if (SETTINGS.get_boolean('use-keybinding')) {
 			this._bindShortcut();
+		}
+	}
+
+	onOpenStateChanged(self, open) {
+		this.super_btn.actor.visible = open || SETTINGS.get_boolean('always-show');
+		this.clearCategories();
+		this.searchItem.searchEntry.set_text('');
+//		this.unloadCategories();
+
+		let a = Mainloop.timeout_add(20, () => {
+			if (open) {
+				global.stage.set_key_focus(this.searchItem.searchEntry);
+			}
+			Mainloop.source_remove(a);
+		});
+	}
+
+	unloadCategories() { //TODO isn't used yet
+		for (let i=1; i<this.emojiCategories.length; i++) {
+			this.emojiCategories[i].unload();
 		}
 	}
 
@@ -258,8 +252,8 @@ class EmojisMenu {
 	_createAllCategories() {
 		this.emojiCategories = [];
 
-		/* creating new categories with emojis loaded in EMOJIS_CHARACTERS */
-		this.emojiCategories[0] = new EmojiCategory(	_('Smileys & Body'),		'emoji-body-symbolic',		0);
+		/* creating new categories, with emojis not loaded yet */
+		this.emojiCategories[0] = new EmojiCategory(	_('Smileys & Body'),		'face-smile-symbolic',		0); //'emoji-body-symbolic',
 		this.emojiCategories[1] = new EmojiCategory(	_('Peoples & Clothing'),	'emoji-people-symbolic',	1);
 		this.emojiCategories[2] = new EmojiCategory(	_('Animals & Nature'),		'emoji-nature-symbolic',	2);
 		this.emojiCategories[3] = new EmojiCategory(	_('Food & Drink'), 			'emoji-food-symbolic',		3);
@@ -297,14 +291,14 @@ class EmojisMenu {
 
 		// closing and hinding opened categories
 		if (POSITION == 'top') {
-			for(var i=this._permanentItems; i < items.length; i++){
+			for (let i=this._permanentItems; i < items.length; i++) {
 				items[i].setSubmenuShown(false);
 				items[i].actor.visible = false;
 			}
 		}
 
 		if (POSITION == 'bottom') {
-			for( var i = 0; i < items.length - this._permanentItems; i++){
+			for (let i=0; i<(items.length - this._permanentItems); i++) {
 				items[i].setSubmenuShown(false);
 				items[i].actor.visible = false;
 			}
@@ -328,7 +322,7 @@ class EmojisMenu {
 		recentlyUsed.actor.add(container, { expand: true });
 		recents = [];
 
-		for(var i=0; i<NB_COLS; i++){
+		for(let i=0; i<NB_COLS; i++) {
 			recents[i] = new EmojiButton.EmojiButton('', null, []);
 			container.add_child(recents[i].super_btn);
 		}
@@ -338,7 +332,7 @@ class EmojisMenu {
 	}
 
 	_bindShortcut() {
-		var ModeType = Shell.hasOwnProperty('ActionMode') ?
+		let ModeType = Shell.hasOwnProperty('ActionMode') ?
 			Shell.ActionMode : Shell.KeyBindingMode;
 
 		Main.wm.addKeybinding(

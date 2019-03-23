@@ -32,7 +32,7 @@ var EmojiButton = class EmojiButton {
 		let tonable = false;
 		let genrable = false;
 		let gendered = false;
-		for (var j = 0; j < keywords.length; j++) {
+		for (let j=0; j < keywords.length; j++) {
 			if (keywords[j] == 'HAS_TONE') {
 				tonable = true;
 			} else if (keywords[j] == 'HAS_GENDER') {
@@ -59,6 +59,11 @@ var EmojiButton = class EmojiButton {
 				category.super_item.label.text = category.categoryName;
 			}
 		});
+	}
+
+	destroy() {
+		//TODO ?
+		this.super_btn.destroy();
 	}
 
 	getStyle() {
@@ -183,12 +188,12 @@ var EmojiButton = class EmojiButton {
 function shiftFor(currentEmoji) {
 	if (currentEmoji == '') { return; }
 	let temp = Convenience.getSettings().get_strv('recently-used');
-	for(var i=0; i<temp.length; i++){
+	for(let i=0; i<temp.length; i++){
 		if (temp[i] == currentEmoji) {
 			temp.splice(i, 1);
 		}
 	}
-	for(var j=temp.length; j>0; j--){
+	for(let j=temp.length; j>0; j--){
 		temp[j] = temp[j-1];
 	}
 	temp[0] = currentEmoji;
