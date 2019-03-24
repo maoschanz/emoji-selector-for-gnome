@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="emoji-selector">
+
+	<object class="GtkAdjustment" id="adjustment_size">
+		<property name="lower">10</property>
+		<property name="upper">100</property>
+		<property name="step_increment">1</property>
+		<property name="page_increment">10</property>
+		<property name="value">30</property>
+	</object>
+
+	<object class="GtkAdjustment" id="adjustment_nbcols">
+		<property name="lower">2</property>
+		<property name="upper">60</property>
+		<property name="step_increment">1</property>
+		<property name="page_increment">10</property>
+		<property name="value">12</property>
+	</object>
+
+	<object class="GtkStack" id="prefs_stack">
+		<property name="transition-type">slide-left-right</property>
+		
+		<child>
+			<object class="GtkScrolledWindow" id="settings_page">
+				<child>
+					<object class="GtkGrid">
+						<property name="expand">True</property>
+						<property name="row-spacing">12</property>
+						<property name="column-spacing">36</property>
+						<property name="halign">center</property>
+						<property name="margin">24</property>
+
+						<child>
+							<object class="GtkLabel">
+								<property name="halign">end</property>
+								<property name="expand">False</property>
+								<property name="label" translatable="yes">General layout</property>
+							</object>
+							<packing>
+								<property name="left-attach">0</property>
+								<property name="top-attach">0</property>
+							</packing>
+						</child>
+						<child>
+							<object class="GtkComboBoxText" id="position_combobox">
+								<property name="expand">False</property>
+							</object>
+							<packing>
+								<property name="left-attach">1</property>
+								<property name="top-attach">0</property>
+							</packing>
+						</child>
+						
+						<child>
+							<object class="GtkLabel">
+								<property name="expand">False</property>
+								<property name="halign">end</property>
+								<property name="label" translatable="yes">Number of emojis per line</property>
+							</object>
+							<packing>
+								<property name="left-attach">0</property>
+								<property name="top-attach">2</property>
+							</packing>
+						</child>
+						<child>
+							<object class="GtkSpinButton" id="nbcols_spinbtn">
+								<property name="expand">False</property>
+								<property name="adjustment">adjustment_nbcols</property>
+							</object>
+							<packing>
+								<property name="left-attach">1</property>
+								<property name="top-attach">2</property>
+							</packing>
+						</child>
+
+						<child>
+							<object class="GtkSeparator">
+								<property name="expand">False</property>
+							</object>
+							<packing>
+								<property name="left-attach">0</property>
+								<property name="top-attach">3</property>
+								<property name="width">2</property>
+							</packing>
+						</child>
+
+						<child>
+							<object class="GtkLabel">
+								<property name="expand">False</property>
+								<property name="halign">end</property>
+								<property name="label" translatable="yes">Size of emojis (px)</property>
+							</object>
+							<packing>
+								<property name="left-attach">0</property>
+								<property name="top-attach">4</property>
+							</packing>
+						</child>
+						<child>
+							<object class="GtkSpinButton" id="size_spinbtn">
+								<property name="expand">False</property>
+								<property name="adjustment">adjustment_size</property>
+							</object>
+							<packing>
+								<property name="left-attach">1</property>
+								<property name="top-attach">4</property>
+							</packing>
+						</child>
+
+						<child>
+							<object class="GtkLabel">
+								<property name="expand">False</property>
+								<property name="halign">end</property>
+								<property name="label" translatable="yes">Use dark font</property>
+								<property name="tooltip_text" translatable="yes">This is useful if your system doesn't support color emojis and your GNOME Shell theme has a white menu background.</property>
+							</object>
+							<packing>
+								<property name="left-attach">0</property>
+								<property name="top-attach">5</property>
+							</packing>
+						</child>
+						<child>
+							<object class="GtkSwitch" id="light_theme_switch">
+								<property name="expand">False</property>
+								<property name="halign">start</property>
+							</object>
+							<packing>
+								<property name="left-attach">1</property>
+								<property name="top-attach">5</property>
+							</packing>
+						</child>
+
+						<child>
+							<object class="GtkSeparator">
+								<property name="expand">False</property>
+							</object>
+							<packing>
+								<property name="left-attach">0</property>
+								<property name="top-attach">6</property>
+								<property name="width">2</property>
+							</packing>
+						</child>
+
+						<child>
+							<object class="GtkLabel">
+								<property name="expand">False</property>
+								<property name="halign">end</property>
+								<property name="label" translatable="yes">Use a keyboard shortcut to toggle the menu</property>
+							</object>
+							<packing>
+								<property name="left-attach">0</property>
+								<property name="top-attach">7</property>
+							</packing>
+						</child>
+						<child>
+							<object class="GtkSwitch" id="keybinding_switch">
+								<property name="expand">False</property>
+								<property name="halign">start</property>
+							</object>
+							<packing>
+								<property name="left-attach">1</property>
+								<property name="top-attach">7</property>
+							</packing>
+						</child>
+
+						<child>
+							<object class="GtkEntry" id="keybinding_entry">
+								<property name="expand">False</property>
+								<property name="halign">end</property>
+							</object>
+							<packing>
+								<property name="left-attach">0</property>
+								<property name="top-attach">8</property>
+							</packing>
+						</child>
+						<child>
+							<object class="GtkButton" id="keybinding_button">
+								<property name="expand">False</property>
+								<property name="halign">start</property>
+								<property name="label" translatable="yes">Apply</property>
+							</object>
+							<packing>
+								<property name="left-attach">1</property>
+								<property name="top-attach">8</property>
+							</packing>
+						</child>
+						
+						<child>
+							<object class="GtkSeparator">
+								<property name="expand">False</property>
+							</object>
+							<packing>
+								<property name="left-attach">0</property>
+								<property name="top-attach">9</property>
+								<property name="width">2</property>
+							</packing>
+						</child>
+
+						<child>
+							<object class="GtkLabel">
+								<property name="expand">False</property>
+								<property name="halign">end</property>
+								<property name="label" translatable="yes">Always show the icon</property>
+								<property name="tooltip_text" translatable="yes">If you access the menu with the keyboard shortcut, you don't need to always display the icon.</property>
+							</object>
+							<packing>
+								<property name="left-attach">0</property>
+								<property name="top-attach">10</property>
+							</packing>
+						</child>
+						<child>
+							<object class="GtkSwitch" id="always_show_switch">
+								<property name="expand">False</property>
+								<property name="halign">start</property>
+							</object>
+							<packing>
+								<property name="left-attach">1</property>
+								<property name="top-attach">10</property>
+							</packing>
+						</child>
+
+					</object>
+				</child>
+			</object>
+			<packing>
+				<property name="name">settings_page</property>
+				<property name="title" translatable="yes">Settings</property>
+			</packing>
+		</child>
+
+		<child>
+			<object class="GtkScrolledWindow">
+				<child>
+					<object class="GtkBox">
+						<property name="spacing">16</property>
+						<property name="margin">32</property>
+						<property name="orientation">vertical</property>
+						<child>
+							<object class="GtkLabel">
+								<property name="halign">center</property>
+								<property name="label" translatable="yes">Emoji Selector</property>
+								<attributes>
+									<attribute name="weight" value="bold"/>
+									<attribute name="scale" value="2"/>
+								</attributes>
+							</object>
+						</child>
+						<child>
+							<object class="GtkImage" id="about_icon"></object>
+						</child>
+						<child>
+							<object class="GtkLabel" id="label_description">
+								<property name="halign">center</property>
+								<property name="wrap">True</property>
+								<property name="label" translatable="yes">This extension provides a parametrable popup menu displaying most emojis, clicking on an emoji copies it to the clipboard.</property>
+							</object>
+						</child>
+						<child>
+							<object class="GtkBox" id="link_box">
+								<property name="spacing">16</property>
+							</object>
+							<packing>
+								<property name="pack-type">end</property>
+							</packing>
+						</child>
+						<child>
+							<object class="GtkBox">
+								<property name="spacing">16</property>
+								<child>
+									<object class="GtkBox">
+										<property name="spacing">16</property>
+										<child>
+											<object class="GtkLabel">
+												<property name="label" translatable="yes">Author:</property>
+											</object>
+										</child>
+										<child>
+											<object class="GtkLabel">
+												<property name="label">Romain F. T.</property>
+											</object>
+										</child>
+									</object>
+								</child>
+								<child>
+									<object class="GtkBox">
+									<property name="spacing">16</property>
+										<child>
+											<object class="GtkLabel" id="translation_label">
+												<property name="label" translatable="yes">Tranlators:</property>
+											</object>
+										</child>
+										<child>
+											<object class="GtkLabel" id="translation_credits">
+												<property name="label" translatable="yes">translator-credits</property>
+											</object>
+										</child>
+									</object>
+									<packing>
+										<property name="pack-type">end</property>
+									</packing>
+								</child>
+							</object>
+							<packing>
+								<property name="pack-type">end</property>
+							</packing>
+						</child>
+					</object>
+				</child>
+			</object>
+			<packing>
+				<property name="name">page_about</property>
+				<property name="title" translatable="yes">About</property>
+			</packing>
+		</child>
+	</object>
+</interface>
+

@@ -7,6 +7,7 @@ cd emoji-selector@maestroschan.fr
 glib-compile-schemas ./schemas
 
 zip ../emoji-selector@maestroschan.fr.zip *.js
+zip ../emoji-selector@maestroschan.fr.zip prefs.ui
 zip ../emoji-selector@maestroschan.fr.zip metadata.json
 zip ../emoji-selector@maestroschan.fr.zip stylesheet.css
 
