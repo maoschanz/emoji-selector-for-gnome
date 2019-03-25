@@ -323,7 +323,8 @@ class EmojisMenu {
 		recents = [];
 
 		for(let i=0; i<NB_COLS; i++) {
-			recents[i] = new EmojiButton.EmojiButton('', null, []);
+			recents[i] = new EmojiButton.EmojiButton('', []);
+			recents[i].build(null);
 			container.add_child(recents[i].super_btn);
 		}
 

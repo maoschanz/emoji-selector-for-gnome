@@ -20,15 +20,8 @@ const TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
 //------------------------------------------------------------------------------
 
 var EmojiButton = class EmojiButton {
-	constructor(baseCharacter, category, keywords) {
-		this.super_btn = new St.Button({ // TODO méthode "load"
-			style_class: 'EmojisItemStyle',
-			style: this.getStyle(),
-			can_focus: true,
-		});
-
-		this.super_btn.label = baseCharacter;
-
+	constructor(baseCharacter, keywords) {
+		this.baseCharacter = baseCharacter;
 		let tonable = false;
 		let genrable = false;
 		let gendered = false;
@@ -43,6 +36,15 @@ var EmojiButton = class EmojiButton {
 		}
 		this.tags = [tonable, genrable, gendered]
 		this.keywords = keywords;
+	}
+	
+	build(category) {
+		this.super_btn = new St.Button({
+			style_class: 'EmojisItemStyle',
+			style: this.getStyle(),
+			can_focus: true,
+			label: this.baseCharacter
+		});
 
 		// Copy the emoji to the clipboard with adequate tags and behavior
 		this.super_btn.connect('button-press-event', this.onButtonPress.bind(this));

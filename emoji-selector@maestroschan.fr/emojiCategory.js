@@ -65,6 +65,7 @@ var EmojiCategory = class EmojiCategory {
 		this.categoryButton.connect('notify::hover', this._onHover.bind(this));
 
 		this._built = false; // will be true once loaded
+		this._loaded = false; // will be true once loaded
 	}
 
 	clear() {
@@ -83,7 +84,7 @@ var EmojiCategory = class EmojiCategory {
 					}
 				}
 				if (isMatching){
-					searchResults.push(this.emojiButtons[i].super_btn.label)
+					searchResults.push(this.emojiButtons[i].baseCharacter)
 					neededresults--;
 				}
 			}
@@ -92,9 +93,22 @@ var EmojiCategory = class EmojiCategory {
 	}
 
 	load() {
-		if (this._built) { return; }
+		if (this._loaded) { return; }
 		let ln, container;
 		for (let i=0; i<EMOJIS_CHARACTERS[this.id].length; i++) {
+			let button = new EmojiButton.EmojiButton(EMOJIS_CHARACTERS[this.id][i],
+			                                         EMOJIS_KEYWORDS[this.id][i]);
+			this.emojiButtons.push(button);
+		}
+		this._loaded = true;
+		EMOJIS_CHARACTERS[this.id] = []; //TODO shouldn't be used
+		EMOJIS_KEYWORDS[this.id] = []; //TODO shouldn't be used
+	}
+
+	build() {
+		if (this._built) { return; }
+		let ln, container;
+		for (let i=0; i<this.emojiButtons.length; i++) {
 			// lines of emojis
 			if (i % Extension.NB_COLS === 0) {
 				ln = new PopupMenu.PopupBaseMenuItem({
@@ -107,15 +121,10 @@ var EmojiCategory = class EmojiCategory {
 				ln.actor.add(container, { expand: true });
 				this.super_item.menu.addMenuItem(ln);
 			}
-
-			let button = new EmojiButton.EmojiButton(EMOJIS_CHARACTERS[this.id][i],
-			                                 this, EMOJIS_KEYWORDS[this.id][i]);
-			this.emojiButtons.push(button);
-			container.add_child(button.super_btn);
+			this.emojiButtons[i].build(this);
+			container.add_child(this.emojiButtons[i].super_btn);
 		}
 		this._built = true;
-		EMOJIS_CHARACTERS[this.id] = []; //TODO shouldn't be used
-		EMOJIS_KEYWORDS[this.id] = []; //TODO shouldn't be used
 	}
 
 	unload() { //TODO isn't used yet
@@ -149,9 +158,8 @@ var EmojiCategory = class EmojiCategory {
 		Extension.GLOBAL_BUTTON.clearCategories();
 		this.super_item.label.text = this.categoryName;
 
-		if(!this._built) {
-			this.load();
-		}
+		if(!this._built) { this.build(); }
+
 		this.skinTonesBar.update();
 
 		this.categoryButton.style = 'background-color: rgba(0, 0, 200, 0.2);';
