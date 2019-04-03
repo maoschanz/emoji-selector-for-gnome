@@ -19,7 +19,7 @@
 
 	<object class="GtkStack" id="prefs_stack">
 		<property name="transition-type">slide-left-right</property>
-		
+
 		<child>
 			<object class="GtkScrolledWindow" id="settings_page">
 				<child>

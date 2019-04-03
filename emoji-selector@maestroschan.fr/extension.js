@@ -136,7 +136,6 @@ class EmojiSearchItem {
 		for (let cat = minCat; cat < maxCat; cat++) {
 			let availableSlots = recents.length - results.length;
 			if (availableSlots > 0) {
-				GLOBAL_BUTTON.emojiCategories[cat].load();
 				let catResults = GLOBAL_BUTTON.emojiCategories[cat].searchEmoji(searchedText, availableSlots);
 				results = results.concat(catResults);
 			}
@@ -166,11 +165,7 @@ class EmojiSearchItem {
 //	_bindShortcut()				bind the keyboard shortcut
 //	destroy()					destroy the button and its menu
 class EmojisMenu {
-	constructor() {
-		this._init();
-	}
-	
-	_init() {
+	constructor () {
 		this.super_btn = new PanelMenu.Button(0.0, _("Emoji Selector"), false);
 		let box = new St.BoxLayout();
 		let icon = new St.Icon({
@@ -239,11 +234,11 @@ class EmojisMenu {
 		});
 	}
 
-	unloadCategories() { //TODO isn't used yet
-		for (let i=1; i<this.emojiCategories.length; i++) {
-			this.emojiCategories[i].unload();
-		}
-	}
+//	unloadCategories() { //TODO isn't used yet
+//		for (let i=1; i<this.emojiCategories.length; i++) {
+//			this.emojiCategories[i].unload();
+//		}
+//	}
 
 	toggle() {
 		this.super_btn.menu.toggle();

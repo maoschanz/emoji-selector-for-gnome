@@ -66,6 +66,21 @@ var EmojiCategory = class EmojiCategory {
 
 		this._built = false; // will be true once loaded
 		this._loaded = false; // will be true once loaded
+		
+		this.load();
+	}
+
+	load() {
+		if (this._loaded) { return; }
+		let ln, container;
+		for (let i=0; i<EMOJIS_CHARACTERS[this.id].length; i++) {
+			let button = new EmojiButton.EmojiButton(EMOJIS_CHARACTERS[this.id][i],
+			                                         EMOJIS_KEYWORDS[this.id][i]);
+			this.emojiButtons.push(button);
+		}
+		this._loaded = true;
+		EMOJIS_CHARACTERS[this.id] = []; //TODO shouldn't be used
+		EMOJIS_KEYWORDS[this.id] = []; //TODO shouldn't be used
 	}
 
 	clear() {
@@ -92,19 +107,6 @@ var EmojiCategory = class EmojiCategory {
 		return searchResults
 	}
 
-	load() {
-		if (this._loaded) { return; }
-		let ln, container;
-		for (let i=0; i<EMOJIS_CHARACTERS[this.id].length; i++) {
-			let button = new EmojiButton.EmojiButton(EMOJIS_CHARACTERS[this.id][i],
-			                                         EMOJIS_KEYWORDS[this.id][i]);
-			this.emojiButtons.push(button);
-		}
-		this._loaded = true;
-		EMOJIS_CHARACTERS[this.id] = []; //TODO shouldn't be used
-		EMOJIS_KEYWORDS[this.id] = []; //TODO shouldn't be used
-	}
-
 	build() {
 		if (this._built) { return; }
 		let ln, container;
@@ -127,14 +129,14 @@ var EmojiCategory = class EmojiCategory {
 		this._built = true;
 	}
 
-	unload() { //TODO isn't used yet
-		this._built = false;
-		for (let i=0; i<this.emojiButtons.length; i++) {
-			this.emojiButtons[i].destroy();
-		}
-		this.super_item.menu.removeAll();
-		this.emojiButtons = [];
-	}
+//	unload() { //TODO isn't used yet
+//		this._built = false;
+//		for (let i=0; i<this.emojiButtons.length; i++) {
+//			this.emojiButtons[i].destroy();
+//		}
+//		this.super_item.menu.removeAll();
+//		this.emojiButtons = [];
+//	}
 
 	_toggle() {
 		if (this.super_item._getOpenState()) {
