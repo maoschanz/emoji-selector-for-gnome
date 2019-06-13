@@ -345,6 +345,13 @@ class EmojisMenu {
 
 function init() {
 	Convenience.initTranslations('emoji-selector');
+	try {
+		let theme = imports.gi.Gtk.IconTheme.get_default();
+		theme.append_search_path(Me.path + '/icons');
+	} catch (e) {
+		// Appending bullshit to the icon theme path is deprecated, but 18.04
+		// users don't have the icons so i do it anyway.
+	}
 }
 
 //------------------------------------------------------------
