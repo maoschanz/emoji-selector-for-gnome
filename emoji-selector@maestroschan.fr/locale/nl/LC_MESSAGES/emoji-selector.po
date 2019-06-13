@@ -1,0 +1,196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-24 22:14+0100\n"
+"PO-Revision-Date: 2019-04-11 11:53+0200\n"
+"Language-Team: Dutch <vistausss@outlook.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.1.1\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl_NL\n"
+
+#: emoji-selector@maestroschan.fr/extension.js:100
+msgid "Type here to search…"
+msgstr "Typ hier om te zoeken…"
+
+#: emoji-selector@maestroschan.fr/extension.js:174
+#: emoji-selector@maestroschan.fr/prefs.ui:240
+msgid "Emoji Selector"
+msgstr "Emoji-selectie"
+
+#: emoji-selector@maestroschan.fr/extension.js:256
+msgid "Smileys & Body"
+msgstr "Smileys en lichaam"
+
+#: emoji-selector@maestroschan.fr/extension.js:257
+msgid "Peoples & Clothing"
+msgstr "Personen en kleding"
+
+#: emoji-selector@maestroschan.fr/extension.js:258
+msgid "Animals & Nature"
+msgstr "Dieren en natuur"
+
+#: emoji-selector@maestroschan.fr/extension.js:259
+msgid "Food & Drink"
+msgstr "Eten en drinken"
+
+#: emoji-selector@maestroschan.fr/extension.js:260
+msgid "Travel & Places"
+msgstr "Reizen en locaties"
+
+#: emoji-selector@maestroschan.fr/extension.js:261
+msgid "Activities & Sports"
+msgstr "Activiteiten en sport"
+
+#: emoji-selector@maestroschan.fr/extension.js:262
+msgid "Objects"
+msgstr "Objecten"
+
+#: emoji-selector@maestroschan.fr/extension.js:263
+msgid "Symbols"
+msgstr "Symbolen"
+
+#: emoji-selector@maestroschan.fr/extension.js:264
+msgid "Flags"
+msgstr "Vlaggen"
+
+#: emoji-selector@maestroschan.fr/prefs.js:41
+msgid "Modifications will be effective after reloading the extension."
+msgstr "Herlaad de uitbreiding om de wijzigingen toe te passen."
+
+#: emoji-selector@maestroschan.fr/prefs.js:46
+msgid "From top to bottom"
+msgstr "Van boven naar beneden"
+
+#: emoji-selector@maestroschan.fr/prefs.js:47
+msgid "From bottom to top"
+msgstr "Van beneden naar boven"
+
+#: emoji-selector@maestroschan.fr/prefs.js:50
+msgid ""
+"Displaying the interface from the bottom is better if you use a bottom panel "
+"instead of the default top bar."
+msgstr ""
+"Van beneden naar boven tonen is het handigst als je gebruikmaakt van een "
+"paneel aan de onderkant i.p.v. de bovenkant."
+
+#: emoji-selector@maestroschan.fr/prefs.js:108
+msgid "Default value is:"
+msgstr "De standaardwaarde is:"
+
+#: emoji-selector@maestroschan.fr/prefs.js:184
+msgid "Report bugs or ideas"
+msgstr "Meld bugs of deel ideeën"
+
+#: emoji-selector@maestroschan.fr/prefs.ui:37
+msgid "General layout"
+msgstr "Algemene indeling"
+
+#: emoji-selector@maestroschan.fr/prefs.ui:58
+msgid "Number of emojis per line"
+msgstr "Aantal emoji's per regel"
+
+#: emoji-selector@maestroschan.fr/prefs.ui:91
+msgid "Size of emojis (px)"
+msgstr "Emojigrootte (px)"
+
+#: emoji-selector@maestroschan.fr/prefs.ui:113
+msgid "Use dark font"
+msgstr "Donker lettertype gebruiken"
+
+#: emoji-selector@maestroschan.fr/prefs.ui:114
+msgid ""
+"This is useful if your system doesn't support color emojis and your GNOME "
+"Shell theme has a white menu background."
+msgstr ""
+"Dit is handig als je systeem geen ondersteuning biedt voor gekleurde emoji's "
+"en je GNOME Shell-thema een witte menu-achtergrond bevat."
+
+#: emoji-selector@maestroschan.fr/prefs.ui:147
+msgid "Use a keyboard shortcut to toggle the menu"
+msgstr "Sneltoets gebruiken om menu te tonen/verbergen"
+
+#: emoji-selector@maestroschan.fr/prefs.ui:179
+msgid "Apply"
+msgstr "Toepassen"
+
+#: emoji-selector@maestroschan.fr/prefs.ui:202
+msgid "Always show the icon"
+msgstr "Pictogram altijd tonen"
+
+#: emoji-selector@maestroschan.fr/prefs.ui:203
+msgid ""
+"If you access the menu with the keyboard shortcut, you don't need to always "
+"display the icon."
+msgstr ""
+"Als je het menu opent met een sneltoets, dan hoeft het pictogram niet altijd "
+"te worden getoond."
+
+#: emoji-selector@maestroschan.fr/prefs.ui:226
+msgid "Settings"
+msgstr "Instellingen"
+
+#: emoji-selector@maestroschan.fr/prefs.ui:254
+msgid ""
+"This extension provides a parametrable popup menu displaying most emojis, "
+"clicking on an emoji copies it to the clipboard."
+msgstr ""
+"Deze uitbreiding bevat een instelbaar pop-upmenu die de meeste emoji's "
+"toont. Klik op een emoji om deze te kopiëren naar het klembord."
+
+#: emoji-selector@maestroschan.fr/prefs.ui:273
+msgid "Author:"
+msgstr "Auteur:"
+
+#: emoji-selector@maestroschan.fr/prefs.ui:288
+msgid "Tranlators:"
+msgstr "Vertalers:"
+
+#: emoji-selector@maestroschan.fr/prefs.ui:293
+msgid "translator-credits"
+msgstr "Heimen Stoffels"
+
+#: emoji-selector@maestroschan.fr/prefs.ui:311
+msgid "About"
+msgstr "Over"
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:27
+msgid "No skin tone"
+msgstr "Geen huidskleur"
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:28
+msgid "Light skin tone"
+msgstr "Lichte huidskleur"
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:29
+msgid "Medium light skin tone"
+msgstr "Lichtere huidskleur"
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:30
+msgid "Medium skin tone"
+msgstr "Gemiddelde huidskleur"
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:31
+msgid "Medium dark skin tone"
+msgstr "Donkerder huidskleur"
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:32
+msgid "Dark skin tone"
+msgstr "Donkere huidskleur"
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:52
+msgid "Men"
+msgstr "Mannen"
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:61
+msgid "Women"
+msgstr "Vrouwen"
