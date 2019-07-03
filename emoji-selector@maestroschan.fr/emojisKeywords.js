@@ -1,7 +1,7 @@
 /* keywords only in lower case */
 
 //http://unicode.org/emoji/charts/full-emoji-list.html
-	
+
 var ALL_KEYWORDS = [
 	[
 		['grinning face', 'grin'],
@@ -91,7 +91,7 @@ var ALL_KEYWORDS = [
 		['cowboy hat face', 'cowboy', 'cowgirl', 'hat'],
 		['clown face', 'clown', 'donald trump'],
 		['lying face', 'lie', 'pinocchio'],
-		//-------------		
+		//-------------
 		['shushing face', 'shush'],
 		['face with hand over mouth', 'whoops', 'shock', 'sudden realization', 'surprise'],
 		['face with monocle', 'stuffy', 'wealthy'],
@@ -121,13 +121,13 @@ var ALL_KEYWORDS = [
 		['see-no-evil monkey', 'evil', 'forbidden', 'gesture', 'monkey', 'no', 'prohibited', 'see'],
 		['hear-no-evil monkey', 'evil', 'forbidden', 'gesture', 'hear', 'monkey', 'no', 'prohibited'],
 		['speak-no-evil monkey', 'evil', 'forbidden', 'gesture', 'monkey', 'no', 'prohibited', 'speak'],
-		
+
 	//-----body
 		['selfie', 'camera', 'phone', 'selfie', 'HAS_TONE'],
 		['flexed biceps', 'biceps', 'comic', 'flex', 'muscle', 'HAS_TONE'],
-		
+
 		//-------------
-		
+
 		['backhand index pointing left', 'backhand', 'finger', 'hand', 'index', 'point', 'HAS_TONE'],
 		['backhand index pointing right', 'backhand', 'finger', 'hand', 'index', 'point', 'HAS_TONE'],
 		['index pointing up', 'finger', 'hand', 'index', 'point', 'up', 'HAS_TONE'],
@@ -149,7 +149,7 @@ var ALL_KEYWORDS = [
 		['oncoming fist', 'clenched', 'fist', 'hand', 'punch', 'HAS_TONE'],
 		['left-facing fist', 'fist', 'leftwards', 'HAS_TONE'],
 		['right-facing fist', 'fist', 'rightwards', 'HAS_TONE'],
-		
+
 		//-------------
 		['raised back of hand', 'backhand', 'raised', 'HAS_TONE'],
 		['waving hand', 'hand', 'wave', 'waving', 'HAS_TONE'],
@@ -172,9 +172,9 @@ var ALL_KEYWORDS = [
 		['brain', 'body'],
 		['tongue', 'body'],
 		['mouth', 'lips'],
-	
+
 	], [	//people & clothes
-		
+
 		['baby', 'baby', 'young', 'HAS_TONE'],
 		['child', 'young', 'HAS_TONE'],
 		['boy', 'boy', 'young', 'HAS_TONE'],
@@ -239,7 +239,7 @@ var ALL_KEYWORDS = [
 		['bride with veil', 'bride', 'veil', 'wedding', 'HAS_TONE'],
 		['pregnant woman', 'pregnant', 'woman', 'HAS_TONE'],
 		['breast-feeding', 'breast', 'woman', 'baby', 'milk', 'HAS_TONE'],
-		//------------person (fantasy)		
+		//------------person (fantasy)
 		['baby angel', 'angel', 'baby', 'fantasy', 'HAS_TONE'],
 		['santa claus', 'christmas', 'celebration', 'claus', 'father', 'santa', 'HAS_TONE'],
 		['mrs. claus', 'christmas', 'mrs.', 'celebration', 'claus', 'mother', 'HAS_TONE'],
@@ -282,8 +282,8 @@ var ALL_KEYWORDS = [
 		['two women holding hands', 'couple', 'hand', 'hold', 'woman'],
 		['kiss', 'couple'],
 		['couple with heart', 'couple', 'love'],
-		['family'],	
-		
+		['family'],
+
 	//clothing
 		['glasses', 'eye', 'eyeglasses', 'eyewear'],
 		['sunglasses', 'dark', 'sun', 'eyewear', 'glasses'],
@@ -404,9 +404,9 @@ var ALL_KEYWORDS = [
 		['fish', 'pisces', 'zodiac', 'wanda'],
 		['tropical fish', 'fish', 'tropical'],
 		['blowfish', 'fish'],
-		
+
 		//-------------
-		
+
 		['shark', 'fish', 'shark'],
 		['octopus'],
 		['spiral shell', 'shell', 'spiral'],
@@ -417,9 +417,9 @@ var ALL_KEYWORDS = [
 		['butterfly', 'insect', 'pretty'],
 		['bug', 'insect'],
 		['ant', 'insect'],
-		
+
 		//-------------
-		
+
 		['honeybee', 'bee', 'insect'],
 		['lady beetle', 'beetle', 'insect', 'ladybird', 'ladybug'],
 		['cricket', 'insect'],
@@ -431,9 +431,9 @@ var ALL_KEYWORDS = [
 		['cherry blossom', 'blossom', 'cherry', 'flower'],
 		['white flower', 'flower'],
 		['rosette', 'plant', 'flower'],
-		
+
 		//-------------
-		
+
 		['rose', 'flower'],
 		['wilted flower', 'flower', 'wilted'],
 		['hibiscus', 'flower'],
@@ -444,9 +444,9 @@ var ALL_KEYWORDS = [
 		['evergreen tree', 'tree'],
 		['deciduous tree', 'deciduous', 'shedding', 'tree'],
 		['palm tree', 'palm', 'tree'],
-		
+
 		//-------------
-		
+
 		['cactus', 'plant'],
 		['sheaf of rice', 'ear', 'grain', 'rice'],
 		['herb', 'leaf'],
@@ -454,8 +454,8 @@ var ALL_KEYWORDS = [
 		['four leaf clover', '4', 'clover', 'four', 'leaf'],
 		['maple leaf', 'falling', 'leaf', 'maple'],
 		['fallen leaf', 'falling', 'leaf', 'autumn'],
-		['leaf fluttering in wind', 'blow', 'flutter', 'leaf', 'wind'], 
-		
+		['leaf fluttering in wind', 'blow', 'flutter', 'leaf', 'wind'],
+
 		['new moon', 'moon'],
 		['waxing crescent moon', 'crescent'],
 		['first quarter moon', 'moon'],
@@ -466,9 +466,9 @@ var ALL_KEYWORDS = [
 		['waning crescent moon', 'crescent', 'moon'],
 		['crescent moon', 'crescent', 'moon'],
 		['new moon face', 'moon'],
-		
+
 		//-------------
-		
+
 		['first quarter moon with face', 'moon'],
 		['last quarter moon with face', 'moon'],
 		['thermometer', 'heat', 'weather'],
@@ -479,9 +479,9 @@ var ALL_KEYWORDS = [
 		['glowing star', 'star'],
 		['shooting star', 'star'],
 		['cloud', 'weather'],
-		
+
 		//-------------
-		
+
 		['sun behind cloud', 'sun', 'weather'],
 		['cloud with lightning and rain', 'cloud', 'rain', 'lightning', 'weather'],
 		['sun behind small cloud', 'weather', 'cloud', 'sun', 'weather'],
@@ -492,9 +492,9 @@ var ALL_KEYWORDS = [
 		['cloud with lightning', 'weather', 'cloud', 'lightning'],
 		['tornado', 'weather', 'wind'],
 		['fog', 'weather'],
-		
+
 		//-------------
-		
+
 		['wind face', 'weather', 'wind'],
 		['cyclone', 'weather', 'wind'],
 		['rainbow', 'colors', 'weather'],
@@ -505,9 +505,9 @@ var ALL_KEYWORDS = [
 		['high voltage', 'electricity'],
 		['snowflake', 'snow', 'weather'],
 		['snowman', 'snow'],
-		
+
 		//-------------
-		
+
 		['snowman without snow', 'snowman'],
 		['comet', 'asteroid', 'star'],
 		['fire'],
@@ -640,9 +640,9 @@ var ALL_KEYWORDS = [
 		['mountain', 'snow'],
 		['volcano', 'mountain', 'lava'],
 		['mount fuji', 'volcano', 'fujisan', 'mountain', 'snow'],
-		
+
 		//-------------
-	
+
 		['camping', 'tent', 'pavilion'],
 		['beach with umbrella', 'beach', 'umbrella', 'sand'],
 		['desert', 'sand', 'cactus'],
@@ -654,9 +654,9 @@ var ALL_KEYWORDS = [
 		['building construction', 'crane', 'construction', 'building'],
 		['houses', 'building'],
 		['cityscape', 'skyscraper', 'city', 'building'],
-		
+
 		//-------------
-		
+
 		['derelict house', 'abandoned', 'ruin', 'building'],
 		['house', 'home'],
 		['house with garden', 'house', 'garden', 'home'],
@@ -667,9 +667,9 @@ var ALL_KEYWORDS = [
 		['bank', 'office', 'money', 'place'],
 		['hotel'],
 		['love hotel', 'hotel', 'love'],
-		
+
 		//-------------
-		
+
 		['convenience store', 'konbini', 'store', 'grocery'],
 		['school', 'academy'],
 		['department store', 'store'],
@@ -681,9 +681,9 @@ var ALL_KEYWORDS = [
 		['tokyo tower', 'tokyo', 'tower'],
 		['statue of liberty', 'new york', 'liberty', 'usa'],
 		['church', 'christ', 'religion', 'christianism'],
-		
+
 		//-------------
-		
+
 		['mosque', 'religion', 'islam', 'muslim'],
 		['synagogue', 'religion', 'judaism'],
 		['shinto shrine', 'religion', 'japan', 'kami'],
@@ -763,9 +763,9 @@ var ALL_KEYWORDS = [
 		['speedboat', 'boat'],
 		['passenger ship', 'boat', 'ship'],
 		['ferry', 'boat', 'ship'],
-		
+
 		//-------------
-		
+
 		['motor boat', 'boat'],
 		['ship', 'boat'],
 	//transport-air
@@ -821,7 +821,7 @@ var ALL_KEYWORDS = [
 		['2nd place medal', 'medal', 'silver'],
 		['3rd place medal', 'medal', 'bronze'],
 		//-------------
-	
+
 	//sport
 		['soccer ball', 'soccer', 'ball', 'football'],
 		['baseball', 'ball'],
@@ -867,9 +867,9 @@ var ALL_KEYWORDS = [
 		['studio microphone'],
 		['level slider'],
 		['control knobs'],
-		
+
 		//-------------
-		
+
 		['microphone'],
 		['headphone'],
 		['radio'],
@@ -879,9 +879,9 @@ var ALL_KEYWORDS = [
 		['trumpet'],
 		['violin'],
 		['drum'],
-		
+
 		['postal horn'],
-		
+
 	//-----person-sport
 		['person fencing', 'fencer', 'fencing', 'sword'],
 		['horse racing', 'horse', 'jockey', 'racehorse', 'racing', 'HAS_TONE'],
@@ -908,14 +908,14 @@ var ALL_KEYWORDS = [
 		['person climbing', 'climbing', 'cliff', 'HAS_GENDER', 'HAS_TONE'],
 		['person in lotus position', 'yoga', 'lotus', 'HAS_GENDER', 'HAS_TONE']
 	], [
-	
+
 	//objects
-		
+
 	//phone
 		['mobile phone'],
-		
+
 		//-------------
-		
+
 		['mobile phone with arrow'],
 		['telephone'],
 		['telephone receiver'],
@@ -926,9 +926,9 @@ var ALL_KEYWORDS = [
 		['laptop computer'],
 		['desktop computer'],
 		['printer'],
-		
+
 		//-------------
-		
+
 		['keyboard'],
 		['computer mouse'],
 		['trackball'],
@@ -939,9 +939,9 @@ var ALL_KEYWORDS = [
 		['movie camera'],
 		['film frames'],
 		['film projector'],
-		
+
 		//-------------
-		
+
 		['clapper board'],
 		['television'],
 		['camera'],
@@ -952,17 +952,17 @@ var ALL_KEYWORDS = [
 		['right-pointing magnifying glass'],
 		['microscope'],
 		['telescope'],
-		
+
 		//-------------
-		
+
 		['satellite antenna'],
 		['candle'],
 		['light bulb'],
 		['flashlight'],
 		['red paper lantern'],
-		
+
 	//time
-		
+
 		['hourglass', 'time'],
 		['hourglass with flowing sand', 'sand', 'time'],
 		['watch', 'clock', 'time'],
@@ -976,9 +976,9 @@ var ALL_KEYWORDS = [
 		['open book'],
 		['green book'],
 		['blue book'],
-		
+
 		//-------------
-		
+
 		['orange book'],
 		['books'],
 		['notebook'],
@@ -989,9 +989,9 @@ var ALL_KEYWORDS = [
 		['newspaper'],
 		['rolled-up newspaper'],
 		['bookmark tabs'],
-		
+
 		//-------------
-		
+
 		['bookmark'],
 		['label'],
 		['money bag'],
@@ -1002,9 +1002,9 @@ var ALL_KEYWORDS = [
 		['money with wings'],
 		['credit card'],
 		['chart increasing with yen'],
-		
+
 		//-------------
-		
+
 		['currency exchange'],
 		['heavy dollar sign'],
 	//mail
@@ -1016,9 +1016,9 @@ var ALL_KEYWORDS = [
 		['inbox tray'],
 		['package'],
 		['closed mailbox with raised flag'],
-		
+
 		//-------------
-		
+
 		['closed mailbox with lowered flag'],
 		['open mailbox with raised flag'],
 		['open mailbox with lowered flag'],
@@ -1029,9 +1029,9 @@ var ALL_KEYWORDS = [
 		['fountain pen'],
 		['pen'],
 		['paintbrush'],
-		
+
 		//-------------
-		
+
 		['crayon'],
 		['memo'],
 		['briefcase'],
@@ -1042,9 +1042,9 @@ var ALL_KEYWORDS = [
 		['tear-off calendar'],
 		['spiral notepad'],
 		['spiral calendar'],
-		
+
 		//-------------
-		
+
 		['card index'],
 		['chart increasing'],
 		['chart decreasing'],
@@ -1055,9 +1055,9 @@ var ALL_KEYWORDS = [
 		['paperclip'],
 		['linked paperclips'],
 		['straight ruler'],
-		
+
 		//-------------
-		
+
 		['triangular ruler'],
 		['scissors'],
 		['card file box'],
@@ -1069,9 +1069,9 @@ var ALL_KEYWORDS = [
 		['locked with pen'],
 		['locked with key'],
 		['key'],
-		
+
 		//-------------
-		
+
 		['old key'],
 	//tool
 		['hammer'],
@@ -1083,9 +1083,9 @@ var ALL_KEYWORDS = [
 		['pistol'],
 		['bow and arrow'],
 		['shield'],
-		
+
 		//-------------
-		
+
 		['wrench'],
 		['nut and bolt'],
 		['gear'],
@@ -1097,9 +1097,9 @@ var ALL_KEYWORDS = [
 	//other
 		['syringe'],
 		['pill'],
-		
+
 		//-------------
-		
+
 		['cigarette'],
 		['coffin'],
 		['funeral urn'],
@@ -1109,7 +1109,7 @@ var ALL_KEYWORDS = [
 		['shopping cart']
 	], [
 	//symbols
-	
+
 	//emotion
 		['kiss mark', 'kiss', 'lips'],
 		['heart with arrow', 'arrow', 'cupid'],
@@ -1125,7 +1125,7 @@ var ALL_KEYWORDS = [
 		['yellow heart'],
 		['purple heart'],
 		['black heart', 'evil', 'wicked'],
-		
+
 		['orange heart', 'heart', 'orange'],
 		//-------------
 		['heart with ribbon', 'ribbon', 'valentine'],
@@ -1149,26 +1149,26 @@ var ALL_KEYWORDS = [
 	//music and sound
 		['musical note'],
 		['musical notes'],
-	
+
 		['muted speaker'],
 		['speaker low volume'],
 		['speaker medium volume'],
 		['speaker high volume'],
 		['loudspeaker'],
-		
+
 		//-------------
-		
+
 		['megaphone'],
 		['bell'],
 		['bell with slash'],
-		
+
 	//transport-sign
 		['atm sign'],
 		['litter in bin sign', 'trash'],
 		['potable water'],
-		
+
 		//-------------
-		
+
 		['wheelchair symbol'],
 		["men's room", 'wc'],
 		["women's room", 'wc'],
@@ -1179,7 +1179,7 @@ var ALL_KEYWORDS = [
 		['customs'],
 		['baggage claim'],
 		['left luggage'],
-		
+
 		//-------------
 	//warning
 		['warning'],
@@ -1192,9 +1192,9 @@ var ALL_KEYWORDS = [
 		['non-potable water'],
 		['no pedestrians'],
 		['no mobile phones'],
-		
+
 		//-------------
-		
+
 		['no one under eighteen'],
 		['radioactive'],
 		['biohazard'],
@@ -1206,9 +1206,9 @@ var ALL_KEYWORDS = [
 		['down arrow'],
 		['down-left arrow'],
 		['left arrow'],
-		
+
 		//-------------
-		
+
 		['up-left arrow'],
 		['up-down arrow'],
 		['left-right arrow'],
@@ -1219,9 +1219,9 @@ var ALL_KEYWORDS = [
 		['clockwise vertical arrows'],
 		['counterclockwise arrows button'],
 		['back arrow'],
-		
+
 		//-------------
-		
+
 		['end arrow'],
 		['on! arrow'],
 		['soon arrow'],
@@ -1232,9 +1232,9 @@ var ALL_KEYWORDS = [
 		['star of david'],
 		['wheel of dharma'],
 		['yin yang'],
-		
+
 		//-------------
-		
+
 		['latin cross'],
 		['orthodox cross'],
 		['star and crescent'],
@@ -1245,9 +1245,9 @@ var ALL_KEYWORDS = [
 		['taurus'],
 		['gemini'],
 		['cancer'],
-		
+
 		//-------------
-		
+
 		['leo'],
 		['virgo'],
 		['libra'],
@@ -1258,9 +1258,9 @@ var ALL_KEYWORDS = [
 		['pisces'],
 		['ophiuchus'],
 		['shuffle tracks button'],
-		
+
 		//-------------
-		
+
 		['repeat button'],
 		['repeat single button'],
 		['play button'],
@@ -1271,9 +1271,9 @@ var ALL_KEYWORDS = [
 		['fast reverse button'],
 		['last track button'],
 		['up button'],
-		
+
 		//-------------
-		
+
 		['fast up button'],
 		['down button'],
 		['fast down button'],
@@ -1284,9 +1284,9 @@ var ALL_KEYWORDS = [
 		['cinema'],
 		['dim button'],
 		['bright button'],
-		
+
 		//-------------
-		
+
 		['antenna bars'],
 		['vibration mode'],
 		['mobile phone off'],
@@ -1298,9 +1298,9 @@ var ALL_KEYWORDS = [
 		['fleur-de-lis'],
 		['trident emblem'],
 		['name badge'],
-		
+
 		//-------------
-		
+
 		['japanese symbol for beginner'],
 		['heavy large circle'],
 		['white heavy check mark'],
@@ -1311,9 +1311,9 @@ var ALL_KEYWORDS = [
 		['cross mark button'],
 		['heavy plus sign'],
 		['heavy minus sign'],
-		
+
 		//-------------
-		
+
 		['heavy division sign'],
 		['curly loop'],
 		['double curly loop'],
@@ -1324,9 +1324,9 @@ var ALL_KEYWORDS = [
 		['double exclamation mark'],
 		['exclamation question mark'],
 		['question mark'],
-		
+
 		//-------------
-		
+
 		['white question mark'],
 		['white exclamation mark'],
 		['exclamation mark'],
@@ -1338,9 +1338,9 @@ var ALL_KEYWORDS = [
 		['#', 'keycap'],
 		['*', 'keycap'],
 		['0', 'keycap'],
-		
+
 		//-------------
-		
+
 		['1', 'keycap'],
 		['2', 'keycap'],
 		['3', 'keycap'],
@@ -1351,9 +1351,9 @@ var ALL_KEYWORDS = [
 		['8', 'keycap'],
 		['9', 'keycap'],
 		['10', 'keycap'],
-		
+
 		//-------------
-		
+
 		['hundred points'],
 		['input latin uppercase'],
 		['input latin lowercase'],
@@ -1364,9 +1364,9 @@ var ALL_KEYWORDS = [
 		['ab button', 'blood type'],
 		['b button', 'blood type'],
 		['cl button'],
-		
+
 		//-------------
-		
+
 		['cool button'],
 		['free button'],
 		['information'],
@@ -1377,9 +1377,9 @@ var ALL_KEYWORDS = [
 		['o button', 'blood type'],
 		['ok button'],
 		['p button'],
-		
+
 		//-------------
-		
+
 		['sos button'],
 		['up! button'],
 		['vs button'],
@@ -1390,9 +1390,9 @@ var ALL_KEYWORDS = [
 		['japanese “reserved” button'],
 		['japanese “bargain” button'],
 		['japanese “discount” button'],
-		
+
 		//-------------
-		
+
 		['japanese “free of charge” button'],
 		['japanese “prohibited” button'],
 		['japanese “acceptable” button'],
@@ -1403,7 +1403,7 @@ var ALL_KEYWORDS = [
 		['japanese “secret” button'],
 		['japanese “open for business” button'],
 		['japanese “no vacancy” button'],
-		
+
 		//-------------
 	//geometric
 		['black small square'],
@@ -1416,9 +1416,9 @@ var ALL_KEYWORDS = [
 		['white large square'],
 		['large orange diamond'],
 		['large blue diamond'],
-		
+
 		//-------------
-		
+
 		['small orange diamond'],
 		['small blue diamond'],
 		['red triangle pointed up'],
@@ -1433,7 +1433,7 @@ var ALL_KEYWORDS = [
 		['blue circle'],
 
 	//time
-			
+
 		['hour', '12h00', '0h00'],
 		['hour', '12h30', '0h30'],
 		//-------------
@@ -1446,8 +1446,8 @@ var ALL_KEYWORDS = [
 		['hour', '16h00', '4h00'],
 		['hour', '16h30', '4h30'],
 		['hour', '17h00', '5h00'],
-		['hour', '17h30', '5h30'],	
-		//-------------	
+		['hour', '17h30', '5h30'],
+		//-------------
 		['hour', '18h00', '6h00'],
 		['hour', '18h30', '6h30'],
 		['hour', '19h00', '7h00'],
@@ -1460,20 +1460,20 @@ var ALL_KEYWORDS = [
 		['hour', '22h30', '10h30'],
 		['hour', '23h00', '11h00'],
 		['hour', '23h30', '11h30']
-		
+
 	], [
-		
+
 	//flags
-		
+
 		['chequered flag', 'flag'],
 		['triangular flag'],
 		['crossed flags'],
 		['black flag'],
 		['white flag', 'flag'],
 		['rainbow flag', 'lgbt'],
-		
+
 		//-------------
-		
+
 		['ascension island'],
 		['andorra'],
 		['united arab emirates'],
@@ -1695,7 +1695,7 @@ var ALL_KEYWORDS = [
 		['swaziland', 'eswatini'],
 		['tristan da cunha'],
 		['turks & caicos islands', 'turks', 'caicos'],
-		
+
 		['chad'],
 		['french southern territories', 'kerguelen'],
 		['togo'],
@@ -1736,8 +1736,8 @@ var ALL_KEYWORDS = [
 		//['england'],
 		//['scotland'],
 		//['wales']
-		
-	]	
-];	
+
+	]
+];
 	
 
