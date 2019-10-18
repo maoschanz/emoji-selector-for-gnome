@@ -1503,7 +1503,7 @@ var ALL_KEYWORDS = [
 		['st. barthélemy', 'barthélemy', 'saint barthélemy'],
 		['bermuda'],
 		['brunei'],
-		['brunei'],
+		['bolivia'],
 		['caribbean netherlands'],
 		['brazil'],
 		['bahamas'],
