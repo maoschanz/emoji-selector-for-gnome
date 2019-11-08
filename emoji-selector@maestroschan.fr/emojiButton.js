@@ -146,13 +146,14 @@ var EmojiButton = class EmojiButton {
 	}
 
 	// TODO update this old comment and add the tag for symbol
-	//This returns an emoji corresponding to .super_btn.label with tags applied to it.
-	//`tags` is an array of 3 booleans, which describe how a composite emoji is built:
-	//- tonable -> return emoji concatened with the selected skin tone;
-	//- genrable -> return emoji concatened with the selected gender;
-	//- gendered -> the emoji is already gendered, which modifies the way skin tone is
-	//  applied ([man|woman] + [skin tone if any] + [other symbol(s)]).
-	//If all tags are false, it returns unmodified .super_btn.label
+	// This returns an emoji corresponding to .super_btn.label with tags applied
+	// to it. `tags` is an array of 3 booleans, which describe how a composite
+	// emoji is built:
+	// - tonable -> return emoji concatened with the selected skin tone;
+	// - genrable -> return emoji concatened with the selected gender;
+	// - gendered -> the emoji is already gendered, which modifies the way skin
+	//   tone is applied ([man|woman] + [skin tone if any] + [other symbol(s)]).
+	// If all tags are false, it returns unmodified .super_btn.label
 	getTaggedEmoji() {
 		let currentEmoji = this.super_btn.label;
 		if(currentEmoji == '') {
@@ -164,17 +165,18 @@ var EmojiButton = class EmojiButton {
 		let gendered = this.tags[2];
 		let temp = currentEmoji;
 		if (tonable) {
+			let tone_index = Extension.SETTINGS.get_int('skin-tone');
 			if (gendered) {
 				if (temp.includes(GENDERS2[0])) {
-					currentEmoji = currentEmoji.replace(GENDERS2[0], GENDERS2[0]+TONES[Extension.SETTINGS.get_int('skin-tone')])
+					currentEmoji = currentEmoji.replace(GENDERS2[0], GENDERS2[0]+TONES[tone_index])
 				} else if (temp.includes(GENDERS2[1])) {
-					currentEmoji = currentEmoji.replace(GENDERS2[1], GENDERS2[1]+TONES[Extension.SETTINGS.get_int('skin-tone')])
+					currentEmoji = currentEmoji.replace(GENDERS2[1], GENDERS2[1]+TONES[tone_index])
 				} else {
 					log('Error: ' + GENDERS2[0] + " isn't a valid gender prefix.");
 				}
 				temp = currentEmoji;
 			} else {
-				temp += TONES[Extension.SETTINGS.get_int('skin-tone')];
+				temp += TONES[tone_index];
 			}
 		}
 		if (genrable) {
@@ -185,7 +187,7 @@ var EmojiButton = class EmojiButton {
 	}
 };
 
-//-----------------------------------------
+//------------------------------------------------------------------------------
 
 function shiftFor(currentEmoji) {
 	if (currentEmoji == '') { return; }
@@ -205,4 +207,5 @@ function shiftFor(currentEmoji) {
 	Extension.GLOBAL_BUTTON._onSearchTextChanged();
 }
 
+//------------------------------------------------------------------------------
 

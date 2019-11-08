@@ -13,7 +13,7 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 const Convenience = Me.imports.convenience;
 
-//-----------------------------------------------
+//------------------------------------------------------------------------------
 
 function init() {
 	Convenience.initTranslations();
@@ -21,7 +21,7 @@ function init() {
 
 let SETTINGS = Convenience.getSettings();
 
-//-----------------------------------------------
+//------------------------------------------------------------------------------
 
 const EmojiSelectorSettingsWidget = new GObject.Class({
 	Name: 'EmojiSelector.Prefs.Widget',
@@ -50,7 +50,6 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 			_("Displaying the interface from the bottom is better if you use a bottom panel instead of the default top bar.")
 			+ '\n' + RELOAD_TEXT
 		);
-
 
 		positionCombobox.connect("changed", (widget) => {
 			SETTINGS.set_string('position', widget.get_active_id());
@@ -185,10 +184,14 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 		});
 		
 		linkBox.pack_start(url_button, false, false, 0);
-		linkBox.pack_end(new Gtk.Label({ label: a_version, halign: Gtk.Align.START }),
-		                                                       false, false, 0);
+		linkBox.pack_end(new Gtk.Label({
+			label: a_version,
+			halign: Gtk.Align.START
+		}), false, false, 0);
 	}
 });
+
+//------------------------------------------------------------------------------
 
 function buildPrefsWidget() {
 	let widget = new EmojiSelectorSettingsWidget();
@@ -214,4 +217,5 @@ function reset_settings(b) {
 	SETTINGS.reset('always-show');
 }
 
+//------------------------------------------------------------------------------
 

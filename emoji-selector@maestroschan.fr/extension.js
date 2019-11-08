@@ -32,6 +32,30 @@ const EmojiButton = Me.imports.emojiButton;
 
 //----------------------------------------------
 
+const CAT_LABELS = [
+	_('Smileys & Body'),
+	_('Peoples & Clothing'),
+	_('Animals & Nature'),
+	_('Food & Drink'),
+	_('Travel & Places'),
+	_('Activities & Sports'),
+	_('Objects'),
+	_('Symbols'),
+	_('Flags')
+];
+
+const CAT_ICONS = [
+	'face-smile-symbolic', //'emoji-body-symbolic',
+	'emoji-people-symbolic',
+	'emoji-nature-symbolic',
+	'emoji-food-symbolic',
+	'emoji-travel-symbolic',
+	'emoji-activities-symbolic',
+	'emoji-objects-symbolic',
+	'emoji-symbols-symbolic',
+	'emoji-flags-symbolic'
+];
+
 var SETTINGS;
 let SIGNAUX = [];
 
@@ -80,7 +104,7 @@ function buildRecents() { //XXX not oop
 	}
 }
 
-//----------------------------------------------
+//------------------------------------------------------------------------------
 
 //class EmojiSearchItem
 //methods :
@@ -200,9 +224,9 @@ class EmojisMenu {
 			this.super_btn.menu.addMenuItem(recentlyUsed);
 			this._permanentItems++;
 		}
-		//-----------------------------------------------
+		//----------------------------------------------------------------------
 		this._addAllCategories();
-		//-----------------------------------------------
+		//----------------------------------------------------------------------
 		if (POSITION === 'bottom') {
 			this.super_btn.menu.addMenuItem(recentlyUsed);
 			this._permanentItems++;
@@ -212,7 +236,8 @@ class EmojisMenu {
 			this._permanentItems++;
 		}
 
-		// this sets the default behavior of each submenu : false means it is close when the extension's menu opens
+		// this sets the default behavior of each submenu : false means it is
+		// close when the extension's menu opens
 		this.super_btn.menu.connect('open-state-changed', this.onOpenStateChanged.bind(this));
 
 		if (SETTINGS.get_boolean('use-keybinding')) {
@@ -248,19 +273,13 @@ class EmojisMenu {
 		this.emojiCategories = [];
 
 		/* creating new categories, with emojis not loaded yet */
-		this.emojiCategories[0] = new EmojiCategory(	_('Smileys & Body'),		'face-smile-symbolic',		0); //'emoji-body-symbolic',
-		this.emojiCategories[1] = new EmojiCategory(	_('Peoples & Clothing'),	'emoji-people-symbolic',	1);
-		this.emojiCategories[2] = new EmojiCategory(	_('Animals & Nature'),		'emoji-nature-symbolic',	2);
-		this.emojiCategories[3] = new EmojiCategory(	_('Food & Drink'), 			'emoji-food-symbolic',		3);
-		this.emojiCategories[4] = new EmojiCategory(	_('Travel & Places'), 		'emoji-travel-symbolic',	4);
-		this.emojiCategories[5] = new EmojiCategory(	_('Activities & Sports'),	'emoji-activities-symbolic',5);
-		this.emojiCategories[6] = new EmojiCategory(	_('Objects'),				'emoji-objects-symbolic',	6);
-		this.emojiCategories[7] = new EmojiCategory(	_('Symbols'),				'emoji-symbols-symbolic',	7);
-		this.emojiCategories[8] = new EmojiCategory(	_('Flags'),					'emoji-flags-symbolic',		8);
+		for (let i = 0; i < 9; i++) {
+			this.emojiCategories[i] = new EmojiCategory(CAT_LABELS[i], CAT_ICONS[i], i);
+		}
 	}
 
 	_addAllCategories() {
-		for (let i = 0; i< 9; i++) {
+		for (let i = 0; i < 9; i++) {
 			this.super_btn.menu.addMenuItem(this.emojiCategories[i].super_item);
 		}
 	}
@@ -272,7 +291,8 @@ class EmojisMenu {
 		});
 		this.categoryButton = [];
 		for (let i=0; i<this.emojiCategories.length; i++) {
-			this._buttonMenuItem.actor.add(this.emojiCategories[i].getButton(), { expand: true, x_fill: false });
+			this._buttonMenuItem.actor.add(this.emojiCategories[i].getButton(),
+			                                   { expand: true, x_fill: false });
 		}
 	}
 
@@ -341,7 +361,8 @@ class EmojisMenu {
 	}
 };
 
-//------------------------------------------------------------
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 function init() {
 	Convenience.initTranslations('emoji-selector');
@@ -354,7 +375,7 @@ function init() {
 	}
 }
 
-//------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 function enable() {
 	SETTINGS = Convenience.getSettings();
@@ -390,7 +411,7 @@ function enable() {
 	});
 }
 
-//------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 function disable() {
 	//we need to save labels currently in recents[] for the next session
@@ -407,4 +428,6 @@ function disable() {
 
 	GLOBAL_BUTTON.super_btn.destroy();
 }
+
+//------------------------------------------------------------------------------
 
