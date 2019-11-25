@@ -23,6 +23,10 @@ It will be less ugly if you have the « [Twitter Color Emoji](https://github.com
 
 Color emojis depends on the system you're using (GNOME > 3.26 is recommended).
 
+## About memory
+
+Loading hundreds of small pictures and thousands of keywords into the memory is a lot. Despite a few attempts to optimize their loading, I'm not an expert at all concerning memory management, and the extension may be responsible for between 10MB and 60MB of memory usage, which is a lot. Don't blame the actual GS devs for it.
+
 ## Contributors & translations
 
 - [Ryan Gonzalez](https://github.com/kirbyfan64) (port to ES6 classes)
@@ -31,7 +35,7 @@ Color emojis depends on the system you're using (GNOME > 3.26 is recommended).
 - picsi / frnogueira (brazilian portuguese and esperanto translations)
 <!--TODO credit all translators + credit them in the about-->
 
-The extension is currently available in english, french, brazilian portuguese, italian, esperanto and german. I only know french and english, so if you need a specific language, please contribute: you just have to be inspired by the existing .po files !
+The extension is currently available in english, french, brazilian portuguese, italian, esperanto and german. I only know french and english, so if you need a specific language, please contribute!
 
 ## Installation
 

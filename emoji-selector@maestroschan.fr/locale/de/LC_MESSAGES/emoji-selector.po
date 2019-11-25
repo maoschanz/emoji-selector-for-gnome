@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-24 22:14+0100\n"
+"POT-Creation-Date: 2019-11-25 20:47+0100\n"
 "PO-Revision-Date: 2017-04-22 01:34+0200\n"
 "Last-Translator: Jonatan Hatakeyama Zeidler <jonatan_zeidler@gmx.de>\n"
 "Language-Team: \n"
@@ -17,50 +17,50 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: emoji-selector@maestroschan.fr/extension.js:100
-msgid "Type here to search…"
-msgstr ""
-
-#: emoji-selector@maestroschan.fr/extension.js:174
-#: emoji-selector@maestroschan.fr/prefs.ui:240
-msgid "Emoji Selector"
-msgstr ""
-
-#: emoji-selector@maestroschan.fr/extension.js:256
+#: emoji-selector@maestroschan.fr/extension.js:36
 msgid "Smileys & Body"
 msgstr "Smileys & Körper"
 
-#: emoji-selector@maestroschan.fr/extension.js:257
+#: emoji-selector@maestroschan.fr/extension.js:37
 msgid "Peoples & Clothing"
 msgstr ""
 
-#: emoji-selector@maestroschan.fr/extension.js:258
+#: emoji-selector@maestroschan.fr/extension.js:38
 msgid "Animals & Nature"
 msgstr ""
 
-#: emoji-selector@maestroschan.fr/extension.js:259
+#: emoji-selector@maestroschan.fr/extension.js:39
 msgid "Food & Drink"
 msgstr "Essen & Trinken"
 
-#: emoji-selector@maestroschan.fr/extension.js:260
+#: emoji-selector@maestroschan.fr/extension.js:40
 msgid "Travel & Places"
 msgstr "Reisen & Orte"
 
-#: emoji-selector@maestroschan.fr/extension.js:261
+#: emoji-selector@maestroschan.fr/extension.js:41
 msgid "Activities & Sports"
 msgstr "Aktivitäten & Sport"
 
-#: emoji-selector@maestroschan.fr/extension.js:262
+#: emoji-selector@maestroschan.fr/extension.js:42
 msgid "Objects"
 msgstr "Objekte"
 
-#: emoji-selector@maestroschan.fr/extension.js:263
+#: emoji-selector@maestroschan.fr/extension.js:43
 msgid "Symbols"
 msgstr "Symbole"
 
-#: emoji-selector@maestroschan.fr/extension.js:264
+#: emoji-selector@maestroschan.fr/extension.js:44
 msgid "Flags"
 msgstr "Flaggen"
+
+#: emoji-selector@maestroschan.fr/extension.js:124
+msgid "Type here to search…"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/extension.js:193
+#: emoji-selector@maestroschan.fr/prefs.ui:240
+msgid "Emoji Selector"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.js:41
 msgid "Modifications will be effective after reloading the extension."
@@ -80,11 +80,11 @@ msgid ""
 "instead of the default top bar."
 msgstr ""
 
-#: emoji-selector@maestroschan.fr/prefs.js:108
+#: emoji-selector@maestroschan.fr/prefs.js:107
 msgid "Default value is:"
 msgstr ""
 
-#: emoji-selector@maestroschan.fr/prefs.js:184
+#: emoji-selector@maestroschan.fr/prefs.js:182
 msgid "Report bugs or ideas"
 msgstr ""
 
