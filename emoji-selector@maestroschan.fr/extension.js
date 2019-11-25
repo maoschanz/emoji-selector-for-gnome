@@ -259,7 +259,7 @@ class EmojisMenu {
 		});
 	}
 
-//	unloadCategories() { //TODO isn't used yet
+//	unloadCategories() { // TODO
 //		for (let i=1; i<this.emojiCategories.length; i++) {
 //			this.emojiCategories[i].unload();
 //		}
@@ -359,6 +359,14 @@ class EmojisMenu {
 			this.toggle.bind(this)
 		);
 	}
+
+//	destroy() { // TODO ?
+//		this.unloadCategories();
+//		for (let i=1; i<this.emojiCategories.length; i++) {
+//			this.emojiCategories[i].destroy();
+//		}
+//	}
+
 };
 
 //------------------------------------------------------------------------------
@@ -427,6 +435,7 @@ function disable() {
 	SETTINGS.disconnect(SIGNAUX[3]);
 
 	GLOBAL_BUTTON.super_btn.destroy();
+//	GLOBAL_BUTTON.destroy();
 }
 
 //------------------------------------------------------------------------------

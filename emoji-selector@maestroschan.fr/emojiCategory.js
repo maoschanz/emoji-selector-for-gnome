@@ -10,16 +10,6 @@ const SkinTonesBar = Me.imports.emojiOptionsBar.SkinTonesBar;
 const Extension = Me.imports.extension;
 const EmojiButton = Me.imports.emojiButton;
 
-/* XXX it's shit
- * Import data (array of arrays of characters, and array of arrays of strings).
- * Keywords are used for both:
- * - search
- * - skin tone management
- * - gender management
- */
-let EMOJIS_CHARACTERS = Me.imports.emojisCharacters.ALL;
-let EMOJIS_KEYWORDS = Me.imports.emojisKeywords.ALL_KEYWORDS;
-
 //class EmojiCategory
 //methods :
 //	constructor(string, string, int)	init the button & the submenu's menu-item (label, tone/gender)
@@ -73,14 +63,23 @@ var EmojiCategory = class EmojiCategory {
 	load() {
 		if (this._loaded) { return; }
 		let ln, container;
+		
+		/* XXX importing anything here is shit
+		 * This imports data (array of arrays of characters, and array of arrays
+		 * of strings). Keywords are used for both:
+		 * - search
+		 * - skin tone management
+		 * - gender management
+		 */
+		let EMOJIS_CHARACTERS = Me.imports.emojisCharacters.ALL;
+		let EMOJIS_KEYWORDS = Me.imports.emojisKeywords.ALL_KEYWORDS;
+		
 		for (let i=0; i<EMOJIS_CHARACTERS[this.id].length; i++) {
 			let button = new EmojiButton.EmojiButton(EMOJIS_CHARACTERS[this.id][i],
 			                                         EMOJIS_KEYWORDS[this.id][i]);
 			this.emojiButtons.push(button);
 		}
 		this._loaded = true;
-		EMOJIS_CHARACTERS[this.id] = []; //TODO shouldn't be used
-		EMOJIS_KEYWORDS[this.id] = []; //TODO shouldn't be used
 	}
 
 	clear() {
@@ -129,8 +128,9 @@ var EmojiCategory = class EmojiCategory {
 		this._built = true;
 	}
 
-//	unload() { //TODO isn't used yet
+//	unload() { // TODO
 //		this._built = false;
+//		this._loaded = false;
 //		for (let i=0; i<this.emojiButtons.length; i++) {
 //			this.emojiButtons[i].destroy();
 //		}
