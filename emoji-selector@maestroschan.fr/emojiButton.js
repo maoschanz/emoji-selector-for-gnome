@@ -17,6 +17,12 @@ const GENDERS =	['',	'\u200D\u2640\uFE0F',	'\u200D\u2642\uFE0F'];
 const GENDERS2 = ['👩','👨'];
 const TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
 
+
+/* Stuffs for settings, translations etc. */
+const Gettext = imports.gettext.domain('emoji-selector');
+const _ = Gettext.gettext;
+
+
 //------------------------------------------------------------------------------
 
 var EmojiButton = class EmojiButton {
@@ -54,13 +60,13 @@ var EmojiButton = class EmojiButton {
 
 		// Update the category label on hover, allowing the user to know the
 		// name of the emoji he's copying.
-		this.super_btn.connect('notify::hover', (a, b) => {
-			if (a.hover) {
-				category.super_item.label.text = this.keywords[0];
-			} else {
-				category.super_item.label.text = category.categoryName;
-			}
-		});
+		// this.super_btn.connect('notify::hover', (a, b) => {
+		// 	if (a.hover) {
+		// 		category.super_item.label.text = _( this.keywords[0] );
+		// 	} else {
+		// 		category.super_item.label.text = _( category.categoryName );
+		// 	}
+		// });
 	}
 
 	destroy() {
