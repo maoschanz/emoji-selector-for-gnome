@@ -18,9 +18,9 @@ const GENDERS2 = ['👩','👨'];
 const TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
 
 
-/* Stuffs for settings, translations etc. */
-const Gettext = imports.gettext.domain('emoji-selector');
-const _ = Gettext.gettext;
+// /* Stuffs for settings, translations etc. */
+// const Gettext = imports.gettext.domain('emoji-selector');
+// const _ = Gettext.gettext;
 
 
 //------------------------------------------------------------------------------
