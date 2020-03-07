@@ -10,12 +10,6 @@ const SkinTonesBar = Me.imports.emojiOptionsBar.SkinTonesBar;
 const Extension = Me.imports.extension;
 const EmojiButton = Me.imports.emojiButton;
 
-
-/* Stuffs for settings, translations etc. */
-const Gettext = imports.gettext.domain('emoji-selector');
-const _ = Gettext.gettext;
-
-
 //class EmojiCategory
 //methods :
 //	constructor(string, string, int)	init the button & the submenu's menu-item (label, tone/gender)
@@ -164,7 +158,7 @@ var EmojiCategory = class EmojiCategory {
 
 	_openCategory() {
 		Extension.GLOBAL_BUTTON.clearCategories();
-		this.super_item.label.text = _(  this.categoryName ); 
+		this.super_item.label.text = this.categoryName;
 
 		if(!this._built) { this.build(); }
 

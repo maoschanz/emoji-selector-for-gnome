@@ -32,17 +32,7 @@ const EmojiButton = Me.imports.emojiButton;
 
 //----------------------------------------------
 
-const CAT_LABELS = [
-	_('Smileys & Body'),
-	_('Peoples & Clothing'),
-	_('Animals & Nature'),
-	_('Food & Drink'),
-	_('Travel & Places'),
-	_('Activities & Sports'),
-	_('Objects'),
-	_('Symbols'),
-	_('Flags')
-];
+var CAT_LABELS;
 
 const CAT_ICONS = [
 	'face-smile-symbolic', //'emoji-body-symbolic',
@@ -387,21 +377,34 @@ function init() {
 
 function enable() {
 	SETTINGS = Convenience.getSettings();
-
+	NB_COLS = SETTINGS.get_int('nbcols');
+	POSITION = SETTINGS.get_string('position');
 	/* TODO paramètres restants à dynamiser
 	emoji-keybinding (tableau de chaînes), pourri de toutes manières
 	nbcols (int), rebuild nécessaire
 	position (chaîne) impossible tout court ?
 	*/
 
-	NB_COLS = SETTINGS.get_int('nbcols');
-	POSITION = SETTINGS.get_string('position');
+	// This variable is assigned here because init() wouldn't provide gettext
+	// correctly if it was done at the beginning of the file.
+	CAT_LABELS = [
+		_("Smileys & Body"),
+		_("Peoples & Clothing"),
+		_("Animals & Nature"),
+		_("Food & Drink"),
+		_("Travel & Places"),
+		_("Activities & Sports"),
+		_("Objects"),
+		_("Symbols"),
+		_("Flags")
+	];
 
 	GLOBAL_BUTTON = new EmojisMenu();
 
-//	about addToStatusArea :
-//	- 0 is the position
-//	- `right` is the box where we want our GLOBAL_BUTTON to be displayed (left/center/right)
+	// about addToStatusArea :
+	// - 'EmojisMenu' is an id
+	// - 0 is the position
+	// - `right` is the box where we want our GLOBAL_BUTTON to be displayed (left/center/right)
 	Main.panel.addToStatusArea('EmojisMenu', GLOBAL_BUTTON.super_btn, 0, 'right');
 
 	SIGNAUX[0] = SETTINGS.connect('changed::emojisize', () => { updateStyle(); });
