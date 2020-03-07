@@ -165,6 +165,7 @@ var EmojiCategory = class EmojiCategory {
 	_openCategory() {
 		Extension.GLOBAL_BUTTON.clearCategories();
 		this.super_item.label.text = _(  this.categoryName ); 
+
 		if(!this._built) { this.build(); }
 
 		this.skinTonesBar.update();
