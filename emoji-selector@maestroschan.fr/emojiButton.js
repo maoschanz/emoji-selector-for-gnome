@@ -16,6 +16,8 @@ const CLIPBOARD_TYPE = St.ClipboardType.CLIPBOARD;
 const GENDERS =	['',	'\u200D\u2640\uFE0F',	'\u200D\u2642\uFE0F'];
 const GENDERS2 = ['👩','👨'];
 const TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
+// TODO hairs?? red/curly/white/bald
+// TODO symbols
 
 //------------------------------------------------------------------------------
 

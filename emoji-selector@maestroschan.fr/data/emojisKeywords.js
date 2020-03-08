@@ -3,7 +3,8 @@
 //http://unicode.org/emoji/charts/full-emoji-list.html
 
 var ALL_KEYWORDS = [
-	[
+	[ // Smileys and Body
+	//-----smileys
 		['grinning face', 'grin'],
 		['grinning face with smiling eyes', 'grin', 'smile'],
 		['face with tears of joy', 'joy', 'laugh', 'tear'],
@@ -181,8 +182,8 @@ var ALL_KEYWORDS = [
 		['tooth', 'mouth'],
 		['bone', 'body']
 
-	], [	//people & clothes
-
+	], [ // People and Clothes
+	//-----people
 		['baby', 'baby', 'young', 'HAS_TONE'],
 		['child', 'young', 'HAS_TONE'],
 		['boy', 'boy', 'young', 'HAS_TONE'],
@@ -233,25 +234,25 @@ var ALL_KEYWORDS = [
 		['detective', 'detective', 'sleuth', 'spy', 'HAS_GENDER', 'HAS_TONE'],
 		['guard', 'royal guard', 'HAS_GENDER', 'HAS_TONE'],
 		['construction worker', 'construction', 'hat', 'worker', 'ci build', 'HAS_GENDER', 'HAS_TONE'],
-		//-------------
 		['prince', 'king', 'HAS_TONE'],
 		['princess', 'fairy tale', 'fantasy', 'HAS_TONE'],
 		['person wearing turban', 'turban', 'HAS_GENDER', 'HAS_TONE'],
 		['man with chinese cap', 'gua pi mao', 'hat', 'chinese', 'HAS_TONE'],
+		//------------
 		['woman with headscarf', 'headscarf', 'hijab', 'mantilla', 'tichel', 'bandana', 'head kerchief', 'HAS_TONE'],
 		['bearded person', 'beard', 'HAS_TONE'],
 		['blond-haired person', 'blond', 'HAS_GENDER', 'HAS_TONE'],
-		//missing unicode 11 items FIXME
 		['man in tuxedo', 'groom', 'tuxedo', 'wedding', 'HAS_TONE'],
-		//-------------
 		['bride with veil', 'bride', 'veil', 'wedding', 'HAS_TONE'],
 		['pregnant woman', 'pregnant', 'woman', 'HAS_TONE'],
 		['breast-feeding', 'breast', 'woman', 'baby', 'milk', 'HAS_TONE'],
-		//------------person (fantasy)
+	//-----person (fantasy)
 		['baby angel', 'angel', 'baby', 'fantasy', 'HAS_TONE'],
 		['santa claus', 'christmas', 'celebration', 'claus', 'father', 'santa', 'HAS_TONE'],
 		['mrs. claus', 'christmas', 'mrs.', 'celebration', 'claus', 'mother', 'HAS_TONE'],
-		//missing unicode 11 items FIXME
+		//------------
+		['superhero', 'hero', 'comics', 'HAS_GENDER', 'HAS_TONE'],
+		['supervillain', 'villain', 'comics', 'HAS_GENDER', 'HAS_TONE'],
 		['mage', 'magus', 'wizard', 'fantasy', 'HAS_GENDER', 'HAS_TONE'],
 		['fairy', 'pixy', 'fantasy', 'HAS_GENDER', 'HAS_TONE'],
 		['vampire', 'blood', 'fantasy', 'HAS_GENDER', 'HAS_TONE'],
@@ -259,8 +260,9 @@ var ALL_KEYWORDS = [
 		['elf', 'fantasy', 'HAS_GENDER', 'HAS_TONE'],
 		['genie', 'wish', 'jinn', 'HAS_GENDER'],
 		['zombie', 'HAS_GENDER'],
-		//------------person (gesture)
+	//-----person (gesture)
 		['person frowning', 'frown', 'gesture', 'HAS_GENDER', 'HAS_TONE'],
+		//------------
 		['person pouting', 'gesture', 'pouting', 'HAS_GENDER', 'HAS_TONE'],
 		['person gesturing no', 'forbidden', 'gesture', 'hand', 'no', 'not', 'prohibited', 'HAS_GENDER', 'HAS_TONE'],
 		['person gesturing ok', 'ok', 'gesture', 'hand', 'HAS_GENDER', 'HAS_TONE'],
@@ -269,9 +271,9 @@ var ALL_KEYWORDS = [
 		['person bowing', 'apology', 'bow', 'gesture', 'sorry', 'HAS_GENDER', 'HAS_TONE'],
 		['person facepalming', 'disbelief', 'exasperation', 'palm', 'HAS_GENDER', 'HAS_TONE'],
 		['person shrugging', 'doubt', 'ignorance', 'indifference', 'shrug', 'HAS_GENDER', 'HAS_TONE'],
-		//-------------
 		['person getting massage', 'massage', 'salon', 'HAS_GENDER', 'HAS_TONE'],
 		['person getting haircut', 'barber', 'beauty', 'haircut', 'parlor', 'HAS_GENDER', 'HAS_TONE'],
+		//------------
 		['person walking', 'hike', 'walk', 'walking', 'HAS_GENDER', 'HAS_TONE'],
 		['person running', 'marathon', 'running', 'HAS_GENDER', 'HAS_TONE'],
 		['woman dancing', 'dancing', 'woman'],
@@ -280,9 +282,9 @@ var ALL_KEYWORDS = [
 		['person taking bath', 'bath', 'bathtub'],
 		['person in bed', 'hotel', 'sleep', 'bed'],
 		['man in business suit levitating', 'business', 'suit'],
-		//-------------
 		['speaking head', 'head', 'silhouette', 'speak', 'speaking'],
 		['bust in silhouette', 'bust', 'silhouette'],
+		//-------------
 		['busts in silhouette', 'bust', 'silhouette', 'contributors'],
 	//-----family
 		['man and woman holding hands', 'couple', 'hand', 'hold', 'man', 'woman'],
@@ -290,8 +292,7 @@ var ALL_KEYWORDS = [
 		['two women holding hands', 'couple', 'hand', 'hold', 'woman'],
 		['kiss', 'couple'],
 		['couple with heart', 'couple', 'love'],
-		['family'],
-
+		['family', 'kid'],
 	//clothing
 		['glasses', 'eye', 'eyeglasses', 'eyewear'],
 		['sunglasses', 'dark', 'sun', 'eyewear', 'glasses'],
@@ -335,53 +336,58 @@ var ALL_KEYWORDS = [
 		['gorilla', 'gorilla', 'monkey'],
 		['dog face', 'dog', 'pet'],
 		['dog', 'pet'],
-		//-------------
 		['poodle', 'dog'],
 		['wolf face', 'wolf'],
 		['fox face', 'fox'],
 		['cat face', 'cat', 'pet'],
 		['cat', 'pet', 'feline'],
+		//-------------
 		['lion face', 'leo', 'lion', 'zodiac'],
 		['tiger face', 'tiger'],
 		['tiger', 'feline'],
 		['leopard', 'feline'],
 		['horse face', 'horse'],
-		//-------------
 		['horse', 'equestrian', 'racehorse', 'racing', 'performance'],
 		['unicorn face', 'unicorn', 'fantasy'],
 		['zebra'],
 		['deer'],
 		['cow face', 'cow'],
+		//-------------
 		['ox', 'taurus', 'bull', 'zodiac'],
 		['water buffalo', 'buffalo', 'water'],
 		['cow'],
 		['pig face', 'pig', 'gruik'],
 		['pig', 'sow', 'gruik'],
-		//-------------
 		['boar', 'pig', 'gruik'],
 		['pig nose', 'nose', 'pig', 'gruik'],
 		['ram', 'aries', 'male', 'sheep', 'zodiac'],
 		['ewe', 'female', 'sheep'],
 		['goat', 'capricorn', 'zodiac', 'gegl'],
+		//-------------
 		['camel', 'dromedary', 'hump'],
 		['two-hump camel', 'bactrian', 'camel', 'hump'],
 		['giraffe'],
 		['elephant'],
 		['rhinoceros'],
-		//-------------
+		['hippopotamus'],
 		['mouse face', 'mouse'],
 		['mouse'],
 		['rat'],
 		['hamster face', 'hamster', 'pet'],
+		//-------------
 		['rabbit face', 'bunny', 'pet', 'rabbit'],
 		['rabbit', 'bunny', 'pet'],
 		['chipmunk'],
 		['hedgehog'],
-		['bat', 'bat', 'vampire'],
+		['racoon'],
+		['badger'],
+		['bat', 'vampire'],
 		['bear face', 'bear'],
-		//-------------
 		['koala'],
+		['kangaroo'],
+		//-------------
 		['panda face', 'panda'],
+		['llama', 'panda'],
 		['paw prints', 'feet', 'paw', 'print'],
 		['turkey', 'bird'],
 		['chicken', 'bird'],
@@ -389,8 +395,11 @@ var ALL_KEYWORDS = [
 		['hatching chick', 'baby', 'bird', 'chick', 'hatching'],
 		['baby chick', 'baby', 'bird', 'chick'],
 		['front-facing baby chick', 'baby', 'bird', 'chick'],
-		['bird'],
+		['peacock', 'bird'],
 		//-------------
+		['swan', 'bird'],
+		['bird'],
+		['parrot'],
 		['penguin', 'bird', 'tux', 'linux'],
 		['dove', 'bird', 'fly', 'peace'],
 		['eagle', 'bird'],
@@ -398,10 +407,10 @@ var ALL_KEYWORDS = [
 		['owl', 'bird', 'owl', 'wise'],
 		['frog face', 'frog'],
 		['crocodile', 'alligator'],
+		//-------------
 		['turtle', 'terrapin', 'tortoise', 'turtle'],
 		['lizard', 'lizard', 'reptile'],
 		['snake', 'ophiuchus', 'bearer', 'serpent', 'zodiac'],
-		//-------------
 		['dragon face', 'dragon', 'fairy tale'],
 		['dragon', 'fairy tale'],
 		['sauropod', 'brachiosaurus', 'brontosaurus', 'diplodocus', 'dinosaur'],
@@ -409,123 +418,111 @@ var ALL_KEYWORDS = [
 		['spouting whale', 'spouting', 'whale', 'docker'],
 		['whale'],
 		['dolphin', 'flipper'],
+		//-------------
 		['fish', 'pisces', 'zodiac', 'wanda'],
 		['tropical fish', 'fish', 'tropical'],
 		['blowfish', 'fish'],
-
-		//-------------
-
 		['shark', 'fish', 'shark'],
 		['octopus'],
 		['spiral shell', 'shell', 'spiral'],
 		['crab', 'cancer', 'zodiac'],
-		['shrimp', 'food', 'shellfish', 'shrimp', 'small'],
+		['shrimp', 'food', 'shellfish', 'shrimp'],
+		['lobster', 'food', 'transgender'],
 		['squid', 'food', 'molusc', 'squid'],
-		['snail'],
+		//-------------
+		['snail', 'slow', 'shell'],
 		['butterfly', 'insect', 'pretty'],
 		['bug', 'insect'],
 		['ant', 'insect'],
-
-		//-------------
-
 		['honeybee', 'bee', 'insect'],
 		['lady beetle', 'beetle', 'insect', 'ladybird', 'ladybug'],
 		['cricket', 'insect'],
 		['spider', 'arachnid'],
 		['spider web', 'spider', 'web'],
 		['scorpion', 'scorpius', 'scorpio', 'zodiac'],
+		//-------------
+		['mosquito', 'insect'],
+		['microbe', 'bacteria'],
 	//nature
 		['bouquet', 'flower'],
 		['cherry blossom', 'blossom', 'cherry', 'flower'],
 		['white flower', 'flower'],
 		['rosette', 'plant', 'flower'],
-
-		//-------------
-
 		['rose', 'flower'],
 		['wilted flower', 'flower', 'wilted'],
 		['hibiscus', 'flower'],
 		['sunflower', 'flower', 'sun'],
+		//-------------
 		['blossom', 'flower'],
 		['tulip', 'flower'],
 		['seedling', 'young', 'plant'],
 		['evergreen tree', 'tree'],
 		['deciduous tree', 'deciduous', 'shedding', 'tree'],
 		['palm tree', 'palm', 'tree'],
-
-		//-------------
-
 		['cactus', 'plant'],
 		['sheaf of rice', 'ear', 'grain', 'rice'],
 		['herb', 'leaf'],
 		['shamrock', 'plant', 'ireland'],
+		//-------------
 		['four leaf clover', '4', 'clover', 'four', 'leaf'],
 		['maple leaf', 'falling', 'leaf', 'maple'],
 		['fallen leaf', 'falling', 'leaf', 'autumn'],
 		['leaf fluttering in wind', 'blow', 'flutter', 'leaf', 'wind'],
-
+	//-----sky & weather
 		['new moon', 'moon'],
 		['waxing crescent moon', 'crescent'],
 		['first quarter moon', 'moon'],
 		['waxing gibbous moon', 'moon'],
 		['full moon', 'moon'],
 		['waning gibbous moon', 'moon'],
+		//-------------
 		['last quarter moon', 'moon'],
 		['waning crescent moon', 'crescent', 'moon'],
 		['crescent moon', 'crescent', 'moon'],
 		['new moon face', 'moon'],
-
-		//-------------
-
 		['first quarter moon with face', 'moon'],
 		['last quarter moon with face', 'moon'],
 		['thermometer', 'heat', 'weather'],
 		['sun', 'weather'],
 		['full moon with face', 'moon'],
 		['sun with face', 'sun'],
+		//-------------
 		['white medium star', 'star'],
 		['glowing star', 'star'],
 		['shooting star', 'star'],
 		['cloud', 'weather'],
-
-		//-------------
-
 		['sun behind cloud', 'sun', 'weather'],
 		['cloud with lightning and rain', 'cloud', 'rain', 'lightning', 'weather'],
 		['sun behind small cloud', 'weather', 'cloud', 'sun', 'weather'],
 		['sun behind large cloud', 'weather', 'cloud', 'sun', 'weather'],
 		['sun behind rain cloud', 'cloud', 'sun', 'weather', 'rain'],
 		['cloud with rain', 'weather', 'weather', 'cloud', 'rain'],
+		//-------------
 		['cloud with snow', 'weather', 'cloud', 'snow'],
 		['cloud with lightning', 'weather', 'cloud', 'lightning'],
 		['tornado', 'weather', 'wind'],
 		['fog', 'weather'],
-
-		//-------------
-
 		['wind face', 'weather', 'wind'],
 		['cyclone', 'weather', 'wind'],
 		['rainbow', 'colors', 'weather'],
 		['closed umbrella', 'umbrella'],
 		['umbrella', 'rain', 'weather'],
 		['umbrella with rain drops', 'rain', 'umbrella', 'weather'],
+		//-------------
 		['umbrella on ground', 'umbrella'],
 		['high voltage', 'electricity', 'performance', 'update'],
 		['snowflake', 'snow', 'weather'],
 		['snowman', 'snow'],
-
-		//-------------
-
 		['snowman without snow', 'snowman'],
 		['comet', 'asteroid', 'star'],
 		['fire', 'remove'],
 		['droplet', 'water'],
 		['water wave', 'water', 'wave']
-	], [ //food and drink
-		//food ?
+	], [ // Food and drink
+	//-----fruits
 		['grapes', 'fruit', 'grape', 'raisin'],
 		['melon', 'fruit'],
-		//-------------
+		['mango', 'fruit'],
 		['watermelon', 'fruit'],
 		['tangerine', 'fruit', 'orange'],
 		['lemon', 'citrus', 'fruit'],
@@ -533,34 +530,41 @@ var ALL_KEYWORDS = [
 		['pineapple', 'fruit'],
 		['red apple', 'apple', 'fruit', 'red', 'osx', 'mac'],
 		['green apple', 'apple', 'fruit', 'green', 'ios'],
+		//-------------
 		['pear', 'fruit'],
 		['peach', 'fruit'],
 		['cherries', 'cherry', 'fruit'],
-		//-------------
 		['strawberry', 'berry', 'fruit'],
 		['kiwi fruit', 'food', 'fruit', 'kiwi'],
 		['tomato', 'fruit', 'vegetable'],
 		['coconut'],
 		['avocado', 'avocado', 'food', 'fruit'],
+	//-----vegetables
 		['eggplant', 'aubergine', 'vegetable'],
 		['potato', 'food', 'potato', 'vegetable'],
+		//-------------
 		['carrot', 'carrot', 'food', 'vegetable'],
 		['ear of corn', 'corn', 'ear', 'maize', 'maze'],
-		['hot pepper', 'hot', 'pepper'],
-		//-------------
+		['hot pepper', 'hot', 'spicy'],
+		['leafy green', 'lettuce', 'chard', 'cabbage'],
 		['cucumber', 'cucumber', 'food', 'pickle', 'vegetable'],
 		['broccoli', 'vegetable'],
 		['mushroom', 'toadstool'],
 		['peanuts', 'food', 'nut', 'peanut', 'vegetable'],
 		['chestnut', 'plant'],
 		['bread', 'loaf'],
+		//-------------
 		['croissant', 'bread', 'crescent roll', 'croissant', 'food', 'french'],
 		['baguette bread', 'baguette', 'bread', 'food', 'french'],
 		['pretzel', 'twisted', 'convoluted'],
 		['pancakes', 'crêpe', 'food', 'hotcake', 'pancake'],
-		//-------------
+		['bagel'],
+		['moon cake', 'chinese', 'food'],
+		['cupcake'],
+		['salt'],
 		['cheese wedge', 'cheese'],
 		['meat on bone', 'bone', 'meat'],
+		//-------------
 		['poultry leg', 'bone', 'chicken', 'leg', 'poultry'],
 		['cut of meat', 'chop', 'lambchop', 'porkchop', 'steak'],
 		['bacon', 'bacon', 'food', 'meat'],
@@ -569,9 +573,9 @@ var ALL_KEYWORDS = [
 		['pizza', 'cheese', 'slice'],
 		['hot dog', 'frankfurter', 'hotdog', 'sausage'],
 		['sandwich'],
-		//-------------
 		['taco', 'mexican'],
 		['burrito', 'mexican', 'wrap'],
+		//-------------
 		['stuffed flatbread', 'falafel', 'flatbread', 'food', 'gyro', 'kebab', 'stuffed'],
 		['egg', 'food', 'easter egg'],
 		['cooking', 'egg', 'frying', 'pan'],
@@ -580,9 +584,9 @@ var ALL_KEYWORDS = [
 		['bowl with spoon', 'breakfast', 'cereal', 'congee', 'oatmeal', 'porridge'],
 		['green salad', 'food', 'green', 'salad'],
 		['popcorn'],
-		//-------------
 		['canned food', 'can'],
 		['bento box', 'bento', 'box'],
+		//-------------
 		['rice cracker', 'cracker', 'rice'],
 		['rice ball', 'japanese', 'ball', 'rice'],
 		['cooked rice', 'cooked', 'rice'],
@@ -591,9 +595,9 @@ var ALL_KEYWORDS = [
 		['spaghetti', 'pasta'],
 		['roasted sweet potato', 'potato', 'roasted', 'sweet'],
 		['oden', 'seafood', 'skewer', 'stick'],
-		//-------------
 		['sushi', 'fish'],
 		['fried shrimp', 'fried', 'prawn', 'shrimp', 'tempura'],
+		//-------------
 		['fish cake with swirl', 'cake', 'fish', 'pastry', 'swirl', 'debian'],
 		['dango', 'japanese', 'dessert', 'skewer', 'stick', 'sweet'],
 		['dumpling', 'empanada', 'gyōza', 'jiaozi', 'pierogi', 'potsticker'],
@@ -602,9 +606,9 @@ var ALL_KEYWORDS = [
 		['soft ice cream', 'cream', 'dessert', 'ice', 'icecream', 'soft', 'sweet'],
 		['shaved ice', 'dessert', 'ice', 'shaved', 'sweet'],
 		['ice cream', 'cream', 'dessert', 'ice', 'sweet'],
-		//-------------
 		['doughnut', 'dessert', 'donut', 'sweet'],
 		['cookie', 'dessert', 'sweet'],
+		//-------------
 		['birthday cake', 'birthday', 'cake', 'celebration', 'dessert', 'pastry', 'sweet'],
 		['shortcake', 'cake', 'dessert', 'pastry', 'slice', 'sweet'],
 		['pie', 'fruit', 'meat'],
@@ -613,9 +617,10 @@ var ALL_KEYWORDS = [
 		['lollipop', 'sweet'],
 		['custard', 'dessert'],
 		['honey pot', 'sugar', 'bee'],
-		//-------------
+	//-----drink
 		['baby bottle', 'milk', 'baby', 'drink'],
 		['glass of milk', 'milk', 'glass', 'drink'],
+		//-------------
 		['hot beverage', 'coffee', 'tea', 'soup', 'cup'],
 		['teacup without handle', 'tea', 'bowl', 'cup'],
 		['sake', 'alcohol', 'japan'],
@@ -624,9 +629,9 @@ var ALL_KEYWORDS = [
 		['cocktail glass', 'alcohol', 'party'],
 		['tropical drink', 'fruits', 'party'],
 		['beer mug', 'beer', 'alcohol'],
-		//-------------
 		['clinking beer mugs', 'party', 'beer mug', 'beer', 'alcohol', 'drunk'],
 		['clinking glasses', 'party', 'glass'],
+		//-------------
 		['tumbler glass', 'glass'],
 		['cup with straw', 'cup', 'straw'],
 		['chopsticks'],
@@ -635,15 +640,15 @@ var ALL_KEYWORDS = [
 		['spoon', 'cutlery'],
 		['kitchen knife', 'knife', 'cutlery'],
 		['amphora']
-	], [//travels and places
-	//--------maps
+	], [ // Travels and places
+	//-----maps
 		['globe showing europe-africa', 'europe', 'africa'],
 		['globe showing americas', 'america'],
 		['globe showing asia-australia', 'asia', 'australia'],
 		['globe with meridians', 'meridians', 'internationalization', 'localization', 'i18n'],
 		['world map', 'map', 'world'],
 		['map of japan', 'japan', 'map'],
-	//----geographic
+	//-----geographic
 		['snow-capped mountain', 'mountain', 'snow'],
 		['mountain', 'snow'],
 		['volcano', 'mountain', 'lava'],

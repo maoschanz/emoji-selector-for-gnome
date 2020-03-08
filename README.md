@@ -4,14 +4,14 @@ This GNOME shell extension provides a searchable popup menu displaying most emoj
 
 ## Features
 
-- keyboard shortcut to open the extension's menu (Super+E by defaut)
-- dynamic research (press enter to copy the first result to the clipboard)
+- keyboard shortcut to open the extension's menu (<kbd>Super</kbd>+<kbd>E</kbd> by defaut)
+- dynamic search (press enter to copy the first result to the clipboard)
 - lots of parametrable things
 - skin tone & gender modifiers
-- middle click to set to the cliboard without closing the menu (or Ctrl+Enter)
-- right click to add the emoji at the end of the current clipboard content (or Shift+Enter)
+- middle-click to set to the cliboard without closing the menu (or <kbd>Ctrl</kbd>+<kbd>Enter</kbd>)
+- right-click to add the emoji at the end of the current clipboard content (or <kbd>Shift</kbd>+<kbd>Enter</kbd>)
 
->currently Unicode 10
+>currently Unicode 11
 
 ![Screenshot](https://i.imgur.com/sSjj3vH.png)
 
@@ -43,14 +43,14 @@ The extension is currently available in english, french, brazilian portuguese, i
 
 The better option is to install it from [here](https://extensions.gnome.org/extension/1162/emoji-selector/).
 
-#### For Arch Linux users
+#### Native packages
 
-Arch Linux users can install [gnome-shell-extension-emoji-selector-git](https://aur.archlinux.org/packages/gnome-shell-extension-emoji-selector-git/) from **AUR**.
+- [`gnome-shell-extension-emoji-selector-git` (**AUR**)](https://aur.archlinux.org/packages/gnome-shell-extension-emoji-selector-git/)
+- ...<!-- TODO à compléter -->
 
 #### Manual installation
 
 Download and extract the ZIP, then open a terminal in the project's directory, and run `./install.sh`. It should copy the "emoji-selector@maestroschan.fr" folder to `~/.local/share/gnome-shell/extensions/`, which can be done manually if you want.
 
 You may need to restart the gnome shell environment ("logout and login again", or `alt` + `f2` + `r` + enter).
-
 
