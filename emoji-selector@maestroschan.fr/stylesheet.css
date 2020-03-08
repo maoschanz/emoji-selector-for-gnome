@@ -1,4 +1,27 @@
 
+.EmojisCategory {
+	-st-icon-style: symbolic;
+	color: #eeeeec;
+	border-radius: 32px;
+	padding: 13px;
+	border: 1px solid #282828;
+}
+
+.EmojisCategory:hover, .EmojisCategory:focus {
+	background-color: #3c3c3c;
+	color: #eeeeec;
+}
+
+.EmojisCategory:active {
+	background-color: #1b6acb;
+	color: #ffffff;
+	border-color: #092444;
+}
+
+.EmojisCategory > StIcon {
+	icon-size: 16px;
+}
+
 .EmojisItemStyle {
 	font-family: EmojiOne Color, Twitter Color Emoji, Noto Emoji;
 	height: 1.5em;

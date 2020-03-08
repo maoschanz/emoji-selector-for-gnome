@@ -10,15 +10,22 @@ const SkinTonesBar = Me.imports.emojiOptionsBar.SkinTonesBar;
 const Extension = Me.imports.extension;
 const EmojiButton = Me.imports.emojiButton;
 
-//class EmojiCategory
-//methods :
-//	constructor(string, string, int)	init the button & the submenu's menu-item (label, tone/gender)
-//	clear()								remove all emojis from the category
-//	build()								build category's rows and buttons in it
-//	_toggle()							do everything needed when the user click on the category's button
-//	_openCategory()						open the category
-//	getButton()							not useful getter
+/**
+ * This imports data (array of arrays of characters, and array of arrays
+ * of strings). Keywords are used for both:
+ * - search
+ * - skin tone management
+ * - gender management
+ */
+const EMOJIS_CHARACTERS = Me.imports.data.emojisCharacters.ALL;
+const EMOJIS_KEYWORDS = Me.imports.data.emojisKeywords.ALL_KEYWORDS;
+
 var EmojiCategory = class EmojiCategory {
+
+	/**
+	 * The category and its button have to be built without being loaded, to
+	 * memory issues with emojis' image textures.
+	 */
 	constructor(categoryName, iconName, id) {
 		this.super_item = new PopupMenu.PopupSubMenuMenuItem(categoryName);
 		this.categoryName = categoryName;
@@ -48,35 +55,37 @@ var EmojiCategory = class EmojiCategory {
 			can_focus: true,
 			track_hover: true,
 			accessible_name: categoryName,
-			style_class: 'system-menu-action',
+			style_class: 'EmojisCategory',
 			child: new St.Icon({ icon_name: iconName }),
 		});
 		this.categoryButton.connect('clicked', this._toggle.bind(this));
 		this.categoryButton.connect('notify::hover', this._onHover.bind(this));
 
-		this._built = false; // will be true once loaded
+		this._built = false; // will be true once the user opens the category
 		this._loaded = false; // will be true once loaded
-		
+		this.validateKeywordsNumber();
 		this.load();
 	}
 
+	validateKeywordsNumber() {
+		if (EMOJIS_CHARACTERS[this.id].length !== EMOJIS_KEYWORDS[this.id].length) {
+			log("Incorrect number of keywords for category " + this.categoryName)
+			log(EMOJIS_CHARACTERS[this.id].length + " emojis");
+			log(EMOJIS_KEYWORDS[this.id].length + " keyword arrays");
+		}
+	}
+
+	/**
+	 * EmojiButtons objects are built here and loaded into an array, but not
+	 * packed into a container, thus not added to the Clutter stage and not
+	 * rendered. They will when the user will click on the button.
+	 */
 	load() {
 		if (this._loaded) { return; }
 		let ln, container;
-		
-		/* XXX importing anything here is shit
-		 * This imports data (array of arrays of characters, and array of arrays
-		 * of strings). Keywords are used for both:
-		 * - search
-		 * - skin tone management
-		 * - gender management
-		 */
-		let EMOJIS_CHARACTERS = Me.imports.emojisCharacters.ALL;
-		let EMOJIS_KEYWORDS = Me.imports.emojisKeywords.ALL_KEYWORDS;
-		
-		for (let i=0; i<EMOJIS_CHARACTERS[this.id].length; i++) {
-			let button = new EmojiButton.EmojiButton(EMOJIS_CHARACTERS[this.id][i],
-			                                         EMOJIS_KEYWORDS[this.id][i]);
+		for (let i = 0; i < EMOJIS_CHARACTERS[this.id].length; i++) {
+			let button = new EmojiButton.EmojiButton(
+			        EMOJIS_CHARACTERS[this.id][i], EMOJIS_KEYWORDS[this.id][i]);
 			this.emojiButtons.push(button);
 		}
 		this._loaded = true;
@@ -106,6 +115,10 @@ var EmojiCategory = class EmojiCategory {
 		return searchResults
 	}
 
+	/**
+	 * Builds the submenu, and fill it with containers full of EmojiButtons
+	 * previously built.
+	 */
 	build() {
 		if (this._built) { return; }
 		let ln, container;
