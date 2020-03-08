@@ -15,17 +15,18 @@ var ALL_KEYWORDS = [
 		['winking face', 'wink'],
 		['smiling face with smiling eyes', 'blush', 'smile'],
 		//-------------
-		['face savouring delicious food', 'delicious', 'savouring', 'smile', 'um', 'yum'],
-		['smiling face with sunglasses', 'bright', 'cool', 'eyewear', 'glasses', 'smile', 'sun', 'sunglasses'],
+		['face savouring delicious food', 'delicious', 'savouring', 'smile', 'yum'],
+		['smiling face with sunglasses', 'cool', 'eyewear', 'glasses', 'smile', 'sun', 'sunglasses'],
 		['smiling face with heart-eyes', 'love', 'heart', 'smile'],
+		['smiling face with hearts', 'love', 'smile', 'heart'],
 		['face blowing a kiss', 'kiss'],
 		['kissing face', 'kiss'],
 		['kissing face with smiling eyes', 'kiss', 'smile'],
 		['kissing face with closed eyes', 'kiss'],
 		['smiling face', 'outlined', 'relaxed', 'smile'],
 		['slightly smiling face', 'smile'],
-		['hugging face', 'hug', 'hugging'],
 		//-------------
+		['hugging face', 'hug', 'hugging'],
 		['star-struck', 'eyes', 'grinning', 'star', 'starry-eyed'],
 		['thinking face', 'thinking'],
 		['face with raised eyebrow', 'distrust', 'skeptic', 'disapproval', 'disbelief', 'mild surprise', 'scepticism'],
@@ -35,8 +36,8 @@ var ALL_KEYWORDS = [
 		['face with rolling eyes', 'rolling'],
 		['smirking face', 'smirk'],
 		['persevering face', 'persevere'],
-		['disappointed but relieved face', 'disappointed', 'relieved', 'whew'],
 		//-------------
+		['disappointed but relieved face', 'disappointed', 'relieved', 'whew'],
 		['face with open mouth', 'mouth', 'open', 'sympathy'],
 		['zipper-mouth face', 'mouth', 'zipper'],
 		['hushed face', 'hushed', 'stunned', 'surprised'],
@@ -46,8 +47,8 @@ var ALL_KEYWORDS = [
 		['relieved face', 'relieved'],
 		['face with stuck-out tongue', 'tongue'],
 		['face with stuck-out tongue & winking eye', 'joke', 'tongue', 'wink'],
-		['face with stuck-out tongue & closed eyes', 'horrible', 'taste', 'tongue'],
 		//-------------
+		['face with stuck-out tongue & closed eyes', 'horrible', 'taste', 'tongue'],
 		['drooling face', 'drooling'],
 		['unamused face', 'unamused', 'unhappy'],
 		['face with cold sweat', 'cold', 'sweat'],
@@ -57,8 +58,8 @@ var ALL_KEYWORDS = [
 		['money-mouth face', 'money', 'mouth'],
 		['astonished face', 'astonished', 'shocked'],
 		['frowning face', 'frown'],
-		['slightly frowning face', 'frown'],
 		//-------------
+		['slightly frowning face', 'frown'],
 		['confounded face', 'confounded'],
 		['disappointed face', 'disappointed'],
 		['worried face', 'worried'],
@@ -68,56 +69,62 @@ var ALL_KEYWORDS = [
 		['frowning face with open mouth', 'frown', 'mouth', 'open'],
 		['anguished face', 'anguished'],
 		['fearful face', 'fear', 'fearful', 'scared'],
-		['weary face', 'tired', 'weary'],
 		//-------------
+		['weary face', 'tired', 'weary'],
 		['exploding head', 'shocked'],
 		['grimacing face', 'grimace'],
+		['pleading face', 'pleading', 'simp'],
 		['face with open mouth & cold sweat', 'blue', 'cold', 'rushed', 'sweat'],
 		['face screaming in fear', 'fear', 'fearful', 'munch', 'scared', 'scream'],
 		['flushed face', 'dazed', 'flushed'],
-		['crazy face', 'large', 'small'],
+		['crazy face', 'large eye', 'small eye'],
+		['woozy face', 'high', 'dizzy', 'drunk'],
 		['dizzy face', 'dizzy'],
+		//-------------
 		['pouting face', 'angry', 'mad', 'pouting', 'rage', 'red'],
 		['angry face', 'angry', 'mad'],
 		['face with symbols over mouth', 'cursing'],
-		//-------------
 		['face with medical mask', 'cold', 'doctor', 'mask', 'medicine', 'sick'],
 		['face with thermometer', 'ill', 'sick', 'thermometer'],
 		['face with head-bandage', 'bandage', 'hurt', 'injury'],
 		['nauseated face', 'nauseated', 'vomit'],
 		['face vomiting', 'sick', 'vomit'],
-		['sneezing face', '	face', 'sneeze'],
+		['sneezing face', 'sneeze'],
+		['hot face', 'hot', 'sweat', 'horny'],
+		//-------------
+		['cold face', 'freeze'],
 		['smiling face with halo', 'angel', 'fantasy', 'halo', 'innocent', 'smile'],
 		['cowboy hat face', 'cowboy', 'cowgirl', 'hat'],
+		['partying face', 'party', 'confetti', 'hat'],
 		['clown face', 'clown', 'donald trump', 'mocking'],
 		['lying face', 'lie', 'pinocchio'],
-		//-------------
 		['shushing face', 'shush'],
 		['face with hand over mouth', 'whoops', 'shock', 'sudden realization', 'surprise'],
 		['face with monocle', 'stuffy', 'wealthy'],
 		['nerd face', 'geek', 'nerd'],
+		//-------------
 		['smiling face with horns', 'demon', 'fantasy', 'smile', 'devil'],
 		['angry face with horns', 'demon', 'devil', 'fantasy', 'imp'],
 		['ogre', 'creature', 'fairy tale', 'fantasy', 'monster', 'troll'],
 		['goblin', 'creature', 'fairy tale', 'fantasy', 'monster'],
 		['skull', 'death', 'fairy tale', 'monster'],
 		['skull and crossbones', 'crossbones', 'death', 'monster', 'skull'],
-		//-------------
 		['ghost', 'creature', 'fantasy', 'monster'],
 		['alien', 'creature', 'extraterrestrial', 'fantasy', 'monster', 'ufo', 'external', 'translation'],
 		['alien monster', 'alien', 'creature', 'extraterrestrial', 'fantasy', 'monster', 'ufo'],
 		['robot face', 'monster', 'robot', 'android'],
+		//-------------
 		['pile of poo', 'comic', 'dung', 'monster', 'poo', 'poop', 'hankey', 'bad code'],
 		['smiling cat face with open mouth', 'cat', 'mouth', 'open', 'smile'],
 		['grinning cat face with smiling eyes', 'cat', 'grin', 'smile'],
 		['cat face with tears of joy', 'cat', 'joy', 'tear'],
 		['smiling cat face with heart-eyes', 'cat', 'love', 'smile'],
 		['cat face with wry smile', 'cat', 'ironic', 'smile', 'wry'],
-		//-------------
 		['kissing cat face with closed eyes', 'cat', 'kiss'],
 		['weary cat face', 'cat', 'oh', 'surprised', 'weary'],
 		['crying cat face', 'cat', 'cry', 'sad', 'tear'],
 		['pouting cat face', 'cat', 'pouting'],
+		//-------------
 		['see-no-evil monkey', 'evil', 'forbidden', 'gesture', 'monkey', 'no', 'prohibited', 'see', 'gitignore'],
 		['hear-no-evil monkey', 'evil', 'forbidden', 'gesture', 'hear', 'monkey', 'no', 'prohibited'],
 		['speak-no-evil monkey', 'evil', 'forbidden', 'gesture', 'monkey', 'no', 'prohibited', 'speak'],
@@ -125,37 +132,34 @@ var ALL_KEYWORDS = [
 	//-----body
 		['selfie', 'camera', 'phone', 'selfie', 'HAS_TONE'],
 		['flexed biceps', 'biceps', 'comic', 'flex', 'muscle', 'HAS_TONE'],
-
-		//-------------
-
 		['backhand index pointing left', 'backhand', 'finger', 'hand', 'index', 'point', 'HAS_TONE'],
 		['backhand index pointing right', 'backhand', 'finger', 'hand', 'index', 'point', 'HAS_TONE'],
 		['index pointing up', 'finger', 'hand', 'index', 'point', 'up', 'HAS_TONE'],
 		['backhand index pointing up', 'backhand', 'finger', 'hand', 'index', 'point', 'up', 'HAS_TONE'],
 		['middle finger', 'finger', 'hand', 'HAS_TONE'],
+		//-------------
 		['backhand index pointing down', 'backhand', 'down', 'finger', 'hand', 'index', 'point', 'HAS_TONE'],
 		['victory hand', 'hand', 'v', 'victory', 'HAS_TONE'],
 		['crossed fingers', 'cross', 'finger', 'hand', 'luck', 'HAS_TONE'],
 		['vulcan salute', 'finger', 'hand', 'spock', 'vulcan', 'HAS_TONE'],
 		['sign of the horns', 'finger', 'hand', 'horns', 'rock-on', 'HAS_TONE'],
-		//-------------
 		['call me hand', 'call', 'hand', 'HAS_TONE'],
 		['raised hand with fingers splayed', 'finger', 'hand', 'splayed', 'HAS_TONE'],
 		['raised hand', 'hand', 'HAS_TONE'],
 		['ok hand', 'ok', 'ok', 'hand', 'HAS_TONE'],
 		['thumbs up', 'hand', 'thumb', 'up', 'HAS_TONE'],
+		//-------------
 		['thumbs down', 'down', 'hand', 'thumb', 'HAS_TONE'],
 		['raised fist', 'clenched', 'fist', 'hand', 'punch', 'HAS_TONE'],
 		['oncoming fist', 'clenched', 'fist', 'hand', 'punch', 'HAS_TONE'],
 		['left-facing fist', 'fist', 'leftwards', 'HAS_TONE'],
 		['right-facing fist', 'fist', 'rightwards', 'HAS_TONE'],
-
-		//-------------
 		['raised back of hand', 'backhand', 'raised', 'HAS_TONE'],
 		['waving hand', 'hand', 'wave', 'waving', 'HAS_TONE'],
 		['love-you gesture', 'hand', 'love', 'HAS_TONE'],
 		['writing hand', 'hand', 'write', 'HAS_TONE'],
 		['clapping hands', 'clap', 'hand', 'HAS_TONE'],
+		//-------------
 		['open hands', 'hand', 'open', 'HAS_TONE'],
 		['raising hands', 'celebration', 'hand', 'hooray', 'raised', 'HAS_TONE'],
 		['palms up together', 'hand', 'HAS_TONE'],
@@ -163,15 +167,19 @@ var ALL_KEYWORDS = [
 		['handshake', 'agreement', 'hand', 'handshake', 'meeting', 'shake', 'HAS_TONE'],
 		['nail polish', 'care', 'cosmetics', 'manicure', 'nail', 'polish', 'HAS_TONE'],
 		['ear', 'body', 'HAS_TONE'],
-		//-------------
 		['nose', 'body', 'HAS_TONE'],
-		['footprints', 'clothing', 'footprint', 'print', 'gnome'],
+		['leg', 'body', 'HAS_TONE'],
+		['foot', 'fetish', 'body', 'HAS_TONE'],
+		//-------------
+		['footprints', 'footprint', 'print', 'gnome'],
 		['eyes', 'eye'],
 		['eye', 'body'],
 		['eye in speech bubble', 'speech bubble', 'witness'],
 		['brain', 'body'],
 		['tongue', 'body'],
-		['mouth', 'lips'],
+		['mouth', 'lips', 'body'],
+		['tooth', 'mouth'],
+		['bone', 'body']
 
 	], [	//people & clothes
 
