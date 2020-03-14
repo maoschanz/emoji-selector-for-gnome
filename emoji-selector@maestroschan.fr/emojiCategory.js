@@ -96,15 +96,17 @@ var EmojiCategory = class EmojiCategory {
 		this.emojiButtons = [];
 	}
 
-	searchEmoji(searchedText, neededresults) {
+	searchEmoji(searchedText, neededresults, priority) {
 		let searchResults = [];
-		for (let i=0; i<this.emojiButtons.length; i++) {
+		for (let i = 0; i < this.emojiButtons.length; i++) {
 			if (neededresults >= 0) {
 				let isMatching = false;
-				for (let k=0; k<this.emojiButtons[i].keywords.length; k++) {
-					if (this.emojiButtons[i].keywords[k].includes(searchedText)) {
-						isMatching = true;
-					}
+				if (priority === 3) {
+					isMatching = this.searchExactMatch(searchedText, i);
+				} else if (priority === 2) {
+					isMatching = this.searchInName(searchedText, i);
+				} else {
+					isMatching = this.searchInKeywords(searchedText, i);
 				}
 				if (isMatching){
 					searchResults.push(this.emojiButtons[i].baseCharacter)
@@ -113,6 +115,32 @@ var EmojiCategory = class EmojiCategory {
 			}
 		}
 		return searchResults
+	}
+
+	searchExactMatch(searchedText, i) {
+		return this.emojiButtons[i].keywords[0] === searchedText;
+	}
+
+	searchInName(searchedText, i) {
+		if (this.emojiButtons[i].keywords[0].includes(searchedText)) {
+			// If the name corresponds to the searched string, but it is also an
+			// exact match, we can assume the emoji is already in the displayed
+			// result.
+			return !this.searchExactMatch(searchedText, i);
+		}
+		return false;
+	}
+
+	searchInKeywords(searchedText, i) {
+		for (let k = 1; k < this.emojiButtons[i].keywords.length; k++) {
+			if (this.emojiButtons[i].keywords[k].includes(searchedText)) {
+				// If a keyword corresponds to the searched string, but the name
+				// corresponds too, we can assume the emoji is already in the
+				// displayed result.
+				return !this.searchInName(searchedText, i);
+			}
+		}
+		return false;
 	}
 
 	/**

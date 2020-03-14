@@ -147,13 +147,12 @@ class EmojiSearchItem {
 		}
 
 		let results = [];
-		for (let cat = minCat; cat < maxCat; cat++) {
-			let availableSlots = recents.length - results.length;
-			if (availableSlots > 0) {
-				let catResults = GLOBAL_BUTTON.emojiCategories[cat].searchEmoji(searchedText, availableSlots);
-				results = results.concat(catResults);
-			}
-		}
+		// First, search for an exact match with emoji names
+		results = this._getResults(searchedText, minCat, maxCat, recents, results, 3);
+		// Then, search only across emoji names
+		results = this._getResults(searchedText, minCat, maxCat, recents, results, 2);
+		// Finally, search across all keywords
+		results = this._getResults(searchedText, minCat, maxCat, recents, results, 1);
 
 		let firstEmptyIndex = 0;
 		for (let i=0; i<results.length; i++) {
@@ -162,6 +161,19 @@ class EmojiSearchItem {
 				firstEmptyIndex++;
 			}
 		}
+	}
+
+	_getResults(searchedText, minCat, maxCat, recents, results, priority) {
+		for (let cat = minCat; cat < maxCat; cat++) {
+			let availableSlots = recents.length - results.length;
+			if (availableSlots > 0) {
+				let catResults = GLOBAL_BUTTON.emojiCategories[cat].searchEmoji(
+					searchedText, availableSlots, priority
+				);
+				results = results.concat(catResults);
+			}
+		}
+		return results;
 	}
 }
 
