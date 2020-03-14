@@ -74,17 +74,6 @@
 						</child>
 
 						<child>
-							<object class="GtkSeparator">
-								<property name="expand">False</property>
-							</object>
-							<packing>
-								<property name="left-attach">0</property>
-								<property name="top-attach">3</property>
-								<property name="width">2</property>
-							</packing>
-						</child>
-
-						<child>
 							<object class="GtkLabel">
 								<property name="expand">False</property>
 								<property name="halign">end</property>
@@ -103,29 +92,6 @@
 							<packing>
 								<property name="left-attach">1</property>
 								<property name="top-attach">4</property>
-							</packing>
-						</child>
-
-						<child>
-							<object class="GtkLabel">
-								<property name="expand">False</property>
-								<property name="halign">end</property>
-								<property name="label" translatable="yes">Use dark font</property>
-								<property name="tooltip_text" translatable="yes">This is useful if your system doesn't support color emojis and your GNOME Shell theme has a white menu background.</property>
-							</object>
-							<packing>
-								<property name="left-attach">0</property>
-								<property name="top-attach">5</property>
-							</packing>
-						</child>
-						<child>
-							<object class="GtkSwitch" id="light_theme_switch">
-								<property name="expand">False</property>
-								<property name="halign">start</property>
-							</object>
-							<packing>
-								<property name="left-attach">1</property>
-								<property name="top-attach">5</property>
 							</packing>
 						</child>
 
@@ -183,15 +149,20 @@
 								<property name="top-attach">8</property>
 							</packing>
 						</child>
-						
+
 						<child>
-							<object class="GtkSeparator">
+							<object class="GtkLabel">
 								<property name="expand">False</property>
+								<property name="wrap">True</property>
+								<property name="halign">center</property>
+								<property name="label">If you access the menu with the keyboard shortcut, you don't need to always display the icon.</property>
+								<style><class name="dim-label"/></style>
+								<property name="max-width-chars">45</property>
 							</object>
 							<packing>
 								<property name="left-attach">0</property>
-								<property name="top-attach">9</property>
 								<property name="width">2</property>
+								<property name="top-attach">9</property>
 							</packing>
 						</child>
 
@@ -200,7 +171,6 @@
 								<property name="expand">False</property>
 								<property name="halign">end</property>
 								<property name="label" translatable="yes">Always show the icon</property>
-								<property name="tooltip_text" translatable="yes">If you access the menu with the keyboard shortcut, you don't need to always display the icon.</property>
 							</object>
 							<packing>
 								<property name="left-attach">0</property>

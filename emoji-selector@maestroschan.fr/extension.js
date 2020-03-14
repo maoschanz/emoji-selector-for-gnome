@@ -408,7 +408,6 @@ function enable() {
 	Main.panel.addToStatusArea('EmojisMenu', GLOBAL_BUTTON.super_btn, 0, 'right');
 
 	SIGNAUX[0] = SETTINGS.connect('changed::emojisize', () => { updateStyle(); });
-	SIGNAUX[1] = SETTINGS.connect('changed::light-theme', () => { updateStyle(); });
 	SIGNAUX[2] = SETTINGS.connect('changed::always-show', () => {
 		GLOBAL_BUTTON.super_btn.actor.visible = SETTINGS.get_boolean('always-show');
 	});

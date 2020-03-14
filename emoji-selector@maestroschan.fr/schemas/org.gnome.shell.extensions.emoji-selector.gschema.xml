@@ -20,11 +20,14 @@
     <key type="s" name="recents">
       <default>''</default>
       <summary>deprecated</summary>
-<!--      FIXME TODO delete this-->
+      <!-- TODO delete this-->
       <description></description>
     </key>
     <key type="as" name="recently-used">
-      <default>['😂','❤️','😍','😭','😊','😒','😘','😩','🤔','☺️','👌','😔','😏','😁','😉','👍','😱','😳','😎','👀','💩']</default>
+      <default>
+        ['😂','❤️','😍','😭','😊','😒','😘','😩','🤔','☺️',
+        '👌','😔','😏','😁','😉','👍','😱','😳','😎','👀','💩']
+      </default>
       <summary>default memorized emojis</summary>
       <description></description>
     </key>
@@ -40,8 +43,9 @@
     </key>
     <key type="b" name="light-theme">
       <default>false</default>
-      <summary>if a darker font is used</summary>
-      <description>if true, emojis characters will be black (adapted for GS themes which are light).</description>
+      <summary>deprecated</summary>
+      <!-- TODO delete this-->
+      <description></description>
     </key>
     <key type="i" name="skin-tone">
       <default>0</default>

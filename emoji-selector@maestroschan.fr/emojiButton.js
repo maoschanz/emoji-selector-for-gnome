@@ -72,11 +72,7 @@ var EmojiButton = class EmojiButton {
 
 	getStyle() {
 		let fontStyle = 'font-size: ' + Extension.SETTINGS.get_int('emojisize') + 'px;';
-		if (Extension.SETTINGS.get_boolean('light-theme')) {
-			fontStyle += ' color: #000000;';
-		} else {
-			fontStyle += ' color: #FFFFFF;';
-		}
+		fontStyle += ' color: #FFFFFF;';
 		return fontStyle;
 	}
 

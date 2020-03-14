@@ -31,15 +31,15 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 		let builder = new Gtk.Builder();
 		builder.add_from_file(Me.path+'/prefs.ui');
 		this.prefs_stack = builder.get_object('prefs_stack');
-		
+
 		this.switcher = new Gtk.StackSwitcher({
 			halign: Gtk.Align.CENTER,
 			visible: true,
 			stack: this.prefs_stack
 		});
-		
+
 		let RELOAD_TEXT = _("Modifications will be effective after reloading the extension.");
-		
+
 		//----------------------------------------------------------------------
 
 		let positionCombobox = builder.get_object('position_combobox');
@@ -58,22 +58,9 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 		SETTINGS.connect('changed::position', () => {
 			positionCombobox.set_active_id(SETTINGS.get_string('position'));
 		});
-		
-		//----------------------------------------------------------------------
-		
-		let lightThemeSwitch = builder.get_object('light_theme_switch');
-		lightThemeSwitch.set_state(SETTINGS.get_boolean('light-theme'));
 
-		lightThemeSwitch.connect('notify::active', widget => {
-			SETTINGS.set_boolean('light-theme', widget.active);
-		});
-
-		SETTINGS.connect('changed::light-theme', () => {
-			lightThemeSwitch.set_state(SETTINGS.get_boolean('light-theme'));
-		});
-		
 		//----------------------------------------------------------------------
-		
+
 		let emojiSize = builder.get_object('size_spinbtn');
 		emojiSize.set_value(SETTINGS.get_int('emojisize'));
 		
@@ -85,9 +72,9 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 		SETTINGS.connect('changed::emojisize', () => {
 			emojiSize.set_value(SETTINGS.get_int('emojisize'));
 		});
-		
+
 		//----------------------------------------------------------------------
-		
+
 		let nbColsSpinBtn = builder.get_object('nbcols_spinbtn');
 		nbColsSpinBtn.set_value(SETTINGS.get_int('nbcols'));
 		
@@ -174,15 +161,15 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 			builder.get_object('translation_label').set_label('');
 			builder.get_object('translation_credits').set_label('');
 		}
-		
+
 		let linkBox = builder.get_object('link_box')// FIXME padding ???
 		let a_version = ' (v' + Me.metadata.version.toString() + ') ';
-		
+
 		let url_button = new Gtk.LinkButton({
 			label: _("Report bugs or ideas"),
 			uri: Me.metadata.url.toString()
 		});
-		
+
 		linkBox.pack_start(url_button, false, false, 0);
 		linkBox.pack_end(new Gtk.Label({
 			label: a_version,
@@ -209,7 +196,6 @@ function buildPrefsWidget() {
 
 function reset_settings(b) {
 	SETTINGS.reset('emojisize');
-	SETTINGS.reset('light-theme');
 	SETTINGS.reset('nbcols');
 	SETTINGS.reset('position');
 	SETTINGS.reset('emoji-keybinding');
