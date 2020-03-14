@@ -653,9 +653,7 @@ var ALL_KEYWORDS = [
 		["mountain", "snow"],
 		["volcano", "mountain", "lava"],
 		["mount fuji", "volcano", "fujisan", "mountain", "snow"],
-
 		//-------------
-
 		["camping", "tent", "pavilion"],
 		["beach with umbrella", "beach", "umbrella", "sand"],
 		["desert", "sand", "cactus"],
@@ -667,9 +665,7 @@ var ALL_KEYWORDS = [
 		["building construction", "crane", "construction", "building", "architectural change"],
 		["houses", "building"],
 		["cityscape", "skyscraper", "city", "building"],
-
 		//-------------
-
 		["derelict house", "abandoned", "ruin", "building"],
 		["house", "home"],
 		["house with garden", "house", "garden", "home"],
@@ -680,35 +676,31 @@ var ALL_KEYWORDS = [
 		["bank", "office", "money", "place"],
 		["hotel"],
 		["love hotel", "hotel", "love"],
-
 		//-------------
-
 		["convenience store", "konbini", "store", "grocery"],
 		["school", "academy"],
 		["department store", "store"],
 		["factory", "work", "manufactory"],
 		["japanese castle", "japan", "castle"],
-	//------
 		["castle", "medieval", "tale"],
 		["wedding", "love"],
 		["tokyo tower", "tokyo", "tower"],
 		["statue of liberty", "new york", "liberty", "usa"],
 		["church", "christ", "religion", "christianism"],
-
 		//-------------
-
 		["mosque", "religion", "islam", "muslim"],
 		["synagogue", "religion", "judaism"],
 		["shinto shrine", "religion", "japan", "kami"],
 		["kaaba", "religion", "mecca", "islam", "muslim"],
+		["moai", "easter island"],
 	//place-other
 		["fountain", "water"],
 		["tent", "camping", "pavilion"],
 		["foggy", "fog", "weather"],
 		["night with stars", "night", "stars"],
 		["sunrise over mountains", "sunrise", "mountains"],
-		["sunrise", "sun"],
 		//-------------
+		["sunrise", "sun"],
 		["cityscape at dusk", "skyscraper", "city"],
 		["sunset", "sun"],
 		["bridge at night", "bridge", "night"],
@@ -718,12 +710,13 @@ var ALL_KEYWORDS = [
 		["ferris wheel", "amusement park"],
 		["roller coaster", "amusement park"],
 		["barber pole", "barber"],
-		["circus tent", "circus", "show"],
 		//-------------
+		["circus tent", "circus", "show"],
 		["performing arts", "arts", "theater"],
 		["framed picture", "picture", "painting"],
-		["artist palette", "painting", "style", "reformat"],
 		["slot machine", "game", "casino"],
+		["compass", "navigation", "magnetic", "directions"],
+		["luggage", "suitcase", "bag", "traveling"],
 	//transport-ground
 		["locomotive", "transport", "train"],
 		["railway car", "transport", "train"],
@@ -769,19 +762,17 @@ var ALL_KEYWORDS = [
 		["vertical traffic light", "traffic light", "road sign"],
 		["construction", "road sign", "wip", "work in progress"],
 		["stop sign", "road sign", "stop"],
-	//transport-water
+	//-----transport-water
 		["anchor", "boat", "sea"],
 		["sailboat", "boat", "sea"],
 		["canoe", "boat"],
 		["speedboat", "boat"],
 		["passenger ship", "boat", "ship"],
 		["ferry", "boat", "ship"],
-
 		//-------------
-
 		["motor boat", "boat"],
 		["ship", "boat"],
-	//transport-air
+	//-----transport-air
 		["airplane", "plane", "fly"],
 		["small airplane", "plane", "airplane", "fly"],
 		["airplane departure", "plane", "airplane", "take-off"],
@@ -804,38 +795,45 @@ var ALL_KEYWORDS = [
 		["shower", "bathroom"],
 		//-------------
 		["bathtub", "bathroom"]
-	], [
-	//activities and sports
+	], [ // Activities and sports
+	//-----events and hobbies
 		["jack-o-lantern", "halloween"],
 		["christmas tree", "tree", "christmas"],
 		["fireworks", "party"],
 		["sparkler", "party"],
 		["sparkles", "party", "feature"],
-		//-------------
 		["balloon", "party"],
 		["party popper", "party", "initial"],
 		["confetti ball", "party"],
 		["tanabata tree", "bamboo"],
-		["pine decoration"],
+		["pine decoration", "bamboo", "kadomatsu"],
+		//-------------
 		["japanese dolls", "dolls", "japan"],
 		["carp streamer", "carp", "japan"],
 		["wind chime", "wind", "japan"],
 		["moon viewing ceremony", "moon", "japan"],
 		["ribbon"],
-		//-------------
 		["wrapped gift", "gift"],
 		["reminder ribbon", "ribbon"],
 		["admission tickets", "ticket"],
-		["ticket"],
+		["ticket", "theatre"],
+		["firecracker", "new year eve"],
+		//-------------
+		["red envelope", "gift", "good fortune", "chinese new year"],
+		["puzzle piece", "jigsaw puzzle pieces"],
+		["teddy bear"],
+		["thread", "sewing"],
+		["yarn", "knitting"],
+		["artist palette", "painting", "style", "reformat"],
+	//-----awards
 		["military medal", "medal"],
 		["trophy", "cup"],
 		["sports medal", "medal"],
 		["1st place medal", "medal", "gold"],
+		//-------------
 		["2nd place medal", "medal", "silver"],
 		["3rd place medal", "medal", "bronze"],
-		//-------------
-
-	//sport
+	//-----sport
 		["soccer ball", "soccer", "ball", "football"],
 		["baseball", "ball"],
 		["basketball", "ball"],
@@ -844,9 +842,9 @@ var ALL_KEYWORDS = [
 		["rugby football", "ball", "rugby"],
 		["tennis", "ball"],
 		["pool 8 ball", "ball"],
+		//-------------
 		["bowling"],
 		["cricket game", "cricket"],
-		//-------------
 		["field hockey", "hockey"],
 		["ice hockey", "hockey"],
 		["ping pong", "table tennis"],
@@ -855,46 +853,48 @@ var ALL_KEYWORDS = [
 		["martial arts uniform", "martial arts", "kimono"],
 		["goal net"],
 		["direct hit", "target"],
+		//-------------
 		["flag in hole", "golf"],
 		["ice skate", "ice"],
-		//-------------
 		["fishing pole", "fishing"],
 		["running shirt", "shirt"],
 		["skis", "skiing"],
 		["sled", "snow"],
 		["curling stone", "curling"],
+		["skateboard"],
+		["softball"],
+		["flying disc", "frisbee", "ultimate"],
+		//-------------
+		["lacrosse", "crosse", "lacrosse stick and ball"],
 	//game
 		["video game", "game", "gaming"],
 		["joystick", "video game", "game", "gaming"],
 		["game die", "game", "dice"],
 		["spade suit", "game", "spade", "playing cards"],
 		["heart suit", "game", "heart", "playing cards"],
-		//-------------
 		["diamond suit", "game", "diamond", "playing cards"],
 		["club suit", "game", "club", "playing cards"],
 		["joker", "game", "playing cards"],
 		["mahjong red dragon", "game", "mahjong"],
+		//-------------
 		["flower playing cards", "game"],
+		["chess pawn", "chess", "game"],
 	//music
 		["musical score"],
 		["studio microphone"],
 		["level slider"],
 		["control knobs"],
-
-		//-------------
-
 		["microphone"],
 		["headphone"],
 		["radio"],
 		["saxophone"],
+		//-------------
 		["guitar"],
 		["musical keyboard"],
 		["trumpet"],
 		["violin"],
 		["drum"],
-
 		["postal horn"],
-
 	//-----person-sport
 		["person fencing", "fencer", "fencing", "sword"],
 		["horse racing", "horse", "jockey", "racehorse", "racing", 'HAS_TONE'],
@@ -920,15 +920,9 @@ var ALL_KEYWORDS = [
 		["person in steamy room", "steam", "sauna", 'HAS_GENDER', 'HAS_TONE'],
 		["person climbing", "climbing", "cliff", 'HAS_GENDER', 'HAS_TONE'],
 		["person in lotus position", "yoga", "lotus", 'HAS_GENDER', 'HAS_TONE']
-	], [
-
-	//objects
-
-	//phone
+	], [ // Objects
+	//-----phone, computer, video
 		["mobile phone", "responsive"],
-
-		//-------------
-
 		["mobile phone with arrow"],
 		["telephone"],
 		["telephone receiver"],
@@ -938,10 +932,8 @@ var ALL_KEYWORDS = [
 		["electric plug"],
 		["laptop computer"],
 		["desktop computer"],
-		["printer"],
-
 		//-------------
-
+		["printer"],
 		["keyboard"],
 		["computer mouse"],
 		["trackball"],
@@ -951,49 +943,43 @@ var ALL_KEYWORDS = [
 		["dvd"],
 		["movie camera"],
 		["film frames"],
-		["film projector"],
-
 		//-------------
-
+		["film projector"],
 		["clapper board"],
 		["television"],
 		["camera"],
 		["camera with flash", "snapshots"],
 		["video camera"],
 		["videocassette"],
+	//-----light
 		["left-pointing magnifying glass", "seo"],
 		["right-pointing magnifying glass"],
 		["microscope"],
-		["telescope"],
-
 		//-------------
-
+		["telescope"],
 		["satellite antenna"],
 		["candle"],
 		["light bulb", "source docs"],
 		["flashlight"],
 		["red paper lantern"],
-
-	//time
-
+	//-----time
 		["hourglass", "time"],
 		["hourglass with flowing sand", "sand", "time"],
 		["watch", "clock", "time"],
 		["alarm clock", "clock", "time"],
+		//-------------
 		["stopwatch", "watch", "clock", "time"],
 		["timer clock", "clock", "time"],
 		["mantelpiece clock", "clock", "time"],
-	//----
+	//----book & paper
 		["notebook with decorative cover"],
 		["closed book"],
 		["open book"],
 		["green book"],
 		["blue book"],
-
-		//-------------
-
 		["orange book"],
 		["books", "docs", "documentation"],
+		//-------------
 		["notebook"],
 		["ledger"],
 		["page with curl"],
@@ -1002,11 +988,9 @@ var ALL_KEYWORDS = [
 		["newspaper"],
 		["rolled-up newspaper"],
 		["bookmark tabs", "release"],
-
-		//-------------
-
 		["bookmark", "version"],
 		["label", "types"],
+	//-----money
 		["money bag"],
 		["yen banknote"],
 		["dollar banknote"],
@@ -1015,12 +999,10 @@ var ALL_KEYWORDS = [
 		["money with wings"],
 		["credit card"],
 		["chart increasing with yen"],
-
-		//-------------
-
 		["currency exchange"],
 		["heavy dollar sign"],
-	//mail
+		//-------------
+	//-----mail
 		["envelope"],
 		["e-mail"],
 		["incoming envelope"],
@@ -1029,24 +1011,21 @@ var ALL_KEYWORDS = [
 		["inbox tray"],
 		["package", "compiled"],
 		["closed mailbox with raised flag"],
-
-		//-------------
-
 		["closed mailbox with lowered flag"],
 		["open mailbox with raised flag"],
+		//-------------
 		["open mailbox with lowered flag"],
 		["postbox"],
-		["ballot box with ballot"],
+		["ballot box with ballot", "voting"],
+	//-----writing
 		["pencil", "typos"],
 		["black nib"],
 		["fountain pen"],
 		["pen"],
 		["paintbrush"],
-
-		//-------------
-
 		["crayon"],
 		["memo", "docs", "documentation"],
+		//-------------
 		["briefcase"],
 		["file folder"],
 		["open file folder"],
@@ -1093,12 +1072,10 @@ var ALL_KEYWORDS = [
 		["hammer and wrench"],
 		["dagger"],
 		["crossed swords"],
-		["pistol"],
+		["pistol", "gun"],
+		["brick"],
 		["bow and arrow"],
 		["shield"],
-
-		//-------------
-
 		["wrench", "configuration"],
 		["nut and bolt"],
 		["gear"],
@@ -1107,19 +1084,18 @@ var ALL_KEYWORDS = [
 		["balance scale"],
 		["link"],
 		["chains"],
-	//other
+	//-----medical and other
 		["syringe"],
 		["pill"],
-
-		//-------------
-
+		["goggles", "lab", "protection"],
+		["lab coat"],
 		["cigarette"],
 		["coffin"],
 		["funeral urn"],
-		["moai"],
 		["oil drum"],
 		["crystal ball"],
-		["shopping cart"]
+		["shopping cart"],
+		["nazar amulet", "turkey", "turkish"]
 	], [
 	//symbols
 
