@@ -17,9 +17,7 @@ This GNOME shell extension provides a searchable popup menu displaying most emoj
 
 ## About fonts
 
-It will be less ugly if you have the « [Twitter Color Emoji](https://github.com/eosrei/twemoji-color-font/releases) » font, or the « [EmojiOne Color](https://github.com/emojione/emojione) » font installed on your system. These fonts are on github.
-
-**Arch Linux** users can install [ttf-emojione from **AUR**](https://aur.archlinux.org/packages/ttf-emojione/).
+It will be less ugly if you have the « [Twitter Color Emoji](https://github.com/eosrei/twemoji-color-font/releases) » font, the « Noto Emoji » font, or the « JoyPixels Color » font installed on your system.
 
 Color emojis depends on the system you're using (GNOME > 3.26 is recommended).
 
