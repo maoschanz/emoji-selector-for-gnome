@@ -39,7 +39,7 @@ var EmojiButton = class EmojiButton {
 		this.tags = [tonable, genrable, gendered]
 		this.keywords = keywords;
 	}
-	
+
 	build(category) {
 		this.super_btn = new St.Button({
 			style_class: 'EmojisItemStyle',
@@ -94,13 +94,14 @@ var EmojiButton = class EmojiButton {
 		return Clutter.EVENT_PROPAGATE;
 	}
 
-	//This function is called at each click and copies the emoji to the clipboard.
-
-	//The exact behavior of the method depends on the mouse button used:
-	//- left click overwrites clipboard content with the emoji, and closes the menu;
-	//- middle click too, but does not close the menu;
-	//- right click adds the emoji at the end of the current clipboard content (and
-	//  does not close the menu).
+	/*
+	 * This method is called at each click and copies the emoji to the clipboard.
+	 * The exact behavior of the method depends on the mouse button used:
+	 * - left click overwrites clipboard content with the emoji, and closes the menu;
+	 * - middle click too, but does not close the menu;
+	 * - right click adds the emoji at the end of the current clipboard content (and
+	 *   does not close the menu).
+	 */
 	onButtonPress(actor, event) {
 		let mouseButton = event.get_button();
 		let emojiToCopy = this.getTaggedEmoji();
@@ -144,14 +145,16 @@ var EmojiButton = class EmojiButton {
 	}
 
 	// TODO update this old comment and add the tag for symbol
-	// This returns an emoji corresponding to .super_btn.label with tags applied
-	// to it. `tags` is an array of 3 booleans, which describe how a composite
-	// emoji is built:
-	// - tonable -> return emoji concatened with the selected skin tone;
-	// - genrable -> return emoji concatened with the selected gender;
-	// - gendered -> the emoji is already gendered, which modifies the way skin
-	//   tone is applied ([man|woman] + [skin tone if any] + [other symbol(s)]).
-	// If all tags are false, it returns unmodified .super_btn.label
+	/*
+	 * This returns an emoji corresponding to .super_btn.label with tags applied
+	 * to it. `tags` is an array of 3 booleans, which describe how a composite
+	 * emoji is built:
+	 * - tonable -> return emoji concatened with the selected skin tone;
+	 * - genrable -> return emoji concatened with the selected gender;
+	 * - gendered -> the emoji is already gendered, which modifies the way skin
+	 *   tone is applied ([man|woman] + [skin tone if any] + [other symbol(s)]).
+	 * If all tags are false, it returns unmodified .super_btn.label
+	 */
 	getTaggedEmoji() {
 		let currentEmoji = this.super_btn.label;
 		if(currentEmoji == '') {

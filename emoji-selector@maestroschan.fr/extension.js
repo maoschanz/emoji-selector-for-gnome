@@ -1,16 +1,32 @@
-//this file is part of https://github.com/maoschanz/emoji-selector-for-gnome
+// extension.js (https://github.com/maoschanz/emoji-selector-for-gnome)
+
+/*
+	Copyright 2017-2020 Romain F. T.
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 const St = imports.gi.St;
 const Clutter = imports.gi.Clutter;
 const Main = imports.ui.main;
 const Shell = imports.gi.Shell;
 
-//cause it is needed to grab the damn focus
+// it is needed to grab the focus
 const Mainloop = imports.mainloop;
 
-//for the keybinding ?
+// for the keybinding
 const Meta = imports.gi.Meta;
-const Gio = imports.gi.Gio;
 
 /* Import PanelMenu and PopupMenu */
 const PanelMenu = imports.ui.panelMenu;
@@ -30,7 +46,7 @@ const SkinTonesBar = Me.imports.emojiOptionsBar.SkinTonesBar;
 const EmojiCategory = Me.imports.emojiCategory.EmojiCategory;
 const EmojiButton = Me.imports.emojiButton;
 
-//----------------------------------------------
+//------------------------------------------------------------------------------
 
 var CAT_LABELS;
 
@@ -49,17 +65,17 @@ const CAT_ICONS = [
 var SETTINGS;
 let SIGNAUX = [];
 
-/* Global variable : GLOBAL_BUTTON to click in the topbar */
+// Global variable : GLOBAL_BUTTON to click in the topbar
 var GLOBAL_BUTTON;
 
-/* this array will store some St.Button(s) */
+// This array will store some St.Button(s)
 var recents = [];
 
-/* These global variables are used to store some static settings */
+// These global variables are used to store some static settings
 var NB_COLS;
 let POSITION;
 
-//-----------------------------------------------
+//------------------------------------------------------------------------------
 
 function updateStyle() {
 	recents.forEach(function(b){
@@ -72,7 +88,7 @@ function updateStyle() {
 	});
 }
 
-function saveRecents() { //XXX not oop
+function saveRecents() { //XXX not O.O.P.
 	let backUp = [];
 	for(let i=0; i<NB_COLS; i++){
 		backUp.push(recents[i].super_btn.label);
@@ -80,7 +96,7 @@ function saveRecents() { //XXX not oop
 	Convenience.getSettings().set_strv('recently-used', backUp);
 }
 
-function buildRecents() { //XXX not oop
+function buildRecents() { //XXX not O.O.P.
 	let temp = Convenience.getSettings().get_strv('recently-used')
 	for(let i=0; i<NB_COLS; i++){
 		if (i < temp.length) {
@@ -96,11 +112,8 @@ function buildRecents() { //XXX not oop
 
 //------------------------------------------------------------------------------
 
-//class EmojiSearchItem
-//methods :
-//	_init()					create and connect a search entry, added to a menu item
-//	_onSearchTextChanged()	change the "recently used" array content in reaction to a new search
 class EmojiSearchItem {
+	// Creates and connects a search entry, added to a menu item
 	constructor() {
 		this.super_item = new PopupMenu.PopupBaseMenuItem({
 			reactive: false,
@@ -127,6 +140,8 @@ class EmojiSearchItem {
 		this.super_item.actor.add(this.searchEntry, { expand: true });
 	}
 
+	// Updates the "recently used" buttons content in reaction to a new search
+	// query (the text changed or the category changed).
 	_onSearchTextChanged() {
 		let searchedText = this.searchEntry.get_text();
 		if (searchedText === '') {
@@ -163,6 +178,8 @@ class EmojiSearchItem {
 		}
 	}
 
+	// Search results are queried in several steps, from more important criteria
+	// to very general string matching.
 	_getResults(searchedText, minCat, maxCat, recents, results, priority) {
 		for (let cat = minCat; cat < maxCat; cat++) {
 			let availableSlots = recents.length - results.length;
@@ -177,19 +194,12 @@ class EmojiSearchItem {
 	}
 }
 
-//class EmojiCategory TODO update that huge obsolete comment
-//This is the main class of this extension, corresponding to the menu in the top panel
-//methods :
-//	_init()						initialize the menu (buttons, search entry, recently used)
-//	toggle()					open/close the menu (not useful wrapper)
-//	_createAllCategories()		create all categories (buttons & submenu menuitems), empty
-//	_addAllCategories()			add all invisible submenu menuitems to the extension interface
-//	_renderPanelMenuHeaderBox()	add "back" button & categories' buttons to the extension interface
-//	clearCategories()			clean the interface & close an eventual opened category
-//	_onSearchTextChanged		wrapper calling EmojiSearchItem's _onSearchTextChanged
-//	_recentlyUsedInit()			initialize the array of recently used emojis
-//	_bindShortcut()				bind the keyboard shortcut
-//	destroy()					destroy the button and its menu
+//------------------------------------------------------------------------------
+
+/*
+ * This is the main class of this extension, corresponding to the button in the
+ * top panel and its menu.
+ */
 class EmojisMenu {
 	constructor () {
 		this.super_btn = new PanelMenu.Button(0.0, _("Emoji Selector"), false);
@@ -238,20 +248,27 @@ class EmojisMenu {
 			this._permanentItems++;
 		}
 
-		// this sets the default behavior of each submenu : false means it is
-		// close when the extension's menu opens
-		this.super_btn.menu.connect('open-state-changed', this.onOpenStateChanged.bind(this));
+		this.super_btn.menu.connect(
+			'open-state-changed',
+			this._onOpenStateChanged.bind(this)
+		);
 
 		if (SETTINGS.get_boolean('use-keybinding')) {
 			this._bindShortcut();
 		}
 	}
 
-	onOpenStateChanged(self, open) {
+	toggle() {
+		this.super_btn.menu.toggle();
+	}
+
+	// Executed when the user opens the menu, the main goal are to clear and to
+	// focus the search entry.
+	_onOpenStateChanged(self, open) {
 		this.super_btn.actor.visible = open || SETTINGS.get_boolean('always-show');
 		this.clearCategories();
 		this.searchItem.searchEntry.set_text('');
-//		this.unloadCategories();
+		// this.unloadCategories();
 
 		let a = Mainloop.timeout_add(20, () => {
 			if (open) {
@@ -261,16 +278,13 @@ class EmojisMenu {
 		});
 	}
 
-//	unloadCategories() { // TODO
+//	unloadCategories() { // XXX
 //		for (let i=1; i<this.emojiCategories.length; i++) {
 //			this.emojiCategories[i].unload();
 //		}
 //	}
 
-	toggle() {
-		this.super_btn.menu.toggle();
-	}
-
+	// Creates all categories (buttons & submenu menuitems), empty for now.
 	_createAllCategories() {
 		this.emojiCategories = [];
 
@@ -280,12 +294,15 @@ class EmojisMenu {
 		}
 	}
 
+	// Adds all submenu-menuitems to the extension interface. These items are
+	// hidden, and will be visible only when the related category is opened.
 	_addAllCategories() {
 		for (let i = 0; i < 9; i++) {
 			this.super_btn.menu.addMenuItem(this.emojiCategories[i].super_item);
 		}
 	}
 
+	// Adds categories' buttons to the extension interface
 	_renderPanelMenuHeaderBox() {
 		this._buttonMenuItem = new PopupMenu.PopupBaseMenuItem({
 			reactive: false,
@@ -298,6 +315,8 @@ class EmojisMenu {
 		}
 	}
 
+	// Cleans the interface & close the opened category (if any). Called from the
+	// outside, be careful.
 	clearCategories(){
 		// removing the blue color of previously opened category's button
 		for (let i = 0; i< 9; i++) {
@@ -306,15 +325,13 @@ class EmojisMenu {
 
 		let items = this.super_btn.menu._getMenuItems();
 
-		// closing and hinding opened categories
+		// closing and hiding any opened category
 		if (POSITION == 'top') {
 			for (let i=this._permanentItems; i < items.length; i++) {
 				items[i].setSubmenuShown(false);
 				items[i].actor.visible = false;
 			}
-		}
-
-		if (POSITION == 'bottom') {
+		} else { // if (POSITION == 'bottom') {
 			for (let i=0; i<(items.length - this._permanentItems); i++) {
 				items[i].setSubmenuShown(false);
 				items[i].actor.visible = false;
@@ -322,14 +339,15 @@ class EmojisMenu {
 		}
 
 		this._activeCat = -1;
-		this._onSearchTextChanged(); //non optimal
+		this._onSearchTextChanged(); // XXX not optimal
 	}
 
+	// Wrapper calling EmojiSearchItem's _onSearchTextChanged method
 	_onSearchTextChanged() {
 		this.searchItem._onSearchTextChanged();
-		return;
 	}
 
+	// Initializes the container showing the recently used emojis as buttons
 	_recentlyUsedInit() {
 		let recentlyUsed = new PopupMenu.PopupBaseMenuItem({
 			reactive: false,
@@ -350,8 +368,9 @@ class EmojisMenu {
 	}
 
 	_bindShortcut() {
-		let ModeType = Shell.hasOwnProperty('ActionMode') ?
-			Shell.ActionMode : Shell.KeyBindingMode;
+		let ModeType = Shell.hasOwnProperty('ActionMode')
+			? Shell.ActionMode
+			: Shell.KeyBindingMode;
 
 		Main.wm.addKeybinding(
 			'emoji-keybinding',
@@ -362,7 +381,7 @@ class EmojisMenu {
 		);
 	}
 
-//	destroy() { // TODO ?
+//	destroy() { // XXX ?
 //		this.unloadCategories();
 //		for (let i=1; i<this.emojiCategories.length; i++) {
 //			this.emojiCategories[i].destroy();

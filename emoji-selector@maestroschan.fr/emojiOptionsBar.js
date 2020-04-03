@@ -63,8 +63,7 @@ var SkinTonesBar = class SkinTonesBar {
 				label: '♂',
 			});
 
-			this._genderArray[1].connect('clicked', w => {
-
+			this._genderArray[1].connect('clicked', w => { // TODO refacto callback
 				if (Extension.SETTINGS.get_int('gender') != 1) {
 					this.clearGender();
 					w.style = 'background-color: blue;';
@@ -73,8 +72,7 @@ var SkinTonesBar = class SkinTonesBar {
 					this.clearGender();
 				}
 			});
-			this._genderArray[2].connect('clicked', w => {
-
+			this._genderArray[2].connect('clicked', w => { // TODO refacto callback
 				if (Extension.SETTINGS.get_int('gender') != 2) {
 					this.clearGender();
 					w.style = 'background-color: blue;';

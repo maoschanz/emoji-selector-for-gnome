@@ -102,11 +102,11 @@ var EmojiCategory = class EmojiCategory {
 			if (neededresults >= 0) {
 				let isMatching = false;
 				if (priority === 3) {
-					isMatching = this.searchExactMatch(searchedText, i);
+					isMatching = this._searchExactMatch(searchedText, i);
 				} else if (priority === 2) {
-					isMatching = this.searchInName(searchedText, i);
+					isMatching = this._searchInName(searchedText, i);
 				} else {
-					isMatching = this.searchInKeywords(searchedText, i);
+					isMatching = this._searchInKeywords(searchedText, i);
 				}
 				if (isMatching){
 					searchResults.push(this.emojiButtons[i].baseCharacter)
@@ -117,11 +117,11 @@ var EmojiCategory = class EmojiCategory {
 		return searchResults
 	}
 
-	searchExactMatch(searchedText, i) {
+	_searchExactMatch(searchedText, i) {
 		return this.emojiButtons[i].keywords[0] === searchedText;
 	}
 
-	searchInName(searchedText, i) {
+	_searchInName(searchedText, i) {
 		if (this.emojiButtons[i].keywords[0].includes(searchedText)) {
 			// If the name corresponds to the searched string, but it is also an
 			// exact match, we can assume the emoji is already in the displayed
@@ -131,21 +131,22 @@ var EmojiCategory = class EmojiCategory {
 		return false;
 	}
 
-	searchInKeywords(searchedText, i) {
+	_searchInKeywords(searchedText, i) {
 		for (let k = 1; k < this.emojiButtons[i].keywords.length; k++) {
 			if (this.emojiButtons[i].keywords[k].includes(searchedText)) {
 				// If a keyword corresponds to the searched string, but the name
 				// corresponds too, we can assume the emoji is already in the
 				// displayed result.
-				return !this.searchInName(searchedText, i);
+				return !( this.searchExactMatch(searchedText, i)
+				                        || this.searchInName(searchedText, i) );
 			}
 		}
 		return false;
 	}
 
 	/**
-	 * Builds the submenu, and fill it with containers full of EmojiButtons
-	 * previously built.
+	 * Builds the submenu, and fill it with containers full of previously built
+	 * EmojiButtons objects.
 	 */
 	build() {
 		if (this._built) { return; }
@@ -169,7 +170,7 @@ var EmojiCategory = class EmojiCategory {
 		this._built = true;
 	}
 
-//	unload() { // TODO
+//	unload() { // TODO ?
 //		this._built = false;
 //		this._loaded = false;
 //		for (let i=0; i<this.emojiButtons.length; i++) {

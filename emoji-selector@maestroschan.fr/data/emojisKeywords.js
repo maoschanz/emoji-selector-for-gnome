@@ -1421,7 +1421,7 @@ var ALL_KEYWORDS = [
 		["red circle"],
 		["blue circle"],
 
-	//time
+	//time TODO nuls comme noms
 
 		["hour", "12h00", "0h00"],
 		["hour", "12h30", "0h30"],
