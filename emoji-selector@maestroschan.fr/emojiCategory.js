@@ -126,7 +126,7 @@ var EmojiCategory = class EmojiCategory {
 			// If the name corresponds to the searched string, but it is also an
 			// exact match, we can assume the emoji is already in the displayed
 			// result.
-			return !this.searchExactMatch(searchedText, i);
+			return !this._searchExactMatch(searchedText, i);
 		}
 		return false;
 	}
@@ -137,8 +137,8 @@ var EmojiCategory = class EmojiCategory {
 				// If a keyword corresponds to the searched string, but the name
 				// corresponds too, we can assume the emoji is already in the
 				// displayed result.
-				return !( this.searchExactMatch(searchedText, i)
-				                        || this.searchInName(searchedText, i) );
+				return !( this._searchExactMatch(searchedText, i)
+				                       || this._searchInName(searchedText, i) );
 			}
 		}
 		return false;

@@ -78,7 +78,8 @@ var EmojiButton = class EmojiButton {
 
 	onKeyPress(o, e) {
 		let symbol = e.get_key_symbol();
-		if (symbol == Clutter.Return || symbol == Clutter.KP_Enter) {
+		//  Main return key (GS > 3.35)     Main return key (GS < 3.35)           Numpad return key
+		if (symbol == Clutter.KEY_Return || symbol == Clutter.Return || symbol == Clutter.KP_Enter) {
 			let emojiToCopy = this.getTaggedEmoji();
 			let [x, y, mods] = global.get_pointer();
 			let majPressed = (mods & Clutter.ModifierType.SHIFT_MASK) != 0;
