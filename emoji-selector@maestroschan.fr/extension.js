@@ -22,7 +22,7 @@ const Clutter = imports.gi.Clutter;
 const Main = imports.ui.main;
 const Shell = imports.gi.Shell;
 
-// it is needed to grab the focus
+// it is needed to grab the focus for the search entry
 const Mainloop = imports.mainloop;
 
 // for the keybinding
@@ -38,6 +38,10 @@ const CLIPBOARD_TYPE = St.ClipboardType.CLIPBOARD;
 /* Stuffs for settings, translations etc. */
 const Gettext = imports.gettext.domain('emoji-selector');
 const _ = Gettext.gettext;
+
+// Retrocompatibility
+const ShellVersion = imports.misc.config.PACKAGE_VERSION;
+var useActors = parseInt(ShellVersion.split('.')[1]) < 33;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
@@ -208,13 +212,18 @@ class EmojisMenu {
 			icon_name: 'face-cool-symbolic',
 			style_class: 'system-status-icon emotes-icon'
 		});
-
 		box.add(icon);
 		box.add(PopupMenu.arrowIcon(St.Side.BOTTOM));
-		this.super_btn.actor.add_child(box);
 		this._permanentItems = 0;
 		this._activeCat = -1;
-		this.super_btn.actor.visible = SETTINGS.get_boolean('always-show');
+
+		if (useActors){
+			this.super_btn.actor.add_child(box);
+			this.super_btn.actor.visible = SETTINGS.get_boolean('always-show');
+		} else {
+			this.super_btn.add_child(box);
+			this.super_btn.visible = SETTINGS.get_boolean('always-show');
+		}
 
 		//initializing categories
 		this._createAllCategories();
@@ -262,10 +271,14 @@ class EmojisMenu {
 		this.super_btn.menu.toggle();
 	}
 
-	// Executed when the user opens the menu, the main goal are to clear and to
-	// focus the search entry.
+	// Executed when the user opens/closes the menu, the main goals are to clear
+	// and to focus the search entry.
 	_onOpenStateChanged(self, open) {
-		this.super_btn.actor.visible = open || SETTINGS.get_boolean('always-show');
+		if (useActors){
+			this.super_btn.actor.visible = open || SETTINGS.get_boolean('always-show');
+		} else {
+			this.super_btn.visible = open || SETTINGS.get_boolean('always-show');
+		}
 		this.clearCategories();
 		this.searchItem.searchEntry.set_text('');
 		// this.unloadCategories();
@@ -410,14 +423,14 @@ function enable() {
 	SETTINGS = Convenience.getSettings();
 	NB_COLS = SETTINGS.get_int('nbcols');
 	POSITION = SETTINGS.get_string('position');
-	/* TODO paramètres restants à dynamiser
-	emoji-keybinding (tableau de chaînes), pourri de toutes manières
-	nbcols (int), rebuild nécessaire
-	position (chaîne) impossible tout court ?
+	/* TODO paramètres restants à rendre dynamiques
+	 * emoji-keybinding (tableau de chaînes), pourri de toutes manières
+	 * nbcols (int), rebuild nécessaire
+	 * position (chaîne) impossible tout court ?
 	*/
 
-	// This variable is assigned here because init() wouldn't provide gettext
-	// correctly if it was done at the beginning of the file.
+	// This variable is assigned here because init() wouldn't have provided
+	// gettext yet if it was done at the top level of the file.
 	CAT_LABELS = [
 		_("Smileys & Body"),
 		_("Peoples & Clothing"),

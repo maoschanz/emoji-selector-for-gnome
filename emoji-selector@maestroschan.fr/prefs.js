@@ -47,7 +47,8 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 		positionCombobox.append('bottom', _("From bottom to top"));
 		positionCombobox.active_id = SETTINGS.get_string('position');
 		positionCombobox.set_tooltip_text(
-			_("Displaying the interface from the bottom is better if you use a bottom panel instead of the default top bar.")
+			_("Displaying the interface from the bottom is better if you use " +
+			                   "a bottom panel instead of the default top bar.")
 			+ '\n' + RELOAD_TEXT
 		);
 
@@ -162,7 +163,7 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 			builder.get_object('translation_credits').set_label('');
 		}
 
-		let linkBox = builder.get_object('link_box')// FIXME padding ???
+		let linkBox = builder.get_object('link_box'); // XXX padding ???
 		let a_version = ' (v' + Me.metadata.version.toString() + ') ';
 
 		let url_button = new Gtk.LinkButton({

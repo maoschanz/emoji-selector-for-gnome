@@ -45,7 +45,7 @@ var EmojiCategory = class EmojiCategory {
 			this.skinTonesBar = new SkinTonesBar(false);
 		}
 
-		//	Smileys & body		Peoples			Activities
+		//   Smileys & body   Peoples           Activities
 		if ((this.id == 0) || (this.id == 1) || (this.id == 5)) {
 			this.skinTonesBar.addBar(this.super_item.actor);
 		}
@@ -56,7 +56,10 @@ var EmojiCategory = class EmojiCategory {
 			track_hover: true,
 			accessible_name: categoryName,
 			style_class: 'EmojisCategory',
-			child: new St.Icon({ icon_name: iconName }),
+			child: new St.Icon({
+				icon_name: iconName,
+				icon_size: 16
+			}),
 		});
 		this.categoryButton.connect('clicked', this._toggle.bind(this));
 		this.categoryButton.connect('notify::hover', this._onHover.bind(this));
