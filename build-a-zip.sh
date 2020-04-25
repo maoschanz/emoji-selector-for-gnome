@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./update-and-compile-translations.sh
+# ./update-and-compile-translations.sh
 
 cd emoji-selector@maestroschan.fr
 
