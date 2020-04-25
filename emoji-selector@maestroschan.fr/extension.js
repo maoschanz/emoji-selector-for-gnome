@@ -323,8 +323,12 @@ class EmojisMenu {
 		});
 		this.categoryButton = [];
 		for (let i=0; i<this.emojiCategories.length; i++) {
-			this._buttonMenuItem.actor.add(this.emojiCategories[i].getButton(),
-			                                   { expand: true, x_fill: false });
+			this._buttonMenuItem.actor.add(
+				this.emojiCategories[i].getButton(),
+				{ expand: true, x_fill: false } // deprecation warning but the
+				// genius that deprecated it didn't bother to provide a new way
+				// to do that
+			);
 		}
 	}
 

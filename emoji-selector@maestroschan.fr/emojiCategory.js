@@ -66,8 +66,11 @@ var EmojiCategory = class EmojiCategory {
 
 		this._built = false; // will be true once the user opens the category
 		this._loaded = false; // will be true once loaded
-		this.validateKeywordsNumber();
-		this.load();
+		if (this.validateKeywordsNumber()) {
+			this.load();
+		} else {
+			// TODO add an item describing the error
+		}
 	}
 
 	validateKeywordsNumber() {
@@ -75,6 +78,9 @@ var EmojiCategory = class EmojiCategory {
 			log("Incorrect number of keywords for category " + this.categoryName)
 			log(EMOJIS_CHARACTERS[this.id].length + " emojis");
 			log(EMOJIS_KEYWORDS[this.id].length + " keyword arrays");
+			return false;
+		} else {
+			return true;
 		}
 	}
 
