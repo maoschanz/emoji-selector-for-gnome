@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-25 20:51+0100\n"
+"POT-Creation-Date: 2020-04-25 22:06+0200\n"
 "PO-Revision-Date: 2019-03-20 23:18+0100\n"
 "Last-Translator: Romain F. T. <rrroschan@gmail.com>\n"
 "Language-Team: French <none>\n"
@@ -16,64 +16,64 @@ msgstr ""
 "X-Generator: Gtranslator 3.32.0\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: emoji-selector@maestroschan.fr/extension.js:36
-msgid "Smileys & Body"
-msgstr "Émoticônes & corps humain"
-
-#: emoji-selector@maestroschan.fr/extension.js:37
-msgid "Peoples & Clothing"
-msgstr "Personnes & vêtements"
-
-#: emoji-selector@maestroschan.fr/extension.js:38
-msgid "Animals & Nature"
-msgstr "Animaux & nature"
-
-#: emoji-selector@maestroschan.fr/extension.js:39
-msgid "Food & Drink"
-msgstr "Nourriture & boisson"
-
-#: emoji-selector@maestroschan.fr/extension.js:40
-msgid "Travel & Places"
-msgstr "Voyage & lieux"
-
-#: emoji-selector@maestroschan.fr/extension.js:41
-msgid "Activities & Sports"
-msgstr "Activités & sports"
-
-#: emoji-selector@maestroschan.fr/extension.js:42
-msgid "Objects"
-msgstr "Objets"
-
-#: emoji-selector@maestroschan.fr/extension.js:43
-msgid "Symbols"
-msgstr "Symboles"
-
-#: emoji-selector@maestroschan.fr/extension.js:44
-msgid "Flags"
-msgstr "Drapeaux"
-
-#: emoji-selector@maestroschan.fr/extension.js:124
+#: emoji-selector@maestroschan.fr/extension.js:131
 msgid "Type here to search…"
 msgstr "Taper ici pour rechercher…"
 
-#: emoji-selector@maestroschan.fr/extension.js:193
-#: emoji-selector@maestroschan.fr/prefs.ui:240
+#: emoji-selector@maestroschan.fr/extension.js:209
+#: emoji-selector@maestroschan.fr/prefs.ui:210
 msgid "Emoji Selector"
 msgstr "Sélecteur d'émojis"
 
-#: emoji-selector@maestroschan.fr/prefs.js:41
+#: emoji-selector@maestroschan.fr/extension.js:439
+msgid "Smileys & Body"
+msgstr "Émoticônes & corps humain"
+
+#: emoji-selector@maestroschan.fr/extension.js:440
+msgid "Peoples & Clothing"
+msgstr "Personnes & vêtements"
+
+#: emoji-selector@maestroschan.fr/extension.js:441
+msgid "Animals & Nature"
+msgstr "Animaux & nature"
+
+#: emoji-selector@maestroschan.fr/extension.js:442
+msgid "Food & Drink"
+msgstr "Nourriture & boisson"
+
+#: emoji-selector@maestroschan.fr/extension.js:443
+msgid "Travel & Places"
+msgstr "Voyage & lieux"
+
+#: emoji-selector@maestroschan.fr/extension.js:444
+msgid "Activities & Sports"
+msgstr "Activités & sports"
+
+#: emoji-selector@maestroschan.fr/extension.js:445
+msgid "Objects"
+msgstr "Objets"
+
+#: emoji-selector@maestroschan.fr/extension.js:446
+msgid "Symbols"
+msgstr "Symboles"
+
+#: emoji-selector@maestroschan.fr/extension.js:447
+msgid "Flags"
+msgstr "Drapeaux"
+
+#: emoji-selector@maestroschan.fr/prefs.js:48
 msgid "Modifications will be effective after reloading the extension."
 msgstr "Les modifications prendront effet après avoir redémarré l'extension."
 
-#: emoji-selector@maestroschan.fr/prefs.js:46
+#: emoji-selector@maestroschan.fr/prefs.js:51
 msgid "From top to bottom"
 msgstr "De haut en bas"
 
-#: emoji-selector@maestroschan.fr/prefs.js:47
+#: emoji-selector@maestroschan.fr/prefs.js:52
 msgid "From bottom to top"
 msgstr "De bas en haut"
 
-#: emoji-selector@maestroschan.fr/prefs.js:50
+#: emoji-selector@maestroschan.fr/prefs.js:55
 msgid ""
 "Displaying the interface from the bottom is better if you use a bottom panel "
 "instead of the default top bar."
@@ -81,11 +81,19 @@ msgstr ""
 "Afficher l'interface de bas en haut est mieux si vous utilisez un panneau en "
 "bas de l'écran à la place de la barre supérieure (par défaut)."
 
-#: emoji-selector@maestroschan.fr/prefs.js:107
+#: emoji-selector@maestroschan.fr/prefs.js:100
 msgid "Default value is:"
 msgstr "La valeur par défaut est :"
 
-#: emoji-selector@maestroschan.fr/prefs.js:182
+#: emoji-selector@maestroschan.fr/prefs.js:145
+msgid ""
+"If you access the menu with the keyboard shortcut, you don't need to always "
+"display the icon."
+msgstr ""
+"Si vous accédez au menu avec le raccourci clavier, vous n'avez pas besoin de "
+"toujours en afficher l'icône."
+
+#: emoji-selector@maestroschan.fr/prefs.js:183
 msgid "Report bugs or ideas"
 msgstr "Rapporter des bugs ou des idées"
 
@@ -97,47 +105,27 @@ msgstr "Disposition générale"
 msgid "Number of emojis per line"
 msgstr "Nombre d'émojis par ligne"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:91
+#: emoji-selector@maestroschan.fr/prefs.ui:80
 msgid "Size of emojis (px)"
 msgstr "Taille des émojis (en pixels)"
 
 #: emoji-selector@maestroschan.fr/prefs.ui:113
-msgid "Use dark font"
-msgstr "Utiliser une police sombre"
-
-#: emoji-selector@maestroschan.fr/prefs.ui:114
-msgid ""
-"This is useful if your system doesn't support color emojis and your GNOME "
-"Shell theme has a white menu background."
-msgstr ""
-"Ceci est utile si votre système ne supporte pas les émojis colorés et si "
-"votre thème GNOME Shell a un arrière-plan blanc."
-
-#: emoji-selector@maestroschan.fr/prefs.ui:147
 msgid "Use a keyboard shortcut to toggle the menu"
 msgstr "Utiliser un raccourci clavier pour le menu"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:179
+#: emoji-selector@maestroschan.fr/prefs.ui:145
 msgid "Apply"
 msgstr "Appliquer"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:202
+#: emoji-selector@maestroschan.fr/prefs.ui:173
 msgid "Always show the icon"
 msgstr "Toujours afficher l'icône"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:203
-msgid ""
-"If you access the menu with the keyboard shortcut, you don't need to always "
-"display the icon."
-msgstr ""
-"Si vous accédez au menu avec le raccourci clavier, vous n'avez pas besoin "
-"detoujours en afficher l'icône."
-
-#: emoji-selector@maestroschan.fr/prefs.ui:226
+#: emoji-selector@maestroschan.fr/prefs.ui:196
 msgid "Settings"
 msgstr "Paramètres"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:254
+#: emoji-selector@maestroschan.fr/prefs.ui:224
 msgid ""
 "This extension provides a parametrable popup menu displaying most emojis, "
 "clicking on an emoji copies it to the clipboard."
@@ -145,19 +133,19 @@ msgstr ""
 "Cette extension fournit un menu parametrable affichant la plupart des "
 "émojis, cliquer sur un émoji le copiant dans le presse-papier."
 
-#: emoji-selector@maestroschan.fr/prefs.ui:273
+#: emoji-selector@maestroschan.fr/prefs.ui:243
 msgid "Author:"
 msgstr "Auteur :"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:288
+#: emoji-selector@maestroschan.fr/prefs.ui:258
 msgid "Tranlators:"
 msgstr "Traducteurs :"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:293
+#: emoji-selector@maestroschan.fr/prefs.ui:263
 msgid "translator-credits"
 msgstr "Romain F. T."
 
-#: emoji-selector@maestroschan.fr/prefs.ui:311
+#: emoji-selector@maestroschan.fr/prefs.ui:281
 msgid "About"
 msgstr "À propos"
 

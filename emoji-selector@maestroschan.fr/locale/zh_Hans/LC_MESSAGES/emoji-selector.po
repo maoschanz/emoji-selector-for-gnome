@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-07 04:15+0800\n"
+"POT-Creation-Date: 2020-04-25 22:06+0200\n"
 "PO-Revision-Date: 2020-03-07 04:17+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,74 +18,80 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.2.4\n"
 
-#: emoji-selector@maestroschan.fr/extension.js:36
-msgid "Smileys & Body"
-msgstr "表情 & 手势"
-
-#: emoji-selector@maestroschan.fr/extension.js:37
-msgid "Peoples & Clothing"
-msgstr "体态 & 服饰"
-
-#: emoji-selector@maestroschan.fr/extension.js:38
-msgid "Animals & Nature"
-msgstr "动物 & 自然"
-
-#: emoji-selector@maestroschan.fr/extension.js:39
-msgid "Food & Drink"
-msgstr "食物 & 饮料"
-
-#: emoji-selector@maestroschan.fr/extension.js:40
-msgid "Travel & Places"
-msgstr "旅行"
-
-#: emoji-selector@maestroschan.fr/extension.js:41
-msgid "Activities & Sports"
-msgstr "运动"
-
-#: emoji-selector@maestroschan.fr/extension.js:42
-msgid "Objects"
-msgstr "物体"
-
-#: emoji-selector@maestroschan.fr/extension.js:43
-msgid "Symbols"
-msgstr "符号"
-
-#: emoji-selector@maestroschan.fr/extension.js:44
-msgid "Flags"
-msgstr "旗"
-
-#: emoji-selector@maestroschan.fr/extension.js:124
+#: emoji-selector@maestroschan.fr/extension.js:131
 msgid "Type here to search…"
 msgstr "搜索…"
 
-#: emoji-selector@maestroschan.fr/extension.js:193
-#: emoji-selector@maestroschan.fr/prefs.ui:240
+#: emoji-selector@maestroschan.fr/extension.js:209
+#: emoji-selector@maestroschan.fr/prefs.ui:210
 msgid "Emoji Selector"
 msgstr "Emoji选择器"
 
-#: emoji-selector@maestroschan.fr/prefs.js:41
+#: emoji-selector@maestroschan.fr/extension.js:439
+msgid "Smileys & Body"
+msgstr "表情 & 手势"
+
+#: emoji-selector@maestroschan.fr/extension.js:440
+msgid "Peoples & Clothing"
+msgstr "体态 & 服饰"
+
+#: emoji-selector@maestroschan.fr/extension.js:441
+msgid "Animals & Nature"
+msgstr "动物 & 自然"
+
+#: emoji-selector@maestroschan.fr/extension.js:442
+msgid "Food & Drink"
+msgstr "食物 & 饮料"
+
+#: emoji-selector@maestroschan.fr/extension.js:443
+msgid "Travel & Places"
+msgstr "旅行"
+
+#: emoji-selector@maestroschan.fr/extension.js:444
+msgid "Activities & Sports"
+msgstr "运动"
+
+#: emoji-selector@maestroschan.fr/extension.js:445
+msgid "Objects"
+msgstr "物体"
+
+#: emoji-selector@maestroschan.fr/extension.js:446
+msgid "Symbols"
+msgstr "符号"
+
+#: emoji-selector@maestroschan.fr/extension.js:447
+msgid "Flags"
+msgstr "旗"
+
+#: emoji-selector@maestroschan.fr/prefs.js:48
 msgid "Modifications will be effective after reloading the extension."
 msgstr "重新加载后更改才会生效."
 
-#: emoji-selector@maestroschan.fr/prefs.js:46
+#: emoji-selector@maestroschan.fr/prefs.js:51
 msgid "From top to bottom"
 msgstr "从顶部到底部"
 
-#: emoji-selector@maestroschan.fr/prefs.js:47
+#: emoji-selector@maestroschan.fr/prefs.js:52
 msgid "From bottom to top"
 msgstr "从底部到顶部"
 
-#: emoji-selector@maestroschan.fr/prefs.js:50
+#: emoji-selector@maestroschan.fr/prefs.js:55
 msgid ""
 "Displaying the interface from the bottom is better if you use a bottom panel "
 "instead of the default top bar."
 msgstr "如果你使用底栏代替默认的顶栏, 从下面开始显示能够带来良好的用户体验."
 
-#: emoji-selector@maestroschan.fr/prefs.js:107
+#: emoji-selector@maestroschan.fr/prefs.js:100
 msgid "Default value is:"
 msgstr "默认值:"
 
-#: emoji-selector@maestroschan.fr/prefs.js:182
+#: emoji-selector@maestroschan.fr/prefs.js:145
+msgid ""
+"If you access the menu with the keyboard shortcut, you don't need to always "
+"display the icon."
+msgstr "如果你用快捷键触发Emoji菜单, 你就不太需要一直显示图标."
+
+#: emoji-selector@maestroschan.fr/prefs.js:183
 msgid "Report bugs or ideas"
 msgstr "告诉我们Bugs或你的想法"
 
@@ -97,45 +103,27 @@ msgstr "常用布局"
 msgid "Number of emojis per line"
 msgstr "每行的Emoji数量"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:91
+#: emoji-selector@maestroschan.fr/prefs.ui:80
 msgid "Size of emojis (px)"
 msgstr "Emoji大小(单位为px)"
 
 #: emoji-selector@maestroschan.fr/prefs.ui:113
-msgid "Use dark font"
-msgstr "使用暗色字体"
-
-#: emoji-selector@maestroschan.fr/prefs.ui:114
-msgid ""
-"This is useful if your system doesn't support color emojis and your GNOME "
-"Shell theme has a white menu background."
-msgstr ""
-"如果你的系统不支持多色Emoji并且你的 GNOME Shell 主题的菜单背景色是白的, 启用"
-"它会改善界面的体验效果."
-
-#: emoji-selector@maestroschan.fr/prefs.ui:147
 msgid "Use a keyboard shortcut to toggle the menu"
 msgstr "使用快捷键触发Emoji菜单"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:179
+#: emoji-selector@maestroschan.fr/prefs.ui:145
 msgid "Apply"
 msgstr "应用"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:202
+#: emoji-selector@maestroschan.fr/prefs.ui:173
 msgid "Always show the icon"
 msgstr "让图标一直显示"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:203
-msgid ""
-"If you access the menu with the keyboard shortcut, you don't need to always "
-"display the icon."
-msgstr "如果你用快捷键触发Emoji菜单, 你就不太需要一直显示图标."
-
-#: emoji-selector@maestroschan.fr/prefs.ui:226
+#: emoji-selector@maestroschan.fr/prefs.ui:196
 msgid "Settings"
 msgstr "设置"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:254
+#: emoji-selector@maestroschan.fr/prefs.ui:224
 msgid ""
 "This extension provides a parametrable popup menu displaying most emojis, "
 "clicking on an emoji copies it to the clipboard."
@@ -143,19 +131,19 @@ msgstr ""
 "这个扩展提供一个可定义参数的弹出菜单用于选用常用的Emoji, 点击你需要的Emoji它"
 "就被复制到剪切板."
 
-#: emoji-selector@maestroschan.fr/prefs.ui:273
+#: emoji-selector@maestroschan.fr/prefs.ui:243
 msgid "Author:"
 msgstr "作者:"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:288
+#: emoji-selector@maestroschan.fr/prefs.ui:258
 msgid "Tranlators:"
 msgstr "翻译:"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:293
+#: emoji-selector@maestroschan.fr/prefs.ui:263
 msgid "translator-credits"
 msgstr "校对"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:311
+#: emoji-selector@maestroschan.fr/prefs.ui:281
 msgid "About"
 msgstr "关于"
 
@@ -190,3 +178,13 @@ msgstr "男"
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js:61
 msgid "Women"
 msgstr "女"
+
+#~ msgid "Use dark font"
+#~ msgstr "使用暗色字体"
+
+#~ msgid ""
+#~ "This is useful if your system doesn't support color emojis and your GNOME "
+#~ "Shell theme has a white menu background."
+#~ msgstr ""
+#~ "如果你的系统不支持多色Emoji并且你的 GNOME Shell 主题的菜单背景色是白的, 启"
+#~ "用它会改善界面的体验效果."

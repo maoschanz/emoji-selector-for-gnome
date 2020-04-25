@@ -151,11 +151,11 @@
 						</child>
 
 						<child>
-							<object class="GtkLabel">
+							<object class="GtkLabel" id="always-show-label">
 								<property name="expand">False</property>
 								<property name="wrap">True</property>
 								<property name="halign">center</property>
-								<property name="label">If you access the menu with the keyboard shortcut, you don't need to always display the icon.</property>
+								<property name="label"></property>
 								<style><class name="dim-label"/></style>
 								<property name="max-width-chars">45</property>
 							</object>

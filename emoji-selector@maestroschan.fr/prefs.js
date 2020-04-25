@@ -38,9 +38,14 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 			stack: this.prefs_stack
 		});
 
-		let RELOAD_TEXT = _("Modifications will be effective after reloading the extension.");
+		this._loadPrefsPage(builder);
+		this._loadAboutPage(builder);
+	},
 
-		//----------------------------------------------------------------------
+	//--------------------------------------------------------------------------
+
+	_loadPrefsPage(builder) {
+		let RELOAD_TEXT = _("Modifications will be effective after reloading the extension.");
 
 		let positionCombobox = builder.get_object('position_combobox');
 		positionCombobox.append('top', _("From top to bottom"));
@@ -135,7 +140,13 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 		});
 
 		//----------------------------------------------------------------------
-		
+
+		let alwaysShowLabel = builder.get_object('always-show-label');
+		alwaysShowLabel.set_label(_("If you access the menu with the keyboard" +
+		              " shortcut, you don't need to always display the icon."));
+
+		//----------------------------------------------------------------------
+
 		let alwaysShowSwitch = builder.get_object('always_show_switch');
 		alwaysShowSwitch.set_state(SETTINGS.get_boolean('always-show'));
 
@@ -150,13 +161,15 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 		SETTINGS.connect('changed::always-show', () => {
 			alwaysShowSwitch.set_state(SETTINGS.get_boolean('always-show'));
 		});
+	},
 
-		//about page
-		
+	//--------------------------------------------------------------------------
+
+	_loadAboutPage(builder) {
 		builder.get_object('about_icon').set_from_pixbuf(
 			GdkPixbuf.Pixbuf.new_from_file_at_size(Me.path+'/icons/about_icon.png', 128, 128)
 		);
-		
+
 		let translation_credits = builder.get_object('translation_credits').get_label();
 		if (translation_credits == 'translator-credits') {
 			builder.get_object('translation_label').set_label('');
@@ -177,6 +190,7 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 			halign: Gtk.Align.START
 		}), false, false, 0);
 	}
+
 });
 
 //------------------------------------------------------------------------------
@@ -195,6 +209,7 @@ function buildPrefsWidget() {
 	return widget.prefs_stack;
 }
 
+// TODO jamais appelée
 function reset_settings(b) {
 	SETTINGS.reset('emojisize');
 	SETTINGS.reset('nbcols');

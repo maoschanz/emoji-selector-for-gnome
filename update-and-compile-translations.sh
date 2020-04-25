@@ -1,29 +1,30 @@
 #!/bin/bash
 
-#####
+################################################################################
+
+extensionID="emoji-selector"
 
 echo "Generating .pot file..."
+xgettext --files-from=POTFILES.in --from-code=UTF-8 --output=$extensionID@maestroschan.fr/locale/$extensionID.pot
 
-xgettext --files-from=POTFILES.in --from-code=UTF-8 --output=emoji-selector@maestroschan.fr/locale/emoji-selector.pot
-
-#####
+################################################################################
 
 IFS='
 '
-liste=`ls ./emoji-selector@maestroschan.fr/locale/`
-prefix="./emoji-selector@maestroschan.fr/locale"
+liste=`ls ./$extensionID@maestroschan.fr/locale/`
+prefix="./$extensionID@maestroschan.fr/locale"
 
-for dossier in $liste
-do
-	if [ "$dossier" != "emoji-selector.pot" ]; then
+for dossier in $liste; do
+	if [ "$dossier" != "$extensionID.pot" ]; then
 		echo "Updating translation for: $dossier"
-		msgmerge -N $prefix/$dossier/LC_MESSAGES/emoji-selector.po $prefix/emoji-selector.pot > $prefix/$dossier/LC_MESSAGES/emoji-selector.temp.po
-		mv $prefix/$dossier/LC_MESSAGES/emoji-selector.temp.po $prefix/$dossier/LC_MESSAGES/emoji-selector.po
+		msgmerge -N $prefix/$dossier/LC_MESSAGES/$extensionID.po $prefix/$extensionID.pot > $prefix/$dossier/LC_MESSAGES/$extensionID.temp.po
+		mv $prefix/$dossier/LC_MESSAGES/$extensionID.temp.po $prefix/$dossier/LC_MESSAGES/$extensionID.po
 		echo "Compiling translation for: $dossier"
-		msgfmt $prefix/$dossier/LC_MESSAGES/emoji-selector.po -o $prefix/$dossier/LC_MESSAGES/emoji-selector.mo
+		msgfmt $prefix/$dossier/LC_MESSAGES/$extensionID.po -o $prefix/$dossier/LC_MESSAGES/$extensionID.mo
 	fi
 done
 
-#####
+################################################################################
 
 exit 0
+
