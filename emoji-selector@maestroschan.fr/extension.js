@@ -97,11 +97,11 @@ function saveRecents() { //XXX not O.O.P.
 	for(let i=0; i<NB_COLS; i++){
 		backUp.push(recents[i].super_btn.label);
 	}
-	Convenience.getSettings().set_strv('recently-used', backUp);
+	SETTINGS.set_strv('recently-used', backUp);
 }
 
 function buildRecents() { //XXX not O.O.P.
-	let temp = Convenience.getSettings().get_strv('recently-used')
+	let temp = SETTINGS.get_strv('recently-used')
 	for(let i=0; i<NB_COLS; i++){
 		if (i < temp.length) {
 			recents[i].super_btn.label = temp[i];
@@ -162,7 +162,7 @@ class EmojiSearchItem {
 		let maxCat = GLOBAL_BUTTON.emojiCategories.length;
 		if (GLOBAL_BUTTON._activeCat != -1) {
 			minCat = GLOBAL_BUTTON._activeCat;
-			maxCat = GLOBAL_BUTTON._activeCat+1;
+			maxCat = GLOBAL_BUTTON._activeCat + 1;
 		}
 
 		let results = [];
