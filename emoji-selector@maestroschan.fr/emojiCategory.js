@@ -54,15 +54,16 @@ var EmojiCategory = class EmojiCategory {
 			reactive: true,
 			can_focus: true,
 			track_hover: true,
+			toggle_mode: true,
 			accessible_name: categoryName,
 			style_class: 'EmojisCategory',
 			child: new St.Icon({
 				icon_name: iconName,
-				icon_size: 16
+				icon_size: 16,
+				style_class: 'system-menu-action',
 			}),
 		});
 		this.categoryButton.connect('clicked', this._toggle.bind(this));
-		this.categoryButton.connect('notify::hover', this._onHover.bind(this));
 
 		this._built = false; // will be true once the user opens the category
 		this._loaded = false; // will be true once loaded
@@ -197,16 +198,6 @@ var EmojiCategory = class EmojiCategory {
 		}
 	}
 
-	_onHover(a, b) {
-		if (a.hover) {
-			this.categoryButton.style = 'background-color: rgba(200, 200, 200, 0.2);';
-		} else if (this.super_item._getOpenState()) {
-			this.categoryButton.style = 'background-color: rgba(0, 0, 100, 0.2);';
-		} else {
-			this.categoryButton.style = '';
-		}
-	}
-
 	_openCategory() {
 		Extension.GLOBAL_BUTTON.clearCategories();
 		this.super_item.label.text = this.categoryName;
@@ -215,7 +206,7 @@ var EmojiCategory = class EmojiCategory {
 
 		this.skinTonesBar.update();
 
-		this.categoryButton.style = 'background-color: rgba(0, 0, 200, 0.2);';
+		this.categoryButton.set_checked(true);
 		this.super_item.actor.visible = true;
 		this.super_item.setSubmenuShown(true);
 		Extension.GLOBAL_BUTTON._activeCat = this.id;

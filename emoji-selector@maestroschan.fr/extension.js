@@ -335,9 +335,9 @@ class EmojisMenu {
 	// Cleans the interface & close the opened category (if any). Called from the
 	// outside, be careful.
 	clearCategories(){
-		// removing the blue color of previously opened category's button
+		// removing the style class of previously opened category's button
 		for (let i = 0; i< 9; i++) {
-			this.emojiCategories[i].getButton().style = '';
+			this.emojiCategories[i].getButton().set_checked(false);
 		}
 
 		let items = this.super_btn.menu._getMenuItems();

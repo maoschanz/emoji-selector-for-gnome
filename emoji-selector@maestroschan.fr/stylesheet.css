@@ -1,50 +1,53 @@
 
+/* The toggle buttons for the categories */
+
 .EmojisCategory {
-	-st-icon-style: symbolic;
-	background-color: #393F3F;
-	color: #eeeeec;
-	border-radius: 32px;
-	padding: 13px;
-	border: 1px solid #282828;
+    background-color: #3c3c3c;
+    color: #eeeeec;
+    border-radius: 32px;
+    padding: 12px;
+    border: 1px solid #282828;
 }
 
 .EmojisCategory:hover, .EmojisCategory:focus {
-	background-color: #3c3c3c;
-	color: #eeeeec;
+    background-color: rgba(120, 120, 120, 1.0);
+    color: #ffffff;
 }
 
-.EmojisCategory:active {
-	background-color: #1b6acb;
-	color: #ffffff;
-	border-color: #092444;
+.EmojisCategory:active, .EmojisCategory:checked {
+    background-color: rgba(120, 120, 120, 1.0);
+    color: #ffffff;
+    border-radius: 12px;
 }
 
-.EmojisCategory > StIcon {
-	icon-size: 16px;
-}
+/* The actual emojis */
 
 .EmojisItemStyle {
-	font-family: JoyPixels Color, Twitter Color Emoji, Noto Emoji;
-	height: 1.5em;
-	width: 1.5em;
+    font-family: JoyPixels Color, Twitter Color Emoji, Noto Emoji;
+    height: 1.5em;
+    width: 1.5em;
 }
 
 .EmojisItemStyle:hover, .EmojisItemStyle:focus {
-	background-color: rgba(0, 0, 0, 0.5);
-	border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
 }
 
 .EmojisList {
-	padding: 0px;
-	margin: 0px;
+    padding: 0px;
+    margin: 0px;
 }
 
+/* The UI for options */
+
 .UnselectedTone {
-	border-radius: 10px;
+    border-radius: 10px;
 }
 
 .SelectedTone {
-	border-radius: 10px;
-	border-color: rgba(0,0,200,1.0);
-	border-width: 3px;
+    border-radius: 10px;
+    width: 10px;
+    border-color: rgba(0,0,200,1.0);
+    border-width: 3px;
 }
+
