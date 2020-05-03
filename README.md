@@ -4,6 +4,8 @@ This GNOME shell extension provides a searchable popup menu displaying most emoj
 
 ## Features
 
+>**currently Unicode 11**
+
 - keyboard shortcut to open the extension's menu (<kbd>Super</kbd>+<kbd>E</kbd> by defaut)
 - dynamic search (press enter to copy the first result to the clipboard)
 - lots of parametrable things
@@ -11,9 +13,7 @@ This GNOME shell extension provides a searchable popup menu displaying most emoj
 - middle-click to set to the cliboard without closing the menu (or <kbd>Ctrl</kbd>+<kbd>Enter</kbd>)
 - right-click to add the emoji at the end of the current clipboard content (or <kbd>Shift</kbd>+<kbd>Enter</kbd>)
 
->currently Unicode 11
-
-![Screenshot](https://i.imgur.com/sSjj3vH.png)
+![Screenshot](./screenshot_v19.png)
 
 ## About fonts
 

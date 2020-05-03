@@ -59,8 +59,7 @@ var EmojiCategory = class EmojiCategory {
 			style_class: 'EmojisCategory',
 			child: new St.Icon({
 				icon_name: iconName,
-				icon_size: 16,
-				style_class: 'system-menu-action',
+				icon_size: 16
 			}),
 		});
 		this.categoryButton.connect('clicked', this._toggle.bind(this));
