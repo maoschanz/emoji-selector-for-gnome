@@ -40,14 +40,25 @@
 
 /* The UI for options */
 
-.UnselectedTone {
-    border-radius: 10px;
+.EmojisGender, .EmojisTone {
+	border-width: 1px;
+	border-radius: 10px;
+	height: 20px;
+	width: 20px;
+	border-style: solid;
+	border-color: black;
 }
 
-.SelectedTone {
-    border-radius: 10px;
-    width: 10px;
-    border-color: rgba(0,0,200,1.0);
-    border-width: 3px;
+.EmojisGender:hover, .EmojisGender:focus, .EmojisGender:active, .EmojisGender:checked,
+.EmojisTone:hover, .EmojisTone:focus, .EmojisTone:active, .EmojisTone:checked {
+	border-width: 3px;
+	height: 16px;
+	width: 16px;
 }
+
+.EmojisGender:active, .EmojisGender:checked,
+.EmojisTone:active, .EmojisTone:checked {
+	border-radius: 6px;
+}
+
 

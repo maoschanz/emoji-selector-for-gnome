@@ -159,7 +159,7 @@ var EmojiButton = class EmojiButton {
 	getTaggedEmoji() {
 		let currentEmoji = this.super_btn.label;
 		if(currentEmoji == '') {
-			log('Error: not a valid emoji.');
+			log("Error: not a valid emoji.");
 			return;
 		}
 		let tonable = this.tags[0];
