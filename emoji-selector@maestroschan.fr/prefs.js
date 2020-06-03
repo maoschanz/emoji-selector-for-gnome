@@ -95,9 +95,13 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 
 		//----------------------------------------------------------------------
 
+		let default_kbs_label = _("The default value is %s");
+		default_kbs_label = default_kbs_label.replace('%s', "<Super>e");
+		builder.get_object('default-kbs-help-1').set_label(default_kbs_label);
+		builder.get_object('default-kbs-help-2').set_label(RELOAD_TEXT);
+
 		let keybindingEntry = builder.get_object('keybinding_entry');
 		keybindingEntry.set_sensitive(SETTINGS.get_boolean('use-keybinding'));
-		keybindingEntry.set_tooltip_text(_("Default value is:") +  " <Super>e" +'\n'+ RELOAD_TEXT);
 
 		if (SETTINGS.get_strv('emoji-keybinding') != '') {
 			keybindingEntry.text = SETTINGS.get_strv('emoji-keybinding')[0];
@@ -138,12 +142,6 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 		SETTINGS.connect('changed::use-keybinding', () => {
 			keybindingSwitch.set_state(SETTINGS.get_boolean('use-keybinding'));
 		});
-
-		//----------------------------------------------------------------------
-
-		let alwaysShowLabel = builder.get_object('always-show-label');
-		alwaysShowLabel.set_label(_("If you access the menu with the keyboard" +
-		              " shortcut, you don't need to always display the icon."));
 
 		//----------------------------------------------------------------------
 
@@ -209,7 +207,7 @@ function buildPrefsWidget() {
 	return widget.prefs_stack;
 }
 
-// TODO jamais appelée
+// XXX never called
 function reset_settings(b) {
 	SETTINGS.reset('emojisize');
 	SETTINGS.reset('nbcols');
