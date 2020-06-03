@@ -150,6 +150,7 @@ class EmojiSearchItem {
 		let searchedText = this.searchEntry.get_text();
 		if (searchedText === '') {
 			buildRecents();
+			this._updateSensitivity();
 			return;
 		} // else { ...
 		searchedText = searchedText.toLowerCase();
@@ -174,11 +175,20 @@ class EmojiSearchItem {
 		results = this._getResults(searchedText, minCat, maxCat, recents, results, 1);
 
 		let firstEmptyIndex = 0;
-		for (let i=0; i<results.length; i++) {
+		for (let i = 0; i < results.length; i++) {
 			if (i < NB_COLS) {
 				recents[firstEmptyIndex].super_btn.label = results[i];
 				firstEmptyIndex++;
 			}
+		}
+		this._updateSensitivity();
+	}
+
+	_updateSensitivity() {
+		for (let i = 0; i < recents.length; i++) {
+			let can_focus = recents[i].super_btn.label != "";
+			recents[i].super_btn.set_can_focus(can_focus);
+			recents[i].super_btn.set_track_hover(can_focus);
 		}
 	}
 
