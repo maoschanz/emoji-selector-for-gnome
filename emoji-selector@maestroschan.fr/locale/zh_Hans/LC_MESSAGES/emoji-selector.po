@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-25 22:06+0200\n"
+"POT-Creation-Date: 2020-06-04 01:56+0200\n"
 "PO-Revision-Date: 2020-03-07 04:17+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,112 +18,117 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.2.4\n"
 
-#: emoji-selector@maestroschan.fr/extension.js:131
+#: emoji-selector@maestroschan.fr/extension.js
 msgid "Type here to search…"
 msgstr "搜索…"
 
-#: emoji-selector@maestroschan.fr/extension.js:209
-#: emoji-selector@maestroschan.fr/prefs.ui:210
+#: emoji-selector@maestroschan.fr/extension.js
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Emoji Selector"
 msgstr "Emoji选择器"
 
-#: emoji-selector@maestroschan.fr/extension.js:439
+#: emoji-selector@maestroschan.fr/extension.js
 msgid "Smileys & Body"
 msgstr "表情 & 手势"
 
-#: emoji-selector@maestroschan.fr/extension.js:440
+#: emoji-selector@maestroschan.fr/extension.js
 msgid "Peoples & Clothing"
 msgstr "体态 & 服饰"
 
-#: emoji-selector@maestroschan.fr/extension.js:441
+#: emoji-selector@maestroschan.fr/extension.js
 msgid "Animals & Nature"
 msgstr "动物 & 自然"
 
-#: emoji-selector@maestroschan.fr/extension.js:442
+#: emoji-selector@maestroschan.fr/extension.js
 msgid "Food & Drink"
 msgstr "食物 & 饮料"
 
-#: emoji-selector@maestroschan.fr/extension.js:443
+#: emoji-selector@maestroschan.fr/extension.js
 msgid "Travel & Places"
 msgstr "旅行"
 
-#: emoji-selector@maestroschan.fr/extension.js:444
+#: emoji-selector@maestroschan.fr/extension.js
 msgid "Activities & Sports"
 msgstr "运动"
 
-#: emoji-selector@maestroschan.fr/extension.js:445
+#: emoji-selector@maestroschan.fr/extension.js
 msgid "Objects"
 msgstr "物体"
 
-#: emoji-selector@maestroschan.fr/extension.js:446
+#: emoji-selector@maestroschan.fr/extension.js
 msgid "Symbols"
 msgstr "符号"
 
-#: emoji-selector@maestroschan.fr/extension.js:447
+#: emoji-selector@maestroschan.fr/extension.js
 msgid "Flags"
 msgstr "旗"
 
-#: emoji-selector@maestroschan.fr/prefs.js:48
+#: emoji-selector@maestroschan.fr/prefs.js
 msgid "Modifications will be effective after reloading the extension."
 msgstr "重新加载后更改才会生效."
 
-#: emoji-selector@maestroschan.fr/prefs.js:51
+#: emoji-selector@maestroschan.fr/prefs.js
 msgid "From top to bottom"
 msgstr "从顶部到底部"
 
-#: emoji-selector@maestroschan.fr/prefs.js:52
+#: emoji-selector@maestroschan.fr/prefs.js
 msgid "From bottom to top"
 msgstr "从底部到顶部"
 
-#: emoji-selector@maestroschan.fr/prefs.js:55
+#: emoji-selector@maestroschan.fr/prefs.js
 msgid ""
 "Displaying the interface from the bottom is better if you use a bottom panel "
 "instead of the default top bar."
 msgstr "如果你使用底栏代替默认的顶栏, 从下面开始显示能够带来良好的用户体验."
 
-#: emoji-selector@maestroschan.fr/prefs.js:100
-msgid "Default value is:"
-msgstr "默认值:"
+#: emoji-selector@maestroschan.fr/prefs.js
+#, javascript-format
+msgid "The default value is %s"
+msgstr ""
 
-#: emoji-selector@maestroschan.fr/prefs.js:145
+#: emoji-selector@maestroschan.fr/prefs.js
+msgid "Report bugs or ideas"
+msgstr "告诉我们Bugs或你的想法"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "General layout"
+msgstr "常用布局"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Number of emojis per line"
+msgstr "每行的Emoji数量"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Size of emojis (px)"
+msgstr "Emoji大小(单位为px)"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Use a keyboard shortcut to toggle the menu"
+msgstr "使用快捷键触发Emoji菜单"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Help"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Apply"
+msgstr "应用"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid ""
 "If you access the menu with the keyboard shortcut, you don't need to always "
 "display the icon."
 msgstr "如果你用快捷键触发Emoji菜单, 你就不太需要一直显示图标."
 
-#: emoji-selector@maestroschan.fr/prefs.js:183
-msgid "Report bugs or ideas"
-msgstr "告诉我们Bugs或你的想法"
-
-#: emoji-selector@maestroschan.fr/prefs.ui:37
-msgid "General layout"
-msgstr "常用布局"
-
-#: emoji-selector@maestroschan.fr/prefs.ui:58
-msgid "Number of emojis per line"
-msgstr "每行的Emoji数量"
-
-#: emoji-selector@maestroschan.fr/prefs.ui:80
-msgid "Size of emojis (px)"
-msgstr "Emoji大小(单位为px)"
-
-#: emoji-selector@maestroschan.fr/prefs.ui:113
-msgid "Use a keyboard shortcut to toggle the menu"
-msgstr "使用快捷键触发Emoji菜单"
-
-#: emoji-selector@maestroschan.fr/prefs.ui:145
-msgid "Apply"
-msgstr "应用"
-
-#: emoji-selector@maestroschan.fr/prefs.ui:173
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Always show the icon"
 msgstr "让图标一直显示"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:196
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Settings"
 msgstr "设置"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:224
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid ""
 "This extension provides a parametrable popup menu displaying most emojis, "
 "clicking on an emoji copies it to the clipboard."
@@ -131,53 +136,69 @@ msgstr ""
 "这个扩展提供一个可定义参数的弹出菜单用于选用常用的Emoji, 点击你需要的Emoji它"
 "就被复制到剪切板."
 
-#: emoji-selector@maestroschan.fr/prefs.ui:243
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Author:"
 msgstr "作者:"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:258
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Tranlators:"
 msgstr "翻译:"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:263
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid "translator-credits"
 msgstr "校对"
 
-#: emoji-selector@maestroschan.fr/prefs.ui:281
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid "About"
 msgstr "关于"
 
-#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:27
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "List of valid key names"
+msgstr ""
+
+#. Context for translation: modifier keys are ctrl/shift/super/alt
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Modifier keys must be between chevrons"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Don't use a keyboard shortcut that already exists."
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "No skin tone"
 msgstr "无肤色"
 
-#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:28
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Light skin tone"
 msgstr "微淡色"
 
-#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:29
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Medium light skin tone"
 msgstr "淡色"
 
-#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:30
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Medium skin tone"
 msgstr "中色"
 
-#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:31
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Medium dark skin tone"
 msgstr "偏暗色"
 
-#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:32
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Dark skin tone"
 msgstr "暗色"
 
-#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:52
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js
+msgid "Women"
+msgstr "女"
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Men"
 msgstr "男"
 
-#: emoji-selector@maestroschan.fr/emojiOptionsBar.js:61
-msgid "Women"
-msgstr "女"
+#~ msgid "Default value is:"
+#~ msgstr "默认值:"
 
 #~ msgid "Use dark font"
 #~ msgstr "使用暗色字体"

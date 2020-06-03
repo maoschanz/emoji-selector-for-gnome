@@ -2,25 +2,25 @@
 
 ################################################################################
 
-extensionID="emoji-selector"
+TRANSLATION_ID="emoji-selector"
 
 echo "Generating .pot file..."
-xgettext --files-from=POTFILES.in --from-code=UTF-8 --output=$extensionID@maestroschan.fr/locale/$extensionID.pot
+xgettext --files-from=POTFILES.in --from-code=UTF-8 --add-location=file --output=$TRANSLATION_ID@maestroschan.fr/locale/$TRANSLATION_ID.pot
 
 ################################################################################
 
 IFS='
 '
-liste=`ls ./$extensionID@maestroschan.fr/locale/`
-prefix="./$extensionID@maestroschan.fr/locale"
+dir_list=`ls ./$TRANSLATION_ID@maestroschan.fr/locale/`
+prefix="./$TRANSLATION_ID@maestroschan.fr/locale"
 
-for dossier in $liste; do
-	if [ "$dossier" != "$extensionID.pot" ]; then
-		echo "Updating translation for: $dossier"
-		msgmerge -N $prefix/$dossier/LC_MESSAGES/$extensionID.po $prefix/$extensionID.pot > $prefix/$dossier/LC_MESSAGES/$extensionID.temp.po
-		mv $prefix/$dossier/LC_MESSAGES/$extensionID.temp.po $prefix/$dossier/LC_MESSAGES/$extensionID.po
-		echo "Compiling translation for: $dossier"
-		msgfmt $prefix/$dossier/LC_MESSAGES/$extensionID.po -o $prefix/$dossier/LC_MESSAGES/$extensionID.mo
+for dir in $dir_list; do
+	if [ "$dir" != "$TRANSLATION_ID.pot" ]; then
+		echo "Updating translation for: $dir"
+		msgmerge --update --previous $prefix/$dir/LC_MESSAGES/$TRANSLATION_ID.po $prefix/$TRANSLATION_ID.pot
+		echo "Compiling translation for: $dir"
+		msgfmt $prefix/$dir/LC_MESSAGES/$TRANSLATION_ID.po -o $prefix/$dir/LC_MESSAGES/$TRANSLATION_ID.mo
+		rm -f "$prefix/$dir/LC_MESSAGES/$TRANSLATION_ID.po~"
 	fi
 done
 

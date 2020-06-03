@@ -17,19 +17,19 @@
     <property name="value">12</property>
   </object>
 
-	<object class="GtkStack" id="prefs_stack">
-		<property name="transition-type">slide-left-right</property>
+  <object class="GtkStack" id="prefs_stack">
+    <property name="transition-type">slide-left-right</property>
 
-		<child>
-			<object class="GtkScrolledWindow" id="settings_page">
-				<property name="hscrollbar-policy">never</property>
-				<child>
-					<object class="GtkGrid">
-						<property name="expand">True</property>
-						<property name="row-spacing">12</property>
-						<property name="column-spacing">24</property>
-						<property name="halign">center</property>
-						<property name="margin">16</property>
+    <child>
+      <object class="GtkScrolledWindow" id="settings_page">
+        <property name="hscrollbar-policy">never</property>
+        <child>
+          <object class="GtkGrid">
+            <property name="expand">True</property>
+            <property name="row-spacing">12</property>
+            <property name="column-spacing">24</property>
+            <property name="halign">center</property>
+            <property name="margin">16</property>
 
 						<child>
 							<object class="GtkLabel">
@@ -302,12 +302,12 @@
 					</object>
 				</child>
 			</object>
-			<packing>
-				<property name="name">page_about</property>
-				<property name="title" translatable="yes">About</property>
-			</packing>
-		</child>
-	</object>
+      <packing>
+        <property name="name">page_about</property>
+        <property name="title" translatable="yes">About</property>
+      </packing>
+    </child>
+  </object>
 
   <!-- -->
 
