@@ -205,7 +205,7 @@ class EmojiSearchItem {
  * top panel and its menu.
  */
 class EmojisMenu {
-	constructor () {
+	constructor() {
 		this.super_btn = new PanelMenu.Button(0.0, _("Emoji Selector"), false);
 		let box = new St.BoxLayout();
 		let icon = new St.Icon({
@@ -385,15 +385,11 @@ class EmojisMenu {
 	}
 
 	_bindShortcut() {
-		let ModeType = Shell.hasOwnProperty('ActionMode')
-			? Shell.ActionMode
-			: Shell.KeyBindingMode;
-
 		Main.wm.addKeybinding(
 			'emoji-keybinding',
 			Convenience.getSettings(),
 			Meta.KeyBindingFlags.NONE,
-			ModeType.ALL,
+			Shell.ActionMode.ALL,
 			this.toggle.bind(this)
 		);
 	}
@@ -456,10 +452,10 @@ function enable() {
 	Main.panel.addToStatusArea('EmojisMenu', GLOBAL_BUTTON.super_btn, 0, 'right');
 
 	SIGNAUX[0] = SETTINGS.connect('changed::emojisize', () => { updateStyle(); });
-	SIGNAUX[2] = SETTINGS.connect('changed::always-show', () => {
+	SIGNAUX[1] = SETTINGS.connect('changed::always-show', () => {
 		GLOBAL_BUTTON.super_btn.actor.visible = SETTINGS.get_boolean('always-show');
 	});
-	SIGNAUX[3] = SETTINGS.connect('changed::use-keybinding', (z) => {
+	SIGNAUX[2] = SETTINGS.connect('changed::use-keybinding', (z) => {
 		if (z.get_boolean('use-keybinding')) {
 			Main.wm.removeKeybinding('emoji-keybinding');
 			GLOBAL_BUTTON._bindShortcut();
@@ -482,7 +478,6 @@ function disable() {
 	SETTINGS.disconnect(SIGNAUX[0]);
 	SETTINGS.disconnect(SIGNAUX[1]);
 	SETTINGS.disconnect(SIGNAUX[2]);
-	SETTINGS.disconnect(SIGNAUX[3]);
 
 	GLOBAL_BUTTON.super_btn.destroy();
 //	GLOBAL_BUTTON.destroy();

@@ -4,7 +4,7 @@ This GNOME shell extension provides a searchable popup menu displaying most emoj
 
 ## Features
 
->**currently Unicode 11**
+>**currently Unicode 11** ([soon 12](https://github.com/maoschanz/emoji-selector-for-gnome/issues/28))
 
 - keyboard shortcut to open the extension's menu (<kbd>Super</kbd>+<kbd>E</kbd> by defaut)
 - dynamic search (press enter to copy the first result to the clipboard)
@@ -17,23 +17,44 @@ This GNOME shell extension provides a searchable popup menu displaying most emoj
 
 ## About fonts
 
-It will be less ugly if you have the « [Twitter Color Emoji](https://github.com/eosrei/twemoji-color-font/releases) » font, the « Noto Emoji » font, or the « JoyPixels Color » font installed on your system.
+It will be less ugly if you have the « Noto Emoji » font, the
+« [Twitter Color Emoji](https://github.com/eosrei/twemoji-color-font/releases) »
+font, or the « JoyPixels Color » font installed on your system.
 
-Color emojis depends on the system you're using (GNOME > 3.26 is recommended).
+## About memory performance
 
-## About memory
-
-Loading hundreds of small pictures and thousands of keywords into the memory is a lot. Despite a few attempts to optimize their loading, I'm not an expert at all concerning memory management, and the extension may be responsible for between 10MB and 60MB of memory usage, which is a lot. Don't blame the actual GS devs for it.
+Loading hundreds of small pictures and thousands of keywords into the memory is
+a lot. Despite a few attempts to optimize their loading, I'm not an expert at
+all concerning memory management, and the extension may be responsible for
+between 10MB and 60MB of memory usage, which is a lot. Don't blame the actual GS
+devs for it.
 
 ## Contributors & translations
 
-- [Ryan Gonzalez](https://github.com/kirbyfan64) (port to ES6 classes)
-- amivaleo (italian translation + lot of ideas)
-- jonnius (german translation)
-- picsi / frnogueira (brazilian portuguese and esperanto translations)
-<!--TODO credit all translators + credit them in the about-->
+Various contributions to the code itself:
 
-The extension is currently available in english, french, brazilian portuguese, italian, esperanto and german. I only know french and english, so if you need a specific language, please contribute!
+- [Ryan Gonzalez](https://github.com/kirbyfan64)
+- [amivaleo](https://github.com/amivaleo)
+- [xurizaemon](https://github.com/xurizaemon)
+
+<!--TODO bah eux ^ ils sont pas crédités dans l'UI du coup ??-->
+
+The extension is currently available in the following languages:
+
+- Castillan (thanks to mario-mra)
+- Simplified chinese (thanks to larryw3i)
+- Dutch (thanks to vistaus)
+- Esperanto (thanks to nicolasmaia)
+- German (thanks to jonnius)
+- Italian (thanks to amivaleo)
+- Polish (thanks to alex4401)
+- Brazilian portuguese (thanks to nicolasmaia, picsi & frnogueira)
+<!-- TODO if no update from them, manually add their names to the .po files
+          before the release -->
+
+If you need another language, please contribute!
+
+----
 
 ## Installation
 
@@ -48,7 +69,11 @@ The better option is to install it from [here](https://extensions.gnome.org/exte
 
 #### Manual installation
 
-Download and extract the ZIP, then open a terminal in the project's directory, and run `./install.sh`. It should copy the "emoji-selector@maestroschan.fr" folder to `~/.local/share/gnome-shell/extensions/`, which can be done manually if you want.
+Download and extract the ZIP, then open a terminal in the project's directory,
+and run `./install.sh`. It should copy the "emoji-selector@maestroschan.fr"
+folder to `~/.local/share/gnome-shell/extensions/`, which can be done manually
+if you prefer.
 
-You may need to restart the gnome shell environment ("logout and login again", or `alt` + `f2` + `r` + enter).
+You may need to restart the GNOME Shell environment (logout and login again, or
+<kbd>Alt</kbd>+<kbd>F2</kbd> -> `r` ->, <kbd>Enter</kbd>).
 
