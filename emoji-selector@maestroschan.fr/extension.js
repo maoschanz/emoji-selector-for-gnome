@@ -167,7 +167,9 @@ class EmojiSearchItem {
 		}
 
 		let results = [];
-		// First, search for an exact match with emoji names
+		// First, search for any match (exact, name or keyword) in recent emojis
+		results = this._getResults(searchedText, minCat, maxCat, recents, results, 4);
+		// Then, search for an exact match with emoji names
 		results = this._getResults(searchedText, minCat, maxCat, recents, results, 3);
 		// Then, search only across emoji names
 		results = this._getResults(searchedText, minCat, maxCat, recents, results, 2);
@@ -199,7 +201,7 @@ class EmojiSearchItem {
 			let availableSlots = recents.length - results.length;
 			if (availableSlots > 0) {
 				let catResults = GLOBAL_BUTTON.emojiCategories[cat].searchEmoji(
-					searchedText, availableSlots, priority
+					searchedText, results, SETTINGS.get_strv('recently-used'), availableSlots, priority
 				);
 				results = results.concat(catResults);
 			}
@@ -243,7 +245,7 @@ class EmojisMenu {
 
 		//creating the search entry
 		this.searchItem = new EmojiSearchItem();
-		
+
 		//initializing the "recently used" buttons
 		let recentlyUsed = this._recentlyUsedInit();
 
@@ -494,4 +496,3 @@ function disable() {
 }
 
 //------------------------------------------------------------------------------
-

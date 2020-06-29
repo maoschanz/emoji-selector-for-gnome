@@ -105,12 +105,17 @@ var EmojiCategory = class EmojiCategory {
 		this.emojiButtons = [];
 	}
 
-	searchEmoji(searchedText, neededresults, priority) {
+	searchEmoji(searchedText, results, recentlyUsed, neededresults, priority) {
 		let searchResults = [];
 		for (let i = 0; i < this.emojiButtons.length; i++) {
+			if (results.includes(this.emojiButtons[i].baseCharacter)) {
+				continue;
+			}
 			if (neededresults >= 0) {
 				let isMatching = false;
-				if (priority === 3) {
+				if (priority === 4) {
+					isMatching = this._searchRecentMatch(searchedText, i, recentlyUsed);
+				} else if (priority === 3) {
 					isMatching = this._searchExactMatch(searchedText, i);
 				} else if (priority === 2) {
 					isMatching = this._searchInName(searchedText, i);
@@ -126,31 +131,20 @@ var EmojiCategory = class EmojiCategory {
 		return searchResults
 	}
 
+	_searchRecentMatch(searchedText, i, recentlyUsed) {
+		return recentlyUsed.includes(this.emojiButtons[i].baseCharacter) && (this._searchExactMatch(searchedText, i) || this._searchInName(searchedText, i) || this._searchInKeywords(searchedText, i))
+	}
+
 	_searchExactMatch(searchedText, i) {
 		return this.emojiButtons[i].keywords[0] === searchedText;
 	}
 
 	_searchInName(searchedText, i) {
-		if (this.emojiButtons[i].keywords[0].includes(searchedText)) {
-			// If the name corresponds to the searched string, but it is also an
-			// exact match, we can assume the emoji is already in the displayed
-			// result.
-			return !this._searchExactMatch(searchedText, i);
-		}
-		return false;
+		return this.emojiButtons[i].keywords[0].includes(searchedText);
 	}
 
 	_searchInKeywords(searchedText, i) {
-		for (let k = 1; k < this.emojiButtons[i].keywords.length; k++) {
-			if (this.emojiButtons[i].keywords[k].includes(searchedText)) {
-				// If a keyword corresponds to the searched string, but the name
-				// corresponds too, we can assume the emoji is already in the
-				// displayed result.
-				return !( this._searchExactMatch(searchedText, i)
-				                       || this._searchInName(searchedText, i) );
-			}
-		}
-		return false;
+		return this.emojiButtons[i].keywords.some((e) => e.includes(searchedText));
 	}
 
 	/**
@@ -216,4 +210,3 @@ var EmojiCategory = class EmojiCategory {
 		return this.categoryButton;
 	}
 }
-
