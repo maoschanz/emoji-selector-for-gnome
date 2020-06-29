@@ -132,7 +132,11 @@ var EmojiCategory = class EmojiCategory {
 	}
 
 	_searchRecentMatch(searchedText, i, recentlyUsed) {
-		return recentlyUsed.includes(this.emojiButtons[i].baseCharacter) && (this._searchExactMatch(searchedText, i) || this._searchInName(searchedText, i) || this._searchInKeywords(searchedText, i))
+		return recentlyUsed.includes(this.emojiButtons[i].baseCharacter) && (
+			this._searchExactMatch(searchedText, i) ||
+			this._searchInName(searchedText, i) ||
+			this._searchInKeywords(searchedText, i)
+		)
 	}
 
 	_searchExactMatch(searchedText, i) {
