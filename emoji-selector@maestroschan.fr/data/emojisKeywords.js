@@ -807,7 +807,7 @@ var ALL_KEYWORDS = [
 		["sparkler", "party"],
 		["sparkles", "party", "feature"],
 		["balloon", "party"],
-		["party popper", "party", "initial"],
+		["party popper", "party", "initial", "tada"],
 		["confetti ball", "party"],
 		["tanabata tree", "bamboo"],
 		["pine decoration", "bamboo", "kadomatsu"],
