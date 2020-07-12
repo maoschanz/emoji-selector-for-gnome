@@ -1,0 +1,209 @@
+# Arabic translation
+# Copyright (C) 2020
+# This file is distributed under the same license as the PACKAGE package.
+# A. Alelg <ahmedelq [at] hotmail [dot] com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-04 01:56+0200\n"
+"PO-Revision-Date: 2020-03-07 04:17+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: emoji-selector@maestroschan.fr/extension.js
+msgid "Type here to search…"
+msgstr "اكتب هنا للبحث..."
+
+#: emoji-selector@maestroschan.fr/extension.js
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Emoji Selector"
+msgstr "إيموجي سيلكتور"
+
+#: emoji-selector@maestroschan.fr/extension.js
+msgid "Smileys & Body"
+msgstr "الابتسامات والإيماءات"
+
+#: emoji-selector@maestroschan.fr/extension.js
+msgid "Peoples & Clothing"
+msgstr "الناس والألبسة"
+
+#: emoji-selector@maestroschan.fr/extension.js
+msgid "Animals & Nature"
+msgstr "الحيوانات والطبيعة"
+
+#: emoji-selector@maestroschan.fr/extension.js
+msgid "Food & Drink"
+msgstr "الطعام والشراب"
+
+#: emoji-selector@maestroschan.fr/extension.js
+msgid "Travel & Places"
+msgstr "السفر والأماكن"
+
+#: emoji-selector@maestroschan.fr/extension.js
+msgid "Activities & Sports"
+msgstr "الأنشطة والرياضة"
+
+#: emoji-selector@maestroschan.fr/extension.js
+msgid "Objects"
+msgstr "الأشياء"
+
+#: emoji-selector@maestroschan.fr/extension.js
+msgid "Symbols"
+msgstr "الرموز"
+
+#: emoji-selector@maestroschan.fr/extension.js
+msgid "Flags"
+msgstr "الرايات"
+
+#: emoji-selector@maestroschan.fr/prefs.js
+msgid "Modifications will be effective after reloading the extension."
+msgstr "التعديلات ستُنفذ بعد إعادة تشغيل الإضافة"
+
+#: emoji-selector@maestroschan.fr/prefs.js
+msgid "From top to bottom"
+msgstr "من الأعلى إلى الأسفل"
+
+#: emoji-selector@maestroschan.fr/prefs.js
+msgid "From bottom to top"
+msgstr "من الأسفل إلى الأعلى"
+
+#: emoji-selector@maestroschan.fr/prefs.js
+msgid ""
+"Displaying the interface from the bottom is better if you use a bottom panel "
+"instead of the default top bar."
+msgstr "يحبذ إظهار الواجهة من الأسفل لو كنت تستخدم شريطًا سفليًا بدلاً من الشريط العلوي الافتراضي."
+
+#: emoji-selector@maestroschan.fr/prefs.js
+#, javascript-format
+msgid "The default value is %s"
+msgstr "القيمة الافتراضية هي %s"
+
+#: emoji-selector@maestroschan.fr/prefs.js
+msgid "Report bugs or ideas"
+msgstr "التبليغ عن أخطاء برمجية أو اقتراحات"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "General layout"
+msgstr "النسق العام"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Number of emojis per line"
+msgstr "عدد الإموجيات لكل سطر"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Size of emojis (px)"
+msgstr "حجم الإموجي (بكسل)"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Use a keyboard shortcut to toggle the menu"
+msgstr "استخدم اختصار من لوحة المفاتيح لإظهار وإخفاء القائمة"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Help"
+msgstr "مساعدة"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Apply"
+msgstr "تطبيق"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid ""
+"If you access the menu with the keyboard shortcut, you don't need to always "
+"display the icon."
+msgstr "يمكنك إخفاء الأيقونة لو اخترت اختصارًا لإظهار القائمة"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Always show the icon"
+msgstr "أبق الأيقونة ظاهرة"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid ""
+"This extension provides a parametrable popup menu displaying most emojis, "
+"clicking on an emoji copies it to the clipboard."
+msgstr "توفر هذه الإضافة قائمة منبثقة تحوي على أغلب الإيموجيات، يُنسخ بالضغط على أي منهم."
+
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Author:"
+msgstr "أنشأها:"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Tranlators:"
+msgstr "ترجمها للعربية:"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "translator-credits"
+msgstr "أحمد العلق"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "About"
+msgstr "عن"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "List of valid key names"
+msgstr "قائمة المفاتيح المتاحة"
+
+#. Context for translation: modifier keys are ctrl/shift/super/alt
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Modifier keys must be between chevrons"
+msgstr "مفاتيح التعديل يجب أن تكون دائمًا بين علامتي تنصيص"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Don't use a keyboard shortcut that already exists."
+msgstr "لا تستخدم مفتاحًا يُستخدم لاختصار آخر"
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js
+msgid "No skin tone"
+msgstr "إخفاء ألوان البشرة"
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js
+msgid "Light skin tone"
+msgstr "بشرة فاتحة"
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js
+msgid "Medium light skin tone"
+msgstr "بشرة سمراء فاتحة"
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js
+msgid "Medium skin tone"
+msgstr "بشرة سمراء"
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js
+msgid "Medium dark skin tone"
+msgstr "بشرة سمراء غامقة"
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js
+msgid "Dark skin tone"
+msgstr "بشرة غامقة"
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js
+msgid "Women"
+msgstr "إمرأة"
+
+#: emoji-selector@maestroschan.fr/emojiOptionsBar.js
+msgid "Men"
+msgstr "رجل"
+
+#~ msgid "Default value is:"
+#~ msgstr "القيمة الافتراضية هي:"
+
+#~ msgid "Use dark font"
+#~ msgstr "استخدم خط غامق"
+
+#~ msgid ""
+#~ "This is useful if your system doesn't support color emojis and your GNOME "
+#~ "Shell theme has a white menu background."
+#~ msgstr ""
+#~ "مفيدة لو كان نظامك لا يدعم الإيموجي الملونة وخلفية قائمة صدفية غنوم أبيض"
