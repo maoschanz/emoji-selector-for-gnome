@@ -67,6 +67,7 @@ The better option is to install it from [here](https://extensions.gnome.org/exte
 #### Native packages
 
 - [`gnome-shell-extension-emoji-selector-git` (**AUR**)](https://aur.archlinux.org/packages/gnome-shell-extension-emoji-selector-git/)
+- [`gnome-shell-extension-emoji-selector` (**Fedora**)](https://src.fedoraproject.org/rpms/gnome-shell-extension-emoji-selector)
 - ...<!-- TODO à compléter -->
 
 #### Manual installation
