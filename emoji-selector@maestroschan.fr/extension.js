@@ -141,7 +141,7 @@ class EmojiSearchItem {
 			recents[0].onKeyPress(o, e);
 		});
 
-		this.super_item.actor.add(this.searchEntry, { expand: true });
+		this.super_item.actor.add(this.searchEntry);
 	}
 
 	// Updates the "recently used" buttons content in reaction to a new search
@@ -333,12 +333,7 @@ class EmojisMenu {
 		});
 		this.categoryButton = [];
 		for (let i=0; i<this.emojiCategories.length; i++) {
-			this._buttonMenuItem.actor.add(
-				this.emojiCategories[i].getButton(),
-				{ expand: true, x_fill: false } // deprecation warning but the
-				// genius that deprecated it didn't bother to provide a new way
-				// to do that
-			);
+			this._buttonMenuItem.actor.add(this.emojiCategories[i].getButton());
 		}
 	}
 
@@ -381,7 +376,7 @@ class EmojisMenu {
 			can_focus: false,
 		});
 		let container = new St.BoxLayout();
-		recentlyUsed.actor.add(container, { expand: true });
+		recentlyUsed.actor.add(container);
 		recents = [];
 
 		for(let i=0; i<NB_COLS; i++) {

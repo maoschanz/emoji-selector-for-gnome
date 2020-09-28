@@ -170,7 +170,7 @@ var EmojiCategory = class EmojiCategory {
 				});
 				ln.actor.track_hover = false;
 				container = new St.BoxLayout();
-				ln.actor.add(container, { expand: true });
+				ln.actor.add(container);
 				this.super_item.menu.addMenuItem(ln);
 			}
 			this.emojiButtons[i].build(this);

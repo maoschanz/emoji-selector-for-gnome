@@ -223,85 +223,85 @@
 			</packing>
 		</child>
 
-		<child>
-			<object class="GtkScrolledWindow">
-				<child>
-					<object class="GtkBox">
-						<property name="spacing">16</property>
-						<property name="margin">32</property>
-						<property name="orientation">vertical</property>
-						<child>
-							<object class="GtkLabel">
-								<property name="halign">center</property>
-								<property name="label" translatable="yes">Emoji Selector</property>
-								<attributes>
-									<attribute name="weight" value="bold"/>
-									<attribute name="scale" value="2"/>
-								</attributes>
-							</object>
-						</child>
-						<child>
-							<object class="GtkImage" id="about_icon" />
-						</child>
-						<child>
-							<object class="GtkLabel" id="label_description">
-								<property name="halign">center</property>
-								<property name="wrap">True</property>
-								<property name="label" translatable="yes">This extension provides a parametrable popup menu displaying most emojis, clicking on an emoji copies it to the clipboard.</property>
-							</object>
-						</child>
-						<child>
-							<object class="GtkBox" id="link_box">
-								<property name="spacing">16</property>
-							</object>
-							<packing>
-								<property name="pack-type">end</property>
-							</packing>
-						</child>
-						<child>
-							<object class="GtkBox">
-								<property name="spacing">16</property>
-								<child>
-									<object class="GtkBox">
-										<property name="spacing">16</property>
-										<child>
-											<object class="GtkLabel">
-												<property name="label" translatable="yes">Author:</property>
-											</object>
-										</child>
-										<child>
-											<object class="GtkLabel">
-												<property name="label">Romain F. T.</property>
-											</object>
-										</child>
-									</object>
-								</child>
-								<child>
-									<object class="GtkBox">
-									<property name="spacing">16</property>
-										<child>
-											<object class="GtkLabel" id="translation_label">
-												<property name="label" translatable="yes">Tranlators:</property>
-											</object>
-										</child>
-										<child>
-											<object class="GtkLabel" id="translation_credits">
-												<property name="label" translatable="yes">translator-credits</property>
-											</object>
-										</child>
-									</object>
-									<packing>
-										<property name="pack-type">end</property>
-									</packing>
-								</child>
-							</object>
-							<packing>
-								<property name="pack-type">end</property>
-							</packing>
-						</child>
-					</object>
-				</child>
-			</object>
+    <child>
+      <object class="GtkScrolledWindow">
+        <child>
+          <object class="GtkBox">
+            <property name="spacing">16</property>
+            <property name="margin">32</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Emoji Selector</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                  <attribute name="scale" value="2"/>
+                </attributes>
+              </object>
+            </child>
+            <child>
+              <object class="GtkImage" id="about_icon" />
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_description">
+                <property name="halign">center</property>
+                <property name="wrap">True</property>
+                <property name="label" translatable="yes">This extension provides a parametrable popup menu displaying most emojis, clicking on an emoji copies it to the clipboard.</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox" id="link_box">
+                <property name="spacing">16</property>
+              </object>
+              <packing>
+                <property name="pack-type">end</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="spacing">16</property>
+                <child>
+                  <object class="GtkBox">
+                    <property name="spacing">16</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Author:</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label">Romain F. T.</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                  <property name="spacing">16</property>
+                    <child>
+                      <object class="GtkLabel" id="translation_label">
+                        <property name="label" translatable="yes">Tranlators:</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="translation_credits">
+                        <property name="label" translatable="yes">translator-credits</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="pack-type">end</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="pack-type">end</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+      </object>
       <packing>
         <property name="name">page_about</property>
         <property name="title" translatable="yes">About</property>
