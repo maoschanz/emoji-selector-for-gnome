@@ -1092,11 +1092,11 @@ var ALL_KEYWORDS = [
 		["petri dish", "lab"],
 		["dna", "cell", "evolution"],
 	//-----weapons--------------------------------------------------------------
+		["bow and arrow"],
+		["shield"],
 		["dagger"],
 		["crossed swords"],
 		["pistol", "gun"],
-		["bow and arrow"],
-		["shield"],
 	//-----other-objects--------------------------------------------------------
 		["cigarette"],
 		["coffin"],

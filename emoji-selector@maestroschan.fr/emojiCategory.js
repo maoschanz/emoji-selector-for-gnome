@@ -1,5 +1,6 @@
 //this file is part of https://github.com/maoschanz/emoji-selector-for-gnome
 
+const Clutter = imports.gi.Clutter;
 const St = imports.gi.St;
 const PopupMenu = imports.ui.popupMenu;
 
@@ -61,6 +62,8 @@ var EmojiCategory = class EmojiCategory {
 				icon_name: iconName,
 				icon_size: 16
 			}),
+			x_expand: true,
+			x_align: Clutter.ActorAlign.CENTER,
 		});
 		this.categoryButton.connect('clicked', this._toggle.bind(this));
 
@@ -68,20 +71,31 @@ var EmojiCategory = class EmojiCategory {
 		this._loaded = false; // will be true once loaded
 		if (this.validateKeywordsNumber()) {
 			this.load();
-		} else {
-			// TODO add an item describing the error
 		}
 	}
 
 	validateKeywordsNumber() {
-		if (EMOJIS_CHARACTERS[this.id].length !== EMOJIS_KEYWORDS[this.id].length) {
-			log("Incorrect number of keywords for category " + this.categoryName)
-			log(EMOJIS_CHARACTERS[this.id].length + " emojis");
-			log(EMOJIS_KEYWORDS[this.id].length + " keyword arrays");
-			return false;
-		} else {
+		if (EMOJIS_CHARACTERS[this.id].length === EMOJIS_KEYWORDS[this.id].length) {
 			return true;
 		}
+		let main_message = _("Incorrect number of keywords for category '%s':");
+		this._addErrorLine(main_message.replace('%s', this.categoryName));
+		this._addErrorLine(EMOJIS_CHARACTERS[this.id].length + " emojis");
+		this._addErrorLine(EMOJIS_KEYWORDS[this.id].length + " keyword groups");
+		this._addErrorLine(_("Please report this bug"));
+		return false;
+	}
+
+	_addErrorLine(error_message) {
+		log(error_message);
+		let line = new PopupMenu.PopupBaseMenuItem({
+			reactive: false,
+			can_focus: false,
+		});
+		line.actor.add_child(new St.Label({
+			text: error_message
+		}));
+		this.super_item.menu.addMenuItem(line);
 	}
 
 	/**
@@ -90,7 +104,8 @@ var EmojiCategory = class EmojiCategory {
 	 * rendered. They will when the user will click on the button.
 	 */
 	load() {
-		if (this._loaded) { return; }
+		if (this._loaded) return;
+
 		let ln, container;
 		for (let i = 0; i < EMOJIS_CHARACTERS[this.id].length; i++) {
 			let button = new EmojiButton.EmojiButton(
@@ -170,7 +185,7 @@ var EmojiCategory = class EmojiCategory {
 				});
 				ln.actor.track_hover = false;
 				container = new St.BoxLayout();
-				ln.actor.add(container);
+				ln.actor.add_child(container);
 				this.super_item.menu.addMenuItem(ln);
 			}
 			this.emojiButtons[i].build(this);
@@ -201,7 +216,7 @@ var EmojiCategory = class EmojiCategory {
 		Extension.GLOBAL_BUTTON.clearCategories();
 		this.super_item.label.text = this.categoryName;
 
-		if(!this._built) { this.build(); }
+		if(!this._built) this.build();
 
 		this.skinTonesBar.update();
 

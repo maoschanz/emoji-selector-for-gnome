@@ -77,11 +77,11 @@ var SkinTonesBar = class SkinTonesBar {
 	addBar(categoryItemActor) {
 		this._genderArray.forEach(function(b) {
 			if (b) { // index 0 contains null
-				categoryItemActor.add(b);
+				categoryItemActor.add_child(b);
 			}
 		});
 		this._toneArray.forEach(function(b) {
-			categoryItemActor.add(b);
+			categoryItemActor.add_child(b);
 		});
 	}
 

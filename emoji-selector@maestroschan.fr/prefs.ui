@@ -176,21 +176,21 @@
               </packing>
             </child>
 
-						<child>
-							<object class="GtkLabel">
-								<property name="expand">False</property>
-								<property name="wrap">True</property>
-								<property name="halign">center</property>
-								<property name="label" translatable="yes">If you access the menu with the keyboard shortcut, you don't need to always display the icon.</property>
-								<style><class name="dim-label"/></style>
-								<property name="max-width-chars">45</property>
-							</object>
-							<packing>
-								<property name="left-attach">0</property>
-								<property name="width">2</property>
-								<property name="top-attach">16</property>
-							</packing>
-						</child>
+            <child>
+              <object class="GtkLabel">
+                <property name="expand">False</property>
+                <property name="wrap">True</property>
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">If you access the menu with the keyboard shortcut, you don't need to always display the icon.</property>
+                <style><class name="dim-label"/></style>
+                <property name="max-width-chars">45</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="width">2</property>
+                <property name="top-attach">16</property>
+              </packing>
+            </child>
 
 						<child>
 							<object class="GtkLabel">
@@ -214,14 +214,14 @@
 							</packing>
 						</child>
 
-					</object>
-				</child>
-			</object>
-			<packing>
-				<property name="name">settings_page</property>
-				<property name="title" translatable="yes">Settings</property>
-			</packing>
-		</child>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="name">settings_page</property>
+        <property name="title" translatable="yes">Settings</property>
+      </packing>
+    </child>
 
     <child>
       <object class="GtkScrolledWindow">

@@ -94,7 +94,7 @@ function updateStyle() {
 
 function saveRecents() { //XXX not O.O.P.
 	let backUp = [];
-	for(let i=0; i<NB_COLS; i++){
+	for(let i = 0; i < NB_COLS; i++){
 		backUp.push(recents[i].super_btn.label);
 	}
 	SETTINGS.set_strv('recently-used', backUp);
@@ -106,9 +106,9 @@ function buildRecents() { //XXX not O.O.P.
 		if (i < temp.length) {
 			recents[i].super_btn.label = temp[i];
 		} else {
-			//If the extension was previously set with less "recently used emojis",
-			//we still need to load something in the labels.
-			//It will be a penguin for obvious reasons.
+			// If the extension was previously set with less "recently used
+			// emojis", we still need to load something in the labels.
+			// It will be a penguin for obvious reasons.
 			recents[i].super_btn.label = '🐧';
 		}
 	}
@@ -129,7 +129,8 @@ class EmojiSearchItem {
 			style_class: 'search-entry',
 			can_focus: true,
 			hint_text: _('Type here to search…'),
-			track_hover: true
+			track_hover: true,
+			x_expand: true,
 		});
 
 		this.searchEntry.get_clutter_text().connect(
@@ -141,7 +142,7 @@ class EmojiSearchItem {
 			recents[0].onKeyPress(o, e);
 		});
 
-		this.super_item.actor.add(this.searchEntry);
+		this.super_item.actor.add_child(this.searchEntry);
 	}
 
 	// Updates the "recently used" buttons content in reaction to a new search
@@ -222,8 +223,8 @@ class EmojisMenu {
 			icon_name: 'face-cool-symbolic',
 			style_class: 'system-status-icon emotes-icon'
 		});
-		box.add(icon);
-		box.add(PopupMenu.arrowIcon(St.Side.BOTTOM));
+		box.add_child(icon);
+		box.add_child(PopupMenu.arrowIcon(St.Side.BOTTOM));
 		this._permanentItems = 0;
 		this._activeCat = -1;
 
@@ -333,7 +334,7 @@ class EmojisMenu {
 		});
 		this.categoryButton = [];
 		for (let i=0; i<this.emojiCategories.length; i++) {
-			this._buttonMenuItem.actor.add(this.emojiCategories[i].getButton());
+			this._buttonMenuItem.actor.add_child(this.emojiCategories[i].getButton());
 		}
 	}
 
@@ -376,7 +377,7 @@ class EmojisMenu {
 			can_focus: false,
 		});
 		let container = new St.BoxLayout();
-		recentlyUsed.actor.add(container);
+		recentlyUsed.actor.add_child(container);
 		recents = [];
 
 		for(let i=0; i<NB_COLS; i++) {
