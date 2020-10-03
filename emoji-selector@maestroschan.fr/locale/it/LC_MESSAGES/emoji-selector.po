@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 msgid ""
 msgstr ""
@@ -9,8 +9,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-04 01:56+0200\n"
 "PO-Revision-Date: 2018-05-13 11:17+0200\n"
-"Last-Translator: Jimmy Scionti <jimmy.scionti@gmail.com>\n"
-"Language-Team: \n"
+"Last-Translator: Albano Battistella<albano_battistella@hotmail.com>\n"
+"Language-Team:italian\n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,7 +64,7 @@ msgstr "Bandiere"
 
 #: emoji-selector@maestroschan.fr/prefs.js
 msgid "Modifications will be effective after reloading the extension."
-msgstr ""
+msgstr "Le modifiche diventeranno effettive dopo aver ricaricato l'estensione."
 
 #: emoji-selector@maestroschan.fr/prefs.js
 msgid "From top to bottom"
@@ -79,11 +79,13 @@ msgid ""
 "Displaying the interface from the bottom is better if you use a bottom panel "
 "instead of the default top bar."
 msgstr ""
+"È meglio visualizzare l'interfaccia dal basso se utilizzi un pannello inferiore"
+"invece della barra superiore predefinita."
 
 #: emoji-selector@maestroschan.fr/prefs.js
 #, javascript-format
 msgid "The default value is %s"
-msgstr ""
+msgstr "Il valore predefinito è %s"
 
 #: emoji-selector@maestroschan.fr/prefs.js
 msgid "Report bugs or ideas"
@@ -107,7 +109,7 @@ msgstr "Usa una scorciatoia da tastiera per mostrare il menu"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Help"
-msgstr ""
+msgstr "Aiuto"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Apply"
@@ -118,10 +120,12 @@ msgid ""
 "If you access the menu with the keyboard shortcut, you don't need to always "
 "display the icon."
 msgstr ""
+"Se accedi al menu con la scorciatoia da tastiera, non devi sempre"
+"visualizzare l'icona."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Always show the icon"
-msgstr ""
+msgstr "Mostra sempre l'icona"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Settings"
@@ -132,18 +136,20 @@ msgid ""
 "This extension provides a parametrable popup menu displaying most emojis, "
 "clicking on an emoji copies it to the clipboard."
 msgstr ""
+"Questa estensione fornisce un menu popup parametrabile che mostra la maggior parte degli emoji",
+"facendo clic su un'emoji la copia negli appunti."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Author:"
-msgstr ""
+msgstr "Autore:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Tranlators:"
-msgstr ""
+msgstr "Traduttori:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "translator-credits"
-msgstr ""
+msgstr "Albano Battistella"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "About"
@@ -151,7 +157,7 @@ msgstr "Informazioni"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "List of valid key names"
-msgstr ""
+msgstr "Lista dei nomi chiave validi"
 
 #. Context for translation: modifier keys are ctrl/shift/super/alt
 #: emoji-selector@maestroschan.fr/prefs.ui
@@ -160,42 +166,42 @@ msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Don't use a keyboard shortcut that already exists."
-msgstr ""
+msgstr "Non utilizzare una scorciatoia da tastiera già esistente."
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "No skin tone"
-msgstr ""
+msgstr "Nessun tono della pelle"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Light skin tone"
-msgstr ""
+msgstr "Tonalità della pelle chiara"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Medium light skin tone"
-msgstr ""
+msgstr "Tono della pelle medio-leggero"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Medium skin tone"
-msgstr ""
+msgstr "Tonalità della pelle media"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Medium dark skin tone"
-msgstr ""
+msgstr "Tono della pelle medio scuro"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Dark skin tone"
-msgstr ""
+msgstr "Tonalità della pelle scura"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Women"
-msgstr ""
+msgstr "Donna"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Men"
-msgstr ""
+msgstr "Uomo"
 
 #~ msgid "Default value is:"
-#~ msgstr "Il valore di default è"
+#~ msgstr "Il valore di default è:"
 
 #~ msgid "Use dark font"
 #~ msgstr "Usa un font scuro"
