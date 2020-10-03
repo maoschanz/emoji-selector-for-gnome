@@ -24,7 +24,7 @@ msgstr "Digita qui per effettuare una ricerca…"
 #: emoji-selector@maestroschan.fr/extension.js
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Emoji Selector"
-msgstr ""
+msgstr "Emoji Selector"
 
 #: emoji-selector@maestroschan.fr/extension.js
 msgid "Smileys & Body"
