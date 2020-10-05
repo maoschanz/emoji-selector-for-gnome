@@ -69,9 +69,8 @@ var EmojiCategory = class EmojiCategory {
 
 		this._built = false; // will be true once the user opens the category
 		this._loaded = false; // will be true once loaded
-		if (this.validateKeywordsNumber()) {
-			this.load();
-		}
+		this.validateKeywordsNumber();
+		this.load();
 	}
 
 	validateKeywordsNumber() {

@@ -107,27 +107,27 @@
               </packing>
             </child>
 
-						<child>
-							<object class="GtkLabel">
-								<property name="expand">False</property>
-								<property name="halign">end</property>
-								<property name="label" translatable="yes">Use a keyboard shortcut to toggle the menu</property>
-							</object>
-							<packing>
-								<property name="left-attach">0</property>
-								<property name="top-attach">8</property>
-							</packing>
-						</child>
-						<child>
-							<object class="GtkSwitch" id="keybinding_switch">
-								<property name="expand">False</property>
-								<property name="halign">start</property>
-							</object>
-							<packing>
-								<property name="left-attach">1</property>
-								<property name="top-attach">8</property>
-							</packing>
-						</child>
+            <child>
+              <object class="GtkLabel">
+                <property name="expand">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Use a keyboard shortcut to toggle the menu</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">8</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSwitch" id="keybinding_switch">
+                <property name="expand">False</property>
+                <property name="halign">start</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">8</property>
+              </packing>
+            </child>
 
             <child>
               <object class="GtkBox">
