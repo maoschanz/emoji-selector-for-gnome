@@ -31,49 +31,48 @@
             <property name="halign">center</property>
             <property name="margin">16</property>
 
-						<child>
-							<object class="GtkLabel">
-								<property name="halign">end</property>
-								<property name="expand">False</property>
-								<property name="label" translatable="yes">General layout</property>
-							</object>
-							<packing>
-								<property name="left-attach">0</property>
-								<property name="top-attach">0</property>
-							</packing>
-						</child>
-						<child>
-							<object class="GtkComboBoxText" id="position_combobox">
-								<property name="expand">False</property>
-							</object>
-							<packing>
-								<property name="left-attach">1</property>
-								<property name="top-attach">0</property>
-							</packing>
-						</child>
-						
-						<child>
-							<object class="GtkLabel">
-								<property name="expand">False</property>
-								<property name="halign">end</property>
-								<property name="label" translatable="yes">Number of emojis per line</property>
-							</object>
-							<packing>
-								<property name="left-attach">0</property>
-								<property name="top-attach">2</property>
-							</packing>
-						</child>
-						<child>
-							<object class="GtkSpinButton" id="nbcols_spinbtn">
-								<property name="expand">False</property>
-								<property name="adjustment">adjustment_nbcols</property>
-							</object>
-							<packing>
-								<property name="left-attach">1</property>
-								<property name="top-attach">2</property>
-							</packing>
-						</child>
+            <child>
+              <object class="GtkLabel">
+                <property name="halign">end</property>
+                <property name="expand">False</property>
+                <property name="label" translatable="yes">General layout</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBoxText" id="position_combobox">
+                <property name="expand">False</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
 
+            <child>
+              <object class="GtkLabel">
+                <property name="expand">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Number of emojis per line</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton" id="nbcols_spinbtn">
+                <property name="expand">False</property>
+                <property name="adjustment">adjustment_nbcols</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">2</property>
+              </packing>
+            </child>
 
             <child>
               <object class="GtkLabel">
