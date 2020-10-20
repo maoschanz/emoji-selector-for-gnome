@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-04 01:56+0200\n"
+"POT-Creation-Date: 2020-10-21 00:19+0200\n"
 "PO-Revision-Date: 2020-07-31 19:28+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
@@ -168,6 +168,15 @@ msgstr "Sneltoetsen moeten tussen chevrons liggen"
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Don't use a keyboard shortcut that already exists."
 msgstr "Deze sneltoets wordt al gebruikt."
+
+#: emoji-selector@maestroschan.fr/emojiCategory.js
+#, javascript-format
+msgid "Incorrect number of keywords for category '%s':"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/emojiCategory.js
+msgid "Please report this bug"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "No skin tone"

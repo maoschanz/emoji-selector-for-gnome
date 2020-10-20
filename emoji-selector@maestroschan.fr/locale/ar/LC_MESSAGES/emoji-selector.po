@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-04 01:56+0200\n"
+"POT-Creation-Date: 2020-10-21 00:19+0200\n"
 "PO-Revision-Date: 2020-03-07 04:17+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -79,7 +79,9 @@ msgstr "من الأسفل إلى الأعلى"
 msgid ""
 "Displaying the interface from the bottom is better if you use a bottom panel "
 "instead of the default top bar."
-msgstr "يحبذ إظهار الواجهة من الأسفل لو كنت تستخدم شريطًا سفليًا بدلاً من الشريط العلوي الافتراضي."
+msgstr ""
+"يحبذ إظهار الواجهة من الأسفل لو كنت تستخدم شريطًا سفليًا بدلاً من الشريط العلوي "
+"الافتراضي."
 
 #: emoji-selector@maestroschan.fr/prefs.js
 #, javascript-format
@@ -132,8 +134,9 @@ msgstr "الإعدادات"
 msgid ""
 "This extension provides a parametrable popup menu displaying most emojis, "
 "clicking on an emoji copies it to the clipboard."
-msgstr "توفر هذه الإضافة قائمة منبثقة تحوي على أغلب الإيموجيات، يُنسخ بالضغط على أي منهم."
-
+msgstr ""
+"توفر هذه الإضافة قائمة منبثقة تحوي على أغلب الإيموجيات، يُنسخ بالضغط على أي "
+"منهم."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Author:"
@@ -163,6 +166,15 @@ msgstr "مفاتيح التعديل يجب أن تكون دائمًا بين ع�
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Don't use a keyboard shortcut that already exists."
 msgstr "لا تستخدم مفتاحًا يُستخدم لاختصار آخر"
+
+#: emoji-selector@maestroschan.fr/emojiCategory.js
+#, javascript-format
+msgid "Incorrect number of keywords for category '%s':"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/emojiCategory.js
+msgid "Please report this bug"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "No skin tone"

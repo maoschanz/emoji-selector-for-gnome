@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-04 01:56+0200\n"
+"POT-Creation-Date: 2020-10-21 00:19+0200\n"
 "PO-Revision-Date: 2017-11-10 10:59-0300\n"
 "Last-Translator: Fábio Nogueira <fnogueira@gnome.org>\n"
 "Language-Team: \n"
@@ -163,6 +163,15 @@ msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Don't use a keyboard shortcut that already exists."
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/emojiCategory.js
+#, javascript-format
+msgid "Incorrect number of keywords for category '%s':"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/emojiCategory.js
+msgid "Please report this bug"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js

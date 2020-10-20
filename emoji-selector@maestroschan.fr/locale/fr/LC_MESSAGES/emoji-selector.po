@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-04 01:56+0200\n"
+"POT-Creation-Date: 2020-10-21 00:19+0200\n"
 "PO-Revision-Date: 2019-03-20 23:18+0100\n"
 "Last-Translator: Romain F. T. <rrroschan@gmail.com>\n"
 "Language-Team: French <none>\n"
@@ -166,6 +166,15 @@ msgstr "Les touches modificatrices doivent être entre chevrons"
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Don't use a keyboard shortcut that already exists."
 msgstr "Ne pas utiliser un raccourci qui existe déjà."
+
+#: emoji-selector@maestroschan.fr/emojiCategory.js
+#, javascript-format
+msgid "Incorrect number of keywords for category '%s':"
+msgstr "Nombre incorrect de mots-clés pour la catégorie '%s' :"
+
+#: emoji-selector@maestroschan.fr/emojiCategory.js
+msgid "Please report this bug"
+msgstr "Veuillez rapporter le problème"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "No skin tone"
