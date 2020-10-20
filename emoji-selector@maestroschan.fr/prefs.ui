@@ -10,7 +10,7 @@
   </object>
 
   <object class="GtkAdjustment" id="adjustment_nbcols">
-    <property name="lower">2</property>
+    <property name="lower">10</property>
     <property name="upper">60</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
@@ -74,27 +74,28 @@
 							</packing>
 						</child>
 
-						<child>
-							<object class="GtkLabel">
-								<property name="expand">False</property>
-								<property name="halign">end</property>
-								<property name="label" translatable="yes">Size of emojis (px)</property>
-							</object>
-							<packing>
-								<property name="left-attach">0</property>
-								<property name="top-attach">4</property>
-							</packing>
-						</child>
-						<child>
-							<object class="GtkSpinButton" id="size_spinbtn">
-								<property name="expand">False</property>
-								<property name="adjustment">adjustment_size</property>
-							</object>
-							<packing>
-								<property name="left-attach">1</property>
-								<property name="top-attach">4</property>
-							</packing>
-						</child>
+
+            <child>
+              <object class="GtkLabel">
+                <property name="expand">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Size of emojis (px)</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton" id="size_spinbtn">
+                <property name="expand">False</property>
+                <property name="adjustment">adjustment_size</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">4</property>
+              </packing>
+            </child>
 
             <child>
               <object class="GtkSeparator">
@@ -192,27 +193,27 @@
               </packing>
             </child>
 
-						<child>
-							<object class="GtkLabel">
-								<property name="expand">False</property>
-								<property name="halign">end</property>
-								<property name="label" translatable="yes">Always show the icon</property>
-							</object>
-							<packing>
-								<property name="left-attach">0</property>
-								<property name="top-attach">17</property>
-							</packing>
-						</child>
-						<child>
-							<object class="GtkSwitch" id="always_show_switch">
-								<property name="expand">False</property>
-								<property name="halign">start</property>
-							</object>
-							<packing>
-								<property name="left-attach">1</property>
-								<property name="top-attach">17</property>
-							</packing>
-						</child>
+            <child>
+              <object class="GtkLabel">
+                <property name="expand">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Always show the icon</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">17</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSwitch" id="always_show_switch">
+                <property name="expand">False</property>
+                <property name="halign">start</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">17</property>
+              </packing>
+            </child>
 
           </object>
         </child>

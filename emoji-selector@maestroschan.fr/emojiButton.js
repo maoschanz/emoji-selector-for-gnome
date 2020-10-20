@@ -58,6 +58,7 @@ var EmojiButton = class EmojiButton {
 		// name of the emoji he's copying.
 		this.super_btn.connect('notify::hover', (a, b) => {
 			if (a.hover) {
+				// FIXME #72 labels too long
 				category.super_item.label.text = this.keywords[0];
 			} else {
 				category.super_item.label.text = category.categoryName;
@@ -66,7 +67,7 @@ var EmojiButton = class EmojiButton {
 	}
 
 	destroy() {
-		//TODO ?
+		// TODO ?
 		this.super_btn.destroy();
 	}
 
