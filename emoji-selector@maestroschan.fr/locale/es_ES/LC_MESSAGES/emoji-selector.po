@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-21 00:19+0200\n"
+"POT-Creation-Date: 2020-10-21 20:22+0200\n"
 "PO-Revision-Date: 2019-03-17 21:39+0100\n"
 "Last-Translator: Mario Rubio <mario.mra@hotmail.com>\n"
 "Language-Team: \n"
@@ -88,8 +88,9 @@ msgid "The default value is %s"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.js
-msgid "Report bugs or ideas"
-msgstr "Informar errores o ideas"
+#, javascript-format
+msgid "version %s"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "General layout"
@@ -138,15 +139,23 @@ msgid ""
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Report bugs or ideas"
+msgstr "Informar errores o ideas"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Author:"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Tranlators:"
+msgid "Translator(s):"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "translator-credits"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Contributors:"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-21 00:19+0200\n"
+"POT-Creation-Date: 2020-10-21 20:22+0200\n"
 "PO-Revision-Date: 2017-04-22 01:34+0200\n"
 "Last-Translator: Jonatan Hatakeyama Zeidler <jonatan_zeidler@gmx.de>\n"
 "Language-Team: \n"
@@ -86,7 +86,8 @@ msgid "The default value is %s"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.js
-msgid "Report bugs or ideas"
+#, javascript-format
+msgid "version %s"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
@@ -134,16 +135,26 @@ msgid ""
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Report bugs or ideas"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Author:"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Tranlators:"
-msgstr ""
+#, fuzzy
+#| msgid "translator-credits"
+msgid "Translator(s):"
+msgstr "Jonatan H. Zeidler"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "translator-credits"
 msgstr "Jonatan H. Zeidler"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Contributors:"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "About"

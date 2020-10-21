@@ -164,29 +164,16 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 	//--------------------------------------------------------------------------
 
 	_loadAboutPage(builder) {
-		builder.get_object('about_icon').set_from_pixbuf(
-			GdkPixbuf.Pixbuf.new_from_file_at_size(Me.path+'/icons/about_icon.png', 128, 128)
-		);
+		let version = _("version %s").replace('%s', Me.metadata.version.toString());
+		builder.get_object('version-label').set_label(version);
 
-		let translation_credits = builder.get_object('translation_credits').get_label();
-		if (translation_credits == 'translator-credits') {
-			builder.get_object('translation_label').set_label('');
-			builder.get_object('translation_credits').set_label('');
+		let translators_credits = builder.get_object('translators-credits').get_label();
+		if (translators_credits == 'translator-credits') {
+			builder.get_object('translators-label').set_label('');
+			builder.get_object('translators-credits').set_label('');
 		}
 
-		let linkBox = builder.get_object('link_box'); // XXX padding ???
-		let a_version = ' (v' + Me.metadata.version.toString() + ') ';
-
-		let url_button = new Gtk.LinkButton({
-			label: _("Report bugs or ideas"),
-			uri: Me.metadata.url.toString()
-		});
-
-		linkBox.pack_start(url_button, false, false, 0);
-		linkBox.pack_end(new Gtk.Label({
-			label: a_version,
-			halign: Gtk.Align.START
-		}), false, false, 0);
+		builder.get_object('link-btn').set_uri(Me.metadata.url.toString());
 	}
 
 });
@@ -205,16 +192,6 @@ function buildPrefsWidget() {
 
 	widget.prefs_stack.show_all();
 	return widget.prefs_stack;
-}
-
-// XXX never called
-function reset_settings(b) {
-	SETTINGS.reset('emojisize');
-	SETTINGS.reset('nbcols');
-	SETTINGS.reset('position');
-	SETTINGS.reset('emoji-keybinding');
-	SETTINGS.reset('use-keybinding');
-	SETTINGS.reset('always-show');
 }
 
 //------------------------------------------------------------------------------

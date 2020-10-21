@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-04 01:56+0200\n"
+"POT-Creation-Date: 2020-10-21 20:23+0200\n"
 "PO-Revision-Date: 2018-05-13 11:17+0200\n"
 "Last-Translator: Albano Battistella<albano_battistella@hotmail.com>\n"
 "Language-Team:italian\n"
@@ -79,8 +79,8 @@ msgid ""
 "Displaying the interface from the bottom is better if you use a bottom panel "
 "instead of the default top bar."
 msgstr ""
-"È meglio visualizzare l'interfaccia dal basso se utilizzi un pannello inferiore"
-"invece della barra superiore predefinita."
+"È meglio visualizzare l'interfaccia dal basso se utilizzi un pannello "
+"inferioreinvece della barra superiore predefinita."
 
 #: emoji-selector@maestroschan.fr/prefs.js
 #, javascript-format
@@ -88,8 +88,9 @@ msgid "The default value is %s"
 msgstr "Il valore predefinito è %s"
 
 #: emoji-selector@maestroschan.fr/prefs.js
-msgid "Report bugs or ideas"
-msgstr "Segnala bug o idee"
+#, javascript-format
+msgid "version %s"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "General layout"
@@ -120,8 +121,8 @@ msgid ""
 "If you access the menu with the keyboard shortcut, you don't need to always "
 "display the icon."
 msgstr ""
-"Se accedi al menu con la scorciatoia da tastiera, non devi sempre"
-"visualizzare l'icona."
+"Se accedi al menu con la scorciatoia da tastiera, non devi "
+"semprevisualizzare l'icona."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Always show the icon"
@@ -136,20 +137,30 @@ msgid ""
 "This extension provides a parametrable popup menu displaying most emojis, "
 "clicking on an emoji copies it to the clipboard."
 msgstr ""
-"Questa estensione fornisce un menu popup parametrabile che mostra la maggior parte degli emoji",
-"facendo clic su un'emoji la copia negli appunti."
+"Questa estensione fornisce un menu popup parametrabile che mostra la maggior "
+"parte degli emoji, facendo clic su un'emoji la copia negli appunti."
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Report bugs or ideas"
+msgstr "Segnala bug o idee"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Author:"
 msgstr "Autore:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Tranlators:"
+#, fuzzy
+#| msgid "Tranlators:"
+msgid "Translator(s):"
 msgstr "Traduttori:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "translator-credits"
 msgstr "Albano Battistella"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Contributors:"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "About"
@@ -167,6 +178,15 @@ msgstr ""
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Don't use a keyboard shortcut that already exists."
 msgstr "Non utilizzare una scorciatoia da tastiera già esistente."
+
+#: emoji-selector@maestroschan.fr/emojiCategory.js
+#, javascript-format
+msgid "Incorrect number of keywords for category '%s':"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/emojiCategory.js
+msgid "Please report this bug"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "No skin tone"

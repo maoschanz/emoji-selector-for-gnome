@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-21 00:19+0200\n"
+"POT-Creation-Date: 2020-10-21 20:22+0200\n"
 "PO-Revision-Date: 2020-03-07 04:17+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -89,8 +89,9 @@ msgid "The default value is %s"
 msgstr "القيمة الافتراضية هي %s"
 
 #: emoji-selector@maestroschan.fr/prefs.js
-msgid "Report bugs or ideas"
-msgstr "التبليغ عن أخطاء برمجية أو اقتراحات"
+#, javascript-format
+msgid "version %s"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "General layout"
@@ -139,16 +140,26 @@ msgstr ""
 "منهم."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Report bugs or ideas"
+msgstr "التبليغ عن أخطاء برمجية أو اقتراحات"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Author:"
 msgstr "أنشأها:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Tranlators:"
+#, fuzzy
+#| msgid "Tranlators:"
+msgid "Translator(s):"
 msgstr "ترجمها للعربية:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "translator-credits"
 msgstr "أحمد العلق"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Contributors:"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "About"

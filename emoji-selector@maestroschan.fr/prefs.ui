@@ -241,7 +241,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkImage" id="about_icon" />
+              <object class="GtkLabel" id="version-label" />
             </child>
             <child>
               <object class="GtkLabel" id="label_description">
@@ -251,22 +251,24 @@
               </object>
             </child>
             <child>
-              <object class="GtkBox" id="link_box">
-                <property name="spacing">16</property>
+              <object class="GtkLinkButton" id="link-btn">
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Report bugs or ideas</property>
               </object>
-              <packing>
-                <property name="pack-type">end</property>
-              </packing>
             </child>
             <child>
               <object class="GtkBox">
                 <property name="spacing">16</property>
+                <property name="homogeneous">true</property>
                 <child>
                   <object class="GtkBox">
-                    <property name="spacing">16</property>
+                    <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="label" translatable="yes">Author:</property>
+                        <attributes>
+                          <attribute name="weight" value="bold"/>
+                        </attributes>
                       </object>
                     </child>
                     <child>
@@ -278,21 +280,42 @@
                 </child>
                 <child>
                   <object class="GtkBox">
-                  <property name="spacing">16</property>
+                  <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="translation_label">
-                        <property name="label" translatable="yes">Tranlators:</property>
+                      <object class="GtkLabel" id="translators-label">
+                        <property name="label" translatable="yes">Translator(s):</property>
+                        <attributes>
+                          <attribute name="weight" value="bold"/>
+                        </attributes>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="translation_credits">
+                      <object class="GtkLabel" id="translators-credits">
                         <property name="label" translatable="yes">translator-credits</property>
                       </object>
                     </child>
                   </object>
-                  <packing>
-                    <property name="pack-type">end</property>
-                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Contributors:</property>
+                        <attributes>
+                          <attribute name="weight" value="bold"/>
+                        </attributes>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label">Jimmy Scionti
+Ryan Gonzalez
+xurizaemon
+                        </property>
+                      </object>
+                    </child>
+                  </object>
                 </child>
               </object>
               <packing>
@@ -309,7 +332,7 @@
     </child>
   </object>
 
-  <!-- -->
+  <!-- ..................................................................... -->
 
   <object class="GtkPopover" id="help-popover-1">
     <child>

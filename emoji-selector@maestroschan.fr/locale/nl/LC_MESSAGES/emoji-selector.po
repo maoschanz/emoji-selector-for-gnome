@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-21 00:19+0200\n"
+"POT-Creation-Date: 2020-10-21 20:22+0200\n"
 "PO-Revision-Date: 2020-07-31 19:28+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
@@ -89,8 +89,9 @@ msgid "The default value is %s"
 msgstr "De standaardwaarde is %s"
 
 #: emoji-selector@maestroschan.fr/prefs.js
-msgid "Report bugs or ideas"
-msgstr "Meld bugs of deel ideeën"
+#, javascript-format
+msgid "version %s"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "General layout"
@@ -141,16 +142,26 @@ msgstr ""
 "toont. Klik op een emoji om deze te kopiëren naar het klembord."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Report bugs or ideas"
+msgstr "Meld bugs of deel ideeën"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Author:"
 msgstr "Maker:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Tranlators:"
+#, fuzzy
+#| msgid "Tranlators:"
+msgid "Translator(s):"
 msgstr "Vertalers:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "translator-credits"
 msgstr "Heimen Stoffels"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Contributors:"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "About"

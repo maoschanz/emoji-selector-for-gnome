@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-21 00:19+0200\n"
+"POT-Creation-Date: 2020-10-21 20:22+0200\n"
 "PO-Revision-Date: 2019-03-20 23:18+0100\n"
 "Last-Translator: Romain F. T. <rrroschan@gmail.com>\n"
 "Language-Team: French <none>\n"
@@ -87,8 +87,9 @@ msgid "The default value is %s"
 msgstr "La valeur par défaut est %s"
 
 #: emoji-selector@maestroschan.fr/prefs.js
-msgid "Report bugs or ideas"
-msgstr "Rapporter des bugs ou des idées"
+#, javascript-format
+msgid "version %s"
+msgstr "version n°%s"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "General layout"
@@ -139,16 +140,24 @@ msgstr ""
 "émojis, cliquer sur un émoji le copiant dans le presse-papier."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Report bugs or ideas"
+msgstr "Rapporter des bugs ou des idées"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Author:"
 msgstr "Auteur :"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Tranlators:"
-msgstr "Traducteurs :"
+msgid "Translator(s):"
+msgstr "Traducteur(s) :"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "translator-credits"
 msgstr "Romain F. T."
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Contributors:"
+msgstr "Contributeurs :"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "About"

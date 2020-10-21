@@ -1338,11 +1338,11 @@ var ALL_KEYWORDS = [
 
 	//-----alphanum-------------------------------------------------------------
 		["hundred points", "100", "one hundred"],
-		["input latin uppercase", "uppercase letters"],
-		["input latin lowercase", "lowercase letters"],
+		["input latin uppercase", "uppercase letters", "abcd"],
+		["input latin lowercase", "lowercase letters", "abcd"],
 		["input numbers"],
 		["input symbols"],
-		["input latin letters", "lowercase letters"],
+		["input latin letters", "alphabet", "abc"],
 		["a button", "blood type a"],
 		["ab button", "blood type ab"],
 		["b button", "blood type b"],

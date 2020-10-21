@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-21 00:19+0200\n"
+"POT-Creation-Date: 2020-10-21 20:22+0200\n"
 "PO-Revision-Date: 2019-05-19 19:08+0200\n"
 "Last-Translator: Alex <rylatgl@gmail.com>\n"
 "Language-Team: Alex (https://gitlab.com/alex4401)\n"
@@ -90,8 +90,9 @@ msgid "The default value is %s"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.js
-msgid "Report bugs or ideas"
-msgstr "Zgłoś błędy lub nowe funkcje"
+#, javascript-format
+msgid "version %s"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "General layout"
@@ -142,16 +143,26 @@ msgstr ""
 "emotikon. Kliknięcie na jedną z emotikon skopiuje ją do schowka."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Report bugs or ideas"
+msgstr "Zgłoś błędy lub nowe funkcje"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Author:"
 msgstr "Autor:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Tranlators:"
+#, fuzzy
+#| msgid "Tranlators:"
+msgid "Translator(s):"
 msgstr "Tłumacze:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "translator-credits"
 msgstr "Alex"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Contributors:"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "About"
