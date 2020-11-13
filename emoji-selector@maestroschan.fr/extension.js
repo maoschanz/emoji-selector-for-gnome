@@ -224,7 +224,9 @@ class EmojisMenu {
 			style_class: 'system-status-icon emotes-icon'
 		});
 		box.add_child(icon);
-		box.add_child(PopupMenu.arrowIcon(St.Side.BOTTOM));
+		if ( SETTINGS.get_boolean('remove-arrow') != true ){
+			box.add_child(PopupMenu.arrowIcon(St.Side.BOTTOM));
+		}
 		this._permanentItems = 0;
 		this._activeCat = -1;
 

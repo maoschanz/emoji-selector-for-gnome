@@ -214,6 +214,44 @@
               </packing>
             </child>
 
+            <child>
+              <object class="GtkLabel">
+                <property name="expand">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Remove arrow on icon</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">18</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSwitch" id="remove_arrow_switch">
+                <property name="expand">False</property>
+                <property name="halign">start</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">18</property>
+              </packing>
+            </child>
+
+            <child>
+              <object class="GtkLabel">
+                <property name="expand">False</property>
+                <property name="wrap">True</property>
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">This options requires a restart to take effect.</property>
+                <style><class name="dim-label"/></style>
+                <property name="max-width-chars">45</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="width">2</property>
+                <property name="top-attach">19</property>
+              </packing>
+            </child>
+
           </object>
         </child>
       </object>

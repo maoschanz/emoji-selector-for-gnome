@@ -159,6 +159,23 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 		SETTINGS.connect('changed::always-show', () => {
 			alwaysShowSwitch.set_state(SETTINGS.get_boolean('always-show'));
 		});
+
+		//----------------------------------------------------------------------
+
+		let removeArrowSwitch = builder.get_object('remove_arrow_switch');
+		removeArrowSwitch.set_state(SETTINGS.get_boolean('remove-arrow'));
+
+		removeArrowSwitch.connect('notify::active', widget => {
+			if (widget.active) {
+				SETTINGS.set_boolean('remove-arrow', true);
+			} else {
+				SETTINGS.set_boolean('remove-arrow', false);
+			}
+		});
+
+		SETTINGS.connect('changed::remove-arrow', () => {
+			removeArrowSwitch.set_state(SETTINGS.get_boolean('remove-arrow'));
+		});
 	},
 
 	//--------------------------------------------------------------------------
