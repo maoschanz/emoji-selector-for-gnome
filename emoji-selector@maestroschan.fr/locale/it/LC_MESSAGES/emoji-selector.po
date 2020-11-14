@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-21 20:23+0200\n"
-"PO-Revision-Date: 2018-05-13 11:17+0200\n"
+"PO-Revision-Date: 2020-11-14 11:17+0200\n"
 "Last-Translator: Albano Battistella<albano_battistella@hotmail.com>\n"
 "Language-Team:italian\n"
 "Language: it_IT\n"
@@ -90,7 +90,7 @@ msgstr "Il valore predefinito è %s"
 #: emoji-selector@maestroschan.fr/prefs.js
 #, javascript-format
 msgid "version %s"
-msgstr ""
+msgstr "versione %s"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "General layout"
@@ -149,10 +149,9 @@ msgid "Author:"
 msgstr "Autore:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-#, fuzzy
 #| msgid "Tranlators:"
 msgid "Translator(s):"
-msgstr "Traduttori:"
+msgstr "Traduttore(i):"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "translator-credits"
@@ -160,7 +159,7 @@ msgstr "Albano Battistella"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Contributors:"
-msgstr ""
+msgstr "Contributori:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "About"
@@ -182,11 +181,11 @@ msgstr "Non utilizzare una scorciatoia da tastiera già esistente."
 #: emoji-selector@maestroschan.fr/emojiCategory.js
 #, javascript-format
 msgid "Incorrect number of keywords for category '%s':"
-msgstr ""
+msgstr "Numero di parole chiave errato per la categoria '%s':"
 
 #: emoji-selector@maestroschan.fr/emojiCategory.js
 msgid "Please report this bug"
-msgstr ""
+msgstr "Segnala questo bug"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "No skin tone"
