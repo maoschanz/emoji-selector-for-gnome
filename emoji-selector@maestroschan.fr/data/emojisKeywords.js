@@ -16,7 +16,7 @@ var ALL_KEYWORDS = [
 		["winking face", "wink"],
 		["smiling face with smiling eyes", "blush", "smile"],
 		//-------------
-		["face savouring delicious food", "delicious", "savouring", "smile", "yum"],
+		["face savouring delicious food", "delicious", "savouring", "smile", "yum", "tasty", "tongue", "appetizing", "yummy"],
 		["smiling face with sunglasses", "cool", "eyewear", "glasses", "smile", "sun", "sunglasses"],
 		["smiling face with heart-eyes", "love", "heart", "smile"],
 		["smiling face with hearts", "love", "smile", "heart"],
@@ -72,7 +72,7 @@ var ALL_KEYWORDS = [
 		["fearful face", "fear", "fearful", "scared"],
 		//-------------
 		["weary face", "tired", "weary"],
-		["exploding head", "shocked"],
+		["exploding head", "shocked", "mind blowing"],
 		["grimacing face", "grimace"],
 		["pleading face", "pleading", "simp"],
 		["face with open mouth & cold sweat", "blue", "cold", "rushed", "sweat"],
