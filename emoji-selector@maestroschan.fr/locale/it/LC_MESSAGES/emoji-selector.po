@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020,2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-21 20:23+0200\n"
-"PO-Revision-Date: 2020-11-14 11:17+0200\n"
+"PO-Revision-Date: 2021-02-28 15:17+0100\n"
 "Last-Translator: Albano Battistella<albano_battistella@hotmail.com>\n"
 "Language-Team:italian\n"
 "Language: it_IT\n"
@@ -172,7 +172,7 @@ msgstr "Lista dei nomi chiave validi"
 #. Context for translation: modifier keys are ctrl/shift/super/alt
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Modifier keys must be between chevrons"
-msgstr ""
+msgstr "I tasti di modifica devono essere compresi tra i galloni"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Don't use a keyboard shortcut that already exists."
