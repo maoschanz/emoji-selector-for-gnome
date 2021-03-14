@@ -224,7 +224,9 @@ class EmojisMenu {
 			style_class: 'system-status-icon emotes-icon'
 		});
 		box.add_child(icon);
-		box.add_child(PopupMenu.arrowIcon(St.Side.BOTTOM));
+		if (this._shellVersion < 40) {
+			box.add_child(PopupMenu.arrowIcon(St.Side.BOTTOM));
+		}
 		this._permanentItems = 0;
 		this._activeCat = -1;
 
@@ -244,7 +246,7 @@ class EmojisMenu {
 
 		//creating the search entry
 		this.searchItem = new EmojiSearchItem();
-		
+
 		//initializing the "recently used" buttons
 		let recentlyUsed = this._recentlyUsedInit();
 
@@ -490,4 +492,3 @@ function disable() {
 }
 
 //------------------------------------------------------------------------------
-
