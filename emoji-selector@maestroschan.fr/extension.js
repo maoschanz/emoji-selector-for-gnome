@@ -48,7 +48,7 @@ const Me = ExtensionUtils.getCurrentExtension();
 const Convenience = Me.imports.convenience;
 const SkinTonesBar = Me.imports.emojiOptionsBar.SkinTonesBar;
 const EmojiCategory = Me.imports.emojiCategory.EmojiCategory;
-const EmojiButton = Me.imports.emojiButton;
+const EmojiSearchItem = Me.imports.emojiSearchItem.EmojiSearchItem;
 
 //------------------------------------------------------------------------------
 
@@ -72,142 +72,8 @@ let SIGNAUX = [];
 // Global variable : GLOBAL_BUTTON to click in the topbar
 var GLOBAL_BUTTON;
 
-// This array will store some St.Button(s)
-var recents = [];
-
 // These global variables are used to store some static settings
-var NB_COLS;
 let POSITION;
-
-//------------------------------------------------------------------------------
-
-function updateStyle() {
-	recents.forEach(function(b){
-		b.style = b.getStyle();
-	});
-	GLOBAL_BUTTON.emojiCategories.forEach(function(c){
-		c.emojiButtons.forEach(function(b){
-			b.style = b.getStyle();
-		});
-	});
-}
-
-function saveRecents() { //XXX not O.O.P.
-	let backUp = [];
-	for(let i = 0; i < NB_COLS; i++){
-		backUp.push(recents[i].super_btn.label);
-	}
-	SETTINGS.set_strv('recently-used', backUp);
-}
-
-function buildRecents() { //XXX not O.O.P.
-	let temp = SETTINGS.get_strv('recently-used')
-	for(let i=0; i<NB_COLS; i++){
-		if (i < temp.length) {
-			recents[i].super_btn.label = temp[i];
-		} else {
-			// If the extension was previously set with less "recently used
-			// emojis", we still need to load something in the labels.
-			// It will be a penguin for obvious reasons.
-			recents[i].super_btn.label = '🐧';
-		}
-	}
-}
-
-//------------------------------------------------------------------------------
-
-class EmojiSearchItem {
-	// Creates and connects a search entry, added to a menu item
-	constructor() {
-		this.super_item = new PopupMenu.PopupBaseMenuItem({
-			reactive: false,
-			can_focus: false
-		});
-
-		this.searchEntry = new St.Entry({
-			name: 'searchEntry',
-			style_class: 'search-entry',
-			can_focus: true,
-			hint_text: _('Type here to search…'),
-			track_hover: true,
-			x_expand: true,
-		});
-
-		this.searchEntry.get_clutter_text().connect(
-			'text-changed',
-			this._onSearchTextChanged.bind(this)
-		);
-
-		this.searchEntry.clutter_text.connect('key-press-event', (o, e) => {
-			recents[0].onKeyPress(o, e);
-		});
-
-		this.super_item.actor.add_child(this.searchEntry);
-	}
-
-	// Updates the "recently used" buttons content in reaction to a new search
-	// query (the text changed or the category changed).
-	_onSearchTextChanged() {
-		let searchedText = this.searchEntry.get_text();
-		if (searchedText === '') {
-			buildRecents();
-			this._updateSensitivity();
-			return;
-		} // else { ...
-		searchedText = searchedText.toLowerCase();
-
-		for (let j = 0; j < NB_COLS; j++) {
-			recents[j].super_btn.label = '';
-		}
-
-		let minCat = 0;
-		let maxCat = GLOBAL_BUTTON.emojiCategories.length;
-		if (GLOBAL_BUTTON._activeCat != -1) {
-			minCat = GLOBAL_BUTTON._activeCat;
-			maxCat = GLOBAL_BUTTON._activeCat + 1;
-		}
-
-		let results = [];
-		// First, search for an exact match with emoji names
-		results = this._getResults(searchedText, minCat, maxCat, recents, results, 3);
-		// Then, search only across emoji names
-		results = this._getResults(searchedText, minCat, maxCat, recents, results, 2);
-		// Finally, search across all keywords
-		results = this._getResults(searchedText, minCat, maxCat, recents, results, 1);
-
-		let firstEmptyIndex = 0;
-		for (let i = 0; i < results.length; i++) {
-			if (i < NB_COLS) {
-				recents[firstEmptyIndex].super_btn.label = results[i];
-				firstEmptyIndex++;
-			}
-		}
-		this._updateSensitivity();
-	}
-
-	_updateSensitivity() {
-		for (let i = 0; i < recents.length; i++) {
-			let can_focus = recents[i].super_btn.label != "";
-			recents[i].super_btn.set_can_focus(can_focus);
-			recents[i].super_btn.set_track_hover(can_focus);
-		}
-	}
-
-	// Search results are queried in several steps, from more important criteria
-	// to very general string matching.
-	_getResults(searchedText, minCat, maxCat, recents, results, priority) {
-		for (let cat = minCat; cat < maxCat; cat++) {
-			let availableSlots = recents.length - results.length;
-			if (availableSlots > 0) {
-				let catResults = GLOBAL_BUTTON.emojiCategories[cat].searchEmoji(
-					searchedText, availableSlots, priority
-				);
-				results = results.concat(catResults);
-			}
-		}
-		return results;
-	}
-}
 
 //------------------------------------------------------------------------------
 
@@ -216,6 +82,7 @@ class EmojiSearchItem {
  * top panel and its menu.
  */
 class EmojisMenu {
+
 	constructor() {
 		this.super_btn = new PanelMenu.Button(0.0, _("Emoji Selector"), false);
 		let box = new St.BoxLayout();
@@ -236,31 +103,29 @@ class EmojisMenu {
 			this.super_btn.visible = SETTINGS.get_boolean('always-show');
 		}
 
-		//initializing categories
-		this._createAllCategories();
+		// initializing categories
+		let nbColumns = SETTINGS.get_int('nbcols');
+		this._createAllCategories(nbColumns);
 
-		//initializing this._buttonMenuItem
+		// initializing this._buttonMenuItem
 		this._renderPanelMenuHeaderBox();
 
-		//creating the search entry
-		this.searchItem = new EmojiSearchItem();
-		
-		//initializing the "recently used" buttons
-		let recentlyUsed = this._recentlyUsedInit();
+		// creating the search entry & initializing the "recently used" buttons
+		this.searchItem = new EmojiSearchItem(nbColumns);
 
 		if (POSITION === 'top') {
 			this.super_btn.menu.addMenuItem(this._buttonMenuItem);
 			this._permanentItems++;
 			this.super_btn.menu.addMenuItem(this.searchItem.super_item);
 			this._permanentItems++;
-			this.super_btn.menu.addMenuItem(recentlyUsed);
+			this.super_btn.menu.addMenuItem(this.searchItem.recentlyUsedItem);
 			this._permanentItems++;
 		}
 		//----------------------------------------------------------------------
 		this._addAllCategories();
 		//----------------------------------------------------------------------
 		if (POSITION === 'bottom') {
-			this.super_btn.menu.addMenuItem(recentlyUsed);
+			this.super_btn.menu.addMenuItem(this.searchItem.recentlyUsedItem);
 			this._permanentItems++;
 			this.super_btn.menu.addMenuItem(this.searchItem.super_item);
 			this._permanentItems++;
@@ -276,6 +141,21 @@ class EmojisMenu {
 		if (SETTINGS.get_boolean('use-keybinding')) {
 			this._bindShortcut();
 		}
+	}
+
+	_connectSignals() {
+	}
+
+	disconnectSignals() {
+	}
+
+	updateStyle() {
+		this.searchItem.updateStyleRecents();
+		this.emojiCategories.forEach(function(c) {
+			c.emojiButtons.forEach(function(b) {
+				b.updateStyle();
+			});
+		});
 	}
 
 	toggle() {
@@ -309,12 +189,12 @@ class EmojisMenu {
 //	}
 
 	// Creates all categories (buttons & submenu menuitems), empty for now.
-	_createAllCategories() {
+	_createAllCategories(nbColumns) {
 		this.emojiCategories = [];
 
 		/* creating new categories, with emojis not loaded yet */
 		for (let i = 0; i < 9; i++) {
-			this.emojiCategories[i] = new EmojiCategory(CAT_LABELS[i], CAT_ICONS[i], i);
+			this.emojiCategories[i] = new EmojiCategory(CAT_LABELS[i], CAT_ICONS[i], i, nbColumns);
 		}
 	}
 
@@ -340,7 +220,7 @@ class EmojisMenu {
 
 	// Cleans the interface & close the opened category (if any). Called from the
 	// outside, be careful.
-	clearCategories(){
+	clearCategories() {
 		// removing the style class of previously opened category's button
 		for (let i = 0; i< 9; i++) {
 			this.emojiCategories[i].getButton().set_checked(false);
@@ -350,12 +230,12 @@ class EmojisMenu {
 
 		// closing and hiding any opened category
 		if (POSITION == 'top') {
-			for (let i=this._permanentItems; i < items.length; i++) {
+			for (let i = this._permanentItems; i < items.length; i++) {
 				items[i].setSubmenuShown(false);
 				items[i].actor.visible = false;
 			}
 		} else { // if (POSITION == 'bottom') {
-			for (let i=0; i<(items.length - this._permanentItems); i++) {
+			for (let i = 0; i < (items.length - this._permanentItems); i++) {
 				items[i].setSubmenuShown(false);
 				items[i].actor.visible = false;
 			}
@@ -368,26 +248,6 @@ class EmojisMenu {
 	// Wrapper calling EmojiSearchItem's _onSearchTextChanged method
 	_onSearchTextChanged() {
 		this.searchItem._onSearchTextChanged();
-	}
-
-	// Initializes the container showing the recently used emojis as buttons
-	_recentlyUsedInit() {
-		let recentlyUsed = new PopupMenu.PopupBaseMenuItem({
-			reactive: false,
-			can_focus: false,
-		});
-		let container = new St.BoxLayout();
-		recentlyUsed.actor.add_child(container);
-		recents = [];
-
-		for(let i=0; i<NB_COLS; i++) {
-			recents[i] = new EmojiButton.EmojiButton('', []);
-			recents[i].build(null);
-			container.add_child(recents[i].super_btn);
-		}
-
-		buildRecents();
-		return recentlyUsed;
 	}
 
 	_bindShortcut() {
@@ -406,7 +266,6 @@ class EmojisMenu {
 //			this.emojiCategories[i].destroy();
 //		}
 //	}
-
 };
 
 //------------------------------------------------------------------------------
@@ -427,7 +286,6 @@ function init() {
 
 function enable() {
 	SETTINGS = Convenience.getSettings();
-	NB_COLS = SETTINGS.get_int('nbcols');
 	POSITION = SETTINGS.get_string('position');
 	/* TODO paramètres restants à rendre dynamiques
 	 * emoji-keybinding (tableau de chaînes), pourri de toutes manières
@@ -474,8 +332,8 @@ function enable() {
 //------------------------------------------------------------------------------
 
 function disable() {
-	//we need to save labels currently in recents[] for the next session
-	saveRecents();
+	// we need to save labels of the recent emojis for the next session
+	GLOBAL_BUTTON.searchItem.saveRecents();
 
 	if (SETTINGS.get_boolean('use-keybinding')) {
 		Main.wm.removeKeybinding('emoji-keybinding');

@@ -21,16 +21,19 @@ const EmojiButton = Me.imports.emojiButton;
 const EMOJIS_CHARACTERS = Me.imports.data.emojisCharacters.ALL;
 const EMOJIS_KEYWORDS = Me.imports.data.emojisKeywords.ALL_KEYWORDS;
 
+////////////////////////////////////////////////////////////////////////////////
+
 var EmojiCategory = class EmojiCategory {
 
 	/**
 	 * The category and its button have to be built without being loaded, to
 	 * memory issues with emojis' image textures.
 	 */
-	constructor(categoryName, iconName, id) {
+	constructor(categoryName, iconName, id, nbColumns) {
 		this.super_item = new PopupMenu.PopupSubMenuMenuItem(categoryName);
 		this.categoryName = categoryName;
 		this.id = id;
+		this._nbColumns = nbColumns;
 
 		this.super_item.actor.visible = false;
 		this.super_item.actor.reactive = false;
@@ -174,9 +177,9 @@ var EmojiCategory = class EmojiCategory {
 	build() {
 		if (this._built) { return; }
 		let ln, container;
-		for (let i=0; i<this.emojiButtons.length; i++) {
+		for (let i = 0; i < this.emojiButtons.length; i++) {
 			// lines of emojis
-			if (i % Extension.NB_COLS === 0) {
+			if (i % this._nbColumns === 0) {
 				ln = new PopupMenu.PopupBaseMenuItem({
 					style_class: 'EmojisList',
 					reactive: false,
@@ -230,4 +233,6 @@ var EmojiCategory = class EmojiCategory {
 		return this.categoryButton;
 	}
 }
+
+////////////////////////////////////////////////////////////////////////////////
 

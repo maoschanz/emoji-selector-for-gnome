@@ -6,7 +6,6 @@ const Clutter = imports.gi.Clutter;
 /* Import the current extension, mainly because we need to access other files */
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
-const Convenience = Me.imports.convenience;
 const Extension = Me.imports.extension;
 
 const Clipboard = St.Clipboard.get_default();
@@ -22,6 +21,7 @@ const TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
 //------------------------------------------------------------------------------
 
 var EmojiButton = class EmojiButton {
+
 	constructor(baseCharacter, keywords) {
 		this.baseCharacter = baseCharacter;
 		let tonable = false;
@@ -43,10 +43,10 @@ var EmojiButton = class EmojiButton {
 	build(category) {
 		this.super_btn = new St.Button({
 			style_class: 'EmojisItemStyle',
-			style: this.getStyle(),
 			can_focus: true,
 			label: this.baseCharacter
 		});
+		this.updateStyle();
 
 		// Copy the emoji to the clipboard with adequate tags and behavior
 		this.super_btn.connect('button-press-event', this.onButtonPress.bind(this));
@@ -71,10 +71,10 @@ var EmojiButton = class EmojiButton {
 		this.super_btn.destroy();
 	}
 
-	getStyle() {
+	updateStyle() {
 		let fontStyle = 'font-size: ' + Extension.SETTINGS.get_int('emojisize') + 'px;';
 		fontStyle += ' color: #FFFFFF;';
-		return fontStyle;
+		this.super_btn.style = fontStyle;
 	}
 
 	onKeyPress(o, e) {
@@ -185,30 +185,10 @@ var EmojiButton = class EmojiButton {
 		if (genrable) {
 			temp += GENDERS[Extension.SETTINGS.get_int('gender')];
 		}
-		shiftFor(temp);
+		Extension.GLOBAL_BUTTON.searchItem.shiftFor(temp);
 		return temp;
 	}
 };
-
-//------------------------------------------------------------------------------
-
-function shiftFor(currentEmoji) {
-	if (currentEmoji == '') { return; }
-	let temp = Convenience.getSettings().get_strv('recently-used');
-	for(let i=0; i<temp.length; i++){
-		if (temp[i] == currentEmoji) {
-			temp.splice(i, 1);
-		}
-	}
-	for(let j=temp.length; j>0; j--){
-		temp[j] = temp[j-1];
-	}
-	temp[0] = currentEmoji;
-	Convenience.getSettings().set_strv('recently-used', temp);
-	Extension.buildRecents();
-	Extension.saveRecents();
-	Extension.GLOBAL_BUTTON._onSearchTextChanged();
-}
 
 //------------------------------------------------------------------------------
 

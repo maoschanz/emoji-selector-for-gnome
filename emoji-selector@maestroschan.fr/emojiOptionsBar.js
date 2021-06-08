@@ -12,7 +12,7 @@ const Extension = Me.imports.extension;
 const Gettext = imports.gettext.domain('emoji-selector');
 const _ = Gettext.gettext;
 
-//------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////////
 
 var SkinTonesBar = class SkinTonesBar {
 	constructor(hasGender) {
@@ -125,4 +125,6 @@ var SkinTonesBar = class SkinTonesBar {
 		this._toneArray.push(btn);
 	}
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
