@@ -41,7 +41,6 @@ const _ = Gettext.gettext;
 
 // Retrocompatibility
 const ShellVersion = imports.misc.config.PACKAGE_VERSION;
-var useActors = parseInt(ShellVersion.split('.')[1]) < 33;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
@@ -95,13 +94,8 @@ class EmojisMenu {
 		this._permanentItems = 0;
 		this._activeCat = -1;
 
-		if (useActors){
-			this.super_btn.actor.add_child(box);
-			this.super_btn.actor.visible = SETTINGS.get_boolean('always-show');
-		} else {
-			this.super_btn.add_child(box);
-			this.super_btn.visible = SETTINGS.get_boolean('always-show');
-		}
+		this.super_btn.add_child(box);
+		this.super_btn.visible = SETTINGS.get_boolean('always-show');
 
 		// initializing categories
 		let nbColumns = SETTINGS.get_int('nbcols');
@@ -165,11 +159,7 @@ class EmojisMenu {
 	// Executed when the user opens/closes the menu, the main goals are to clear
 	// and to focus the search entry.
 	_onOpenStateChanged(self, open) {
-		if (useActors){
-			this.super_btn.actor.visible = open || SETTINGS.get_boolean('always-show');
-		} else {
-			this.super_btn.visible = open || SETTINGS.get_boolean('always-show');
-		}
+		this.super_btn.visible = open || SETTINGS.get_boolean('always-show');
 		this.clearCategories();
 		this.searchItem.searchEntry.set_text('');
 		// this.unloadCategories();
