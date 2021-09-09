@@ -108,7 +108,6 @@ var EmojiCategory = class EmojiCategory {
 	load() {
 		if (this._loaded) return;
 
-		let ln, container;
 		for (let i = 0; i < EMOJIS_CHARACTERS[this.id].length; i++) {
 			let button = new EmojiButton.EmojiButton(
 			        EMOJIS_CHARACTERS[this.id][i], EMOJIS_KEYWORDS[this.id][i]);
