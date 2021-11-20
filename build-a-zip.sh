@@ -16,4 +16,8 @@ zip -r ../emoji-selector@maestroschan.fr.zip schemas
 zip -r ../emoji-selector@maestroschan.fr.zip locale
 zip -r ../emoji-selector@maestroschan.fr.zip icons
 
+shopt -s globstar
+
+zip -d ../notes@maestroschan.fr.zip **/*.pot
+zip -d ../notes@maestroschan.fr.zip **/*.po
 
