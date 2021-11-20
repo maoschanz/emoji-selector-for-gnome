@@ -44,7 +44,6 @@ const ShellVersion = imports.misc.config.PACKAGE_VERSION;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
-const Convenience = Me.imports.convenience;
 const SkinTonesBar = Me.imports.emojiOptionsBar.SkinTonesBar;
 const EmojiCategory = Me.imports.emojiCategory.EmojiCategory;
 const EmojiSearchItem = Me.imports.emojiSearchItem.EmojiSearchItem;
@@ -243,7 +242,7 @@ class EmojisMenu {
 	_bindShortcut() {
 		Main.wm.addKeybinding(
 			'emoji-keybinding',
-			Convenience.getSettings(),
+			SETTINGS,
 			Meta.KeyBindingFlags.NONE,
 			Shell.ActionMode.ALL,
 			this.toggle.bind(this)
@@ -262,7 +261,7 @@ class EmojisMenu {
 //------------------------------------------------------------------------------
 
 function init() {
-	Convenience.initTranslations('emoji-selector');
+	ExtensionUtils.initTranslations('emoji-selector');
 	try {
 		let theme = imports.gi.Gtk.IconTheme.get_default();
 		theme.append_search_path(Me.path + '/icons');
@@ -275,7 +274,7 @@ function init() {
 //------------------------------------------------------------------------------
 
 function enable() {
-	SETTINGS = Convenience.getSettings();
+	SETTINGS = ExtensionUtils.getSettings();
 	POSITION = SETTINGS.get_string('position');
 	/* TODO paramètres restants à rendre dynamiques
 	 * emoji-keybinding (tableau de chaînes), pourri de toutes manières

@@ -5,7 +5,6 @@ const St = imports.gi.St;
 /* Import the current extension, mainly because we need to access other files */
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
-const Convenience = Me.imports.convenience;
 const Extension = Me.imports.extension;
 
 /* Stuffs for translations etc. */
