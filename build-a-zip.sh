@@ -1,23 +1,25 @@
 #!/bin/bash
 
+EXT_ID=emoji-selector@maestroschan.fr
+
 # ./update-and-compile-translations.sh
 
-cd emoji-selector@maestroschan.fr
+cd $EXT_ID
 
 glib-compile-schemas ./schemas
 
-zip ../emoji-selector@maestroschan.fr.zip *.js
-zip ../emoji-selector@maestroschan.fr.zip prefs.ui
-zip ../emoji-selector@maestroschan.fr.zip metadata.json
-zip ../emoji-selector@maestroschan.fr.zip stylesheet.css
+zip ../$EXT_ID.zip *.js
+zip ../$EXT_ID.zip prefs.ui
+zip ../$EXT_ID.zip metadata.json
+zip ../$EXT_ID.zip stylesheet.css
 
-zip -r ../emoji-selector@maestroschan.fr.zip data
-zip -r ../emoji-selector@maestroschan.fr.zip schemas
-zip -r ../emoji-selector@maestroschan.fr.zip locale
-zip -r ../emoji-selector@maestroschan.fr.zip icons
+zip -r ../$EXT_ID.zip data
+zip -r ../$EXT_ID.zip schemas
+zip -r ../$EXT_ID.zip locale
+zip -r ../$EXT_ID.zip icons
 
 shopt -s globstar
 
-zip -d ../notes@maestroschan.fr.zip **/*.pot
-zip -d ../notes@maestroschan.fr.zip **/*.po
+zip -d ../$EXT_ID.zip **/*.pot
+zip -d ../$EXT_ID.zip **/*.po
 

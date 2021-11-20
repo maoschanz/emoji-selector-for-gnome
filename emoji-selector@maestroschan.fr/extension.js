@@ -276,11 +276,6 @@ function init() {
 function enable() {
 	SETTINGS = ExtensionUtils.getSettings();
 	POSITION = SETTINGS.get_string('position');
-	/* TODO paramètres restants à rendre dynamiques
-	 * emoji-keybinding (tableau de chaînes), pourri de toutes manières
-	 * nbcols (int), rebuild nécessaire
-	 * position (chaîne) impossible tout court ?
-	*/
 
 	// This variable is assigned here because init() wouldn't have provided
 	// gettext yet if it was done at the top level of the file.
