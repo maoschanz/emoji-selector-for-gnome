@@ -1,30 +1,32 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Translator Jonatan Hatakeyama Zeidler <jonatan_zeidler@gmx.de>, 2017
+# Translator Onno Giesmann <nutzer3105@gmail.com>, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-21 20:22+0200\n"
-"PO-Revision-Date: 2017-04-22 01:34+0200\n"
-"Last-Translator: Jonatan Hatakeyama Zeidler <jonatan_zeidler@gmx.de>\n"
+"PO-Revision-Date: 2021-11-21 21:00+0100\n"
+"Last-Translator: Onno Giesmann <nutzer3105@gmail.com>\n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 3.0\n"
 
 #: emoji-selector@maestroschan.fr/extension.js
 msgid "Type here to search…"
-msgstr ""
+msgstr "Hier tippen, um zu suchen…"
 
+# Did not translate it because it's the name of the app. 
 #: emoji-selector@maestroschan.fr/extension.js
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Emoji Selector"
-msgstr ""
+msgstr "Emoji Selector"
 
 #: emoji-selector@maestroschan.fr/extension.js
 msgid "Smileys & Body"
@@ -32,11 +34,11 @@ msgstr "Smileys & Körper"
 
 #: emoji-selector@maestroschan.fr/extension.js
 msgid "Peoples & Clothing"
-msgstr ""
+msgstr "Menschen & Kleidung"
 
 #: emoji-selector@maestroschan.fr/extension.js
 msgid "Animals & Nature"
-msgstr ""
+msgstr "Tiere & Natur"
 
 #: emoji-selector@maestroschan.fr/extension.js
 msgid "Food & Drink"
@@ -68,31 +70,33 @@ msgstr "Änderungen werden nach einem Neustart der Erweiterung übernommen."
 
 #: emoji-selector@maestroschan.fr/prefs.js
 msgid "From top to bottom"
-msgstr ""
+msgstr "Von oben nach unten"
 
 #: emoji-selector@maestroschan.fr/prefs.js
 msgid "From bottom to top"
-msgstr ""
+msgstr "Von unten nach oben"
 
 #: emoji-selector@maestroschan.fr/prefs.js
 msgid ""
 "Displaying the interface from the bottom is better if you use a bottom panel "
 "instead of the default top bar."
 msgstr ""
+"Die Anzeige der Ansicht von unten ist besser, wenn Sie eine untere Leiste "
+"verwenden, anstelle der standardmäßigen oberen Leiste."
 
 #: emoji-selector@maestroschan.fr/prefs.js
 #, javascript-format
 msgid "The default value is %s"
-msgstr ""
+msgstr "Der Standardwert ist %s"
 
 #: emoji-selector@maestroschan.fr/prefs.js
 #, javascript-format
 msgid "version %s"
-msgstr ""
+msgstr "Version %s"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "General layout"
-msgstr ""
+msgstr "Allgemeine Ansicht"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Number of emojis per line"
@@ -100,29 +104,31 @@ msgstr "Anzahl der Emojis pro Zeile"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Size of emojis (px)"
-msgstr "Größe (px)"
+msgstr "Größe der Emojis (px)"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Use a keyboard shortcut to toggle the menu"
-msgstr ""
+msgstr "Tastenkürzel für Menüansicht verwenden"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Help"
-msgstr ""
+msgstr "Hilfe"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Apply"
-msgstr ""
+msgstr "Anwenden"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid ""
 "If you access the menu with the keyboard shortcut, you don't need to always "
 "display the icon."
 msgstr ""
+"Wenn Sie das Menü mit dem Tastenkürzel öffnen bzw. schließen, muss das "
+"Symbol nicht dauerhaft sichtbar sein."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Always show the icon"
-msgstr ""
+msgstr "Symbol immer anzeigen"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Settings"
@@ -133,28 +139,28 @@ msgid ""
 "This extension provides a parametrable popup menu displaying most emojis, "
 "clicking on an emoji copies it to the clipboard."
 msgstr ""
+"Diese Erweiterung hat ein veränderbares Menü, das fast alle Emojis anzeigt. "
+"Ein Klick auf ein Emoji kopiert es in die Zwischenablage."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Report bugs or ideas"
-msgstr ""
+msgstr "Fehler oder Ideen mitteilen"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Author:"
-msgstr ""
+msgstr "Autor:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-#, fuzzy
-#| msgid "translator-credits"
 msgid "Translator(s):"
-msgstr "Jonatan H. Zeidler"
+msgstr "Übersetzer:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "translator-credits"
-msgstr "Jonatan H. Zeidler"
+msgstr "Onno Giesmann"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Contributors:"
-msgstr ""
+msgstr "Beitragende:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "About"
@@ -162,54 +168,54 @@ msgstr "Info"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "List of valid key names"
-msgstr ""
+msgstr "Liste der gültigen Schlüsselnamen"
 
 #. Context for translation: modifier keys are ctrl/shift/super/alt
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Modifier keys must be between chevrons"
-msgstr ""
+msgstr "Änderungstasten müssen zwischen den Chevrons sein"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Don't use a keyboard shortcut that already exists."
-msgstr ""
+msgstr "Kein Tastenkürzel verwenden, welches bereits existiert."
 
 #: emoji-selector@maestroschan.fr/emojiCategory.js
 #, javascript-format
 msgid "Incorrect number of keywords for category '%s':"
-msgstr ""
+msgstr "Ungültige Anzahl an Schlüsselwörtern für die Kategorie '%s':"
 
 #: emoji-selector@maestroschan.fr/emojiCategory.js
 msgid "Please report this bug"
-msgstr ""
+msgstr "Bitte melden Sie diesen Fehler"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "No skin tone"
-msgstr ""
+msgstr "Ohne Hautton"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Light skin tone"
-msgstr ""
+msgstr "Helle Hautfarbe"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Medium light skin tone"
-msgstr ""
+msgstr "Mittelhelle Hautfarbe"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Medium skin tone"
-msgstr ""
+msgstr "Mittlere Hautfarbe"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Medium dark skin tone"
-msgstr ""
+msgstr "Mitteldunkle Hautfarbe"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Dark skin tone"
-msgstr ""
+msgstr "Dunkle Hautfarbe"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Women"
-msgstr "Frauen"
+msgstr "Weiblich"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Men"
-msgstr "Männer"
+msgstr "Männlich"
