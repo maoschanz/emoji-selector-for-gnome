@@ -145,9 +145,7 @@ class EmojisMenu {
 	updateStyle() {
 		this.searchItem.updateStyleRecents();
 		this.emojiCategories.forEach(function(c) {
-			c.emojiButtons.forEach(function(b) {
-				b.updateStyle();
-			});
+			c.updateStyle();
 		});
 	}
 
@@ -299,7 +297,9 @@ function enable() {
 	// - `right` is the box where we want our GLOBAL_BUTTON to be displayed (left/center/right)
 	Main.panel.addToStatusArea('EmojisMenu', GLOBAL_BUTTON.super_btn, 0, 'right');
 
-	SIGNAUX[0] = SETTINGS.connect('changed::emojisize', () => { updateStyle(); });
+	SIGNAUX[0] = SETTINGS.connect('changed::emojisize', () => {
+		GLOBAL_BUTTON.updateStyle();
+	});
 	SIGNAUX[1] = SETTINGS.connect('changed::always-show', () => {
 		GLOBAL_BUTTON.super_btn.actor.visible = SETTINGS.get_boolean('always-show');
 	});

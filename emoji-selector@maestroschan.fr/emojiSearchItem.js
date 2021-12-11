@@ -140,6 +140,7 @@ var EmojiSearchItem = class EmojiSearchItem {
 		}
 
 		this._buildRecents();
+		this.updateStyleRecents();
 		return recentlyUsed;
 	}
 
@@ -166,8 +167,10 @@ var EmojiSearchItem = class EmojiSearchItem {
 	}
 
 	updateStyleRecents() {
+		let fontStyle = 'font-size: ' + Extension.SETTINGS.get_int('emojisize') + 'px;';
+		fontStyle += ' color: #FFFFFF;';
 		this._recents.forEach(function(b) {
-			b.updateStyle();
+			b.updateStyle(fontStyle);
 		});
 	}
 
