@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-21 20:22+0200\n"
-"PO-Revision-Date: 2020-07-31 19:28+0200\n"
-"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"POT-Creation-Date: 2020-10-21 20:26+0200\n"
+"PO-Revision-Date: 2022-01-04 18:09+0100\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4\n"
+"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: emoji-selector@maestroschan.fr/extension.js
@@ -25,7 +25,7 @@ msgstr "Typ hier om te zoeken…"
 #: emoji-selector@maestroschan.fr/extension.js
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Emoji Selector"
-msgstr "Emoji-selectie"
+msgstr "Emojiselectie"
 
 #: emoji-selector@maestroschan.fr/extension.js
 msgid "Smileys & Body"
@@ -80,22 +80,22 @@ msgid ""
 "Displaying the interface from the bottom is better if you use a bottom panel "
 "instead of the default top bar."
 msgstr ""
-"Van beneden naar boven tonen is het handigst als je gebruikmaakt van een "
-"paneel aan de onderkant."
+"Van beneden naar boven is het handigst als je gebruikmaakt van een paneel "
+"aan de onderkant van het scherm."
 
 #: emoji-selector@maestroschan.fr/prefs.js
 #, javascript-format
 msgid "The default value is %s"
-msgstr "De standaardwaarde is %s"
+msgstr "De standaardwaarde is ‘%s’"
 
 #: emoji-selector@maestroschan.fr/prefs.js
 #, javascript-format
 msgid "version %s"
-msgstr ""
+msgstr "versie %s"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "General layout"
-msgstr "Algemene indeling"
+msgstr "Indeling"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Number of emojis per line"
@@ -103,7 +103,7 @@ msgstr "Aantal emoji's per regel"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Size of emojis (px)"
-msgstr "Emojigrootte (px)"
+msgstr "Emojigrootte (in px)"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Use a keyboard shortcut to toggle the menu"
@@ -131,15 +131,15 @@ msgstr "Pictogram altijd tonen"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Settings"
-msgstr "Instellingen"
+msgstr "Voorkeuren"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid ""
 "This extension provides a parametrable popup menu displaying most emojis, "
 "clicking on an emoji copies it to the clipboard."
 msgstr ""
-"Deze uitbreiding bevat een instelbaar pop-upmenu die de meeste emoji's "
-"toont. Klik op een emoji om deze te kopiëren naar het klembord."
+"Deze uitbreiding biedt een instelbaar pop-upmenu dat de meeste emoji's "
+"toont. Klik op een emoji om hem te kopiëren naar het klembord."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Report bugs or ideas"
@@ -150,18 +150,16 @@ msgid "Author:"
 msgstr "Maker:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-#, fuzzy
-#| msgid "Tranlators:"
 msgid "Translator(s):"
-msgstr "Vertalers:"
+msgstr "Vertaler(s):"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "translator-credits"
-msgstr "Heimen Stoffels"
+msgstr "Heimen Stoffels <vistausss@fastmail.com>"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Contributors:"
-msgstr ""
+msgstr "Met dank aan:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "About"
@@ -174,20 +172,20 @@ msgstr "Lijst met geldige waardenamen"
 #. Context for translation: modifier keys are ctrl/shift/super/alt
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Modifier keys must be between chevrons"
-msgstr "Sneltoetsen moeten tussen chevrons liggen"
+msgstr "Sneltoetsen dienen tussen chevrons te worden geplaatst"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Don't use a keyboard shortcut that already exists."
-msgstr "Deze sneltoets wordt al gebruikt."
+msgstr "Deze sneltoets is al in gebruik."
 
 #: emoji-selector@maestroschan.fr/emojiCategory.js
 #, javascript-format
 msgid "Incorrect number of keywords for category '%s':"
-msgstr ""
+msgstr "Ongeldig aantal trefwoorden bij ‘%s’:"
 
 #: emoji-selector@maestroschan.fr/emojiCategory.js
 msgid "Please report this bug"
-msgstr ""
+msgstr "Meld deze bug"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "No skin tone"
