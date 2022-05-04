@@ -80,7 +80,7 @@ msgid ""
 "instead of the default top bar."
 msgstr ""
 "È meglio visualizzare l'interfaccia dal basso se utilizzi un pannello "
-"inferioreinvece della barra superiore predefinita."
+"inferiore invece della barra superiore predefinita."
 
 #: emoji-selector@maestroschan.fr/prefs.js
 #, javascript-format
@@ -122,7 +122,7 @@ msgid ""
 "display the icon."
 msgstr ""
 "Se accedi al menu con la scorciatoia da tastiera, non devi "
-"semprevisualizzare l'icona."
+"sempre visualizzare l'icona."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Always show the icon"
@@ -138,7 +138,7 @@ msgid ""
 "clicking on an emoji copies it to the clipboard."
 msgstr ""
 "Questa estensione fornisce un menu popup parametrabile che mostra la maggior "
-"parte degli emoji, facendo clic su un'emoji la copia negli appunti."
+"parte degli emoji, facendo clic su un emoji la copia negli appunti."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Report bugs or ideas"
@@ -155,7 +155,7 @@ msgstr "Traduttore(i):"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "translator-credits"
-msgstr "Albano Battistella"
+msgstr "Albano Battistella, Danilo Del Busso"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Contributors:"
@@ -172,7 +172,7 @@ msgstr "Lista dei nomi chiave validi"
 #. Context for translation: modifier keys are ctrl/shift/super/alt
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Modifier keys must be between chevrons"
-msgstr "I tasti di modifica devono essere compresi tra i galloni"
+msgstr "I tasti di modifica devono essere compresi tra parentesi uncinate"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Don't use a keyboard shortcut that already exists."
@@ -213,11 +213,11 @@ msgstr "Tonalità della pelle scura"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Women"
-msgstr "Donna"
+msgstr "Donne"
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Men"
-msgstr "Uomo"
+msgstr "Uomini"
 
 #~ msgid "Default value is:"
 #~ msgstr "Il valore di default è:"
