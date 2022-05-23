@@ -4,7 +4,9 @@
 	"shell-version": [
 		"3.34",
 		"3.36",
-		"3.38"
+		"3.38",
+		"40",
+		"41"
 	],
 	"url": "https://github.com/maoschanz/emoji-selector-for-gnome",
 	"uuid": "emoji-selector@maestroschan.fr",

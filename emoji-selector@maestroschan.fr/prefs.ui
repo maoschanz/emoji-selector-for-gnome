@@ -1,403 +1,670 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.38.2 -->
 <interface domain="emoji-selector">
+  <requires lib="gtk+" version="3.24" />
+  <object class="GtkAdjustment" id="adjustment_nbcols">
+    <property name="lower">10</property>
+    <property name="upper">60</property>
+    <property name="value">12</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+
+  <object class="GtkNotebook" id="prefs_stack">
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <!-- <property name="transition-type">slide-left-right</property> -->
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="margin-start">20</property>
+        <property name="margin-end">20</property>
+        <property name="margin-top">20</property>
+        <property name="margin-bottom">20</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkBox" id="override_title">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="margin-bottom">12</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Layout</property>
+                <attributes>
+                  <attribute name="weight" value="bold" />
+                </attributes>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkFrame" id="override_frame">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="margin-bottom">36</property>
+            <property name="label-xalign">0</property>
+            <child>
+              <object class="GtkListBox" id="override_listbox">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="selection-mode">none</property>
+
+                <child>
+                  <object class="GtkListBoxRow" id="general_layout">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <child>
+                      <object class="GtkBox" id="theme_box">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-start">12</property>
+                        <property name="margin-end">12</property>
+                        <property name="margin-top">12</property>
+                        <property name="margin-bottom">12</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkBox" id="theme_box2">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="spacing">32</property>
+                            <property name="tooltip-text" translatable="yes">Displaying the interface from the bottom is better if you use a bottom panel instead of the default top bar. Modifications will be effective after reloading the extension.</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="halign">end</property>
+                                <property name="label" translatable="yes">General layout</property>
+                              </object>
+
+                            </child>
+                            <child>
+                              <object class="GtkComboBoxText" id="position_combobox">
+                                <property name="valign">start</property>
+                                <property name="can-focus">False</property>
+                                <property name="halign">end</property>
+                                <property name="hexpand">True</property>
+                                <property name="vexpand">False</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkListBoxRow" id="number_emojis">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <child>
+                      <object class="GtkBox" id="number_emojis_box">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-start">12</property>
+                        <property name="margin-end">12</property>
+                        <property name="margin-top">12</property>
+                        <property name="margin-bottom">12</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkBox" id="number_emojis_box2">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="spacing">32</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="can-focus">False</property>
+                                <property name="halign">end</property>
+                                <property name="hexpand">False</property>
+                                <property name="vexpand">False</property>
+                                <property name="label" translatable="yes">Number of emojis per line</property>
+                              </object>
+
+                            </child>
+                            <child>
+                              <object class="GtkSpinButton" id="nbcols_spinbtn">
+                                <property name="can-focus">True</property>
+                                <property name="hexpand">True</property>
+                                <property name="vexpand">False</property>
+                                <property name="text" translatable="yes">12</property>
+                                <property name="adjustment">adjustment_nbcols</property>
+                                <property name="value">12</property>
+                                <property name="halign">end</property>
+                              </object>
+
+                            </child>
+                          </object>
+
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkListBoxRow" id="size_emoji">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <child>
+                      <object class="GtkBox" id="size_emoji_box1">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-start">12</property>
+                        <property name="margin-end">12</property>
+                        <property name="margin-top">12</property>
+                        <property name="margin-bottom">12</property>
+                        <property name="orientation">vertical</property>
+                        <property name="hexpand">True</property>
+                        <child>
+                          <object class="GtkBox" id="size_emoji_box2">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="spacing">32</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="can-focus">False</property>
+                                <property name="halign">end</property>
+                                <property name="hexpand">False</property>
+                                <property name="vexpand">False</property>
+                                <property name="label" translatable="yes">Size of emojis (px)</property>
+                              </object>
+
+                            </child>
+                            <child>
+                              <object class="GtkSpinButton" id="size_spinbtn">
+                                <property name="can-focus">True</property>
+                                <property name="hexpand">True</property>
+                                <property name="vexpand">False</property>
+                                <property name="text" translatable="yes">30</property>
+                                <property name="adjustment">adjustment_size</property>
+                                <property name="value">30</property>
+                                <property name="halign">end</property>
+                              </object>
+                            </child>
+                          </object>
+
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+
+        </child>
+        <child>
+          <object class="GtkBox" id="keyboard_bindings">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="margin-bottom">12</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Keyboard bindings</property>
+                <attributes>
+                  <attribute name="weight" value="bold" />
+                </attributes>
+              </object>
+
+            </child>
+          </object>
+
+        </child>
+        <child>
+          <object class="GtkFrame" id="override_frame1">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="margin-bottom">36</property>
+            <property name="label-xalign">0</property>
+            <child>
+              <object class="GtkListBox" id="override_listbox1">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="selection-mode">none</property>
+                <child>
+                  <object class="GtkListBoxRow" id="show_icon">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <child>
+                      <object class="GtkBox" id="theme_box1">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-start">12</property>
+                        <property name="margin-end">12</property>
+                        <property name="margin-top">12</property>
+                        <property name="margin-bottom">12</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkBox" id="theme_box3">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="spacing">32</property>
+                            <child>
+                              <object class="GtkBox">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="orientation">vertical</property>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">start</property>
+                                    <property name="hexpand">False</property>
+                                    <property name="vexpand">False</property>
+                                    <property name="label" translatable="yes">Always show the icon in the panel</property>
+                                  </object>
+
+                                </child>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">start</property>
+                                    <property name="hexpand">False</property>
+                                    <property name="vexpand">False</property>
+                                    <property name="label" translatable="yes">If you access the menu with the keyboard shortcut, you don't need to always display the icon.</property>
+                                    <property name="justify">fill</property>
+                                    <property name="wrap">True</property>
+                                    <property name="max-width-chars">45</property>
+                                    <style>
+                                      <class name="dim-label" />
+                                    </style>
+                                  </object>
+
+                                </child>
+                              </object>
+
+                            </child>
+                            <child>
+                              <object class="GtkSwitch" id="always_show_switch">
+                                <property name="can-focus">True</property>
+                                <property name="halign">end</property>
+                                <property name="valign">start</property>
+                                <property name="hexpand">True</property>
+                                <property name="vexpand">False</property>
+                              </object>
+
+                            </child>
+                          </object>
+
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkListBoxRow" id="number_emojis1">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <child>
+                      <object class="GtkBox" id="number_emojis_box1">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-start">12</property>
+                        <property name="margin-end">12</property>
+                        <property name="margin-top">12</property>
+                        <property name="margin-bottom">12</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkBox" id="number_emojis_box3">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="spacing">32</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="can-focus">False</property>
+                                <property name="halign">end</property>
+                                <property name="hexpand">False</property>
+                                <property name="vexpand">False</property>
+                                <property name="label" translatable="yes">Use a keyboard shortcut to toggle the menu</property>
+                              </object>
+
+                            </child>
+                            <child>
+                              <object class="GtkSwitch" id="keybinding_switch">
+                                <property name="can-focus">True</property>
+                                <property name="halign">start</property>
+                                <property name="hexpand">True</property>
+                                <property name="vexpand">False</property>
+                                <property name="halign">end</property>
+                              </object>
+
+                            </child>
+                          </object>
+
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkListBoxRow" id="size_emoji1">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <child>
+                      <object class="GtkBox" id="size_emoji_box3">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-start">12</property>
+                        <property name="margin-end">12</property>
+                        <property name="margin-top">12</property>
+                        <property name="margin-bottom">12</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkBox" id="size_emoji_box4">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="spacing">32</property>
+                            <child>
+                              <object class="GtkBox">
+                                <property name="can-focus">False</property>
+                                <property name="halign">end</property>
+                                <property name="hexpand">False</property>
+                                <property name="vexpand">False</property>
+                                <child>
+                                  <object class="GtkEntry" id="keybinding_entry">
+                                    <property name="can-focus">True</property>
+                                  </object>
+
+                                </child>
+                                <child>
+                                  <object class="GtkMenuButton">
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">False</property>
+                                    <property name="tooltip-text" translatable="yes">Help</property>
+                                    <property name="popover">help-popover-1</property>
+                                    <child>
+                                      <object class="GtkBox">
+                                        <property name="can-focus">False</property>
+                                        <property name="spacing">2</property>
+                                        <child>
+                                          <object class="GtkImage">
+                                            <property name="can-focus">False</property>
+                                            <property name="icon-name">help-faq-symbolic</property>
+                                          </object>
+
+                                        </child>
+                                        <child>
+                                          <object class="GtkImage">
+                                            <property name="can-focus">False</property>
+                                            <property name="icon-name">pan-down-symbolic</property>
+                                          </object>
+
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+
+                                </child>
+                                <style>
+                                  <class name="linked" />
+                                </style>
+                              </object>
+
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="keybinding_button">
+                                <property name="label" translatable="yes">Apply</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">False</property>
+                                <property name="halign">start</property>
+                                <property name="hexpand">True</property>
+                                <property name="vexpand">False</property>
+                              </object>
+
+                            </child>
+                          </object>
+
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+
+        </child>
+
+        <child></child>
+      </object>
+    </child>
+    <child type="tab">
+      <object class="GtkLabel" id="prefs_tab">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Settings</property>
+        <layout>
+          <property name="tab_fill">False</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox" id="about_page">
+        <property name="spacing">16</property>
+        <property name="margin-start">12</property>
+        <property name="margin-end">12</property>
+        <property name="margin-top">12</property>
+        <property name="margin-bottom">12</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="halign">center</property>
+            <property name="label" translatable="yes">Emoji Selector</property>
+            <attributes>
+              <attribute name="weight" value="bold" />
+              <attribute name="scale" value="2" />
+            </attributes>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel" id="version-label" />
+        </child>
+        <child>
+          <object class="GtkLabel" id="label_description">
+            <property name="halign">center</property>
+            <property name="wrap">True</property>
+            <property name="max-width-chars">60</property>
+            <property name="label" translatable="yes">This extension provides a parametrable popup menu displaying most emojis, clicking on an emoji copies it to the clipboard.</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLinkButton" id="link-btn">
+            <property name="halign">center</property>
+            <property name="label" translatable="yes">Report bugs or ideas</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkViewport" id="frame_advanced_options">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <!-- <property name="label_xalign">0</property> -->
+
+            <child>
+              <object class="GtkGrid">
+                <property name="margin-top">12</property>
+                <property name="margin-bottom">12</property>
+                <property name="margin-start">12</property>
+                <property name="margin-end">12</property>
+                <!-- <property name="column-homogeneous">true</property> -->
+                <property name="column-spacing">20</property>
+                <property name="row-spacing">20</property>
+                <!-- <property name="orientation">vertical</property> -->
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Author</property>
+                    <property name="halign">end</property>
+                    <attributes>
+                      <attribute name="weight" value="bold" />
+                    </attributes>
+                    <layout>
+                      <property name="row">0</property>
+                      <property name="column">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label">Romain F. T.</property>
+                    <property name="halign">start</property>
+                    <layout>
+                      <property name="row">0</property>
+                      <property name="column">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="translators-label">
+                    <property name="label" translatable="yes">Translator(s)</property>
+                    <property name="halign">end</property>
+                    <attributes>
+                      <attribute name="weight" value="bold" />
+                    </attributes>
+                    <layout>
+                      <property name="row">1</property>
+                      <property name="column">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="translators-credits">
+                    <property name="label" translatable="yes">translator-credits</property>
+                    <property name="halign">start</property>
+                    <layout>
+                      <property name="row">1</property>
+                      <property name="column">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Contributors</property>
+                    <property name="halign">end</property>
+                    <attributes>
+                      <attribute name="weight" value="bold" />
+                    </attributes>
+                    <layout>
+                      <property name="row">2</property>
+                      <property name="column">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="halign">start</property>
+                    <property name="label">Jimmy Scionti
+Ryan Gonzalez
+xurizaemon
+Fran Diéguez</property>
+                    <layout>
+                      <property name="row">2</property>
+                      <property name="column">1</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child type="tab">
+      <object class="GtkLabel" id="about_tab">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">About</property>
+        <layout>
+          <property name="tab_fill">False</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+
 
   <object class="GtkAdjustment" id="adjustment_size">
     <property name="lower">10</property>
     <property name="upper">100</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">10</property>
     <property name="value">30</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
   </object>
 
-  <object class="GtkAdjustment" id="adjustment_nbcols">
-    <property name="lower">10</property>
-    <property name="upper">60</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">10</property>
-    <property name="value">12</property>
-  </object>
-
-  <object class="GtkStack" id="prefs_stack">
-    <property name="transition-type">slide-left-right</property>
-
-    <child>
-      <object class="GtkScrolledWindow" id="settings_page">
-        <property name="hscrollbar-policy">never</property>
-        <child>
-          <object class="GtkGrid">
-            <property name="expand">True</property>
-            <property name="row-spacing">12</property>
-            <property name="column-spacing">24</property>
-            <property name="halign">center</property>
-            <property name="margin">16</property>
-
-            <child>
-              <object class="GtkLabel">
-                <property name="halign">end</property>
-                <property name="expand">False</property>
-                <property name="label" translatable="yes">General layout</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkComboBoxText" id="position_combobox">
-                <property name="expand">False</property>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">0</property>
-              </packing>
-            </child>
-
-            <child>
-              <object class="GtkLabel">
-                <property name="expand">False</property>
-                <property name="halign">end</property>
-                <property name="label" translatable="yes">Number of emojis per line</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinButton" id="nbcols_spinbtn">
-                <property name="expand">False</property>
-                <property name="adjustment">adjustment_nbcols</property>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">2</property>
-              </packing>
-            </child>
-
-            <child>
-              <object class="GtkLabel">
-                <property name="expand">False</property>
-                <property name="halign">end</property>
-                <property name="label" translatable="yes">Size of emojis (px)</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">4</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinButton" id="size_spinbtn">
-                <property name="expand">False</property>
-                <property name="adjustment">adjustment_size</property>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">4</property>
-              </packing>
-            </child>
-
-            <child>
-              <object class="GtkSeparator">
-                <property name="expand">False</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">6</property>
-                <property name="width">2</property>
-              </packing>
-            </child>
-
-            <child>
-              <object class="GtkLabel">
-                <property name="expand">False</property>
-                <property name="halign">end</property>
-                <property name="label" translatable="yes">Use a keyboard shortcut to toggle the menu</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">8</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSwitch" id="keybinding_switch">
-                <property name="expand">False</property>
-                <property name="halign">start</property>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">8</property>
-              </packing>
-            </child>
-
-            <child>
-              <object class="GtkBox">
-                <property name="expand">False</property>
-                <property name="halign">end</property>
-                <child>
-                  <object class="GtkEntry" id="keybinding_entry" />
-                </child>
-                <child>
-                  <object class="GtkMenuButton">
-                    <property name="tooltip-text" translatable="yes">Help</property>
-                    <property name="popover">help-popover-1</property>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="spacing">2</property>
-                        <child>
-                          <object class="GtkImage">
-                            <property name="icon-name">help-faq-symbolic</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkImage">
-                            <property name="icon-name">pan-down-symbolic</property>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <style><class name="linked"/></style>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">10</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="keybinding_button">
-                <property name="expand">False</property>
-                <property name="halign">start</property>
-                <property name="label" translatable="yes">Apply</property>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">10</property>
-              </packing>
-            </child>
-
-            <child>
-              <object class="GtkLabel">
-                <property name="expand">False</property>
-                <property name="wrap">True</property>
-                <property name="halign">center</property>
-                <property name="label" translatable="yes">If you access the menu with the keyboard shortcut, you don't need to always display the icon.</property>
-                <style><class name="dim-label"/></style>
-                <property name="max-width-chars">45</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="width">2</property>
-                <property name="top-attach">16</property>
-              </packing>
-            </child>
-
-            <child>
-              <object class="GtkLabel">
-                <property name="expand">False</property>
-                <property name="halign">end</property>
-                <property name="label" translatable="yes">Always show the icon</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">17</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSwitch" id="always_show_switch">
-                <property name="expand">False</property>
-                <property name="halign">start</property>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">17</property>
-              </packing>
-            </child>
-
-          </object>
-        </child>
-      </object>
-      <packing>
-        <property name="name">settings_page</property>
-        <property name="title" translatable="yes">Settings</property>
-      </packing>
-    </child>
-
-    <child>
-      <object class="GtkScrolledWindow">
-        <child>
-          <object class="GtkBox">
-            <property name="spacing">16</property>
-            <property name="margin">32</property>
-            <property name="orientation">vertical</property>
-            <child>
-              <object class="GtkLabel">
-                <property name="halign">center</property>
-                <property name="label" translatable="yes">Emoji Selector</property>
-                <attributes>
-                  <attribute name="weight" value="bold"/>
-                  <attribute name="scale" value="2"/>
-                </attributes>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="version-label" />
-            </child>
-            <child>
-              <object class="GtkLabel" id="label_description">
-                <property name="halign">center</property>
-                <property name="wrap">True</property>
-                <property name="label" translatable="yes">This extension provides a parametrable popup menu displaying most emojis, clicking on an emoji copies it to the clipboard.</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLinkButton" id="link-btn">
-                <property name="halign">center</property>
-                <property name="label" translatable="yes">Report bugs or ideas</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkBox">
-                <property name="spacing">16</property>
-                <property name="homogeneous">true</property>
-                <child>
-                  <object class="GtkBox">
-                    <property name="orientation">vertical</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Author:</property>
-                        <attributes>
-                          <attribute name="weight" value="bold"/>
-                        </attributes>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label">Romain F. T.</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                  <property name="orientation">vertical</property>
-                    <child>
-                      <object class="GtkLabel" id="translators-label">
-                        <property name="label" translatable="yes">Translator(s):</property>
-                        <attributes>
-                          <attribute name="weight" value="bold"/>
-                        </attributes>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="translators-credits">
-                        <property name="label" translatable="yes">translator-credits</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="orientation">vertical</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Contributors:</property>
-                        <attributes>
-                          <attribute name="weight" value="bold"/>
-                        </attributes>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label">Jimmy Scionti
-Ryan Gonzalez
-xurizaemon
-                        </property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="pack-type">end</property>
-              </packing>
-            </child>
-          </object>
-        </child>
-      </object>
-      <packing>
-        <property name="name">page_about</property>
-        <property name="title" translatable="yes">About</property>
-      </packing>
-    </child>
-  </object>
-
-  <!-- ..................................................................... -->
 
   <object class="GtkPopover" id="help-popover-1">
+    <property name="can-focus">False</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
-        <property name="spacing">12</property>
-        <property name="margin">12</property>
+        <property name="can-focus">False</property>
+        <property name="margin-start">30</property>
+        <property name="margin-end">30</property>
+        <property name="margin-top">20</property>
+        <property name="margin-bottom">20</property>
         <property name="orientation">vertical</property>
-
+        <property name="spacing">12</property>
         <child>
           <object class="GtkLinkButton">
-            <property name="visible">True</property>
             <property name="label" translatable="yes">List of valid key names</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="receives-default">False</property>
             <property name="uri">https://raw.githubusercontent.com/GNOME/gtk/master/gdk/keynames.txt</property>
           </object>
-        </child>
 
+        </child>
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
+            <property name="can-focus">False</property>
             <property name="halign">center</property>
-            <!-- Context for translation: modifier keys are ctrl/shift/super/alt -->
             <property name="label" translatable="yes">Modifier keys must be between chevrons</property>
             <property name="max-width-chars">45</property>
           </object>
-        </child>
 
+        </child>
         <child>
           <object class="GtkSeparator">
             <property name="visible">True</property>
+            <property name="can-focus">False</property>
           </object>
-        </child>
 
+        </child>
         <child>
           <object class="GtkLabel" id="default-kbs-help-1">
             <property name="visible">True</property>
+            <property name="can-focus">False</property>
             <property name="halign">center</property>
-            <property name="label"></property>
             <property name="max-width-chars">45</property>
           </object>
-        </child>
 
+        </child>
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
+            <property name="can-focus">False</property>
             <property name="halign">center</property>
             <property name="label" translatable="yes">Don't use a keyboard shortcut that already exists.</property>
             <property name="max-width-chars">45</property>
-            <style><class name="dim-label"/></style>
+            <style>
+              <class name="dim-label" />
+            </style>
           </object>
-        </child>
 
+        </child>
         <child>
           <object class="GtkLabel" id="default-kbs-help-2">
             <property name="visible">True</property>
+            <property name="can-focus">False</property>
             <property name="halign">center</property>
-            <property name="label"></property>
-            <style><class name="dim-label"/></style>
             <property name="max-width-chars">45</property>
+            <style>
+              <class name="dim-label" />
+            </style>
           </object>
+          >
         </child>
-
       </object>
     </child>
   </object>
-
 </interface>
-
