@@ -46,7 +46,6 @@ var EmojiButton = class EmojiButton {
 			can_focus: true,
 			label: this.baseCharacter
 		});
-		this.updateStyle();
 
 		// Copy the emoji to the clipboard with adequate tags and behavior
 		this.super_btn.connect('button-press-event', this.onButtonPress.bind(this));
@@ -71,9 +70,14 @@ var EmojiButton = class EmojiButton {
 		this.super_btn.destroy();
 	}
 
-	updateStyle() {
-		let fontStyle = 'font-size: ' + Extension.SETTINGS.get_int('emojisize') + 'px;';
-		fontStyle += ' color: #FFFFFF;';
+	updateStyle(forcedStyle) {
+		let fontStyle;
+		if(forcedStyle) {
+			fontStyle = forcedStyle;
+		} else {
+			fontStyle = 'font-size: ' + Extension.SETTINGS.get_int('emojisize') + 'px;';
+			fontStyle += ' color: #FFFFFF;';
+		}
 		this.super_btn.style = fontStyle;
 	}
 

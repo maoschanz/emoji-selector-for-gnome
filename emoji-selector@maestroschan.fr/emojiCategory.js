@@ -217,7 +217,10 @@ var EmojiCategory = class EmojiCategory {
 		Extension.GLOBAL_BUTTON.clearCategories();
 		this.super_item.label.text = this.categoryName;
 
-		if(!this._built) this.build();
+		if(!this._built) {
+			this.build();
+			this.updateStyle();
+		}
 
 		this.skinTonesBar.update();
 
@@ -226,6 +229,14 @@ var EmojiCategory = class EmojiCategory {
 		this.super_item.setSubmenuShown(true);
 		Extension.GLOBAL_BUTTON._activeCat = this.id;
 		Extension.GLOBAL_BUTTON._onSearchTextChanged();
+	}
+
+	updateStyle() {
+		let fontStyle = 'font-size: ' + Extension.SETTINGS.get_int('emojisize') + 'px;';
+		fontStyle += ' color: #FFFFFF;';
+		this.emojiButtons.forEach(function(b) {
+			b.updateStyle(fontStyle);
+		});
 	}
 
 	getButton() {

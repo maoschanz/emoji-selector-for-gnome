@@ -46,7 +46,7 @@
       <description>0 is none, 1 is women, 2 is men.</description>
     </key>
     <key name="emoji-keybinding" type="as">
-      <default><![CDATA[['<Super>e']]]></default>
+      <default><![CDATA[['<Super>period']]]></default>
       <summary>Keyboard shortcut.</summary>
       <description>Keyboard shortcut which opens the extension's menu.</description>
     </key>

@@ -45,7 +45,6 @@ var useActors = parseInt(ShellVersion.split('.')[1]) < 33;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
-const Convenience = Me.imports.convenience;
 const SkinTonesBar = Me.imports.emojiOptionsBar.SkinTonesBar;
 const EmojiCategory = Me.imports.emojiCategory.EmojiCategory;
 const EmojiButton = Me.imports.emojiButton;
@@ -280,6 +279,19 @@ class EmojisMenu {
 		}
 	}
 
+	_connectSignals() {
+	}
+
+	disconnectSignals() {
+	}
+
+	updateStyle() {
+		this.searchItem.updateStyleRecents();
+		this.emojiCategories.forEach(function(c) {
+			c.updateStyle();
+		});
+	}
+
 	toggle() {
 		this.super_btn.menu.toggle();
 	}
@@ -395,7 +407,7 @@ class EmojisMenu {
 	_bindShortcut() {
 		Main.wm.addKeybinding(
 			'emoji-keybinding',
-			Convenience.getSettings(),
+			SETTINGS,
 			Meta.KeyBindingFlags.NONE,
 			Shell.ActionMode.ALL,
 			this.toggle.bind(this)
@@ -415,7 +427,7 @@ class EmojisMenu {
 //------------------------------------------------------------------------------
 
 function init() {
-	Convenience.initTranslations('emoji-selector');
+	ExtensionUtils.initTranslations('emoji-selector');
 	try {
 		let theme = imports.gi.Gtk.IconTheme.get_default();
 		theme.append_search_path(Me.path + '/icons');
@@ -428,14 +440,8 @@ function init() {
 //------------------------------------------------------------------------------
 
 function enable() {
-	SETTINGS = Convenience.getSettings();
-	NB_COLS = SETTINGS.get_int('nbcols');
+	SETTINGS = ExtensionUtils.getSettings();
 	POSITION = SETTINGS.get_string('position');
-	/* TODO paramètres restants à rendre dynamiques
-	 * emoji-keybinding (tableau de chaînes), pourri de toutes manières
-	 * nbcols (int), rebuild nécessaire
-	 * position (chaîne) impossible tout court ?
-	*/
 
 	// This variable is assigned here because init() wouldn't have provided
 	// gettext yet if it was done at the top level of the file.
@@ -459,7 +465,9 @@ function enable() {
 	// - `right` is the box where we want our GLOBAL_BUTTON to be displayed (left/center/right)
 	Main.panel.addToStatusArea('EmojisMenu', GLOBAL_BUTTON.super_btn, 0, 'right');
 
-	SIGNAUX[0] = SETTINGS.connect('changed::emojisize', () => { updateStyle(); });
+	SIGNAUX[0] = SETTINGS.connect('changed::emojisize', () => {
+		GLOBAL_BUTTON.updateStyle();
+	});
 	SIGNAUX[1] = SETTINGS.connect('changed::always-show', () => {
 		GLOBAL_BUTTON.super_btn.actor.visible = SETTINGS.get_boolean('always-show');
 	});

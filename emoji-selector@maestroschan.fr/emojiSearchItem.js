@@ -7,7 +7,6 @@ const PopupMenu = imports.ui.popupMenu;
 /* Import the current extension, mainly because we need to access other files */
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
-const Convenience = Me.imports.convenience;
 const Extension = Me.imports.extension;
 const EmojiButton = Me.imports.emojiButton.EmojiButton;
 
@@ -141,6 +140,7 @@ var EmojiSearchItem = class EmojiSearchItem {
 		}
 
 		this._buildRecents();
+		this.updateStyleRecents();
 		return recentlyUsed;
 	}
 
@@ -167,8 +167,10 @@ var EmojiSearchItem = class EmojiSearchItem {
 	}
 
 	updateStyleRecents() {
+		let fontStyle = 'font-size: ' + Extension.SETTINGS.get_int('emojisize') + 'px;';
+		fontStyle += ' color: #FFFFFF;';
 		this._recents.forEach(function(b) {
-			b.updateStyle();
+			b.updateStyle(fontStyle);
 		});
 	}
 

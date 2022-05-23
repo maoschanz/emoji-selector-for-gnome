@@ -286,6 +286,7 @@ var ALL_KEYWORDS = [
 		["bust in silhouette", "bust", "silhouette"],
 		//-------------
 		["busts in silhouette", "bust", "silhouette", "contributors"],
+		["people hugging", "hugging"],
 	//-----family---------------------------------------------------------------
 		["man and woman holding hands", "couple", "hand", "hold", "man", "woman"],
 		["two men holding hands", "gemini", "couple", "hand", "hold", "man", "twins", "zodiac"],
