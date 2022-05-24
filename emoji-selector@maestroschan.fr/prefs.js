@@ -173,11 +173,9 @@ function buildPrefsWidget() {
 
 	obj.connect('realize', () => {
 		let window = (this._shellVersion < 40) ? obj.get_toplevel() : obj.get_root();
-
 		if (this._shellVersion < 40) {
 			headerBar.set_show_close_button(true);
 		}
-
 		this._registerSignals(window);
 	});
 
@@ -188,3 +186,4 @@ function buildPrefsWidget() {
 }
 
 //------------------------------------------------------------------------------
+
