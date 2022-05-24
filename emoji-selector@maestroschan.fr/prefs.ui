@@ -9,12 +9,19 @@
     <property name="page-increment">10</property>
   </object>
 
-  <object class="GtkNotebook" id="prefs_stack">
-    <property name="can_focus">True</property>
+  <object class="GtkAdjustment" id="adjustment_size">
+    <property name="lower">10</property>
+    <property name="upper">100</property>
+    <property name="value">30</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
 
+  <!-- ********************************************************************* -->
+
+  <object class="GtkNotebook" id="prefs_stack">
     <child>
       <object class="GtkBox">
-        <property name="can-focus">False</property>
         <property name="margin-start">20</property>
         <property name="margin-end">20</property>
         <property name="margin-top">20</property>
@@ -22,40 +29,34 @@
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkFrame" id="override_frame">
-            <property name="can-focus">False</property>
             <property name="margin-bottom">36</property>
             <property name="label-xalign">0</property>
             <child>
-              <object class="GtkListBox" id="override_listbox">
-                <property name="can-focus">False</property>
+              <object class="GtkListBox">
                 <property name="selection-mode">none</property>
                 <child>
-                  <object class="GtkListBoxRow" id="general_layout">
-                    <property name="can-focus">True</property>
+                  <object class="GtkListBoxRow">
                     <child>
                       <object class="GtkBox" id="theme_box">
-                        <property name="can-focus">False</property>
                         <property name="margin-start">12</property>
                         <property name="margin-end">12</property>
                         <property name="margin-top">12</property>
                         <property name="margin-bottom">12</property>
                         <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkBox" id="theme_box2">
-                            <property name="can-focus">False</property>
+                          <object class="GtkBox">
                             <property name="spacing">32</property>
                             <property name="tooltip-text" translatable="yes">Displaying the interface from the bottom is better if you use a bottom panel instead of the default top bar. Modifications will be effective after reloading the extension.</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="can-focus">False</property>
                                 <property name="halign">end</property>
                                 <property name="label" translatable="yes">General layout</property>
                               </object>
                             </child>
                             <child>
                               <object class="GtkComboBoxText" id="position_combobox">
+                                <property name="can-focus">True</property>
                                 <property name="valign">start</property>
-                                <property name="can-focus">False</property>
                                 <property name="halign">end</property>
                                 <property name="hexpand">True</property>
                                 <property name="vexpand">False</property>
@@ -68,23 +69,19 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkListBoxRow" id="number_emojis">
-                    <property name="can-focus">True</property>
+                  <object class="GtkListBoxRow">
                     <child>
                       <object class="GtkBox" id="number_emojis_box">
-                        <property name="can-focus">False</property>
                         <property name="margin-start">12</property>
                         <property name="margin-end">12</property>
                         <property name="margin-top">12</property>
                         <property name="margin-bottom">12</property>
                         <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkBox" id="number_emojis_box2">
-                            <property name="can-focus">False</property>
+                          <object class="GtkBox">
                             <property name="spacing">32</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="can-focus">False</property>
                                 <property name="halign">end</property>
                                 <property name="hexpand">False</property>
                                 <property name="vexpand">False</property>
@@ -109,11 +106,9 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkListBoxRow" id="size_emoji">
-                    <property name="can-focus">True</property>
+                  <object class="GtkListBoxRow">
                     <child>
-                      <object class="GtkBox" id="size_emoji_box1">
-                        <property name="can-focus">False</property>
+                      <object class="GtkBox">
                         <property name="margin-start">12</property>
                         <property name="margin-end">12</property>
                         <property name="margin-top">12</property>
@@ -121,12 +116,10 @@
                         <property name="orientation">vertical</property>
                         <property name="hexpand">True</property>
                         <child>
-                          <object class="GtkBox" id="size_emoji_box2">
-                            <property name="can-focus">False</property>
+                          <object class="GtkBox">
                             <property name="spacing">32</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="can-focus">False</property>
                                 <property name="halign">end</property>
                                 <property name="hexpand">False</property>
                                 <property name="vexpand">False</property>
@@ -158,7 +151,6 @@
     </child>
     <child type="tab">
       <object class="GtkLabel">
-        <property name="can_focus">False</property>
         <property name="label" translatable="yes">Layout</property>
         <layout>
           <property name="tab_fill">False</property>
@@ -168,43 +160,35 @@
 
     <child>
       <object class="GtkBox">
-        <property name="can-focus">False</property>
         <property name="margin-start">20</property>
         <property name="margin-end">20</property>
         <property name="margin-top">20</property>
         <property name="margin-bottom">20</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkFrame" id="override_frame1">
-            <property name="can-focus">False</property>
+          <object class="GtkFrame">
             <property name="margin-bottom">36</property>
             <property name="label-xalign">0</property>
             <child>
-              <object class="GtkListBox" id="override_listbox1">
-                <property name="can-focus">False</property>
+              <object class="GtkListBox">
                 <property name="selection-mode">none</property>
                 <child>
-                  <object class="GtkListBoxRow" id="show_icon">
-                    <property name="can-focus">True</property>
+                  <object class="GtkListBoxRow">
                     <child>
-                      <object class="GtkBox" id="theme_box1">
-                        <property name="can-focus">False</property>
+                      <object class="GtkBox">
                         <property name="margin-start">12</property>
                         <property name="margin-end">12</property>
                         <property name="margin-top">12</property>
                         <property name="margin-bottom">12</property>
                         <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkBox" id="theme_box3">
-                            <property name="can-focus">False</property>
+                          <object class="GtkBox">
                             <property name="spacing">32</property>
                             <child>
                               <object class="GtkBox">
-                                <property name="can-focus">False</property>
                                 <property name="orientation">vertical</property>
                                 <child>
                                   <object class="GtkLabel">
-                                    <property name="can-focus">False</property>
                                     <property name="halign">start</property>
                                     <property name="hexpand">False</property>
                                     <property name="vexpand">False</property>
@@ -213,7 +197,6 @@
                                 </child>
                                 <child>
                                   <object class="GtkLabel">
-                                    <property name="can-focus">False</property>
                                     <property name="halign">start</property>
                                     <property name="hexpand">False</property>
                                     <property name="vexpand">False</property>
@@ -244,23 +227,19 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkListBoxRow" id="number_emojis1">
-                    <property name="can-focus">True</property>
+                  <object class="GtkListBoxRow">
                     <child>
-                      <object class="GtkBox" id="number_emojis_box1">
-                        <property name="can-focus">False</property>
+                      <object class="GtkBox">
                         <property name="margin-start">12</property>
                         <property name="margin-end">12</property>
                         <property name="margin-top">12</property>
                         <property name="margin-bottom">12</property>
                         <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkBox" id="number_emojis_box3">
-                            <property name="can-focus">False</property>
+                          <object class="GtkBox">
                             <property name="spacing">32</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="can-focus">False</property>
                                 <property name="halign">end</property>
                                 <property name="hexpand">False</property>
                                 <property name="vexpand">False</property>
@@ -283,23 +262,19 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkListBoxRow" id="size_emoji1">
-                    <property name="can-focus">True</property>
+                  <object class="GtkListBoxRow">
                     <child>
-                      <object class="GtkBox" id="size_emoji_box3">
-                        <property name="can-focus">False</property>
+                      <object class="GtkBox">
                         <property name="margin-start">12</property>
                         <property name="margin-end">12</property>
                         <property name="margin-top">12</property>
                         <property name="margin-bottom">12</property>
                         <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkBox" id="size_emoji_box4">
-                            <property name="can-focus">False</property>
+                          <object class="GtkBox">
                             <property name="spacing">32</property>
                             <child>
                               <object class="GtkBox">
-                                <property name="can-focus">False</property>
                                 <property name="halign">end</property>
                                 <property name="hexpand">False</property>
                                 <property name="vexpand">False</property>
@@ -316,17 +291,14 @@
                                     <property name="popover">help-popover-1</property>
                                     <child>
                                       <object class="GtkBox">
-                                        <property name="can-focus">False</property>
                                         <property name="spacing">2</property>
                                         <child>
                                           <object class="GtkImage">
-                                            <property name="can-focus">False</property>
                                             <property name="icon-name">help-faq-symbolic</property>
                                           </object>
                                         </child>
                                         <child>
                                           <object class="GtkImage">
-                                            <property name="can-focus">False</property>
                                             <property name="icon-name">pan-down-symbolic</property>
                                           </object>
                                         </child>
@@ -363,7 +335,6 @@
     </child>
     <child type="tab">
       <object class="GtkLabel">
-        <property name="can_focus">False</property>
         <property name="label" translatable="yes">Keyboard bindings</property>
         <layout>
           <property name="tab_fill">False</property>
@@ -408,7 +379,6 @@
         </child>
         <child>
           <object class="GtkViewport" id="frame_advanced_options">
-            <property name="can-focus">False</property>
             <child>
               <object class="GtkGrid">
                 <property name="margin-top">12</property>
@@ -499,7 +469,6 @@ Fran Diéguez</property>
     </child>
     <child type="tab">
       <object class="GtkLabel" id="about_tab">
-        <property name="can_focus">False</property>
         <property name="label" translatable="yes">About</property>
         <layout>
           <property name="tab_fill">False</property>
@@ -508,21 +477,11 @@ Fran Diéguez</property>
     </child>
   </object>
 
-
-  <object class="GtkAdjustment" id="adjustment_size">
-    <property name="lower">10</property>
-    <property name="upper">100</property>
-    <property name="value">30</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
-
+  <!-- ********************************************************************* -->
 
   <object class="GtkPopover" id="help-popover-1">
-    <property name="can-focus">False</property>
     <child>
       <object class="GtkBox">
-        <property name="can-focus">False</property>
         <property name="margin-start">30</property>
         <property name="margin-end">30</property>
         <property name="margin-top">20</property>
@@ -532,14 +491,12 @@ Fran Diéguez</property>
         <child>
           <object class="GtkLinkButton">
             <property name="label" translatable="yes">List of valid key names</property>
-            <property name="can-focus">False</property>
             <property name="receives-default">False</property>
             <property name="uri">https://raw.githubusercontent.com/GNOME/gtk/master/gdk/keynames.txt</property>
           </object>
         </child>
         <child>
           <object class="GtkLabel">
-            <property name="can-focus">False</property>
             <property name="halign">center</property>
             <property name="label" translatable="yes">Modifier keys must be between chevrons</property>
             <property name="max-width-chars">45</property>
@@ -548,19 +505,16 @@ Fran Diéguez</property>
         </child>
         <child>
           <object class="GtkSeparator">
-            <property name="can-focus">False</property>
           </object>
         </child>
         <child>
           <object class="GtkLabel" id="default-kbs-help-1">
-            <property name="can-focus">False</property>
             <property name="halign">center</property>
             <property name="max-width-chars">45</property>
           </object>
         </child>
         <child>
           <object class="GtkLabel">
-            <property name="can-focus">False</property>
             <property name="halign">center</property>
             <property name="label" translatable="yes">Don't use a keyboard shortcut that already exists.</property>
             <property name="max-width-chars">45</property>
@@ -571,7 +525,6 @@ Fran Diéguez</property>
         </child>
         <child>
           <object class="GtkLabel" id="default-kbs-help-2">
-            <property name="can-focus">False</property>
             <property name="halign">center</property>
             <property name="max-width-chars">45</property>
             <style>
