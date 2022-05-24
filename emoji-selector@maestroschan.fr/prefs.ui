@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="emoji-selector">
   <requires lib="gtk+" version="4.0" />
+
   <object class="GtkAdjustment" id="adjustment_nbcols">
     <property name="lower">10</property>
     <property name="upper">60</property>
@@ -29,6 +30,7 @@
         <child>
           <object class="GtkListBox">
             <property name="selection-mode">none</property>
+
             <child>
               <object class="GtkListBoxRow">
                 <child>
@@ -63,6 +65,7 @@
                 </child>
               </object>
             </child>
+
             <child>
               <object class="GtkListBoxRow">
                 <child>
@@ -100,6 +103,7 @@
                 </child>
               </object>
             </child>
+
             <child>
               <object class="GtkListBoxRow">
                 <child>
@@ -138,6 +142,7 @@
                 </child>
               </object>
             </child>
+
           </object>
         </child>
       </object>
@@ -160,60 +165,7 @@
         <child>
           <object class="GtkListBox">
             <property name="selection-mode">none</property>
-            <child>
-              <object class="GtkListBoxRow">
-                <child>
-                  <object class="GtkBox">
-                    <property name="margin-start">12</property>
-                    <property name="margin-end">12</property>
-                    <property name="margin-top">12</property>
-                    <property name="margin-bottom">12</property>
-                    <property name="orientation">vertical</property>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="spacing">32</property>
-                        <child>
-                          <object class="GtkBox">
-                            <property name="orientation">vertical</property>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="halign">start</property>
-                                <property name="hexpand">False</property>
-                                <property name="vexpand">False</property>
-                                <property name="label" translatable="yes">Always show the icon in the panel</property>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="halign">start</property>
-                                <property name="hexpand">False</property>
-                                <property name="vexpand">False</property>
-                                <property name="label" translatable="yes">If you access the menu with the keyboard shortcut, you don't need to always display the icon.</property>
-                                <property name="justify">fill</property>
-                                <property name="wrap">True</property>
-                                <property name="max-width-chars">45</property>
-                                <style>
-                                  <class name="dim-label" />
-                                </style>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkSwitch" id="always_show_switch">
-                            <property name="can-focus">True</property>
-                            <property name="halign">end</property>
-                            <property name="valign">start</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">False</property>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
+
             <child>
               <object class="GtkListBoxRow">
                 <child>
@@ -249,6 +201,7 @@
                 </child>
               </object>
             </child>
+
             <child>
               <object class="GtkListBoxRow">
                 <child>
@@ -315,6 +268,62 @@
                 </child>
               </object>
             </child>
+
+            <child>
+              <object class="GtkListBoxRow">
+                <child>
+                  <object class="GtkBox">
+                    <property name="margin-start">12</property>
+                    <property name="margin-end">12</property>
+                    <property name="margin-top">12</property>
+                    <property name="margin-bottom">12</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="spacing">32</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="orientation">vertical</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="halign">start</property>
+                                <property name="hexpand">False</property>
+                                <property name="vexpand">False</property>
+                                <property name="label" translatable="yes">Always show the icon in the panel</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="halign">start</property>
+                                <property name="hexpand">False</property>
+                                <property name="vexpand">False</property>
+                                <property name="label" translatable="yes">If you access the menu with the keyboard shortcut, you don't need to always display the icon.</property>
+                                <property name="justify">fill</property>
+                                <property name="wrap">True</property>
+                                <property name="max-width-chars">45</property>
+                                <style>
+                                  <class name="dim-label" />
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkSwitch" id="always_show_switch">
+                            <property name="can-focus">True</property>
+                            <property name="halign">end</property>
+                            <property name="valign">start</property>
+                            <property name="hexpand">True</property>
+                            <property name="vexpand">False</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
           </object>
         </child>
       </object>
