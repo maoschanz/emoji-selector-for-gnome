@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 -->
 <interface domain="emoji-selector">
-  <requires lib="gtk+" version="3.24" />
+  <requires lib="gtk+" version="4.0" />
   <object class="GtkAdjustment" id="adjustment_nbcols">
     <property name="lower">10</property>
     <property name="upper">60</property>
@@ -14,6 +13,7 @@
     <property name="visible">True</property>
     <property name="can_focus">True</property>
     <!-- <property name="transition-type">slide-left-right</property> -->
+
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
@@ -23,23 +23,6 @@
         <property name="margin-top">20</property>
         <property name="margin-bottom">20</property>
         <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkBox" id="override_title">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="margin-bottom">12</property>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label" translatable="yes">Layout</property>
-                <attributes>
-                  <attribute name="weight" value="bold" />
-                </attributes>
-              </object>
-            </child>
-          </object>
-        </child>
         <child>
           <object class="GtkFrame" id="override_frame">
             <property name="visible">True</property>
@@ -194,25 +177,28 @@
           </object>
 
         </child>
-        <child>
-          <object class="GtkBox" id="keyboard_bindings">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="margin-bottom">12</property>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label" translatable="yes">Keyboard bindings</property>
-                <attributes>
-                  <attribute name="weight" value="bold" />
-                </attributes>
-              </object>
+      </object>
+    </child>
+    <child type="tab">
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Layout</property>
+        <layout>
+          <property name="tab_fill">False</property>
+        </layout>
+      </object>
+    </child>
 
-            </child>
-          </object>
-
-        </child>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="margin-start">20</property>
+        <property name="margin-end">20</property>
+        <property name="margin-top">20</property>
+        <property name="margin-bottom">20</property>
+        <property name="orientation">vertical</property>
         <child>
           <object class="GtkFrame" id="override_frame1">
             <property name="visible">True</property>
@@ -426,22 +412,21 @@
           </object>
 
         </child>
-
-        <child></child>
       </object>
     </child>
     <child type="tab">
-      <object class="GtkLabel" id="prefs_tab">
+      <object class="GtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="label" translatable="yes">Settings</property>
+        <property name="label" translatable="yes">Keyboard bindings</property>
         <layout>
           <property name="tab_fill">False</property>
         </layout>
       </object>
     </child>
+
     <child>
-      <object class="GtkBox" id="about_page">
+      <object class="GtkBox">
         <property name="spacing">16</property>
         <property name="margin-start">12</property>
         <property name="margin-end">12</property>
