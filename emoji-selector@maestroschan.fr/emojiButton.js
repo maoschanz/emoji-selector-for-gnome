@@ -105,8 +105,8 @@ var EmojiButton = class EmojiButton {
 	 * The exact behavior of the method depends on the mouse button used:
 	 * - left click overwrites clipboard content with the emoji, and closes the menu;
 	 * - middle click too, but does not close the menu;
-	 * - right click adds the emoji at the end of the current clipboard content (and
-	 *   does not close the menu).
+	 * - right click adds the emoji at the end of the current clipboard content
+	 *   (and does not close the menu).
 	 */
 	onButtonPress(actor, event) {
 		let mouseButton = event.get_button();

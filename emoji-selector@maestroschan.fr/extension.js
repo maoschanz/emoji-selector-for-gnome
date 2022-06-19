@@ -1,7 +1,7 @@
 // extension.js (https://github.com/maoschanz/emoji-selector-for-gnome)
 
 /*
-	Copyright 2017-2020 Romain F. T.
+	Copyright 2017-2022 Romain F. T.
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -43,7 +43,8 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 const SkinTonesBar = Me.imports.emojiOptionsBar.SkinTonesBar;
 const EmojiCategory = Me.imports.emojiCategory.EmojiCategory;
-const EmojiButton = Me.imports.emojiButton;
+const EmojiButton = Me.imports.emojiButton.EmojiButton;
+const EmojiSearchItem = Me.imports.emojiSearchItem.EmojiSearchItem;
 
 //------------------------------------------------------------------------------
 
@@ -106,101 +107,6 @@ function buildRecents() { //XXX not O.O.P.
 			// It will be a penguin for obvious reasons.
 			recents[i].super_btn.label = '🐧';
 		}
-	}
-}
-
-//------------------------------------------------------------------------------
-
-class EmojiSearchItem {
-	// Creates and connects a search entry, added to a menu item
-	constructor() {
-		this.super_item = new PopupMenu.PopupBaseMenuItem({
-			reactive: false,
-			can_focus: false
-		});
-
-		this.searchEntry = new St.Entry({
-			name: 'searchEntry',
-			style_class: 'search-entry',
-			can_focus: true,
-			hint_text: _('Type here to search…'),
-			track_hover: true,
-			x_expand: true,
-		});
-
-		this.searchEntry.get_clutter_text().connect(
-			'text-changed',
-			this._onSearchTextChanged.bind(this)
-		);
-
-		this.searchEntry.clutter_text.connect('key-press-event', (o, e) => {
-			recents[0].onKeyPress(o, e);
-		});
-
-		this.super_item.actor.add_child(this.searchEntry);
-	}
-
-	// Updates the "recently used" buttons content in reaction to a new search
-	// query (the text changed or the category changed).
-	_onSearchTextChanged() {
-		let searchedText = this.searchEntry.get_text();
-		if (searchedText === '') {
-			buildRecents();
-			this._updateSensitivity();
-			return;
-		} // else { ...
-		searchedText = searchedText.toLowerCase();
-
-		for (let j = 0; j < NB_COLS; j++) {
-			recents[j].super_btn.label = '';
-		}
-
-		let minCat = 0;
-		let maxCat = GLOBAL_BUTTON.emojiCategories.length;
-		if (GLOBAL_BUTTON._activeCat != -1) {
-			minCat = GLOBAL_BUTTON._activeCat;
-			maxCat = GLOBAL_BUTTON._activeCat + 1;
-		}
-
-		let results = [];
-		// First, search for an exact match with emoji names
-		results = this._getResults(searchedText, minCat, maxCat, recents, results, 3);
-		// Then, search only across emoji names
-		results = this._getResults(searchedText, minCat, maxCat, recents, results, 2);
-		// Finally, search across all keywords
-		results = this._getResults(searchedText, minCat, maxCat, recents, results, 1);
-
-		let firstEmptyIndex = 0;
-		for (let i = 0; i < results.length; i++) {
-			if (i < NB_COLS) {
-				recents[firstEmptyIndex].super_btn.label = results[i];
-				firstEmptyIndex++;
-			}
-		}
-		this._updateSensitivity();
-	}
-
-	_updateSensitivity() {
-		for (let i = 0; i < recents.length; i++) {
-			let can_focus = recents[i].super_btn.label != "";
-			recents[i].super_btn.set_can_focus(can_focus);
-			recents[i].super_btn.set_track_hover(can_focus);
-		}
-	}
-
-	// Search results are queried in several steps, from more important criteria
-	// to very general string matching.
-	_getResults(searchedText, minCat, maxCat, recents, results, priority) {
-		for (let cat = minCat; cat < maxCat; cat++) {
-			let availableSlots = recents.length - results.length;
-			if (availableSlots > 0) {
-				let catResults = GLOBAL_BUTTON.emojiCategories[cat].searchEmoji(
-					searchedText, availableSlots, priority
-				);
-				results = results.concat(catResults);
-			}
-		}
-		return results;
 	}
 }
 
@@ -387,7 +293,7 @@ class EmojisMenu {
 		recents = [];
 
 		for(let i=0; i<NB_COLS; i++) {
-			recents[i] = new EmojiButton.EmojiButton('', []);
+			recents[i] = new EmojiButton('', []);
 			recents[i].build(null);
 			container.add_child(recents[i].super_btn);
 		}
