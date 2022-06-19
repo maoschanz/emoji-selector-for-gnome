@@ -39,10 +39,6 @@ const CLIPBOARD_TYPE = St.ClipboardType.CLIPBOARD;
 const Gettext = imports.gettext.domain('emoji-selector');
 const _ = Gettext.gettext;
 
-// Retrocompatibility
-const ShellVersion = imports.misc.config.PACKAGE_VERSION;
-var useActors = parseInt(ShellVersion.split('.')[1]) < 33;
-
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 const SkinTonesBar = Me.imports.emojiOptionsBar.SkinTonesBar;
@@ -223,19 +219,11 @@ class EmojisMenu {
 			style_class: 'system-status-icon emotes-icon'
 		});
 		box.add_child(icon);
-		if (this._shellVersion < 40) {
-			box.add_child(PopupMenu.arrowIcon(St.Side.BOTTOM));
-		}
 		this._permanentItems = 0;
 		this._activeCat = -1;
 
-		if (useActors){
-			this.super_btn.actor.add_child(box);
-			this.super_btn.actor.visible = SETTINGS.get_boolean('always-show');
-		} else {
-			this.super_btn.add_child(box);
-			this.super_btn.visible = SETTINGS.get_boolean('always-show');
-		}
+		this.super_btn.add_child(box);
+		this.super_btn.visible = SETTINGS.get_boolean('always-show');
 
 		//initializing categories
 		this._createAllCategories();
@@ -292,6 +280,13 @@ class EmojisMenu {
 		});
 	}
 
+	updateNbCols() {
+		let nbCols = SETTINGS.get_int('nbcols');
+		this.emojiCategories.forEach(function(c) {
+			c.setNbCols(nbCols);
+		});
+	}
+
 	toggle() {
 		this.super_btn.menu.toggle();
 	}
@@ -299,11 +294,7 @@ class EmojisMenu {
 	// Executed when the user opens/closes the menu, the main goals are to clear
 	// and to focus the search entry.
 	_onOpenStateChanged(self, open) {
-		if (useActors){
-			this.super_btn.actor.visible = open || SETTINGS.get_boolean('always-show');
-		} else {
-			this.super_btn.visible = open || SETTINGS.get_boolean('always-show');
-		}
+		this.super_btn.visible = open || SETTINGS.get_boolean('always-show');
 		this.clearCategories();
 		this.searchItem.searchEntry.set_text('');
 		// this.unloadCategories();
@@ -330,6 +321,7 @@ class EmojisMenu {
 		for (let i = 0; i < 9; i++) {
 			this.emojiCategories[i] = new EmojiCategory(CAT_LABELS[i], CAT_ICONS[i], i);
 		}
+		this.updateNbCols();
 	}
 
 	// Adds all submenu-menuitems to the extension interface. These items are
@@ -469,7 +461,7 @@ function enable() {
 		GLOBAL_BUTTON.updateStyle();
 	});
 	SIGNAUX[1] = SETTINGS.connect('changed::always-show', () => {
-		GLOBAL_BUTTON.super_btn.actor.visible = SETTINGS.get_boolean('always-show');
+		GLOBAL_BUTTON.super_btn.visible = SETTINGS.get_boolean('always-show');
 	});
 	SIGNAUX[2] = SETTINGS.connect('changed::use-keybinding', (z) => {
 		if (z.get_boolean('use-keybinding')) {
@@ -478,6 +470,9 @@ function enable() {
 		} else {
 			Main.wm.removeKeybinding('emoji-keybinding');
 		}
+	});
+	SIGNAUX[3] = SETTINGS.connect('changed::nbcols', () => {
+		GLOBAL_BUTTON.updateNbCols();
 	});
 }
 

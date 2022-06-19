@@ -29,11 +29,11 @@ var EmojiCategory = class EmojiCategory {
 	 * The category and its button have to be built without being loaded, to
 	 * memory issues with emojis' image textures.
 	 */
-	constructor(categoryName, iconName, id, nbColumns) {
+	constructor(categoryName, iconName, id) {
 		this.super_item = new PopupMenu.PopupSubMenuMenuItem(categoryName);
 		this.categoryName = categoryName;
 		this.id = id;
-		this._nbColumns = nbColumns;
+		this._nbColumns = 10; // some random default value
 
 		this.super_item.actor.visible = false;
 		this.super_item.actor.reactive = false;
@@ -98,6 +98,10 @@ var EmojiCategory = class EmojiCategory {
 			text: error_message
 		}));
 		this.super_item.menu.addMenuItem(line);
+	}
+
+	setNbCols(nbColumns) {
+		this._nbColumns = nbColumns;
 	}
 
 	/**
