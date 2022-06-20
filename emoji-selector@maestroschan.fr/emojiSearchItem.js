@@ -44,14 +44,15 @@ var EmojiSearchItem = class EmojiSearchItem {
 			this._onSearchTextChanged.bind(this)
 		);
 
-		this.searchEntry.clutter_text.connect('key-press-event', (o, e) => {
-			this._recents[0].onKeyPress(o, e);
-		});
-
 		this.super_item.actor.add_child(this.searchEntry);
 
 		// initializing the "recently used" buttons
 		this.recentlyUsedItem = this._recentlyUsedInit();
+
+		// pressing "enter" when no item is focused == activating the first one
+		this.searchEntry.clutter_text.connect('key-press-event', (o, e) => {
+			this._recents[0].onKeyPress(o, e);
+		});
 	}
 
 	////////////////////////////////////////////////////////////////////////////

@@ -127,21 +127,22 @@ class EmojisMenu {
 		box.add_child(icon);
 		this._permanentItems = 0;
 		this._activeCat = -1;
+		let nbCols = SETTINGS.get_int('nbcols');
 
 		this.super_btn.add_child(box);
 		this.super_btn.visible = SETTINGS.get_boolean('always-show');
 
 		//initializing categories
-		this._createAllCategories();
+		this._createAllCategories(nbCols);
 
 		//initializing this._buttonMenuItem
 		this._renderPanelMenuHeaderBox();
 
 		//creating the search entry
-		this.searchItem = new EmojiSearchItem();
+		this.searchItem = new EmojiSearchItem(nbCols);
 
 		//initializing the "recently used" buttons
-		let recentlyUsed = this._recentlyUsedInit();
+		let recentlyUsed = this.searchItem._recentlyUsedInit();
 
 		if (POSITION === 'top') {
 			this.super_btn.menu.addMenuItem(this._buttonMenuItem);
@@ -191,6 +192,8 @@ class EmojisMenu {
 		this.emojiCategories.forEach(function(c) {
 			c.setNbCols(nbCols);
 		});
+
+		this.searchItem = new EmojiSearchItem(nbCols);
 	}
 
 	toggle() {
@@ -220,14 +223,14 @@ class EmojisMenu {
 //	}
 
 	// Creates all categories (buttons & submenu menuitems), empty for now.
-	_createAllCategories() {
+	_createAllCategories(nbCols) {
 		this.emojiCategories = [];
 
 		/* creating new categories, with emojis not loaded yet */
 		for (let i = 0; i < 9; i++) {
 			this.emojiCategories[i] = new EmojiCategory(CAT_LABELS[i], CAT_ICONS[i], i);
+			this.emojiCategories[i].setNbCols(nbCols);
 		}
-		this.updateNbCols();
 	}
 
 	// Adds all submenu-menuitems to the extension interface. These items are
@@ -280,26 +283,6 @@ class EmojisMenu {
 	// Wrapper calling EmojiSearchItem's _onSearchTextChanged method
 	_onSearchTextChanged() {
 		this.searchItem._onSearchTextChanged();
-	}
-
-	// Initializes the container showing the recently used emojis as buttons
-	_recentlyUsedInit() {
-		let recentlyUsed = new PopupMenu.PopupBaseMenuItem({
-			reactive: false,
-			can_focus: false,
-		});
-		let container = new St.BoxLayout();
-		recentlyUsed.actor.add_child(container);
-		recents = [];
-
-		for(let i=0; i<NB_COLS; i++) {
-			recents[i] = new EmojiButton('', []);
-			recents[i].build(null);
-			container.add_child(recents[i].super_btn);
-		}
-
-		buildRecents();
-		return recentlyUsed;
 	}
 
 	_bindShortcut() {
