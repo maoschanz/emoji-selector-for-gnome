@@ -1,4 +1,5 @@
 #!/bin/bash
+cd "$(dirname "$0")" || exit 2
 
 glib-compile-schemas ./emoji-selector@maestroschan.fr/schemas
 
