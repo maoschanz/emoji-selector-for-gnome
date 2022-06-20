@@ -91,9 +91,7 @@
                             <property name="can-focus">True</property>
                             <property name="hexpand">True</property>
                             <property name="vexpand">False</property>
-                            <property name="text" translatable="yes">12</property>
                             <property name="adjustment">adjustment_nbcols</property>
-                            <property name="value">12</property>
                             <property name="halign">end</property>
                           </object>
                         </child>
@@ -130,9 +128,7 @@
                             <property name="can-focus">True</property>
                             <property name="hexpand">True</property>
                             <property name="vexpand">False</property>
-                            <property name="text" translatable="yes">30</property>
                             <property name="adjustment">adjustment_size</property>
-                            <property name="value">30</property>
                             <property name="halign">end</property>
                           </object>
                         </child>
