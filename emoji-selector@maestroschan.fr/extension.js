@@ -54,47 +54,9 @@ let SIGNAUX = [];
 // Global variable : GLOBAL_BUTTON to click in the topbar
 var GLOBAL_BUTTON;
 
-// This array will store some St.Button(s)
-var recents = [];
-
 // These global variables are used to store some static settings
 var NB_COLS;
 let POSITION;
-
-//------------------------------------------------------------------------------
-
-function updateStyle() {
-	recents.forEach(function(b){
-		b.style = b.getStyle();
-	});
-	GLOBAL_BUTTON.emojiCategories.forEach(function(c){
-		c.emojiButtons.forEach(function(b){
-			b.style = b.getStyle();
-		});
-	});
-}
-
-function saveRecents() { //XXX not O.O.P.
-	let backUp = [];
-	for(let i = 0; i < NB_COLS; i++){
-		backUp.push(recents[i].super_btn.label);
-	}
-	SETTINGS.set_strv('recently-used', backUp);
-}
-
-function buildRecents() { //XXX not O.O.P.
-	let temp = SETTINGS.get_strv('recently-used')
-	for(let i=0; i<NB_COLS; i++){
-		if (i < temp.length) {
-			recents[i].super_btn.label = temp[i];
-		} else {
-			// If the extension was previously set with less "recently used
-			// emojis", we still need to load something in the labels.
-			// It will be a penguin for obvious reasons.
-			recents[i].super_btn.label = '🐧';
-		}
-	}
-}
 
 //------------------------------------------------------------------------------
 
@@ -364,8 +326,8 @@ function enable() {
 //------------------------------------------------------------------------------
 
 function disable() {
-	//we need to save labels currently in recents[] for the next session
-	saveRecents();
+	// we need to save these data for the next session
+	GLOBAL_BUTTON.searchItem.saveRecents();
 
 	if (SETTINGS.get_boolean('use-keybinding')) {
 		Main.wm.removeKeybinding('emoji-keybinding');
