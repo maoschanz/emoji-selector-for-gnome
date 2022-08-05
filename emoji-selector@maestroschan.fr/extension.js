@@ -48,20 +48,6 @@ const EmojiSearchItem = Me.imports.emojiSearchItem.EmojiSearchItem;
 
 //------------------------------------------------------------------------------
 
-var CAT_LABELS;
-
-const CAT_ICONS = [
-	'face-smile-symbolic', //'emoji-body-symbolic',
-	'emoji-people-symbolic',
-	'emoji-nature-symbolic',
-	'emoji-food-symbolic',
-	'emoji-travel-symbolic',
-	'emoji-activities-symbolic',
-	'emoji-objects-symbolic',
-	'emoji-symbols-symbolic',
-	'emoji-flags-symbolic'
-];
-
 var SETTINGS;
 let SIGNAUX = [];
 
@@ -226,6 +212,30 @@ class EmojisMenu {
 	_createAllCategories(nbCols) {
 		this.emojiCategories = [];
 
+		const CAT_LABELS = [
+			_("Smileys & Body"),
+			_("Peoples & Clothing"),
+			_("Animals & Nature"),
+			_("Food & Drink"),
+			_("Travel & Places"),
+			_("Activities & Sports"),
+			_("Objects"),
+			_("Symbols"),
+			_("Flags")
+		];
+
+		const CAT_ICONS = [
+			'face-smile-symbolic', //'emoji-body-symbolic',
+			'emoji-people-symbolic',
+			'emoji-nature-symbolic',
+			'emoji-food-symbolic',
+			'emoji-travel-symbolic',
+			'emoji-activities-symbolic',
+			'emoji-objects-symbolic',
+			'emoji-symbols-symbolic',
+			'emoji-flags-symbolic'
+		];
+
 		/* creating new categories, with emojis not loaded yet */
 		for (let i = 0; i < 9; i++) {
 			this.emojiCategories[i] = new EmojiCategory(CAT_LABELS[i], CAT_ICONS[i], i);
@@ -323,20 +333,6 @@ function init() {
 function enable() {
 	SETTINGS = ExtensionUtils.getSettings();
 	POSITION = SETTINGS.get_string('position');
-
-	// This variable is assigned here because init() wouldn't have provided
-	// gettext yet if it was done at the top level of the file.
-	CAT_LABELS = [
-		_("Smileys & Body"),
-		_("Peoples & Clothing"),
-		_("Animals & Nature"),
-		_("Food & Drink"),
-		_("Travel & Places"),
-		_("Activities & Sports"),
-		_("Objects"),
-		_("Symbols"),
-		_("Flags")
-	];
 
 	GLOBAL_BUTTON = new EmojisMenu();
 
