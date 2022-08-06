@@ -17,16 +17,9 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-const St = imports.gi.St;
-const Clutter = imports.gi.Clutter;
+const {St, Clutter, Shell, Meta, GLib} = imports.gi;
+
 const Main = imports.ui.main;
-const Shell = imports.gi.Shell;
-
-// it is needed to grab the focus for the search entry
-const Mainloop = imports.mainloop;
-
-// for the keybinding
-const Meta = imports.gi.Meta;
 
 /* Import PanelMenu and PopupMenu */
 const PanelMenu = imports.ui.panelMenu;
@@ -50,6 +43,7 @@ const EmojiSearchItem = Me.imports.emojiSearchItem.EmojiSearchItem;
 
 var SETTINGS;
 let SIGNAUX = [];
+let timeoutSourceId = null;
 
 // Global variable : GLOBAL_BUTTON to click in the topbar
 var GLOBAL_BUTTON;
@@ -148,19 +142,22 @@ class EmojisMenu {
 		this.super_btn.menu.toggle();
 	}
 
-	// Executed when the user opens/closes the menu, the main goals are to clear
-	// and to focus the search entry.
+	/**
+	 * Executed when the user opens/closes the menu, the main goals are to clear
+	 * and to focus the search entry.
+	 */
 	_onOpenStateChanged(self, open) {
 		this.super_btn.visible = open || SETTINGS.get_boolean('always-show');
 		this.clearCategories();
 		this.searchItem.searchEntry.set_text('');
 		// this.unloadCategories();
 
-		let a = Mainloop.timeout_add(20, () => {
+		timeoutSourceId = GLib.timeout_add(20, () => {
 			if (open) {
 				global.stage.set_key_focus(this.searchItem.searchEntry);
 			}
-			Mainloop.source_remove(a);
+			timeoutSourceId = null;
+			return GLib.SOURCE_REMOVE;
 		});
 	}
 
@@ -227,7 +224,7 @@ class EmojisMenu {
 
 	// Cleans the interface & close the opened category (if any). Called from the
 	// outside, be careful.
-	clearCategories(){
+	clearCategories() {
 		// removing the style class of previously opened category's button
 		for (let i = 0; i< 9; i++) {
 			this.emojiCategories[i].getButton().set_checked(false);
@@ -339,6 +336,11 @@ function disable() {
 
 	GLOBAL_BUTTON.super_btn.destroy();
 //	GLOBAL_BUTTON.destroy();
+
+	if(timeoutSourceId) {
+		GLib.Source.remove(timeoutSourceId);
+		timeoutSourceId = null;
+	}
 }
 
 //------------------------------------------------------------------------------

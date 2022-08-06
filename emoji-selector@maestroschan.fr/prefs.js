@@ -1,10 +1,6 @@
+// prefs.js (https://github.com/maoschanz/emoji-selector-for-gnome)
 
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Gio = imports.gi.Gio;
-const Gtk = imports.gi.Gtk;
-const GdkPixbuf = imports.gi.GdkPixbuf;
-const Mainloop = imports.mainloop;
+const {GLib, GObject, Gio, Gtk, GdkPixbuf} = imports.gi;
 
 const Gettext = imports.gettext.domain('emoji-selector');
 const _ = Gettext.gettext;
