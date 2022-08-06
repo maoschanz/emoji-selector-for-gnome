@@ -152,8 +152,8 @@ class EmojisMenu {
 		this.searchItem.searchEntry.set_text('');
 		// this.unloadCategories();
 
-		timeoutSourceId = GLib.timeout_add(20, () => {
-			if (open) {
+		timeoutSourceId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 20, () => {
+			if(open) {
 				global.stage.set_key_focus(this.searchItem.searchEntry);
 			}
 			timeoutSourceId = null;
