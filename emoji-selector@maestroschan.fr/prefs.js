@@ -172,7 +172,9 @@ function buildPrefsWidget() {
 		if (this._shellVersion < 40) {
 			headerBar.set_show_close_button(true);
 		}
-		this._registerSignals(window);
+		if (this._shellVersion < 43) {
+			this._registerSignals(window);
+		}
 	});
 
 	if (widget.prefs_stack.show_all)
