@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-21 20:22+0200\n"
+"POT-Creation-Date: 2022-11-14 18:44+0100\n"
 "PO-Revision-Date: 2019-03-20 23:18+0100\n"
 "Last-Translator: Romain F. T. <rrroschan@gmail.com>\n"
 "Language-Team: French <none>\n"
@@ -15,10 +15,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Gtranslator 3.32.0\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
-
-#: emoji-selector@maestroschan.fr/extension.js
-msgid "Type here to search…"
-msgstr "Taper ici pour rechercher…"
 
 #: emoji-selector@maestroschan.fr/extension.js
 #: emoji-selector@maestroschan.fr/prefs.ui
@@ -74,14 +70,6 @@ msgid "From bottom to top"
 msgstr "De bas en haut"
 
 #: emoji-selector@maestroschan.fr/prefs.js
-msgid ""
-"Displaying the interface from the bottom is better if you use a bottom panel "
-"instead of the default top bar."
-msgstr ""
-"Afficher l'interface de bas en haut est mieux si vous utilisez un panneau en "
-"bas de l'écran à la place de la barre supérieure (par défaut)."
-
-#: emoji-selector@maestroschan.fr/prefs.js
 #, javascript-format
 msgid "The default value is %s"
 msgstr "La valeur par défaut est %s"
@@ -90,6 +78,19 @@ msgstr "La valeur par défaut est %s"
 #, javascript-format
 msgid "version %s"
 msgstr "version n°%s"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+#, fuzzy
+#| msgid ""
+#| "Displaying the interface from the bottom is better if you use a bottom "
+#| "panel instead of the default top bar."
+msgid ""
+"Displaying the interface from the bottom is better if you use a bottom panel "
+"instead of the default top bar. Modifications will be effective after "
+"reloading the extension."
+msgstr ""
+"Afficher l'interface de bas en haut est mieux si vous utilisez un panneau en "
+"bas de l'écran à la place de la barre supérieure (par défaut)."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "General layout"
@@ -104,6 +105,10 @@ msgid "Size of emojis (px)"
 msgstr "Taille des émojis (en pixels)"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Layout"
+msgstr "Disposition"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Use a keyboard shortcut to toggle the menu"
 msgstr "Utiliser un raccourci clavier pour le menu"
 
@@ -116,6 +121,12 @@ msgid "Apply"
 msgstr "Appliquer"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
+#, fuzzy
+#| msgid "Always show the icon"
+msgid "Always show the icon in the panel"
+msgstr "Toujours afficher l'icône"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid ""
 "If you access the menu with the keyboard shortcut, you don't need to always "
 "display the icon."
@@ -124,12 +135,10 @@ msgstr ""
 "toujours en afficher l'icône."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Always show the icon"
-msgstr "Toujours afficher l'icône"
-
-#: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Settings"
-msgstr "Paramètres"
+#, fuzzy
+#| msgid "Keybinding"
+msgid "Keyboard bindings"
+msgstr "Raccourci clavier"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid ""
@@ -144,11 +153,15 @@ msgid "Report bugs or ideas"
 msgstr "Rapporter des bugs ou des idées"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Author:"
+#, fuzzy
+#| msgid "Author:"
+msgid "Author"
 msgstr "Auteur :"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Translator(s):"
+#, fuzzy
+#| msgid "Translator(s):"
+msgid "Translator(s)"
 msgstr "Traducteur(s) :"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
@@ -156,7 +169,9 @@ msgid "translator-credits"
 msgstr "Romain F. T."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Contributors:"
+#, fuzzy
+#| msgid "Contributors:"
+msgid "Contributors"
 msgstr "Contributeurs :"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
@@ -167,7 +182,6 @@ msgstr "À propos"
 msgid "List of valid key names"
 msgstr "Liste de noms de touches valides"
 
-#. Context for translation: modifier keys are ctrl/shift/super/alt
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Modifier keys must be between chevrons"
 msgstr "Les touches modificatrices doivent être entre chevrons"
@@ -217,11 +231,12 @@ msgstr "Femmes"
 msgid "Men"
 msgstr "Hommes"
 
-#~ msgid "Layout"
-#~ msgstr "Disposition"
+#: emoji-selector@maestroschan.fr/emojiSearchItem.js
+msgid "Type here to search…"
+msgstr "Taper ici pour rechercher…"
+
+#~ msgid "Settings"
+#~ msgstr "Paramètres"
 
 #~ msgid "Appearance"
 #~ msgstr "Apparence"
-
-#~ msgid "Keybinding"
-#~ msgstr "Raccourci clavier"

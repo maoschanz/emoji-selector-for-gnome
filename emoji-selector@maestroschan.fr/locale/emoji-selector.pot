@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-21 20:26+0200\n"
+"POT-Creation-Date: 2022-11-14 18:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: emoji-selector@maestroschan.fr/extension.js
-msgid "Type here to search…"
-msgstr ""
 
 #: emoji-selector@maestroschan.fr/extension.js
 #: emoji-selector@maestroschan.fr/prefs.ui
@@ -75,12 +71,6 @@ msgid "From bottom to top"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.js
-msgid ""
-"Displaying the interface from the bottom is better if you use a bottom panel "
-"instead of the default top bar."
-msgstr ""
-
-#: emoji-selector@maestroschan.fr/prefs.js
 #, javascript-format
 msgid "The default value is %s"
 msgstr ""
@@ -88,6 +78,13 @@ msgstr ""
 #: emoji-selector@maestroschan.fr/prefs.js
 #, javascript-format
 msgid "version %s"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid ""
+"Displaying the interface from the bottom is better if you use a bottom panel "
+"instead of the default top bar. Modifications will be effective after "
+"reloading the extension."
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
@@ -103,6 +100,10 @@ msgid "Size of emojis (px)"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Layout"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Use a keyboard shortcut to toggle the menu"
 msgstr ""
 
@@ -115,17 +116,17 @@ msgid "Apply"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Always show the icon in the panel"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid ""
 "If you access the menu with the keyboard shortcut, you don't need to always "
 "display the icon."
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Always show the icon"
-msgstr ""
-
-#: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Settings"
+msgid "Keyboard bindings"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
@@ -139,11 +140,11 @@ msgid "Report bugs or ideas"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Author:"
+msgid "Author"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Translator(s):"
+msgid "Translator(s)"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
@@ -151,7 +152,7 @@ msgid "translator-credits"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Contributors:"
+msgid "Contributors"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
@@ -162,7 +163,6 @@ msgstr ""
 msgid "List of valid key names"
 msgstr ""
 
-#. Context for translation: modifier keys are ctrl/shift/super/alt
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Modifier keys must be between chevrons"
 msgstr ""
@@ -210,4 +210,8 @@ msgstr ""
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Men"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/emojiSearchItem.js
+msgid "Type here to search…"
 msgstr ""
