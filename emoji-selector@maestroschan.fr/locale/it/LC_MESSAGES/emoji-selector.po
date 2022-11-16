@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020,2021.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020,2021,2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-14 18:44+0100\n"
-"PO-Revision-Date: 2021-02-28 15:17+0100\n"
+"PO-Revision-Date: 2022-11-16 20:17+0100\n"
 "Last-Translator: Albano Battistella<albano_battistella@hotmail.com>\n"
 "Language-Team:italian\n"
 "Language: it_IT\n"
@@ -81,7 +81,6 @@ msgid "version %s"
 msgstr "versione %s"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-#, fuzzy
 #| msgid ""
 #| "Displaying the interface from the bottom is better if you use a bottom "
 #| "panel instead of the default top bar."
@@ -90,8 +89,9 @@ msgid ""
 "instead of the default top bar. Modifications will be effective after "
 "reloading the extension."
 msgstr ""
-"È meglio visualizzare l'interfaccia dal basso se utilizzi un pannello "
-"inferiore invece della barra superiore predefinita."
+"La visualizzazione dell'interfaccia dal basso è migliore se si utilizza un pannello inferiore "
+"invece della barra superiore predefinita. Le modifiche entreranno in vigore dopo il "
+"ricaricamento dell'estensione."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "General layout"
@@ -122,10 +122,9 @@ msgid "Apply"
 msgstr "Applica"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-#, fuzzy
 #| msgid "Always show the icon"
 msgid "Always show the icon in the panel"
-msgstr "Mostra sempre l'icona"
+msgstr "Mostra sempre l'icona nel pannello"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid ""
@@ -136,10 +135,9 @@ msgstr ""
 "visualizzare l'icona."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-#, fuzzy
 #| msgid "Keybinding"
 msgid "Keyboard bindings"
-msgstr "Scorciatoie da tastiera"
+msgstr "Associazioni di tastiera"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid ""
@@ -154,26 +152,23 @@ msgid "Report bugs or ideas"
 msgstr "Segnala bug o idee"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-#, fuzzy
 #| msgid "Author:"
 msgid "Author"
-msgstr "Autore:"
+msgstr "Autore"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-#, fuzzy
 #| msgid "Translator(s):"
 msgid "Translator(s)"
-msgstr "Traduttore(i):"
+msgstr "Traduttore(i)"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "translator-credits"
 msgstr "Albano Battistella, Danilo Del Busso"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-#, fuzzy
 #| msgid "Contributors:"
 msgid "Contributors"
-msgstr "Contributori:"
+msgstr "Contributori"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "About"
