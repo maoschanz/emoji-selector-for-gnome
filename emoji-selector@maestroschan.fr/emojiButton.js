@@ -6,7 +6,6 @@ const Clutter = imports.gi.Clutter;
 /* Import the current extension, mainly because we need to access other files */
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
-const Convenience = Me.imports.convenience;
 const Extension = Me.imports.extension;
 
 const Clipboard = St.Clipboard.get_default();
@@ -22,6 +21,7 @@ const TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
 //------------------------------------------------------------------------------
 
 var EmojiButton = class EmojiButton {
+
 	constructor(baseCharacter, keywords) {
 		this.baseCharacter = baseCharacter;
 		let tonable = false;
@@ -43,7 +43,6 @@ var EmojiButton = class EmojiButton {
 	build(category) {
 		this.super_btn = new St.Button({
 			style_class: 'EmojisItemStyle',
-			style: this.getStyle(),
 			can_focus: true,
 			label: this.baseCharacter
 		});
@@ -58,6 +57,7 @@ var EmojiButton = class EmojiButton {
 		// name of the emoji he's copying.
 		this.super_btn.connect('notify::hover', (a, b) => {
 			if (a.hover) {
+				// FIXME #72 labels too long
 				category.super_item.label.text = this.keywords[0];
 			} else {
 				category.super_item.label.text = category.categoryName;
@@ -66,14 +66,19 @@ var EmojiButton = class EmojiButton {
 	}
 
 	destroy() {
-		//TODO ?
+		// TODO ?
 		this.super_btn.destroy();
 	}
 
-	getStyle() {
-		let fontStyle = 'font-size: ' + Extension.SETTINGS.get_int('emojisize') + 'px;';
-		fontStyle += ' color: #FFFFFF;';
-		return fontStyle;
+	updateStyle(forcedStyle) {
+		let fontStyle;
+		if(forcedStyle) {
+			fontStyle = forcedStyle;
+		} else {
+			fontStyle = 'font-size: ' + Extension.SETTINGS.get_int('emojisize') + 'px;';
+			fontStyle += ' color: #FFFFFF;';
+		}
+		this.super_btn.style = fontStyle;
 	}
 
 	onKeyPress(o, e) {
@@ -100,8 +105,8 @@ var EmojiButton = class EmojiButton {
 	 * The exact behavior of the method depends on the mouse button used:
 	 * - left click overwrites clipboard content with the emoji, and closes the menu;
 	 * - middle click too, but does not close the menu;
-	 * - right click adds the emoji at the end of the current clipboard content (and
-	 *   does not close the menu).
+	 * - right click adds the emoji at the end of the current clipboard content
+	 *   (and does not close the menu).
 	 */
 	onButtonPress(actor, event) {
 		let mouseButton = event.get_button();
@@ -184,30 +189,10 @@ var EmojiButton = class EmojiButton {
 		if (genrable) {
 			temp += GENDERS[Extension.SETTINGS.get_int('gender')];
 		}
-		shiftFor(temp);
+		Extension.GLOBAL_BUTTON.searchItem.shiftFor(temp);
 		return temp;
 	}
 };
-
-//------------------------------------------------------------------------------
-
-function shiftFor(currentEmoji) {
-	if (currentEmoji == '') { return; }
-	let temp = Convenience.getSettings().get_strv('recently-used');
-	for(let i=0; i<temp.length; i++){
-		if (temp[i] == currentEmoji) {
-			temp.splice(i, 1);
-		}
-	}
-	for(let j=temp.length; j>0; j--){
-		temp[j] = temp[j-1];
-	}
-	temp[0] = currentEmoji;
-	Convenience.getSettings().set_strv('recently-used', temp);
-	Extension.buildRecents();
-	Extension.saveRecents();
-	Extension.GLOBAL_BUTTON._onSearchTextChanged();
-}
 
 //------------------------------------------------------------------------------
 

@@ -5,14 +5,13 @@ const St = imports.gi.St;
 /* Import the current extension, mainly because we need to access other files */
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
-const Convenience = Me.imports.convenience;
 const Extension = Me.imports.extension;
 
 /* Stuffs for translations etc. */
 const Gettext = imports.gettext.domain('emoji-selector');
 const _ = Gettext.gettext;
 
-//------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////////
 
 var SkinTonesBar = class SkinTonesBar {
 	constructor(hasGender) {
@@ -77,11 +76,11 @@ var SkinTonesBar = class SkinTonesBar {
 	addBar(categoryItemActor) {
 		this._genderArray.forEach(function(b) {
 			if (b) { // index 0 contains null
-				categoryItemActor.add(b);
+				categoryItemActor.add_child(b);
 			}
 		});
 		this._toneArray.forEach(function(b) {
-			categoryItemActor.add(b);
+			categoryItemActor.add_child(b);
 		});
 	}
 
@@ -125,4 +124,6 @@ var SkinTonesBar = class SkinTonesBar {
 		this._toneArray.push(btn);
 	}
 }
+
+////////////////////////////////////////////////////////////////////////////////
 

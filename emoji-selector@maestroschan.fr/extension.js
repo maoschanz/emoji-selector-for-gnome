@@ -1,7 +1,7 @@
 // extension.js (https://github.com/maoschanz/emoji-selector-for-gnome)
 
 /*
-	Copyright 2017-2020 Romain F. T.
+	Copyright 2017-2022 Romain F. T.
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -17,16 +17,9 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-const St = imports.gi.St;
-const Clutter = imports.gi.Clutter;
+const {St, Clutter, Shell, Meta, GLib} = imports.gi;
+
 const Main = imports.ui.main;
-const Shell = imports.gi.Shell;
-
-// it is needed to grab the focus for the search entry
-const Mainloop = imports.mainloop;
-
-// for the keybinding
-const Meta = imports.gi.Meta;
 
 /* Import PanelMenu and PopupMenu */
 const PanelMenu = imports.ui.panelMenu;
@@ -39,176 +32,25 @@ const CLIPBOARD_TYPE = St.ClipboardType.CLIPBOARD;
 const Gettext = imports.gettext.domain('emoji-selector');
 const _ = Gettext.gettext;
 
-// Retrocompatibility
-const ShellVersion = imports.misc.config.PACKAGE_VERSION;
-var useActors = parseInt(ShellVersion.split('.')[1]) < 33;
-
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
-const Convenience = Me.imports.convenience;
 const SkinTonesBar = Me.imports.emojiOptionsBar.SkinTonesBar;
 const EmojiCategory = Me.imports.emojiCategory.EmojiCategory;
-const EmojiButton = Me.imports.emojiButton;
+const EmojiButton = Me.imports.emojiButton.EmojiButton;
+const EmojiSearchItem = Me.imports.emojiSearchItem.EmojiSearchItem;
 
 //------------------------------------------------------------------------------
 
-var CAT_LABELS;
-
-const CAT_ICONS = [
-	'face-smile-symbolic', //'emoji-body-symbolic',
-	'emoji-people-symbolic',
-	'emoji-nature-symbolic',
-	'emoji-food-symbolic',
-	'emoji-travel-symbolic',
-	'emoji-activities-symbolic',
-	'emoji-objects-symbolic',
-	'emoji-symbols-symbolic',
-	'emoji-flags-symbolic'
-];
-
 var SETTINGS;
 let SIGNAUX = [];
+let timeoutSourceId = null;
 
 // Global variable : GLOBAL_BUTTON to click in the topbar
 var GLOBAL_BUTTON;
 
-// This array will store some St.Button(s)
-var recents = [];
-
 // These global variables are used to store some static settings
 var NB_COLS;
 let POSITION;
-
-//------------------------------------------------------------------------------
-
-function updateStyle() {
-	recents.forEach(function(b){
-		b.style = b.getStyle();
-	});
-	GLOBAL_BUTTON.emojiCategories.forEach(function(c){
-		c.emojiButtons.forEach(function(b){
-			b.style = b.getStyle();
-		});
-	});
-}
-
-function saveRecents() { //XXX not O.O.P.
-	let backUp = [];
-	for(let i=0; i<NB_COLS; i++){
-		backUp.push(recents[i].super_btn.label);
-	}
-	SETTINGS.set_strv('recently-used', backUp);
-}
-
-function buildRecents() { //XXX not O.O.P.
-	let temp = SETTINGS.get_strv('recently-used')
-	for(let i=0; i<NB_COLS; i++){
-		if (i < temp.length) {
-			recents[i].super_btn.label = temp[i];
-		} else {
-			//If the extension was previously set with less "recently used emojis",
-			//we still need to load something in the labels.
-			//It will be a penguin for obvious reasons.
-			recents[i].super_btn.label = '🐧';
-		}
-	}
-}
-
-//------------------------------------------------------------------------------
-
-class EmojiSearchItem {
-	// Creates and connects a search entry, added to a menu item
-	constructor() {
-		this.super_item = new PopupMenu.PopupBaseMenuItem({
-			reactive: false,
-			can_focus: false
-		});
-
-		this.searchEntry = new St.Entry({
-			name: 'searchEntry',
-			style_class: 'search-entry',
-			can_focus: true,
-			hint_text: _('Type here to search…'),
-			track_hover: true
-		});
-
-		this.searchEntry.get_clutter_text().connect(
-			'text-changed',
-			this._onSearchTextChanged.bind(this)
-		);
-
-		this.searchEntry.clutter_text.connect('key-press-event', (o, e) => {
-			recents[0].onKeyPress(o, e);
-		});
-
-		this.super_item.actor.add(this.searchEntry, { expand: true });
-	}
-
-	// Updates the "recently used" buttons content in reaction to a new search
-	// query (the text changed or the category changed).
-	_onSearchTextChanged() {
-		let searchedText = this.searchEntry.get_text();
-		if (searchedText === '') {
-			buildRecents();
-			this._updateSensitivity();
-			return;
-		} // else { ...
-		searchedText = searchedText.toLowerCase();
-
-		for (let j = 0; j < NB_COLS; j++) {
-			recents[j].super_btn.label = '';
-		}
-
-		let minCat = 0;
-		let maxCat = GLOBAL_BUTTON.emojiCategories.length;
-		if (GLOBAL_BUTTON._activeCat != -1) {
-			minCat = GLOBAL_BUTTON._activeCat;
-			maxCat = GLOBAL_BUTTON._activeCat + 1;
-		}
-
-		let results = [];
-		// First, search for any match (exact, name or keyword) in recent emojis
-		results = this._getResults(searchedText, minCat, maxCat, recents, results, 4);
-		// Then, search for an exact match with emoji names
-		results = this._getResults(searchedText, minCat, maxCat, recents, results, 3);
-		// Then, search only across emoji names
-		results = this._getResults(searchedText, minCat, maxCat, recents, results, 2);
-		// Finally, search across all keywords
-		results = this._getResults(searchedText, minCat, maxCat, recents, results, 1);
-
-		let firstEmptyIndex = 0;
-		for (let i = 0; i < results.length; i++) {
-			if (i < NB_COLS) {
-				recents[firstEmptyIndex].super_btn.label = results[i];
-				firstEmptyIndex++;
-			}
-		}
-		this._updateSensitivity();
-	}
-
-	_updateSensitivity() {
-		for (let i = 0; i < recents.length; i++) {
-			let can_focus = recents[i].super_btn.label != "";
-			recents[i].super_btn.set_can_focus(can_focus);
-			recents[i].super_btn.set_track_hover(can_focus);
-		}
-	}
-
-	// Search results are queried in several steps, from more important criteria
-	// to very general string matching.
-	_getResults(searchedText, minCat, maxCat, recents, results, priority) {
-		for (let cat = minCat; cat < maxCat; cat++) {
-			let availableSlots = recents.length - results.length;
-			if (availableSlots > 0) {
-				let catResults = GLOBAL_BUTTON.emojiCategories[cat].searchEmoji(
-					searchedText, results, SETTINGS.get_strv('recently-used'), availableSlots, priority
-				);
-				results = results.concat(catResults);
-			}
-		}
-		return results;
-	}
-}
 
 //------------------------------------------------------------------------------
 
@@ -224,30 +66,25 @@ class EmojisMenu {
 			icon_name: 'face-cool-symbolic',
 			style_class: 'system-status-icon emotes-icon'
 		});
-		box.add(icon);
-		box.add(PopupMenu.arrowIcon(St.Side.BOTTOM));
+		box.add_child(icon);
 		this._permanentItems = 0;
 		this._activeCat = -1;
+		let nbCols = SETTINGS.get_int('nbcols');
 
-		if (useActors){
-			this.super_btn.actor.add_child(box);
-			this.super_btn.actor.visible = SETTINGS.get_boolean('always-show');
-		} else {
-			this.super_btn.add_child(box);
-			this.super_btn.visible = SETTINGS.get_boolean('always-show');
-		}
+		this.super_btn.add_child(box);
+		this.super_btn.visible = SETTINGS.get_boolean('always-show');
 
 		//initializing categories
-		this._createAllCategories();
+		this._createAllCategories(nbCols);
 
 		//initializing this._buttonMenuItem
 		this._renderPanelMenuHeaderBox();
 
 		//creating the search entry
-		this.searchItem = new EmojiSearchItem();
+		this.searchItem = new EmojiSearchItem(nbCols);
 
 		//initializing the "recently used" buttons
-		let recentlyUsed = this._recentlyUsedInit();
+		let recentlyUsed = this.searchItem._recentlyUsedInit();
 
 		if (POSITION === 'top') {
 			this.super_btn.menu.addMenuItem(this._buttonMenuItem);
@@ -279,27 +116,48 @@ class EmojisMenu {
 		}
 	}
 
+	_connectSignals() {
+	}
+
+	disconnectSignals() {
+	}
+
+	updateStyle() {
+		this.searchItem.updateStyleRecents();
+		this.emojiCategories.forEach(function(c) {
+			c.updateStyle();
+		});
+	}
+
+	updateNbCols() {
+		let nbCols = SETTINGS.get_int('nbcols');
+		this.emojiCategories.forEach(function(c) {
+			c.setNbCols(nbCols);
+		});
+
+		this.searchItem = new EmojiSearchItem(nbCols);
+	}
+
 	toggle() {
 		this.super_btn.menu.toggle();
 	}
 
-	// Executed when the user opens/closes the menu, the main goals are to clear
-	// and to focus the search entry.
+	/**
+	 * Executed when the user opens/closes the menu, the main goals are to clear
+	 * and to focus the search entry.
+	 */
 	_onOpenStateChanged(self, open) {
-		if (useActors){
-			this.super_btn.actor.visible = open || SETTINGS.get_boolean('always-show');
-		} else {
-			this.super_btn.visible = open || SETTINGS.get_boolean('always-show');
-		}
+		this.super_btn.visible = open || SETTINGS.get_boolean('always-show');
 		this.clearCategories();
 		this.searchItem.searchEntry.set_text('');
 		// this.unloadCategories();
 
-		let a = Mainloop.timeout_add(20, () => {
-			if (open) {
+		timeoutSourceId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 20, () => {
+			if(open) {
 				global.stage.set_key_focus(this.searchItem.searchEntry);
 			}
-			Mainloop.source_remove(a);
+			timeoutSourceId = null;
+			return GLib.SOURCE_REMOVE;
 		});
 	}
 
@@ -310,12 +168,37 @@ class EmojisMenu {
 //	}
 
 	// Creates all categories (buttons & submenu menuitems), empty for now.
-	_createAllCategories() {
+	_createAllCategories(nbCols) {
 		this.emojiCategories = [];
+
+		const CAT_LABELS = [
+			_("Smileys & Body"),
+			_("Peoples & Clothing"),
+			_("Animals & Nature"),
+			_("Food & Drink"),
+			_("Travel & Places"),
+			_("Activities & Sports"),
+			_("Objects"),
+			_("Symbols"),
+			_("Flags")
+		];
+
+		const CAT_ICONS = [
+			'face-smile-symbolic', //'emoji-body-symbolic',
+			'emoji-people-symbolic',
+			'emoji-nature-symbolic',
+			'emoji-food-symbolic',
+			'emoji-travel-symbolic',
+			'emoji-activities-symbolic',
+			'emoji-objects-symbolic',
+			'emoji-symbols-symbolic',
+			'emoji-flags-symbolic'
+		];
 
 		/* creating new categories, with emojis not loaded yet */
 		for (let i = 0; i < 9; i++) {
 			this.emojiCategories[i] = new EmojiCategory(CAT_LABELS[i], CAT_ICONS[i], i);
+			this.emojiCategories[i].setNbCols(nbCols);
 		}
 	}
 
@@ -335,18 +218,13 @@ class EmojisMenu {
 		});
 		this.categoryButton = [];
 		for (let i=0; i<this.emojiCategories.length; i++) {
-			this._buttonMenuItem.actor.add(
-				this.emojiCategories[i].getButton(),
-				{ expand: true, x_fill: false } // deprecation warning but the
-				// genius that deprecated it didn't bother to provide a new way
-				// to do that
-			);
+			this._buttonMenuItem.actor.add_child(this.emojiCategories[i].getButton());
 		}
 	}
 
 	// Cleans the interface & close the opened category (if any). Called from the
 	// outside, be careful.
-	clearCategories(){
+	clearCategories() {
 		// removing the style class of previously opened category's button
 		for (let i = 0; i< 9; i++) {
 			this.emojiCategories[i].getButton().set_checked(false);
@@ -376,30 +254,10 @@ class EmojisMenu {
 		this.searchItem._onSearchTextChanged();
 	}
 
-	// Initializes the container showing the recently used emojis as buttons
-	_recentlyUsedInit() {
-		let recentlyUsed = new PopupMenu.PopupBaseMenuItem({
-			reactive: false,
-			can_focus: false,
-		});
-		let container = new St.BoxLayout();
-		recentlyUsed.actor.add(container, { expand: true });
-		recents = [];
-
-		for(let i=0; i<NB_COLS; i++) {
-			recents[i] = new EmojiButton.EmojiButton('', []);
-			recents[i].build(null);
-			container.add_child(recents[i].super_btn);
-		}
-
-		buildRecents();
-		return recentlyUsed;
-	}
-
 	_bindShortcut() {
 		Main.wm.addKeybinding(
 			'emoji-keybinding',
-			Convenience.getSettings(),
+			SETTINGS,
 			Meta.KeyBindingFlags.NONE,
 			Shell.ActionMode.ALL,
 			this.toggle.bind(this)
@@ -419,7 +277,7 @@ class EmojisMenu {
 //------------------------------------------------------------------------------
 
 function init() {
-	Convenience.initTranslations('emoji-selector');
+	ExtensionUtils.initTranslations('emoji-selector');
 	try {
 		let theme = imports.gi.Gtk.IconTheme.get_default();
 		theme.append_search_path(Me.path + '/icons');
@@ -432,28 +290,8 @@ function init() {
 //------------------------------------------------------------------------------
 
 function enable() {
-	SETTINGS = Convenience.getSettings();
-	NB_COLS = SETTINGS.get_int('nbcols');
+	SETTINGS = ExtensionUtils.getSettings();
 	POSITION = SETTINGS.get_string('position');
-	/* TODO paramètres restants à rendre dynamiques
-	 * emoji-keybinding (tableau de chaînes), pourri de toutes manières
-	 * nbcols (int), rebuild nécessaire
-	 * position (chaîne) impossible tout court ?
-	*/
-
-	// This variable is assigned here because init() wouldn't have provided
-	// gettext yet if it was done at the top level of the file.
-	CAT_LABELS = [
-		_("Smileys & Body"),
-		_("Peoples & Clothing"),
-		_("Animals & Nature"),
-		_("Food & Drink"),
-		_("Travel & Places"),
-		_("Activities & Sports"),
-		_("Objects"),
-		_("Symbols"),
-		_("Flags")
-	];
 
 	GLOBAL_BUTTON = new EmojisMenu();
 
@@ -463,9 +301,11 @@ function enable() {
 	// - `right` is the box where we want our GLOBAL_BUTTON to be displayed (left/center/right)
 	Main.panel.addToStatusArea('EmojisMenu', GLOBAL_BUTTON.super_btn, 0, 'right');
 
-	SIGNAUX[0] = SETTINGS.connect('changed::emojisize', () => { updateStyle(); });
+	SIGNAUX[0] = SETTINGS.connect('changed::emojisize', () => {
+		GLOBAL_BUTTON.updateStyle();
+	});
 	SIGNAUX[1] = SETTINGS.connect('changed::always-show', () => {
-		GLOBAL_BUTTON.super_btn.actor.visible = SETTINGS.get_boolean('always-show');
+		GLOBAL_BUTTON.super_btn.visible = SETTINGS.get_boolean('always-show');
 	});
 	SIGNAUX[2] = SETTINGS.connect('changed::use-keybinding', (z) => {
 		if (z.get_boolean('use-keybinding')) {
@@ -475,13 +315,16 @@ function enable() {
 			Main.wm.removeKeybinding('emoji-keybinding');
 		}
 	});
+	SIGNAUX[3] = SETTINGS.connect('changed::nbcols', () => {
+		GLOBAL_BUTTON.updateNbCols();
+	});
 }
 
 //------------------------------------------------------------------------------
 
 function disable() {
-	//we need to save labels currently in recents[] for the next session
-	saveRecents();
+	// we need to save these data for the next session
+	GLOBAL_BUTTON.searchItem.saveRecents();
 
 	if (SETTINGS.get_boolean('use-keybinding')) {
 		Main.wm.removeKeybinding('emoji-keybinding');
@@ -493,6 +336,11 @@ function disable() {
 
 	GLOBAL_BUTTON.super_btn.destroy();
 //	GLOBAL_BUTTON.destroy();
+
+	if(timeoutSourceId) {
+		GLib.Source.remove(timeoutSourceId);
+		timeoutSourceId = null;
+	}
 }
 
 //------------------------------------------------------------------------------

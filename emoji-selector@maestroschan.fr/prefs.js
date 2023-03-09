@@ -1,25 +1,20 @@
+// prefs.js (https://github.com/maoschanz/emoji-selector-for-gnome)
 
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Gio = imports.gi.Gio;
-const Gtk = imports.gi.Gtk;
-const GdkPixbuf = imports.gi.GdkPixbuf;
-const Mainloop = imports.mainloop;
+const {GLib, GObject, Gio, Gtk, GdkPixbuf} = imports.gi;
 
 const Gettext = imports.gettext.domain('emoji-selector');
 const _ = Gettext.gettext;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
-const Convenience = Me.imports.convenience;
 
 //------------------------------------------------------------------------------
 
 function init() {
-	Convenience.initTranslations();
+	ExtensionUtils.initTranslations();
 }
 
-let SETTINGS = Convenience.getSettings();
+let SETTINGS = ExtensionUtils.getSettings();
 
 //------------------------------------------------------------------------------
 
@@ -31,12 +26,6 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 		let builder = new Gtk.Builder();
 		builder.add_from_file(Me.path+'/prefs.ui');
 		this.prefs_stack = builder.get_object('prefs_stack');
-
-		this.switcher = new Gtk.StackSwitcher({
-			halign: Gtk.Align.CENTER,
-			visible: true,
-			stack: this.prefs_stack
-		});
 
 		this._loadPrefsPage(builder);
 		this._loadAboutPage(builder);
@@ -51,11 +40,6 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 		positionCombobox.append('top', _("From top to bottom"));
 		positionCombobox.append('bottom', _("From bottom to top"));
 		positionCombobox.active_id = SETTINGS.get_string('position');
-		positionCombobox.set_tooltip_text(
-			_("Displaying the interface from the bottom is better if you use " +
-			                   "a bottom panel instead of the default top bar.")
-			+ '\n' + RELOAD_TEXT
-		);
 
 		positionCombobox.connect("changed", (widget) => {
 			SETTINGS.set_string('position', widget.get_active_id());
@@ -69,7 +53,7 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 
 		let emojiSize = builder.get_object('size_spinbtn');
 		emojiSize.set_value(SETTINGS.get_int('emojisize'));
-		
+
 		emojiSize.connect('value-changed', w => {
 			var value = w.get_value_as_int();
 			SETTINGS.set_int('emojisize', value);
@@ -83,7 +67,6 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 
 		let nbColsSpinBtn = builder.get_object('nbcols_spinbtn');
 		nbColsSpinBtn.set_value(SETTINGS.get_int('nbcols'));
-		
 		nbColsSpinBtn.connect('value-changed', w => {
 			var value = w.get_value_as_int();
 			SETTINGS.set_int('nbcols', value);
@@ -164,29 +147,16 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 	//--------------------------------------------------------------------------
 
 	_loadAboutPage(builder) {
-		builder.get_object('about_icon').set_from_pixbuf(
-			GdkPixbuf.Pixbuf.new_from_file_at_size(Me.path+'/icons/about_icon.png', 128, 128)
-		);
+		let version = _("version %s").replace('%s', Me.metadata.version.toString());
+		builder.get_object('version-label').set_label(version);
 
-		let translation_credits = builder.get_object('translation_credits').get_label();
-		if (translation_credits == 'translator-credits') {
-			builder.get_object('translation_label').set_label('');
-			builder.get_object('translation_credits').set_label('');
+		let translators_credits = builder.get_object('translators-credits').get_label();
+		if (translators_credits == 'translator-credits') {
+			builder.get_object('translators-label').set_label('');
+			builder.get_object('translators-credits').set_label('');
 		}
 
-		let linkBox = builder.get_object('link_box'); // XXX padding ???
-		let a_version = ' (v' + Me.metadata.version.toString() + ') ';
-
-		let url_button = new Gtk.LinkButton({
-			label: _("Report bugs or ideas"),
-			uri: Me.metadata.url.toString()
-		});
-
-		linkBox.pack_start(url_button, false, false, 0);
-		linkBox.pack_end(new Gtk.Label({
-			label: a_version,
-			halign: Gtk.Align.START
-		}), false, false, 0);
+		builder.get_object('link-btn').set_uri(Me.metadata.url.toString());
 	}
 
 });
@@ -195,26 +165,22 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 
 function buildPrefsWidget() {
 	let widget = new EmojiSelectorSettingsWidget();
+	let obj = widget.prefs_stack;
 
-	Mainloop.timeout_add(0, () => {
-		let headerBar = widget.prefs_stack.get_toplevel().get_titlebar();
-		headerBar.custom_title = widget.switcher;
-
-		return false;
+	obj.connect('realize', () => {
+		let window = (this._shellVersion < 40) ? obj.get_toplevel() : obj.get_root();
+		if (this._shellVersion < 40) {
+			headerBar.set_show_close_button(true);
+		}
+		if (this._shellVersion < 43) {
+			this._registerSignals(window);
+		}
 	});
 
-	widget.prefs_stack.show_all();
-	return widget.prefs_stack;
-}
+	if (widget.prefs_stack.show_all)
+		widget.prefs_stack.show_all();
 
-// XXX never called
-function reset_settings(b) {
-	SETTINGS.reset('emojisize');
-	SETTINGS.reset('nbcols');
-	SETTINGS.reset('position');
-	SETTINGS.reset('emoji-keybinding');
-	SETTINGS.reset('use-keybinding');
-	SETTINGS.reset('always-show');
+	return widget.prefs_stack;
 }
 
 //------------------------------------------------------------------------------

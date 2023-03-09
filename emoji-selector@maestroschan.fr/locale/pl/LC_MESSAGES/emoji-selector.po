@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-04 01:56+0200\n"
+"POT-Creation-Date: 2022-11-14 18:44+0100\n"
 "PO-Revision-Date: 2019-05-19 19:08+0200\n"
 "Last-Translator: Alex <rylatgl@gmail.com>\n"
 "Language-Team: Alex (https://gitlab.com/alex4401)\n"
@@ -18,10 +18,6 @@ msgstr ""
 "X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
 "|| n%100>14) ? 1 : 2);\n"
-
-#: emoji-selector@maestroschan.fr/extension.js
-msgid "Type here to search…"
-msgstr "Zacznij pisać by wyszukać…"
 
 #: emoji-selector@maestroschan.fr/extension.js
 #: emoji-selector@maestroschan.fr/prefs.ui
@@ -77,21 +73,27 @@ msgid "From bottom to top"
 msgstr "Od dołu do góry"
 
 #: emoji-selector@maestroschan.fr/prefs.js
-msgid ""
-"Displaying the interface from the bottom is better if you use a bottom panel "
-"instead of the default top bar."
-msgstr ""
-"Wyświetlanie interfejsu z dołu jest lepszym wyborem, gdy używasz panel dolny "
-"zamiast domyślnego górnego."
-
-#: emoji-selector@maestroschan.fr/prefs.js
 #, javascript-format
 msgid "The default value is %s"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.js
-msgid "Report bugs or ideas"
-msgstr "Zgłoś błędy lub nowe funkcje"
+#, javascript-format
+msgid "version %s"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+#, fuzzy
+#| msgid ""
+#| "Displaying the interface from the bottom is better if you use a bottom "
+#| "panel instead of the default top bar."
+msgid ""
+"Displaying the interface from the bottom is better if you use a bottom panel "
+"instead of the default top bar. Modifications will be effective after "
+"reloading the extension."
+msgstr ""
+"Wyświetlanie interfejsu z dołu jest lepszym wyborem, gdy używasz panel dolny "
+"zamiast domyślnego górnego."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "General layout"
@@ -106,6 +108,10 @@ msgid "Size of emojis (px)"
 msgstr "Rozmiar emotikon (piksele)"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Layout"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Use a keyboard shortcut to toggle the menu"
 msgstr "Użyj skrót klawiszowy by pokazać menu"
 
@@ -118,6 +124,12 @@ msgid "Apply"
 msgstr "Zastosuj"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
+#, fuzzy
+#| msgid "Always show the icon"
+msgid "Always show the icon in the panel"
+msgstr "Zawsze pokazuj ikonę"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid ""
 "If you access the menu with the keyboard shortcut, you don't need to always "
 "display the icon."
@@ -126,12 +138,8 @@ msgstr ""
 "wyświetlana."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Always show the icon"
-msgstr "Zawsze pokazuj ikonę"
-
-#: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Settings"
-msgstr "Ustawienia"
+msgid "Keyboard bindings"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid ""
@@ -142,16 +150,28 @@ msgstr ""
 "emotikon. Kliknięcie na jedną z emotikon skopiuje ją do schowka."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Author:"
+msgid "Report bugs or ideas"
+msgstr "Zgłoś błędy lub nowe funkcje"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+#, fuzzy
+#| msgid "Author:"
+msgid "Author"
 msgstr "Autor:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Tranlators:"
+#, fuzzy
+#| msgid "Tranlators:"
+msgid "Translator(s)"
 msgstr "Tłumacze:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "translator-credits"
 msgstr "Alex"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Contributors"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "About"
@@ -161,13 +181,21 @@ msgstr "O Selektorze Emotikon"
 msgid "List of valid key names"
 msgstr ""
 
-#. Context for translation: modifier keys are ctrl/shift/super/alt
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Modifier keys must be between chevrons"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Don't use a keyboard shortcut that already exists."
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/emojiCategory.js
+#, javascript-format
+msgid "Incorrect number of keywords for category '%s':"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/emojiCategory.js
+msgid "Please report this bug"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
@@ -201,6 +229,13 @@ msgstr "Kobiety"
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Men"
 msgstr "Mężczyźni"
+
+#: emoji-selector@maestroschan.fr/emojiSearchItem.js
+msgid "Type here to search…"
+msgstr "Zacznij pisać by wyszukać…"
+
+#~ msgid "Settings"
+#~ msgstr "Ustawienia"
 
 #~ msgid "Default value is:"
 #~ msgstr "Domyślna wartość:"

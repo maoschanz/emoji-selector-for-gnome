@@ -39,8 +39,6 @@ Various contributions to the code itself:
 - [amivaleo](https://github.com/amivaleo)
 - [xurizaemon](https://github.com/xurizaemon)
 
-<!--TODO bah eux ^ ils sont pas crédités dans l'UI du coup ??-->
-
 The extension is currently available in the following languages:
 
 - Castillan (thanks to mario-mra)
@@ -66,10 +64,15 @@ The better option is to install it from [here](https://extensions.gnome.org/exte
 
 #### Native packages
 
+- [`gnome-shell-extension-emoji-selector` (**Fedora**)](https://src.fedoraproject.org/rpms/gnome-shell-extension-emoji-selector)
+- `gnome-shell-emoji-selector` (**nixOS**)
 - [`gnome-shell-extension-emoji-selector-git` (**AUR**)](https://aur.archlinux.org/packages/gnome-shell-extension-emoji-selector-git/)
 - ...<!-- TODO à compléter -->
 
 #### Manual installation
+
+**Not recommended at all:** installing the extension this way prevent any
+further update.
 
 Download and extract the ZIP, then open a terminal in the project's directory,
 and run `./install.sh`. It should copy the "emoji-selector@maestroschan.fr"

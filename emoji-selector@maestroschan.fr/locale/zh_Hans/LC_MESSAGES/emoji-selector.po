@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-04 01:56+0200\n"
+"POT-Creation-Date: 2022-11-14 18:44+0100\n"
 "PO-Revision-Date: 2020-03-07 04:17+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,10 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.2.4\n"
-
-#: emoji-selector@maestroschan.fr/extension.js
-msgid "Type here to search…"
-msgstr "搜索…"
 
 #: emoji-selector@maestroschan.fr/extension.js
 #: emoji-selector@maestroschan.fr/prefs.ui
@@ -76,19 +72,25 @@ msgid "From bottom to top"
 msgstr "从底部到顶部"
 
 #: emoji-selector@maestroschan.fr/prefs.js
-msgid ""
-"Displaying the interface from the bottom is better if you use a bottom panel "
-"instead of the default top bar."
-msgstr "如果你使用底栏代替默认的顶栏, 从下面开始显示能够带来良好的用户体验."
-
-#: emoji-selector@maestroschan.fr/prefs.js
 #, javascript-format
 msgid "The default value is %s"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.js
-msgid "Report bugs or ideas"
-msgstr "告诉我们Bugs或你的想法"
+#, javascript-format
+msgid "version %s"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+#, fuzzy
+#| msgid ""
+#| "Displaying the interface from the bottom is better if you use a bottom "
+#| "panel instead of the default top bar."
+msgid ""
+"Displaying the interface from the bottom is better if you use a bottom panel "
+"instead of the default top bar. Modifications will be effective after "
+"reloading the extension."
+msgstr "如果你使用底栏代替默认的顶栏, 从下面开始显示能够带来良好的用户体验."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "General layout"
@@ -103,6 +105,10 @@ msgid "Size of emojis (px)"
 msgstr "Emoji大小(单位为px)"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Layout"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Use a keyboard shortcut to toggle the menu"
 msgstr "使用快捷键触发Emoji菜单"
 
@@ -115,18 +121,20 @@ msgid "Apply"
 msgstr "应用"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
+#, fuzzy
+#| msgid "Always show the icon"
+msgid "Always show the icon in the panel"
+msgstr "让图标一直显示"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
 msgid ""
 "If you access the menu with the keyboard shortcut, you don't need to always "
 "display the icon."
 msgstr "如果你用快捷键触发Emoji菜单, 你就不太需要一直显示图标."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Always show the icon"
-msgstr "让图标一直显示"
-
-#: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Settings"
-msgstr "设置"
+msgid "Keyboard bindings"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid ""
@@ -137,16 +145,28 @@ msgstr ""
 "就被复制到剪切板."
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Author:"
+msgid "Report bugs or ideas"
+msgstr "告诉我们Bugs或你的想法"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+#, fuzzy
+#| msgid "Author:"
+msgid "Author"
 msgstr "作者:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
-msgid "Tranlators:"
+#, fuzzy
+#| msgid "Tranlators:"
+msgid "Translator(s)"
 msgstr "翻译:"
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "translator-credits"
 msgstr "校对"
+
+#: emoji-selector@maestroschan.fr/prefs.ui
+msgid "Contributors"
+msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "About"
@@ -156,13 +176,21 @@ msgstr "关于"
 msgid "List of valid key names"
 msgstr ""
 
-#. Context for translation: modifier keys are ctrl/shift/super/alt
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Modifier keys must be between chevrons"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/prefs.ui
 msgid "Don't use a keyboard shortcut that already exists."
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/emojiCategory.js
+#, javascript-format
+msgid "Incorrect number of keywords for category '%s':"
+msgstr ""
+
+#: emoji-selector@maestroschan.fr/emojiCategory.js
+msgid "Please report this bug"
 msgstr ""
 
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
@@ -196,6 +224,13 @@ msgstr "女"
 #: emoji-selector@maestroschan.fr/emojiOptionsBar.js
 msgid "Men"
 msgstr "男"
+
+#: emoji-selector@maestroschan.fr/emojiSearchItem.js
+msgid "Type here to search…"
+msgstr "搜索…"
+
+#~ msgid "Settings"
+#~ msgstr "设置"
 
 #~ msgid "Default value is:"
 #~ msgstr "默认值:"
