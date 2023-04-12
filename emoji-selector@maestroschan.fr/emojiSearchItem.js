@@ -108,13 +108,14 @@ var EmojiSearchItem = class EmojiSearchItem {
 
 	// Search results are queried in several steps, from more important criteria
 	// to very general string matching.
+	// searchEmoji(searchedText, results, recentlyUsed, neededresults, priority) {
 	_getResults(searchedText, minCat, maxCat, results, priority) {
 		for (let cat = minCat; cat < maxCat; cat++) {
 			let availableSlots = this._recents.length - results.length;
 			if (availableSlots > 0) {
 				let emojiCategory = Extension.GLOBAL_BUTTON.emojiCategories[cat];
 				let catResults = emojiCategory.searchEmoji(
-					searchedText, availableSlots, priority
+					searchedText, results, this._recents, availableSlots, priority
 				);
 				results = results.concat(catResults);
 			}
