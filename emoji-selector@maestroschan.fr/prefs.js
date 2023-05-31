@@ -65,6 +65,23 @@ const EmojiSelectorSettingsWidget = new GObject.Class({
 
 		//----------------------------------------------------------------------
 
+		let pasteonselectSwitch = builder.get_object('pasteonselect_switch');
+		pasteonselectSwitch.set_state(SETTINGS.get_boolean('paste-on-select'));
+
+		pasteonselectSwitch.connect('notify::active', widget => {
+			if (widget.active) {
+				SETTINGS.set_boolean('paste-on-select', true);
+			} else {
+				SETTINGS.set_boolean('paste-on-select', false);
+			}
+		});
+
+		SETTINGS.connect('changed::paste-on-select', () => {
+			pasteonselectSwitch.set_state(SETTINGS.get_boolean('paste-on-select'));
+		});
+
+		//----------------------------------------------------------------------
+
 		let nbColsSpinBtn = builder.get_object('nbcols_spinbtn');
 		nbColsSpinBtn.set_value(SETTINGS.get_int('nbcols'));
 		nbColsSpinBtn.connect('value-changed', w => {

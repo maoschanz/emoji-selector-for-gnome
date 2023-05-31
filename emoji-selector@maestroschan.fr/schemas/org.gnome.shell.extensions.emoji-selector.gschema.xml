@@ -25,6 +25,11 @@
       <summary>default memorized emojis</summary>
       <description></description>
     </key>
+    <key type="b" name="paste-on-select">
+      <default>true</default>
+      <summary>if paste on select is enabled</summary>
+      <description>(EXPERIMENTAL) if true, Selecting an emoji will attempt to paste it on the focused textfield</description>
+    </key>
     <key type="b" name="use-keybinding">
       <default>true</default>
       <summary>if keybinding is enabled</summary>
