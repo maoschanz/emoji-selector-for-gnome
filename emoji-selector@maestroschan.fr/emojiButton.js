@@ -2,6 +2,7 @@
 
 const St = imports.gi.St;
 const Clutter = imports.gi.Clutter;
+const Mainloop = imports.mainloop;
 
 /* Import the current extension, mainly because we need to access other files */
 const ExtensionUtils = imports.misc.extensionUtils;
@@ -10,6 +11,21 @@ const Extension = Me.imports.extension;
 
 const Clipboard = St.Clipboard.get_default();
 const CLIPBOARD_TYPE = St.ClipboardType.CLIPBOARD;
+
+
+
+const VirtualKeyboard = (() => {
+	let VirtualKeyboard;
+	return () => {
+		if (!VirtualKeyboard) {
+			VirtualKeyboard = Clutter.get_default_backend()
+				.get_default_seat()
+				.create_virtual_device(Clutter.InputDeviceType.KEYBOARD_DEVICE);
+		}
+		return VirtualKeyboard;
+	};
+})();
+
 
 //				none	woman					man
 const GENDERS =	['',	'\u200D\u2640\uFE0F',	'\u200D\u2642\uFE0F'];
@@ -129,6 +145,9 @@ var EmojiButton = class EmojiButton {
 			emojiToCopy
 		);
 		Extension.GLOBAL_BUTTON.super_btn.menu.close();
+
+		if (Extension.SETTINGS.get_boolean('paste-on-select')) this.triggerPasteHack();
+
 		return Clutter.EVENT_STOP;
 	}
 
@@ -137,6 +156,9 @@ var EmojiButton = class EmojiButton {
 			CLIPBOARD_TYPE,
 			emojiToCopy
 		);
+
+		if (Extension.SETTINGS.get_boolean('paste-on-select')) this.triggerPasteHack();
+
 		return Clutter.EVENT_STOP;
 	}
 
@@ -147,6 +169,9 @@ var EmojiButton = class EmojiButton {
 				text + emojiToCopy
 			);
 		});
+
+		if (Extension.SETTINGS.get_boolean('paste-on-select')) this.triggerPasteHack();
+
 		return Clutter.EVENT_STOP;
 	}
 
@@ -191,6 +216,40 @@ var EmojiButton = class EmojiButton {
 		}
 		Extension.GLOBAL_BUTTON.searchItem.shiftFor(temp);
 		return temp;
+	}
+
+	//Originaly from "clipboard-histroy@alexsaveau.dev"
+	//https://github.com/SUPERCILEX/gnome-clipboard-history/blob/master/extension.js
+	triggerPasteHack() {
+		this._pasteHackCallbackId = Mainloop.timeout_add(
+			1, // Just post to the end of the event loop
+			() => {
+				const eventTime = Clutter.get_current_event_time() * 1000;
+				VirtualKeyboard().notify_keyval(
+					eventTime,
+					Clutter.KEY_Shift_L,
+					Clutter.KeyState.PRESSED,
+				);
+				VirtualKeyboard().notify_keyval(
+					eventTime,
+					Clutter.KEY_Insert,
+					Clutter.KeyState.PRESSED,
+				);
+				VirtualKeyboard().notify_keyval(
+					eventTime,
+					Clutter.KEY_Insert,
+					Clutter.KeyState.RELEASED,
+				);
+				VirtualKeyboard().notify_keyval(
+					eventTime,
+					Clutter.KEY_Shift_L,
+					Clutter.KeyState.RELEASED,
+				);
+
+				this._pasteHackCallbackId = undefined;
+				return false;
+			},
+		);
 	}
 };
 

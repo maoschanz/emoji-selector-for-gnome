@@ -139,6 +139,42 @@
               </object>
             </child>
 
+               <child>
+              <object class="GtkListBoxRow">
+                <child>
+                  <object class="GtkBox">
+                    <property name="margin-start">12</property>
+                    <property name="margin-end">12</property>
+                    <property name="margin-top">12</property>
+                    <property name="margin-bottom">12</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="spacing">32</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="halign">end</property>
+                            <property name="hexpand">False</property>
+                            <property name="vexpand">False</property>
+                            <property name="label" translatable="yes">*EXPERIMENTAL* Paste upon selection of emoji</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkSwitch" id="pasteonselect_switch">
+                            <property name="can-focus">True</property>
+                            <property name="halign">start</property>
+                            <property name="hexpand">True</property>
+                            <property name="vexpand">False</property>
+                            <property name="halign">end</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
           </object>
         </child>
       </object>
