@@ -114,7 +114,7 @@ var EmojiSearchItem = class EmojiSearchItem {
 			if (availableSlots > 0) {
 				let emojiCategory = Extension.GLOBAL_BUTTON.emojiCategories[cat];
 				let catResults = emojiCategory.searchEmoji(
-					searchedText, availableSlots, priority
+					searchedText, results, this._recents, availableSlots, priority
 				);
 				results = results.concat(catResults);
 			}
